@@ -147,7 +147,102 @@ body {
   margin-left: 0px;
 }
 /*!!--------------------------------Promo---------------------------------------------*/
+.promo {
+  width: 100%;
+  background-color: #030303;
+  overflow: hidden;
+}
+.promo-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
 
+.promo-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 595px;
+  position: absolute;
+}
+.promo__headlink_white {
+  font-family: Forum;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 53.3px;
+  line-height: 90px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.promo-content__headlink::after {
+  content: "to the Louvre";
+  font-family: Forum;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 53.3px;
+  line-height: 90px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+.promo-content__paragraph {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-bottom: 75px;
+}
+
+.promo-content__button > button {
+  background-color: #710707;
+  max-width: 360px;
+  max-height: 75px;
+  width: 360px;
+  height: 75px;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 2px;
+  color: #ffffff;
+  justify-content: center;
+}
+.promo-slider {
+}
+.promo-slider__oneline {
+}
+.promo-slider__img {
+}
+.promo-slider__img > img {
+}
+.promo-slider__buttons {
+}
+.promo-slider__count {
+}
+.current {
+}
+.verticalLine {
+}
+.amount {
+}
+.current__checked {
+}
+.checked {
+}
+.arrow__prew {
+}
+.arrow__next {
+}
 /*!!------------------------------------video----------------------------------*/
 .video {
   width: 100%;
