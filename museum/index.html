@@ -516,7 +516,7 @@
           <div class="new-ticket-buy__booking">
             <div class="new-ticket-buy__textContent">
               <div class="new-ticket-buy__logo">
-                <img src="./css/sass/logo.svg" alt="logo" />
+                <img src="./css/sass/logo_hover.svg" alt="logo" />
               </div>
               <div class="new-ticket-buy__headlink">
                 <h2 class="new-ticket-buy__headlink_gold">Booking tickets</h2>
@@ -531,26 +531,28 @@
                 <button class="date"></button>
               </div>
               <div class="new-ticket-buy__time">
-                <input type="datetime" /><button class="date"></button>
+                <input type="text" /><button class="time"></button>
               </div>
               <div class="new-ticket-buy__name">
-                <span class="name__img"></span
-                ><span class="name__text">Name</span> <input type="text" />
+                <input class="new-ticket-buy__nameInput" type="text" />
               </div>
               <div class="new-ticket-buy__eMail">
-                <span class="eMail__img"></span
-                ><span class="eMail__text">Name</span> <input type="email" />
+                <input class="new-ticket-buy__eMail_Input" type="email" />
               </div>
               <div class="new-ticket-buy__number">
-                <span class="number__img"></span
-                ><span class="number__text">Name</span> <input type="" />
+                <input class="new-ticket-buy__number_input" type="text" />
               </div>
               <div class="new-ticket-buy__select">
-                <span class="select__img"></span>
-                <span class="select__text"></span><button class="date"></button>
+                <select class="new-ticket-buy__select_select">
+                  <option value="Permanent">Permanent exhibition</option>
+                  <option value="Temporary">Temporary exhibition</option>
+                  <option value="Combined">Combined Admission</option></select
+                ><button class="select__button"></button>
               </div>
               <div class="new-ticket-buy__enteryTicket">
-                <h6 class="new-ticket-buy__enteryTicket_paragraph"></h6>
+                <h6 class="new-ticket-buy__enteryTicket_headlink">
+                  Entry ticket
+                </h6>
                 <div class="new-ticket-buy__enteryTicketText">
                   <div class="new-ticket-buy__enteryTicketText_paragraph18">
                     <p
@@ -569,12 +571,14 @@
                 </div>
                 <div class="new-ticket-buy__enteryTicket_input">
                   <div class="new-ticket-buy__enteryTicket_input_item">
-                    <button class="minus_black"></button>
-                    <input type="number" /> <button class="plus_black"></button>
+                    <button class="minus_black">-</button>
+                    <input class="count_tickets" type="number" />
+                    <button class="plus_black">+</button>
                   </div>
                   <div class="new-ticket-buy__enteryTicket_input_item">
-                    <button class="minus_black"></button>
-                    <input type="number" /> <button class="plus_black"></button>
+                    <button class="minus_black">-</button>
+                    <input class="count_tickets" type="number" />
+                    <button class="plus_black">+</button>
                   </div>
                 </div>
               </div>
@@ -582,31 +586,36 @@
           </div>
           <div class="new-ticket-buy__overview">
             <div class="new-ticket-buy__tour">
-              <h5 class="new-ticket-buy__overview_title">Overview</h5>
-              <p class="new-ticket-buy__overview_subtitle_red">
-                Tour to Louvre
-              </p>
-              <div class="new-ticket-buy__overview_subtitle_description">
-                <span class="new-ticket-buy__overview_subtitle_img"></span>
-                <span class="new-ticket-buy__overview_subtitle_dateImformation"
-                  >Friday, August 19</span
-                >
-              </div>
-              <div class="new-ticket-buy__overview_subtitle_description">
-                <span class="new-ticket-buy__overview_subtitle_img"></span>
-                <span
-                  class="new-ticket-buy__overview_subtitle_dateTimeImformation"
-                  >16 : 30</span
-                >
-              </div>
-              <div class="new-ticket-buy__overview_subtitle_description">
-                <span class="new-ticket-buy__overview_subtitle_img"></span>
-                <span
-                  class="
-                    new-ticket-buy__overview_subtitle_tictetTypeImformation
-                  "
-                  >Temporary exhibition</span
-                >
+              <div class="new-ticket-buy__tour_text">
+                <h5 class="new-ticket-buy__overview_title">Overview</h5>
+                <p class="new-ticket-buy__overview_subtitle_red">
+                  Tour to Louvre
+                </p>
+                <div class="new-ticket-buy__overview_subtitle_description">
+                  <span class="new-ticket-buy__overview_subtitle_img"></span>
+                  <span
+                    class="new-ticket-buy__overview_subtitle_dateImformation"
+                    >Friday, August 19</span
+                  >
+                </div>
+                <div class="new-ticket-buy__overview_subtitle_description">
+                  <span class="new-ticket-buy__overview_subtitle_img"></span>
+                  <span
+                    class="
+                      new-ticket-buy__overview_subtitle_dateTimeImformation
+                    "
+                    >16 : 30</span
+                  >
+                </div>
+                <div class="new-ticket-buy__overview_subtitle_description">
+                  <span class="new-ticket-buy__overview_subtitle_img"></span>
+                  <span
+                    class="
+                      new-ticket-buy__overview_subtitle_tictetTypeImformation
+                    "
+                    >Temporary exhibition</span
+                  >
+                </div>
               </div>
               <div class="new-ticket-buy__overview_img">
                 <img src="./css/sass/welcomeLittle.svg" alt="welcome" />
