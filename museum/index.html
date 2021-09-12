@@ -21,26 +21,26 @@
           <div class="header-logo-ico">
             <img src="./css/sass/logo.svg" alt="logo" />
           </div>
-            <div class="header-logo logo header-logo_style">Louvre</div>
+          <div class="header-logo logo header-logo_style">Louvre</div>
           <nav class="header-navigation header__navigation">
             <ul class="header-navigation__list">
               <li class="header-navigation__list_item">
-                <a href="#">Visiting</a>
+                <a href="#visiting">Visiting</a>
               </li>
               <li class="header-navigation__list_item">
-                <a href="#">Explore</a>
+                <a href="#explore">Explore</a>
               </li>
               <li class="header-navigation__list_item">
-                <a href="#">Video</a>
+                <a href="#video">Video</a>
               </li>
               <li class="header-navigation__list_item">
-                <a href="#">Gallery</a>
+                <a href="#gallery">Gallery</a>
               </li>
               <li class="header-navigation__list_item">
-                <a href="#">Tickets</a>
+                <a href="#tickets">Tickets</a>
               </li>
               <li class="header-navigation__list_item">
-                <a href="#">Contacts</a>
+                <a href="#contacts">Contacts</a>
               </li>
             </ul>
           </nav>
@@ -50,33 +50,47 @@
         <section class="promo">
           <div class="promo-wrapper _container">
             <div class="promo-content">
-              <div class="promo-content__headlink"> <h1 class="promo__headlink_white">Welcome 
-                </h1></div>
-              <div class="promo-content__paragraph"> <p>From the castle to the museum</p> </div>
-              <div class="promo-content__button"> <button class="promo__button_red">Discover the Louvre</button></div>
+              <div class="promo-content__headlink">
+                <h1 class="promo__headlink_white">Welcome</h1>
+              </div>
+              <div class="promo-content__paragraph">
+                <p>From the castle to the museum</p>
+              </div>
+              <div class="promo-content__button">
+                <button class="promo__button_red">Discover the Louvre</button>
+              </div>
             </div>
             <div class="promo-slider">
-            <div class="promo-slider__oneline"><div class="promo-slider__img"><img src="./assets/img/welcome/1.jpg" alt="welcome"></div></div>
+              <div class="promo-slider__oneline">
+                <div class="promo-slider__img">
+                  <img src="./assets/img/welcome/1.jpg" alt="welcome" />
+                </div>
+              </div>
               <div class="promo-slider__buttons">
                 <div class="promo-slider__count">
-                  <span class="current">01</span> <span class="verticalLine">|</span><span class="amount">05</span>
+                  <span class="current">01</span>
+                  <span class="verticalLine">|</span
+                  ><span class="amount">05</span>
                 </div>
-                <div class="current__checked checked"></div>
-                <div class="current__checked"></div>
-                <div class="current__checked"></div>
-                <div class="current__checked"></div>
-                <div class="current__checked"></div>
+                <div class="current-checkBox">
+                  <div class="current__checked checked"></div>
+                  <div class="current__checked"></div>
+                  <div class="current__checked"></div>
+                  <div class="current__checked"></div>
+                  <div class="current__checked"></div>
+                </div>
                 <button class="arrow__prew"></button>
                 <button class="arrow__next"></button>
               </div>
-          </div>
-            
-         
+            </div>
           </div>
         </section>
         <section class="tour">
           <div class="virtual-tour _container">
-            <h2 class="virtual-tour__headlink virtual-tour__headlink_gold">
+            <h2
+              id="visiting"
+              class="virtual-tour__headlink virtual-tour__headlink_gold"
+            >
               Virtual tour
             </h2>
             <div class="three-colums-layout">
@@ -207,6 +221,7 @@
           <div class="picture_explore_wrapper _container">
             <div class="picture-explore-content-wrapper">
               <h2
+                id="explore"
                 class="
                   picture_explore__headlink picture_explore__headlink_white
                 "
@@ -241,23 +256,41 @@
         <section class="video">
           <div class="video-wrapper _container">
             <div class="video__headlink">
-              <div class="video__headlinktext buy-tictets__headlink_gold">Video journey</div>
-              <div class="video__paragraph"> <p class="video_textContent">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p> </div>
+              <div class="video__headlinktext">
+                <h2 id="video" class="buy-tictets__headlink_gold">
+                  Video journey
+                </h2>
+              </div>
+              <div class="video__paragraph">
+                <p class="video_textContent">
+                  Enter and visit one of the most famous museums in the world
+                  and enjoy masterpieces such as Mona Lisa or Hammurabi's Code
+                </p>
+              </div>
             </div>
             <div class="video-player-wrapper">
-              <div class="video__player"><button class="video__playBig"></button><video src="#" poster="/assets/video/01.jpg"> </video></div>
+              <div class="video__player">
+                <button class="video__playBig"></button
+                ><video src="#" poster="/assets/video/01.jpg"></video>
+              </div>
               <div class="video__controllPanel">
                 <button class="video__playSmall"></button>
-                <input  class = "progressBar"type="range">
+                <input class="progressBar" type="range" />
                 <button class="video__sound"></button>
-                <input class ="sound__value" type="range">
-                <button class="player__fullscreen"></button>  
+                <input class="sound__value" type="range" />
+                <button class="player__fullscreen"></button>
               </div>
             </div>
             <div class="video-list">
-              <div class="video-list__item"> <img src="./assets/video/11.jpg" alt=""></div>
-              <div class="video-list__item"><img src="./assets/video/02.jpg" alt=""></div>
-              <div class="video-list__item"><img src="./assets/video/03.jpg" alt=""></div>
+              <div class="video-list__item">
+                <img src="./assets/video/11.jpg" alt="" />
+              </div>
+              <div class="video-list__item">
+                <img src="./assets/video/02.jpg" alt="" />
+              </div>
+              <div class="video-list__item">
+                <img src="./assets/video/03.jpg" alt="" />
+              </div>
             </div>
             <div class="video__pages">
               <button class="prev"></button>
@@ -266,33 +299,47 @@
               <button class="round"></button>
               <button class="round"></button>
               <button class="round"></button>
-              <button class="next "></button>
+              <button class="next"></button>
             </div>
           </div>
         </section>
         <section class="art-gallery">
           <div class="art-gallery-wrapper _container">
             <div class="art-gallery__headlink">
-              <h2 class="picture_explore__headlink_white">Art Gallery</h2>
+              <h2
+                id="gallery"
+                class="
+                  picture_explore__headlink_white
+                  art-gallery__headlinkPosition
+                "
+              >
+                Art Gallery
+              </h2>
             </div>
             <div class="flex-column-3-wrapper">
               <div class="img-container__left">
                 <img src="./assets/img/gallery/02.jpg" alt="img" />
                 <img src="./assets/img/gallery/09.jpg" alt="img" />
                 <img src="./assets/img/gallery/04.jpg" alt="img" />
-                <img src="./assets/img/gallery/06.jpg" alt="img" />
+                <div class="parallax1">
+                  <img src="./assets/img/gallery/06.jpg" alt="img" />
+                </div>
               </div>
               <div class="img-container__center">
                 <img src="./assets/img/gallery/01.jpg" alt="img" />
                 <img src="./assets/img/gallery/08.jpg" alt="img" />
                 <img src="./assets/img/gallery/03.jpg" alt="img" />
-                <img src="./assets/img/gallery/05.jpg" alt="img" />
+                <div class="parallax2">
+                  <img src="./assets/img/gallery/05.jpg" alt="img" />
+                </div>
               </div>
               <div class="img-container__right">
                 <img src="./assets/img/gallery/07.jpg" alt="img" />
                 <img src="./assets/img/gallery/10.jpg" alt="img" />
                 <img src="./assets/img/gallery/11.jpg" alt="img" />
-                <img src="./assets/img/gallery/12.jpg" alt="img" />
+                <div class="parallax3">
+                  <img src="./assets/img/gallery/12.jpg" alt="img" />
+                </div>
               </div>
             </div>
           </div>
@@ -300,7 +347,9 @@
         <section class="buy_tickets">
           <div class="buy-ticktets-wrapper _container">
             <div class="buy-tictets__headlink">
-              <h2 class="buy-tictets__headlink_gold">BUY TICKETS</h2>
+              <h2 id="tickets" class="buy-tictets__headlink_gold">
+                BUY TICKETS
+              </h2>
             </div>
             <div class="buy-tickets-content">
               <div class="buy-tickets-content-img">
@@ -379,7 +428,10 @@
         </section>
         <section class="Contacts">
           <div class="contacts-wrapper _container">
-            <h2 class="contacts-wrapper__headlinlk buy-tictets__headlink_gold">
+            <h2
+              id="contacts"
+              class="contacts-wrapper__headlinlk buy-tictets__headlink_gold"
+            >
               Contacts
             </h2>
             <div class="contacts-content-wrapper">
@@ -415,49 +467,258 @@
             <nav class="footer-navigation-list">
               <ul class="footer-navigation__ullist">
                 <li class="footer-navigation__list_item">
-                  <a href="#">Visiting</a>
+                  <a href="#visiting">Visiting</a>
                 </li>
                 <li class="footer-navigation__list_item">
-                  <a href="#">Gallery</a>
+                  <a href="gallery">Gallery</a>
                 </li>
                 <li class="footer-navigation__list_item">
-                  <a href="#">Explore</a>
+                  <a href="explore">Explore</a>
                 </li>
                 <li class="footer-navigation__list_item">
-                  <a href="#">Tickets</a>
+                  <a href="tickets">Tickets</a>
                 </li>
                 <li class="footer-navigation__list_item">
-                  <a href="#">Video</a>
+                  <a href="video">Video</a>
                 </li>
                 <li class="footer-navigation__list_item">
-                  <a href="#">Contacts</a>
+                  <a href="contacts">Contacts</a>
                 </li>
               </ul>
             </nav>
 
             <ul class="footer-ico">
               <li class="ico youtube"></li>
-              <li class="ico inst"> </li>
-              <li class="ico face"> </li>
-              <li class="ico twit"> </li>
+              <li class="ico inst"></li>
+              <li class="ico face"></li>
+              <li class="ico twit"></li>
               <li class="ico pp"></li>
             </ul>
           </div>
+        </div>
+        <hr class="footer__horizontalRow" />
+        <div class="footer-about">
+          <div class="footer-about-wrapper _container">
+            <div class="footer-about__year footer-about_text">© 2021</div>
+            <div class="footer-about__RS footer-about_text">
+              <a href="https://rs.school/" target="_blank"
+                >Rolling Scopes School</a
+              >
             </div>
-            <hr class="footer__horizontalRow">
-          <div class="footer-about">
-            <div class="footer-about-wrapper _container">
-              <div class="footer-about__year footer-about_text">© 2021</div>
-              <div class="footer-about__RS footer-about_text">The Rolling Scopes School</div>
-              <div class="footer-about__nickName footer-about_text">Bam6ycha</div>
+            <div class="footer-about__nickName footer-about_text">
+              <a href="https://github.com/Bam6ycha" target="_blank">Bam6ycha</a>
             </div>
           </div>
         </div>
       </footer>
+      <section class="buy-now">
+        <div class="new-ticket-buy _container">
+          <div class="new-ticket-buy__booking">
+            <div class="new-ticket-buy__textContent">
+              <div class="new-ticket-buy__logo">
+                <img src="./css/sass/logo.svg" alt="logo" />
+              </div>
+              <div class="new-ticket-buy__headlink">
+                <h2 class="new-ticket-buy__headlink_gold">Booking tickets</h2>
+              </div>
+              <div class="new-ticket-buy__sub">
+                <h6 class="new-ticket-buy__sub_red">Tour to Louvre</h6>
+              </div>
+            </div>
+            <div class="new-ticket-buy__form">
+              <div class="new-ticket-buy__date">
+                <input class="selectDate" type="date" />
+                <button class="date"></button>
+              </div>
+              <div class="new-ticket-buy__time">
+                <input type="datetime" /><button class="date"></button>
+              </div>
+              <div class="new-ticket-buy__name">
+                <span class="name__img"></span
+                ><span class="name__text">Name</span> <input type="text" />
+              </div>
+              <div class="new-ticket-buy__eMail">
+                <span class="eMail__img"></span
+                ><span class="eMail__text">Name</span> <input type="email" />
+              </div>
+              <div class="new-ticket-buy__number">
+                <span class="number__img"></span
+                ><span class="number__text">Name</span> <input type="" />
+              </div>
+              <div class="new-ticket-buy__select">
+                <span class="select__img"></span>
+                <span class="select__text"></span><button class="date"></button>
+              </div>
+              <div class="new-ticket-buy__enteryTicket">
+                <h6 class="new-ticket-buy__enteryTicket_paragraph"></h6>
+                <div class="new-ticket-buy__enteryTicketText">
+                  <div class="new-ticket-buy__enteryTicketText_paragraph18">
+                    <p
+                      class="new-ticket-buy__enteryTicketText_paragraph18_black"
+                    >
+                      Basic 18+ (20 €)
+                    </p>
+                  </div>
+                  <div class="new-ticket-buy__enteryTicketText_paragraph18">
+                    <p
+                      class="new-ticket-buy__enteryTicketText_paragraph18_black"
+                    >
+                      Basic 18+ (20 €)
+                    </p>
+                  </div>
+                </div>
+                <div class="new-ticket-buy__enteryTicket_input">
+                  <div class="new-ticket-buy__enteryTicket_input_item">
+                    <button class="minus_black"></button>
+                    <input type="number" /> <button class="plus_black"></button>
+                  </div>
+                  <div class="new-ticket-buy__enteryTicket_input_item">
+                    <button class="minus_black"></button>
+                    <input type="number" /> <button class="plus_black"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="new-ticket-buy__overview">
+            <div class="new-ticket-buy__tour">
+              <h5 class="new-ticket-buy__overview_title">Overview</h5>
+              <p class="new-ticket-buy__overview_subtitle_red">
+                Tour to Louvre
+              </p>
+              <div class="new-ticket-buy__overview_subtitle_description">
+                <span class="new-ticket-buy__overview_subtitle_img"></span>
+                <span class="new-ticket-buy__overview_subtitle_dateImformation"
+                  >Friday, August 19</span
+                >
+              </div>
+              <div class="new-ticket-buy__overview_subtitle_description">
+                <span class="new-ticket-buy__overview_subtitle_img"></span>
+                <span
+                  class="new-ticket-buy__overview_subtitle_dateTimeImformation"
+                  >16 : 30</span
+                >
+              </div>
+              <div class="new-ticket-buy__overview_subtitle_description">
+                <span class="new-ticket-buy__overview_subtitle_img"></span>
+                <span
+                  class="
+                    new-ticket-buy__overview_subtitle_tictetTypeImformation
+                  "
+                  >Temporary exhibition</span
+                >
+              </div>
+              <div class="new-ticket-buy__overview_img">
+                <img src="./css/sass/welcomeLittle.svg" alt="welcome" />
+              </div>
+            </div>
+            <div class="new-ticket-buy__overview_totalAmount">
+              <div class="new-ticket-buy__overview_totalAmount_basic">
+                <div class="new-ticket-buy__overview_totalAmount18">2</div>
+                <div class="new-ticket-buy__overview_totalAmoun__basic18">
+                  Basic (20 €)
+                </div>
+                <div
+                  class="new-ticket-buy__overview_totalAmoun__basic18_totalCost"
+                >
+                  40 €
+                </div>
+              </div>
+              <div class="new-ticket-buy__overview_totalAmount_senior">
+                <div class="new-ticket-buy__overview_totalAmount65">2</div>
+                <div class="new-ticket-buy__overview_totalAmoun__senior65">
+                  Senior (10 €)
+                </div>
+                <div
+                  class="
+                    new-ticket-buy__overview_totalAmoun__senior65_totalCost
+                  "
+                >
+                  10 €
+                </div>
+              </div>
+            </div>
+            <div class="new-ticket-buy__overview_creditCard">
+              <div class="new-ticket-buy__overview_title">
+                <p class="new-ticket-buy__overview_titleBlack">Total:</p>
+                <span class="new-ticket-buy__overview_totalAmount"></span>
+              </div>
+              <div class="new-ticket-buy__overview_creditCard_img">
+                <div class="new-ticket-buy__overview_creditCard_img_face">
+                  <div
+                    class="new-ticket-buy__overview_creditCard_img_faceNumber"
+                  >
+                    <span
+                      class="
+                        new-ticket-buy__overview_creditCard_img_faceNumber_text
+                      "
+                      >Card number</span
+                    >
+                    <div
+                      class="
+                        new-ticket-buy__overview_creditCard_img_faceNumber_input
+                      "
+                    >
+                      <input type="text" />
+                    </div>
+                  </div>
+                  <div
+                    class="
+                      new-ticket-buy__overview_creditCard_img_faceNumber_expirationDate
+                    "
+                  >
+                    <span class="expirationDate">Expiration date</span>
+                    <div class="inputMonth"><input type="number" /></div>
+                    <div class="inputYear"><input type="number" /></div>
+                  </div>
+                </div>
+                <div class="creditCard-type__img">
+                  <img src="./css/sass/Visa.svg" alt="master" />
+                  <img src="./css/sass/Mastercard.svg" alt="master" />
+                </div>
+              </div>
+              <div
+                class="
+                  new-ticket-buy__overview_creditCard_img_faceNumber_holder
+                "
+              >
+                <span class="holder_name">Expiration date</span>
+                <div class="inputText"><input type="text" /></div>
+              </div>
+              <div class="new-ticket-buy__overview_creditCard_CVC">
+                <div class="new-ticket-buy__overview_creditCard_CVCTop"></div>
+                <div
+                  class="new-ticket-buy__overview_creditCard_CVCblackline"
+                ></div>
+                <div class="new-ticket-buy__overview_creditCard_CVCText">
+                  <div
+                    class="
+                      new-ticket-buy__overview_creditCard_CVCTextInformation
+                    "
+                  >
+                    <div class="new-ticket-buy__overview_creditCard_CVC_CVV">
+                      CVC/CVV
+                    </div>
+                    <div class="new-ticket-buy__overview_creditCard_CVC_input">
+                      <input type="text" />
+                    </div>
+                    <div
+                      class="
+                        new-ticket-buy__overview_creditCard_CVC_description
+                      "
+                    >
+                      The last 3 or 4 digits on back of the card
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="new-ticket-buy__overview_button">
+              <button class="red_square">Book</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </body>
 </html>
-              
-              
-              
-              

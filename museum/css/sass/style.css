@@ -74,6 +74,9 @@ html {
 body {
   font-size: 1.6em;
 }
+button {
+  cursor: pointer;
+}
 /*!------------------------------wrapper-----------------*/
 .wrapper {
   width: 100%;
@@ -89,11 +92,11 @@ body {
 /*!----------------------------- header------------------*/
 .header-wrapper {
   width: 100%;
-  /* position: absolute;
+  position: absolute;
   left: 0px;
-  top: 0px; */
+  top: 0px;
   overflow: hidden;
-  /* z-index: 50; */
+  z-index: 50;
   min-height: 150px;
   background-color: #030303;
 }
@@ -151,36 +154,40 @@ body {
   width: 100%;
   background-color: #030303;
   overflow: hidden;
+  margin-top: 150px;
 }
 .promo-wrapper {
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  min-height: 810px;
 }
 
 .promo-content {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  max-width: 595px;
+  max-width: 600px;
   position: absolute;
+  z-index: 1;
 }
 .promo__headlink_white {
   font-family: Forum;
   font-style: normal;
   font-weight: normal;
-  font-size: 53.3px;
+  font-size: 80px;
   line-height: 90px;
   letter-spacing: 5px;
   text-transform: uppercase;
   color: #ffffff;
+  margin-top: 150px;
 }
 .promo-content__headlink::after {
   content: "to the Louvre";
   font-family: Forum;
   font-style: normal;
   font-weight: normal;
-  font-size: 53.3px;
+  font-size: 80px;
   line-height: 90px;
   letter-spacing: 5px;
   text-transform: uppercase;
@@ -196,6 +203,10 @@ body {
   letter-spacing: 2px;
   color: #ffffff;
   margin-bottom: 75px;
+}
+.promo-content__headlink {
+  max-width: 598px;
+  margin-bottom: 25px;
 }
 
 .promo-content__button > button {
@@ -218,30 +229,82 @@ body {
   justify-content: center;
 }
 .promo-slider {
+  margin-left: 440px;
+  position: relative;
+  width: 100%;
+  max-height: 810px;
+  display: flex;
+  justify-content: flex-end;
 }
 .promo-slider__oneline {
+  position: absolute;
 }
 .promo-slider__img {
 }
 .promo-slider__img > img {
+  object-fit: contain;
 }
 .promo-slider__buttons {
+  align-self: flex-end;
+  display: flex;
+  z-index: 1;
+  width: 600px;
+  max-width: 600px;
+  background-color: #030303;
+  min-height: 120px;
+  align-items: center;
+  padding-left: 74px;
 }
 .promo-slider__count {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 40px;
+  text-transform: uppercase;
+  color: #ffffff;
 }
-.current {
+
+.current-checkBox {
+  display: flex;
+  column-gap: 25px;
+  margin: 0px 60px 0px 55px;
+  cursor: pointer;
 }
-.verticalLine {
-}
-.amount {
-}
+
 .current__checked {
+  width: 16px;
+  height: 16px;
+  background-color: white;
 }
 .checked {
+  width: 16px;
+  height: 16px;
+  background-color: #9d8665;
 }
 .arrow__prew {
+  background: url(./arrow_prev.svg) center no-repeat;
+  width: 30px;
+  height: 9px;
+  border: none;
+  margin-right: 10px;
+  cursor: pointer;
 }
 .arrow__next {
+  background: url(./arrow_next.svg) center no-repeat;
+  width: 30px;
+  height: 9px;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.verticalLine {
+  margin: 0px 10px 0px 10px;
+}
+@media (max-width: 1440px) {
+  .promo-slider {
+    margin-left: calc(20px + (440 - 20) * ((100vw - 480px) / (1440 - 480)));
+  }
 }
 /*!!------------------------------------video----------------------------------*/
 .video {
@@ -340,13 +403,7 @@ body {
 }
 .sound__value {
   width: 172px;
-  background: linear-gradient(
-    to right,
-    #911c1c 0%,
-    #a10a0a 50%,
-    #c70606 50%,
-    #f20202 100%
-  );
+  background: linear-gradient(to right, #911c1c, #a10a0a, #c70606, #f20202);
   border-radius: 8px;
   height: 7px;
   outline: none;
@@ -378,13 +435,7 @@ body {
 }
 .progressBar {
   width: 932px;
-  background: linear-gradient(
-    to right,
-    #911c1c 0%,
-    #a10a0a 50%,
-    #c70606 50%,
-    #f20202 100%
-  );
+  background: linear-gradient(to right, #911c1c, #a10a0a, #c70606, #f20202);
   border-radius: 8px;
   height: 7px;
   outline: none;
@@ -404,6 +455,7 @@ body {
   border: none;
   width: 10px;
   height: 12px;
+  cursor: pointer;
 }
 
 .next {
@@ -411,18 +463,21 @@ body {
   border: none;
   width: 10px;
   height: 12px;
+  cursor: pointer;
 }
 .video__pages > :nth-child(2) {
   background: url(./Ellipse_4.svg) center no-repeat;
   border: none;
   width: 10px;
   height: 12px;
+  cursor: pointer;
 }
 .round {
   background: url(./Ellipse_5.svg);
   border: none;
   width: 10px;
   height: 12px;
+  cursor: pointer;
 }
 
 /*!!-------------------Virtual Tour---------------------------------------------------*/
@@ -438,6 +493,7 @@ body {
 }
 
 .virtual-tour__headlink {
+  margin-top: 75px;
   padding-bottom: 22px;
   border-bottom: 3px solid #710707;
   margin-bottom: 75px;
@@ -604,6 +660,15 @@ body {
 }
 .img-container__right > img:first-child {
   margin-top: 50px;
+}
+.art-gallery__headlinkPosition {
+  padding-top: 75px;
+}
+.parallax1 {
+  background: linear-gradient(to top black);
+  width: 100%;
+  height: 243px;
+  z-index: 20;
 }
 
 /*!!----------------------------------buy-tictets----------------*/
@@ -963,7 +1028,18 @@ body {
   min-height: 125px;
 }
 
-.footer-about__year {
+.footer-about_text > a {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-decoration: none;
+}
+.footer-about_text > a:hover {
+  color: #9d8665;
 }
 .footer-about_text {
   font-family: Roboto;
@@ -974,11 +1050,172 @@ body {
   letter-spacing: 2px;
   color: #ffffff;
 }
-
 .footer__horizontalRow {
   color: #666666;
   height: 3px;
 }
 ul > li > a:hover {
   color: #9d8665;
+}
+
+/*!!-----------------------------------New Buy Tictet---------------------*/
+.buy-now {
+}
+.new-ticket-buy {
+}
+._container {
+}
+.new-ticket-buy__booking {
+}
+.new-ticket-buy__textContent {
+}
+.new-ticket-buy__logo {
+}
+.new-ticket-buy__headlink {
+}
+.new-ticket-buy__headlink_gold {
+}
+.new-ticket-buy__sub {
+}
+.new-ticket-buy__sub_red {
+}
+.new-ticket-buy__form {
+}
+.new-ticket-buy__date {
+}
+.selectDate {
+}
+.date {
+}
+.new-ticket-buy__time {
+}
+.new-ticket-buy__name {
+}
+.name__img {
+}
+.name__text {
+}
+.new-ticket-buy__eMail {
+}
+.eMail__img {
+}
+.eMail__text {
+}
+.new-ticket-buy__number {
+}
+.number__img {
+}
+.number__text {
+}
+.new-ticket-buy__select {
+}
+.select__img {
+}
+.select__text {
+}
+.new-ticket-buy__enteryTicket {
+}
+.new-ticket-buy__enteryTicket_paragraph {
+}
+.new-ticket-buy__enteryTicketText {
+}
+.new-ticket-buy__enteryTicketText_paragraph18 {
+}
+.new-ticket-buy__enteryTicketText_paragraph18_black {
+}
+.new-ticket-buy__enteryTicket_input {
+}
+.new-ticket-buy__enteryTicket_input_item {
+}
+.minus_black {
+}
+.plus_black {
+}
+.new-ticket-buy__overview {
+}
+.new-ticket-buy__tour {
+}
+.new-ticket-buy__overview_title {
+}
+.new-ticket-buy__overview_subtitle_red {
+}
+.new-ticket-buy__overview_subtitle_description {
+}
+.new-ticket-buy__overview_subtitle_img {
+}
+.new-ticket-buy__overview_subtitle_dateImformation {
+}
+.new-ticket-buy__overview_subtitle_dateTimeImformation {
+}
+.new-ticket-buy__overview_subtitle_tictetTypeImformation {
+}
+.new-ticket-buy__overview_img {
+}
+.new-ticket-buy__overview_totalAmount {
+}
+.new-ticket-buy__overview_totalAmount_basic {
+}
+.new-ticket-buy__overview_totalAmount18 {
+}
+.new-ticket-buy__overview_totalAmoun__basic18 {
+}
+.new-ticket-buy__overview_totalAmoun__basic18_totalCost {
+}
+.new-ticket-buy__overview_totalAmount_senior {
+}
+.new-ticket-buy__overview_totalAmount65 {
+}
+.new-ticket-buy__overview_totalAmoun__senior65 {
+}
+.new-ticket-buy__overview_totalAmoun__senior65_totalCost {
+}
+.new-ticket-buy__overview_creditCard {
+}
+.new-ticket-buy__overview_titleBlack {
+}
+.new-ticket-buy__overview_creditCard_img {
+}
+.new-ticket-buy__overview_creditCard_img_face {
+}
+.new-ticket-buy__overview_creditCard_img_faceNumber {
+}
+.new-ticket-buy__overview_creditCard_img_faceNumber_text {
+}
+.new-ticket-buy__overview_creditCard_img_faceNumber_input {
+}
+.new-ticket-buy__overview_creditCard_img_faceNumber_expirationDate {
+}
+.expirationDate {
+}
+.inputMonth {
+}
+.inputYear {
+}
+.creditCard-type__img {
+}
+.new-ticket-buy__overview_creditCard_img_faceNumber_holder {
+}
+.holder_name {
+}
+.inputText {
+}
+.new-ticket-buy__overview_creditCard_CVC {
+}
+.new-ticket-buy__overview_creditCard_CVCTop {
+}
+.new-ticket-buy__overview_creditCard_CVCblackline {
+}
+.new-ticket-buy__overview_creditCard_CVCText {
+}
+.new-ticket-buy__overview_creditCard_CVCTextInformation {
+}
+.new-ticket-buy__overview_creditCard_CVC_CVV {
+}
+.new-ticket-buy__overview_creditCard_CVC_input {
+}
+.new-ticket-buy__overview_creditCard_CVC_description {
+}
+.new-ticket-buy__overview_button {
+}
+.red_square {
 }
