@@ -1354,7 +1354,7 @@ option::selection {
 .new-ticket-buy__enteryTicketText {
 }
 .new-ticket-buy__enteryTicketText_paragraph18 {
-  margin-right: 117px;
+  margin-right: 127px;
   margin-top: 3px;
 }
 .new-ticket-buy__enteryTicketText_paragraph18_black {
@@ -1566,12 +1566,12 @@ option::selection {
   color: #030303;
 }
 .new-ticket-buy__overview_creditCard {
-  margin: 10px 0px;
+  margin: 12px 0px;
   position: relative;
 }
 .new-ticket-buy__overview_title {
   display: flex;
-  column-gap: 335px;
+  column-gap: 331px;
 }
 .new-ticket-buy__overview_titleBlack {
   font-family: Roboto;
@@ -1685,12 +1685,13 @@ option::selection {
 }
 .new-ticket-buy__overview_creditCard_CVCText {
   width: 75px;
-  margin-right: 25px;
+  margin-right: 20px;
 }
 .new-ticket-buy__overview_creditCard_CVCTextInformation {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  height: 119px;
 }
 .new-ticket-buy__overview_creditCard_CVC_CVV {
   font-family: Roboto;
@@ -1704,6 +1705,8 @@ option::selection {
   width: 75px;
   height: 35px;
 }
+.new-ticket-buy__overview_creditCard_CVC_input {
+}
 .new-ticket-buy__overview_creditCard_CVC_description {
   font-family: Roboto;
   font-style: normal;
@@ -1714,6 +1717,21 @@ option::selection {
   width: 47px;
 }
 .new-ticket-buy__overview_button {
+  max-width: 220px;
+  max-height: 45px;
+  margin-top: 17px;
+  margin-right: 17px;
 }
 .red_square {
+  background-color: #710707;
+  opacity: 0.9;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 26px;
+
+  color: #ffffff;
+  width: 220px;
+  height: 45px;
 }
