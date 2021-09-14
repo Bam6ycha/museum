@@ -22,7 +22,10 @@
             <img src="./css/sass/logo.svg" alt="logo" />
           </div>
           <div class="header-logo logo header-logo_style">Louvre</div>
-          <nav class="header-navigation header__navigation">
+          <div class="menu__ico">
+            <span></span>
+          </div>
+          <nav class="header-navigation header__navigation menu__body">
             <ul class="header-navigation__list">
               <li class="header-navigation__list_item">
                 <a href="#visiting">Visiting</a>
@@ -544,6 +547,7 @@
               </div>
               <div class="new-ticket-buy__select">
                 <select class="new-ticket-buy__select_select">
+                  <option value="start" selected></option>
                   <option value="Permanent">Permanent exhibition</option>
                   <option value="Temporary">Temporary exhibition</option>
                   <option value="Combined">Combined Admission</option></select
@@ -565,7 +569,7 @@
                     <p
                       class="new-ticket-buy__enteryTicketText_paragraph18_black"
                     >
-                      Basic 18+ (20 €)
+                      Senior 65+ (10 €)
                     </p>
                   </div>
                 </div>
@@ -592,14 +596,18 @@
                   Tour to Louvre
                 </p>
                 <div class="new-ticket-buy__overview_subtitle_description">
-                  <span class="new-ticket-buy__overview_subtitle_img"></span>
+                  <span class="new-ticket-buy__overview_subtitle_img"
+                    ><img src="./css/sass/calendar.svg" alt="calendar"
+                  /></span>
                   <span
                     class="new-ticket-buy__overview_subtitle_dateImformation"
                     >Friday, August 19</span
                   >
                 </div>
                 <div class="new-ticket-buy__overview_subtitle_description">
-                  <span class="new-ticket-buy__overview_subtitle_img"></span>
+                  <span class="new-ticket-buy__overview_subtitle_img">
+                    <img src="./css/sass/clock.svg" alt="clock"
+                  /></span>
                   <span
                     class="
                       new-ticket-buy__overview_subtitle_dateTimeImformation
@@ -608,7 +616,9 @@
                   >
                 </div>
                 <div class="new-ticket-buy__overview_subtitle_description">
-                  <span class="new-ticket-buy__overview_subtitle_img"></span>
+                  <span class="new-ticket-buy__overview_subtitle_img">
+                    <img src="./css/sass/checked.svg" alt="checked"
+                  /></span>
                   <span
                     class="
                       new-ticket-buy__overview_subtitle_tictetTypeImformation
@@ -650,7 +660,7 @@
             <div class="new-ticket-buy__overview_creditCard">
               <div class="new-ticket-buy__overview_title">
                 <p class="new-ticket-buy__overview_titleBlack">Total:</p>
-                <span class="new-ticket-buy__overview_totalAmount"></span>
+                <div class="new-ticket-buy__overview_totalAmount">60€</div>
               </div>
               <div class="new-ticket-buy__overview_creditCard_img">
                 <div class="new-ticket-buy__overview_creditCard_img_face">
@@ -671,28 +681,28 @@
                       <input type="text" />
                     </div>
                   </div>
+                  <div class="creditCard-type__img">
+                    <img src="./css/sass/Visa.svg" alt="master" />
+                    <img src="./css/sass/Mastercard.svg" alt="master" />
+                  </div>
                   <div
                     class="
                       new-ticket-buy__overview_creditCard_img_faceNumber_expirationDate
                     "
                   >
-                    <span class="expirationDate">Expiration date</span>
+                    <div class="expirationDate">Expiration date</div>
                     <div class="inputMonth"><input type="number" /></div>
                     <div class="inputYear"><input type="number" /></div>
                   </div>
+                  <div
+                    class="
+                      new-ticket-buy__overview_creditCard_img_faceNumber_holder
+                    "
+                  >
+                    <span class="holder_name">Cardholder name</span>
+                    <div class="inputText"><input type="text" /></div>
+                  </div>
                 </div>
-                <div class="creditCard-type__img">
-                  <img src="./css/sass/Visa.svg" alt="master" />
-                  <img src="./css/sass/Mastercard.svg" alt="master" />
-                </div>
-              </div>
-              <div
-                class="
-                  new-ticket-buy__overview_creditCard_img_faceNumber_holder
-                "
-              >
-                <span class="holder_name">Expiration date</span>
-                <div class="inputText"><input type="text" /></div>
               </div>
               <div class="new-ticket-buy__overview_creditCard_CVC">
                 <div class="new-ticket-buy__overview_creditCard_CVCTop"></div>
@@ -729,5 +739,6 @@
         </div>
       </section>
     </div>
+    <script src="./mainJS/main.js"></script>
   </body>
 </html>
