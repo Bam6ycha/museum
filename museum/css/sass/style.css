@@ -580,6 +580,7 @@ body._lock {
 .video__player {
   max-width: 100%;
   background-color: #030303;
+  height: 650px;
 }
 .video__player > video {
   max-width: 100%;
@@ -857,7 +858,7 @@ body._lock {
   width: 50%;
   overflow: hidden;
   height: 700px;
-  background: url(/assets/img/picture/01.jpg) left no-repeat;
+  background: url(./01.jpg) left no-repeat;
 }
 
 .picture-explore__after {
