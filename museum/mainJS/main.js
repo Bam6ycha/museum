@@ -250,4 +250,33 @@ function onMouseEnter() {
 }
 document.addEventListener("DOMContentLoaded", onMouseEnter);
 
-//!==========================ChangePictureExplore===========================//
+//!==========================slider_img===========================//
+const dragButton = document.querySelector(".picture-explore__drag");
+const div = document.querySelector(".picture-explore__img");
+const imgBefore = document.querySelector(".picture-explore__before");
+
+function drag() {
+  event.preventDefault();
+  dragButton.style.zIndex = 10;
+  dragButton.style.position = "absolute";
+  div.append(dragButton);
+
+  moveAt(event.pageX, event.pageY);
+
+  function moveAt(pageX, pageY) {
+    if (pageX < div.clientWidth) {
+      dragButton.style.left = "0px";
+    }
+    dragButton.style.left = event.pageX - div.clientWidth - 218 + "px";
+  }
+  function onMouseMove(event) {
+    imgBefore.style.width = dragButton.style.left;
+    moveAt(event.pageX);
+  }
+  document.addEventListener("mousemove", onMouseMove);
+  document.addEventListener("mouseup", () =>
+    document.removeEventListener("mousemove", onMouseMove)
+  );
+}
+dragButton.addEventListener("mousedown", drag);
+document.addEventListener("dragstart", (event) => event.preventDefault());

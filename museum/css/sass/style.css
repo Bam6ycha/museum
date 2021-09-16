@@ -868,11 +868,9 @@ body._lock {
 .picture-explore__drag {
   position: absolute;
   padding: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 2px;
   height: 100%;
+  left: 50%;
   background: #ffffff;
   cursor: pointer;
   outline: none;
