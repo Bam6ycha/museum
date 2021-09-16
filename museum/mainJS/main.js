@@ -100,17 +100,154 @@ function changeValue65(event) {
 document.addEventListener("click", changeValue18);
 document.addEventListener("click", changeValue65);
 //!============Slider=============//
-const slider = document.querySelector(".promo-slider__oneline");
-const sliderOneLine = document.querySelector(".promo-slider__oneline");
-const img = document.querySelector(".promo-slider__img>img");
-const hrefArray = [
-  "./assets/img/welcome/1.jpg",
-  "./assets/img/welcome/2.jpg",
-  "./assets/img/welcome/3.jpg",
-  "./assets/img/welcome/4.jpg",
-  "./assets/img/welcome/5.jpg",
-];
-const arrowPrew = document.querySelector(".arrow__prew");
+const items = document.querySelectorAll(".promo-slider__img");
 const arrowNext = document.querySelector(".arrow__next");
-const squares = document.querySelectorAll(".curren__checked");
-function slide() {}
+const arrowPrew = document.querySelector(".arrow__prew");
+let currentValue = document.querySelector(".current");
+let checked = document.querySelectorAll(".current__checked");
+
+let currentChecked = 0;
+let currentItem = 0;
+let isEnabled = true;
+
+function chengeCurrentItem(number) {
+  currentItem = (number + items.length) % items.length;
+  currentChecked = (number + checked.length) % checked.length;
+}
+
+function hideItem(direction) {
+  isEnabled = false;
+  checked[currentChecked].classList.remove("checked");
+  items[currentItem].classList.add(direction);
+  items[currentItem].addEventListener("animationend", function () {
+    this.classList.remove("visible", direction);
+  });
+}
+function showItem(direction) {
+  checked[currentChecked].classList.add("checked");
+  items[currentItem].classList.add("nextVisible", direction);
+  items[currentItem].addEventListener("animationend", function () {
+    this.classList.remove("nextVisible", direction);
+    this.classList.add("visible");
+    isEnabled = true;
+  });
+}
+
+function previousItem(number) {
+  hideItem("to__right");
+  chengeCurrentItem(number - 1);
+  showItem("from__left");
+  currentValue.innerHTML = "0" + `${number}`;
+  if (currentValue.innerHTML < "01") {
+    currentValue.innerHTML = "05";
+  }
+}
+
+function nextItem(number) {
+  hideItem("to__left");
+  chengeCurrentItem(number + 1);
+  showItem("from__right");
+  currentValue.innerHTML = "0" + `${number + 2}`;
+  if (currentValue.innerHTML > "05") {
+    currentValue.innerHTML = "01";
+  }
+}
+
+arrowPrew.addEventListener("click", function () {
+  if (isEnabled) {
+    previousItem(currentItem);
+  }
+});
+arrowNext.addEventListener("click", function () {
+  if (isEnabled) {
+    nextItem(currentItem);
+  }
+});
+
+//!===================Swiper================================//
+
+let slider = document.querySelector(".promo-slider__oneline");
+const swiper = (slider) => {
+  let landscape = slider;
+  let startValueX = 0;
+  let startValueY = 0;
+  let distX = 0;
+  let distY = 0;
+
+  let startTime = 0;
+  let pastTime = 0;
+  let threshould = 100;
+  let allowedTime = 400;
+  landscape.addEventListener("mousedown", function (event) {
+    startValueX = event.pageX;
+    startValueY = event.pageY;
+    startTime = new Date().getTime();
+    event.preventDefault();
+  });
+  landscape.addEventListener("mouseup", function (event) {
+    distX = event.pageX - startValueX;
+    distY = event.pageY - startValueY;
+    startTime = new Date().getTime();
+    event.preventDefault();
+    pastTime = new Date().getTime() - startTime;
+    event.preventDefault();
+    if (pastTime <= allowedTime) {
+      if (Math.abs(distX) > threshould) {
+        if (distX > 0) {
+          if (isEnabled) {
+            previousItem(currentItem);
+          }
+        } else {
+          if (isEnabled) {
+            nextItem(currentItem);
+          }
+        }
+      }
+    }
+  });
+  landscape.addEventListener("touchstart", function (event) {
+    let touchObj = event.changedTouches[0];
+    startValueX = touchObj.pageX;
+    startValueY = touchObj.pageY;
+    startTime = new Date().getTime();
+    event.preventDefault();
+  });
+  landscape.addEventListener("touchmove", function (event) {
+    event.preventDefault();
+  });
+  landscape.addEventListener("touchend", function (event) {
+    let touchObj = event.changedTouches[0];
+    distX = touchObj.pageX - startValueX;
+    distY = touchObj.pageY - startValueY;
+    startTime = new Date().getTime();
+    event.preventDefault();
+    pastTime = new Date().getTime() - startTime;
+    event.preventDefault();
+    if (pastTime <= allowedTime) {
+      if (Math.abs(distX) > threshould) {
+        if (distX > 0) {
+          if (isEnabled) {
+            previousItem(currentItem);
+          }
+        } else {
+          if (isEnabled) {
+            nextItem(currentItem);
+          }
+        }
+      }
+    }
+  });
+};
+swiper(slider);
+
+function autoSlide() {
+  let click = new Event("click");
+  arrowNext.dispatchEvent(click);
+}
+
+function onMouseEnter() {
+  setInterval(autoSlide, 8000);
+}
+document.addEventListener("DOMContentLoaded", onMouseEnter);
+
+//!==========================ChangePictureExplore===========================//

@@ -413,23 +413,70 @@ body._lock {
   color: #ffffff;
   justify-content: center;
 }
+/*!===================Slider-Swiper=====================================================*/
 .promo-slider {
-  margin-left: 440px;
-  position: relative;
+  margin-left: -10px;
+  position: absolute;
   width: 100%;
   max-height: 810px;
   display: flex;
   justify-content: flex-end;
 }
 .promo-slider__oneline {
-  position: absolute;
+  position: relative;
+  width: 100%;
   overflow: hidden;
+  margin-right: -572px;
+  transform: translateX(31%);
 }
 .promo-slider__img {
+  display: none;
+  position: relative;
+  animation: 0.5s ease-in-out;
+}
+.visible,
+.nextVisible {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.to__left {
+  animation-name: left;
+}
+.to__right {
+  animation-name: right;
+  animation-direction: reverse;
+}
+.from__left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+.from__right {
+  animation-name: right;
+}
+
+@keyframes left {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+@keyframes right {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
+.nextVisible {
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 .promo-slider__img > img {
-  object-fit: contain;
-  min-width: 100%;
 }
 .promo-slider__buttons {
   align-self: flex-end;
@@ -488,11 +535,7 @@ body._lock {
 .verticalLine {
   margin: 0px 10px 0px 10px;
 }
-@media (max-width: 1440px) {
-  .promo-slider {
-    margin-left: calc(20px + (440 - 20) * ((100vw - 480px) / (1440 - 480)));
-  }
-}
+
 /*!!------------------------------------video----------------------------------*/
 .video {
   width: 100%;
@@ -775,6 +818,8 @@ body._lock {
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-end;
+  align-self: baseline;
+  flex: 1 0 46%;
 }
 
 .picture_explore__paragraph {
@@ -799,19 +844,53 @@ body._lock {
 .picture_explore__paragraph :not(:last-child) {
   margin: 0px 0px 25px 0px;
 }
-.picture-explore__img > img {
-  max-width: 100%;
-  width: 720px;
-  margin-top: 80px;
-  margin-bottom: 75px;
-  flex: 1 0 50%;
-}
 .picture-explore__img {
-  flex: 1 0 50%;
+  display: flex;
+  position: relative;
+  height: 700px;
+  width: 100%;
+  margin-top: 90px;
+  margin-bottom: 75px;
 }
+.picture-explore__before {
+  position: absolute;
+  width: 50%;
+  overflow: hidden;
+  height: 700px;
+  background: url(/assets/img/picture/after.jpg) left no-repeat;
+}
+
+.picture-explore__after {
+  width: 100%;
+  overflow: hidden;
+  height: 700px;
+}
+.picture-explore__drag {
+  position: absolute;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 100%;
+  background: #ffffff;
+  cursor: pointer;
+  outline: none;
+}
+.picture-explore__drag::before {
+  content: "";
+  position: absolute;
+  top: calc(50%-15px);
+  left: -14px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
 .picture_explore_wrapper {
   display: flex;
-  gap: 60px;
+  gap: 56px;
 }
 /*!------------------------------Art---Gallery-------------------------------*/
 .art-gallery {
