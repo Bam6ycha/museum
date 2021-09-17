@@ -208,6 +208,7 @@ button {
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 100;
+  touch-action: none;
 }
 .popup.open {
   visibility: visible;

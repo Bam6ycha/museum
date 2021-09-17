@@ -28,14 +28,14 @@ const popupBody = document.querySelector(".popup__body");
 let unlock = true;
 const timeout = 800;
 
-function OnButtonClock(event) {
+function OnButtonClick(event) {
   if (button) {
     document.body.classList.toggle("_lock");
     popup.classList.toggle("open");
     setTimeout(() => popupBody.classList.toggle("open"), 0);
   }
 }
-button.addEventListener("click", OnButtonClock);
+button.addEventListener("click", OnButtonClick);
 
 function closeBuyTictetsKeyboard(event) {
   if (popup.classList.contains("open")) {
@@ -58,7 +58,7 @@ function closeBuyTictetsMouse(event) {
     console.log(event.target);
   }
 }
-document.addEventListener("click", closeBuyTictetsMouse);
+document.addEventListener("pointerdown", closeBuyTictetsMouse);
 //!=============ByuTictets===inputs=======//
 const minusBlack18 = document.querySelector(
   "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > button.minus_black"
@@ -319,22 +319,22 @@ const animated = (arrayOfContainers) => {
   function addClass(event) {
     let scrollTop = window.pageYOffset;
 
-    if (scrollTop > 2800) {
+    if (scrollTop > 4000) {
       imgContainerLeft[0].classList.add("animated");
       imgContainerCenter[0].classList.add("animated");
       imgContainerRigtht[0].classList.add("animated");
     }
-    if (scrollTop > 3400) {
+    if (scrollTop > 4500) {
       imgContainerLeft[1].classList.add("animated");
       imgContainerCenter[1].classList.add("animated");
       imgContainerRigtht[1].classList.add("animated");
     }
-    if (scrollTop > 3800) {
+    if (scrollTop > 5000) {
       imgContainerLeft[2].classList.add("animated");
       imgContainerCenter[2].classList.add("animated");
       imgContainerRigtht[2].classList.add("animated");
     }
-    if (scrollTop > 4200) {
+    if (scrollTop > 5500) {
       imgContainerLeft[3].classList.add("animated");
       imgContainerCenter[3].classList.add("animated");
       imgContainerRigtht[3].classList.add("animated");
