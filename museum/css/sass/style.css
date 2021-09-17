@@ -78,7 +78,9 @@ button {
   cursor: pointer;
 }
 /*!------------------------Overlay=========*/
-
+input {
+  cursor: pointer;
+}
 /*!----------------------menuBurger--------------*/
 @media (max-width: 1024px) {
   .header-navigation__list > li {
@@ -578,15 +580,26 @@ body._lock {
   max-width: 100%;
 }
 .video__player {
-  max-width: 100%;
+  width: 100%;
   background-color: #030303;
   height: 650px;
 }
 .video__player > video {
-  max-width: 100%;
+  width: 1440px;
+  height: 650px;
   flex: 1 0 100%;
   position: relative;
 }
+.duration {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 38px;
+  color: #ffffff;
+  width: 200px;
+}
+
 .video__playBig {
   max-width: 220px;
   max-height: 220px;
@@ -602,7 +615,22 @@ body._lock {
   border-radius: 50%;
   cursor: pointer;
 }
-
+.video__pausedBig {
+  max-width: 220px;
+  max-height: 220px;
+  width: 100%;
+  height: 100%;
+  background: url(./pause_little.svg) no-repeat;
+  background-position: 58% 50%;
+  z-index: 1;
+  position: absolute;
+  top: 31%;
+  right: 42%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation-name: appears;
+  border: none;
+}
 .video__controllPanel {
   display: flex;
   background: #030303;
@@ -621,6 +649,34 @@ body._lock {
   height: 71px;
   border: none;
 }
+.video__pausedSmall {
+  background: url(./paused_little.ico) center no-repeat;
+  max-width: 100%;
+  max-height: 100%;
+  cursor: pointer;
+  flex: 0 0 auto;
+  background-color: #000000;
+  width: 87px;
+  height: 71px;
+  border: none;
+  transition: all 0.3s ease 0s;
+  animation-name: appears;
+}
+.muted {
+  background: url(./mute.png) center no-repeat;
+  background-size: contain;
+  max-width: 100%;
+  max-height: 100%;
+  cursor: pointer;
+  flex: 0 0 auto;
+  background-color: #000000;
+  width: 155px;
+  height: 71px;
+  border: none;
+  transition: all 0.3s ease 0s;
+  animation-name: appears;
+}
+
 .video__sound {
   background: url(./sound.svg) center no-repeat;
   max-width: 100%;
@@ -632,14 +688,45 @@ body._lock {
   height: 71px;
   border: none;
 }
+.sound__item__progress {
+  display: flex;
+  width: 810px;
+  position: relative;
+}
+.sound__item_linearGradient_progress {
+  background: linear-gradient(to right, #911c1c, #a10a0a, #c70606, #f20202);
+  max-width: 810px;
+  width: 0%;
+  position: absolute;
+  height: 7px;
+  border-radius: 10px;
+}
+
 .sound__value {
   width: 172px;
-  background: linear-gradient(to right, #911c1c, #a10a0a, #c70606, #f20202);
+  background: transparent;
   border-radius: 8px;
   height: 7px;
   outline: none;
-  transition: background 450ms ease-in;
   -webkit-appearance: none;
+  position: absolute;
+  top: -23%;
+}
+.video__sound_linearGradient {
+  background: linear-gradient(to right, #911c1c, #a10a0a, #c70606, #f20202);
+  position: absolute;
+  height: 7px;
+  border-radius: 10px;
+  max-width: 150px;
+  width: 3px;
+  top: 43%;
+}
+.sound__item {
+  width: 172px;
+  position: relative;
+  height: 71px;
+  display: flex;
+  align-items: center;
 }
 .player__fullscreen {
   background: url(./full_screen.svg) center no-repeat;
@@ -653,29 +740,32 @@ body._lock {
   border: none;
 }
 .video-list {
+  position: relative;
   display: flex;
   column-gap: 42px;
   margin-bottom: 40px;
 
   max-width: 100%;
   min-height: 255px;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 .video-list__item {
   margin: 0px;
-  flex: 0 0 31.33%;
+  flex: 1 0 31.33%;
 }
-.video_list__iframe {
-  width: 100%;
-  height: 100%;
+.video-list__item > video {
+  max-width: 100%;
 }
+
 .progressBar {
-  width: 932px;
-  background: linear-gradient(to right, #911c1c, #a10a0a, #c70606, #f20202);
+  width: 767px;
+  background: transparent;
   border-radius: 8px;
   height: 7px;
   outline: none;
-  transition: background 450ms ease-in;
   -webkit-appearance: none;
+  position: absolute;
 }
 .video__pages {
   display: flex;
@@ -715,6 +805,17 @@ body._lock {
   cursor: pointer;
 }
 
+@keyframes appears {
+  from {
+    transform: translateY(0);
+  }
+  50% {
+    transform: scale(10%);
+  }
+  to {
+    transform: scale(0);
+  }
+}
 /*!!-------------------Virtual Tour---------------------------------------------------*/
 .virtual-tour__headlink_gold {
   color: #9d8665;

@@ -297,57 +297,72 @@
             <div class="video-player-wrapper">
               <div class="video__player">
                 <button class="video__playBig"></button
-                ><video src="#" poster="./assets/video/01.jpg"></video>
+                ><video
+                  preload="metadata"
+                  src="./assets/video/05.mp4"
+                  poster="./assets/video/01.jpg"
+                ></video>
               </div>
               <div class="video__controllPanel">
                 <button class="video__playSmall"></button>
-                <input
-                  class="progressBar"
-                  type="range"
-                  value="0"
-                  min="0"
-                  max="100"
-                  step="0.1"
-                />
+                <div class="duration">
+                  <span class="minutes">00</span>
+                  <span>:</span>
+                  <span class="seconds">00</span>
+                  <span>/</span>
+                  <span class="total_minutes_duration">00</span>
+                  <span>:</span>
+                  <span class="total_seconds_duration">00</span>
+                </div>
+                <div class="sound__item__progress">
+                  <div class="sound__item_linearGradient_progress">
+                    <input
+                      class="progressBar"
+                      type="range"
+                      value="0"
+                      min="0"
+                      max="100"
+                      step="0.1"
+                    />
+                  </div>
+                </div>
                 <button class="video__sound"></button>
-                <input
-                  class="sound__value"
-                  type="range"
-                  value="0"
-                  min="0"
-                  max="100"
-                  step="0.1"
-                />
+                <div class="sound__item">
+                  <div class="video__sound_linearGradient">
+                    <input
+                      class="sound__value"
+                      type="range"
+                      value="0"
+                      min="0"
+                      max="100"
+                      step="0.1"
+                    />
+                  </div>
+                </div>
                 <button class="player__fullscreen"></button>
               </div>
             </div>
             <div class="video-list">
               <div class="video-list__item">
-                <iframe
-                  class="video_list__iframe"
-                  src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
+                <video
+                  preload="metadata"
+                  src="./assets/video/02.mp4"
+                  poster="./assets/img/video_jorneu/05.jpg"
+                ></video>
               </div>
               <div class="video-list__item">
-                <iframe
-                  class="video_list__iframe"
-                  src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
+                <video
+                  preload="metadata"
+                  src="./assets/video/03.mp4"
+                  poster="./assets/img/video_jorneu/03.jpg"
+                ></video>
               </div>
               <div class="video-list__item">
-                <iframe
-                  class="video_list__iframe"
-                  src="https://www.youtube.com/embed/aWmJ5DgyWPI?controls=0"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
+                <video
+                  preload="metadata"
+                  src="./assets/video/04.mp4"
+                  poster="./assets/img/video_jorneu/04.jpg"
+                ></video>
               </div>
             </div>
             <div class="video__pages">
