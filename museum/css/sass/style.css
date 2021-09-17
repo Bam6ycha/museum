@@ -476,8 +476,7 @@ body._lock {
   top: 0;
   width: 100%;
 }
-.promo-slider__img > img {
-}
+
 .promo-slider__buttons {
   align-self: flex-end;
   display: flex;
@@ -852,6 +851,7 @@ body._lock {
   width: 100%;
   margin-top: 90px;
   margin-bottom: 75px;
+  touch-action: none;
 }
 .picture-explore__before {
   position: absolute;
@@ -924,6 +924,7 @@ body._lock {
 }
 .img-container__right > :not(.parallax3) {
   margin-bottom: 24px;
+  position: relative;
 }
 
 .img-container__right > img:first-child {
@@ -939,13 +940,26 @@ body._lock {
 .parallax2,
 .parallax1 {
   position: relative;
+  width: 456px;
+  max-height: 100%;
 }
 .shadow {
   position: absolute;
-  width: 100%;
+  width: 456px;
   height: 100%;
   background: linear-gradient(0deg, black 10%, transparent);
   z-index: 2;
+}
+.img-container__random {
+  max-width: 100%;
+  transform: translateY(15%);
+  opacity: 0;
+}
+.animated {
+  max-width: 100%;
+  transition: all 0.5s ease 0s;
+  transform: translateY(0%);
+  opacity: 1;
 }
 /*!!----------------------------------buy-tictets----------------*/
 

@@ -255,8 +255,8 @@ const dragButton = document.querySelector(".picture-explore__drag");
 const div = document.querySelector(".picture-explore__img");
 const imgBefore = document.querySelector(".picture-explore__before");
 
-function drag() {
-  event.preventDefault();
+function drag(e) {
+  e.preventDefault();
   dragButton.style.zIndex = 10;
   dragButton.style.position = "absolute";
   div.append(dragButton);
@@ -264,19 +264,83 @@ function drag() {
   moveAt(event.pageX, event.pageY);
 
   function moveAt(pageX, pageY) {
-    if (pageX < div.clientWidth) {
-      dragButton.style.left = "0px";
+    if (pageX < 938) {
+      pageX = 938;
     }
-    dragButton.style.left = event.pageX - div.clientWidth - 218 + "px";
+    if (pageX > 1660) {
+      pageX = 1660;
+    } else {
+      dragButton.style.left = pageX - div.clientWidth - 218 + "px";
+    }
   }
   function onMouseMove(event) {
     imgBefore.style.width = dragButton.style.left;
     moveAt(event.pageX);
   }
-  document.addEventListener("mousemove", onMouseMove);
-  document.addEventListener("mouseup", () =>
-    document.removeEventListener("mousemove", onMouseMove)
+  document.addEventListener("pointermove", onMouseMove);
+  document.addEventListener("pointerup", () =>
+    document.removeEventListener("pointermove", onMouseMove)
   );
 }
-dragButton.addEventListener("mousedown", drag);
+dragButton.addEventListener("pointerdown", drag);
 document.addEventListener("dragstart", (event) => event.preventDefault());
+
+//!-----------------------Art Gallery-img shuffel-------------------------------//
+const imgContainerLeft = document
+  .querySelector(".img-container__left")
+  .querySelectorAll(".img-container__random");
+const imgContainerCenter = document
+  .querySelector(".img-container__center")
+  .querySelectorAll(".img-container__random");
+const imgContainerRigtht = document
+  .querySelector(".img-container__right")
+  .querySelectorAll(".img-container__random");
+
+const arrayOfContainers = [
+  ...imgContainerLeft,
+  ...imgContainerCenter,
+  ...imgContainerRigtht,
+];
+
+function shuffle(getHrefAndAlt) {
+  getHrefAndAlt = arrayOfContainers.map((item) => item.getAttribute("src"));
+  console.log(getHrefAndAlt);
+  let sortedArray = getHrefAndAlt.sort(() => Math.random() - 0.5);
+  console.log(sortedArray);
+  for (let i = 0; i < sortedArray.length; i++) {
+    arrayOfContainers[i].setAttribute("src", sortedArray[i]);
+  }
+}
+document.addEventListener("DOMContentLoaded", shuffle);
+//!=================addAmimation====ArtGallery============//
+
+const animated = (arrayOfContainers) => {
+  let newAnimated = arrayOfContainers;
+  function addClass(event) {
+    let scrollTop = window.pageYOffset;
+
+    if (scrollTop > 2800) {
+      imgContainerLeft[0].classList.add("animated");
+      imgContainerCenter[0].classList.add("animated");
+      imgContainerRigtht[0].classList.add("animated");
+    }
+    if (scrollTop > 3400) {
+      imgContainerLeft[1].classList.add("animated");
+      imgContainerCenter[1].classList.add("animated");
+      imgContainerRigtht[1].classList.add("animated");
+    }
+    if (scrollTop > 3800) {
+      imgContainerLeft[2].classList.add("animated");
+      imgContainerCenter[2].classList.add("animated");
+      imgContainerRigtht[2].classList.add("animated");
+    }
+    if (scrollTop > 4200) {
+      imgContainerLeft[3].classList.add("animated");
+      imgContainerCenter[3].classList.add("animated");
+      imgContainerRigtht[3].classList.add("animated");
+    }
+  }
+  window.addEventListener("scroll", addClass);
+};
+
+animated(arrayOfContainers);
