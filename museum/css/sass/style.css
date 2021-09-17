@@ -1111,7 +1111,7 @@ body._lock {
 .parallax4 {
   max-width: 100%;
   height: 400px;
-  background: url(/assets/img/buy_ticket/02.jpg);
+  background: url(./02.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
