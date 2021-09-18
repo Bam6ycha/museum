@@ -548,6 +548,7 @@ body._lock {
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 
 .video__headlink {
@@ -579,11 +580,38 @@ body._lock {
   margin-bottom: 40px;
   max-width: 100%;
 }
+.video-player-wrapper:fullscreen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.video-player-wrapper:fullscreen > .video__player {
+  min-height: 93%;
+  max-height: 100%;
+  width: 100%;
+}
+.video-player-wrapper:fullscreen > .video__player > video {
+  width: 1920px;
+  height: -webkit-fill-available;
+}
+.video-player-wrapper:fullscreen > .video__controllPanel {
+  width: 100%;
+  justify-content: space-between;
+}
+.video-player-wrapper:fullscreen
+  > .video__controllPanel
+  > .sound__item__progress
+  > div
+  > input {
+  width: 810px;
+}
 .video__player {
   width: 100%;
   background-color: #030303;
   height: 650px;
 }
+
 .video__player > video {
   width: 1440px;
   height: 650px;
@@ -666,7 +694,7 @@ body._lock {
   background: url(./mute.png) center no-repeat;
   background-size: contain;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 60%;
   cursor: pointer;
   flex: 0 0 auto;
   background-color: #000000;
@@ -703,7 +731,7 @@ body._lock {
 }
 
 .sound__value {
-  width: 172px;
+  width: 145px;
   background: transparent;
   border-radius: 8px;
   height: 7px;
@@ -717,8 +745,8 @@ body._lock {
   position: absolute;
   height: 7px;
   border-radius: 10px;
-  max-width: 150px;
-  width: 3px;
+  max-width: 145px;
+  width: 30%;
   top: 43%;
 }
 .sound__item {
@@ -739,25 +767,81 @@ body._lock {
   height: 71px;
   border: none;
 }
+/*!====================================sliderVideo=========================*/
 .video-list {
-  position: relative;
   display: flex;
-  column-gap: 42px;
   margin-bottom: 40px;
-
   max-width: 100%;
   min-height: 255px;
-  flex-wrap: wrap;
   overflow: hidden;
+  position: relative;
+}
+.video-list__container {
+  margin-left: -10px;
+  position: absolute;
+  width: 100%;
+  height: 255px;
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 42px;
+  transition: all 0.5s ease;
 }
 .video-list__item {
   margin: 0px;
-  flex: 1 0 31.33%;
+  flex: 1 0 32.33%;
 }
+
 .video-list__item > video {
   max-width: 100%;
 }
+.promo-slider__img {
+  display: none;
+  position: relative;
+  animation: 0.5s ease-in-out;
+}
+.visible,
+.nextVisible {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.to__left {
+  animation-name: left;
+}
+.to__right {
+  animation-name: right;
+  animation-direction: reverse;
+}
+.from__left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+.from__right {
+  animation-name: right;
+}
 
+@keyframes left {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+@keyframes right {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
+.nextVisible {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+/*!===================controllPanel===============*/
 .progressBar {
   width: 767px;
   background: transparent;
@@ -766,6 +850,7 @@ body._lock {
   outline: none;
   -webkit-appearance: none;
   position: absolute;
+  border: 0.1px solid red;
 }
 .video__pages {
   display: flex;
@@ -815,6 +900,51 @@ body._lock {
   to {
     transform: scale(0);
   }
+}
+/*!========================================videoJorneu Slider-swiper===============*/
+
+/*!!=======================================fullscreen================================*/
+.video-player-wrapper:fullscreen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.video-player-wrapper:fullscreen > .video__player {
+  min-height: 93%;
+  max-height: 100%;
+  width: 100%;
+}
+.video-player-wrapper:fullscreen > .video__player > video {
+  width: 1920px;
+  height: 93vh;
+  transform: translateY(0);
+}
+.video-player-wrapper:fullscreen > .video__controllPanel {
+  display: flex;
+  background: #030303;
+  align-items: center;
+  max-width: 100%;
+  height: 75px;
+}
+.video-player-wrapper:fullscreen > .fullscreen {
+  display: flex;
+  background: #030303;
+  align-items: center;
+  max-width: 100%;
+  height: 75px;
+  width: 100%;
+  position: fixed;
+  top: 100%;
+  right: 0%;
+  justify-content: space-between;
+  transform: translate(0px, -100%);
+  transition: all 0.5s linear;
+}
+
+.video-player-wrapper .fullscreen .sound__item__progress > div > input {
+  width: 810px;
+  border: 0.1px solid red;
 }
 /*!!-------------------Virtual Tour---------------------------------------------------*/
 .virtual-tour__headlink_gold {

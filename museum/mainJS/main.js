@@ -347,6 +347,7 @@ animated(arrayOfContainers);
 ("use strict");
 //!Get elements
 const player = document.querySelector(".video__player>video");
+const videoPlayerWrapper = document.querySelector(".video__player");
 const wrapper = document.querySelector(".video-player-wrapper");
 
 const playButtonBig = document.querySelector(".video__playBig");
@@ -363,10 +364,12 @@ const linearGradientProgress = document.querySelector(
 const linearGradientSound = document.querySelector(
   ".video__sound_linearGradient"
 );
+const controlPannel = document.querySelector(".video__controllPanel");
 let currentSeconds = document.querySelector(".seconds");
 let currentMinutes = document.querySelector(".minutes");
 let minutesDuration = document.querySelector(".total_minutes_duration");
 let secondsDuration = document.querySelector(".total_seconds_duration");
+player.volume = soundBar.value;
 //! Create functions
 function playVideo() {
   player.paused ? player.play() : player.pause();
@@ -438,220 +441,195 @@ function getCurrentTime() {
   linearGradientProgress.style.width = `${step}%`;
 }
 
-// function changeClassFullScreen() {
-//   if (player.getAttribute("class" === "player__video")) {
-//     player.setAttribute("class", "fullscreen");
-//   } else {
-//     player.setAttribute("class", "player__video");
-//   }
-// }
+function scrub(event) {
+  const scrubTime = (event.offsetX / progressBar.offsetWidth) * player.duration;
+  player.currentTime = scrubTime;
+}
+function changeSound() {
+  player.volume = soundBar.value;
+  linearGradientSound.style.width = `${soundBar.value * 100 - 0.15}%`;
+  changeSoundButtonClass();
+}
 
-// function progressBarUpdate() {
-//   progressBar.max = player.duration;
-//   progressBar.value = `${player.currentTime}`;
-//   console.log(progressBar.value);
-// }
-// function scrub(event) {
-//   const scrubTime = (event.offsetX / progressBar.offsetWidth) * player.duration;
-//   player.currentTime = scrubTime;
-// }
-// function changeSound() {
-//   player.volume = `${soundBar.value}`;
-// }
-// function changeSoundButtunClass() {
-//   if (sound.getAttribute("class") === "sound") {
-//     sound.setAttribute("class", "muted");
-//   } else {
-//     sound.setAttribute("class", "sound");
-//   }
-// }
-// function mute() {
-//   if (player.volume !== 0) {
-//     player.volume = "0";
-//     soundBar.value = `${player.volume}`;
-//   } else {
-//     player.volume = "0.3";
-//     soundBar.value = `${player.volume}`;
-//   }
-// }
-// function FasterPlayBackRate() {
-//   if (player.playbackRate < next.getAttribute("max"))
-//     player.playbackRate += Number(next.getAttribute("step"));
-// }
-// function SlowerPlaybackRate() {
-//   if (
-//     player.playbackRate <= 5 &&
-//     player.playbackRate > previus.getAttribute("min")
-//   ) {
-//     player.playbackRate += Number(previus.getAttribute("step"));
-//   }
-// }
-// function showPlaybackRateNext() {
-//   if (player.playbackRate >= 0 && player.playbackRate <= 5) {
-//     const span = document.createElement("span");
-//     span.textContent = `${player.playbackRate}`;
-//     span.style.cssText = "position:fixed; color:wheat";
-//     const coordinates = next.getBoundingClientRect();
-//     span.style.left = coordinates.left + "px";
-//     span.style.top = coordinates.top + "-10px";
-//     document.body.append(span);
+function changeSoundButtonClass(event) {
+  if (player.volume === 0) {
+    sound.classList.remove("video__sound");
+    sound.classList.add("muted");
+    linearGradientSound.style.width = `${0}%`;
+  } else {
+    sound.classList.add("video__sound");
+    sound.classList.remove("muted");
+  }
+}
+function fullscreen() {
+  if (!document.fullscreenElement) {
+    wrapper.requestFullscreen();
+    controlPannel.classList.remove("video__controllPanel");
+    controlPannel.classList.add("fullscreen");
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+      controlPannel.classList.add("video__controllPanel");
+      controlPannel.classList.remove("fullscreen");
+    }
+  }
+}
 
-//     setTimeout(() => span.remove(), 500);
-//   }
-// }
-// function setPlaybackRateSlower() {
-//   if (player.playbackRate > 0 && player.playbackRate <= 5) {
-//     const span = document.createElement("span");
-//     span.textContent = `${player.playbackRate}`;
-//     span.style.cssText = "position:fixed; color:wheat";
-//     const coordinates = previus.getBoundingClientRect();
-//     span.style.left = coordinates.left + "px";
-//     span.style.top = coordinates.top + "-10px";
-//     document.body.append(span);
+function changeSoundButtonClassOnClick() {
+  if (sound.classList.contains("video__sound")) {
+    sound.classList.remove("video__sound");
+    sound.classList.add("muted");
+    linearGradientSound.style.width = "0px";
+    soundBar.value = 0;
+    player.volume = 0;
+  } else {
+    player.volume = 0.3;
+    soundBar.value = player.volume;
+    linearGradientSound.style.width = `${player.volume * 100 - 0.15}%`;
+    sound.classList.add("video__sound");
+    sound.classList.remove("muted");
+  }
+}
 
-//     setTimeout(() => span.remove(), 500);
-//   }
-// }
-// function showDurationTime() {
-//   let getMinutes = player.duration / 60;
-//   let getSeconds = Math.round((getMinutes - Math.floor(getMinutes)) * 60);
-//   secondsDuration.innerHTML = `${getSeconds}`;
-//   minutesDuration.innerHTML = `${Math.floor(getMinutes)}`;
-// }
-// function showCurrentTime() {
-//   let getMinutes = player.currentTime / 60;
-//   let getSeconds = Math.round((getMinutes - Math.floor(getMinutes)) * 60);
-//   if (getMinutes < 10) {
-//     currentMinutes.innerHTML = `${"0" + Math.floor(getMinutes)}`;
-//   } else {
-//     currentMinutes.innerHTML = `${Math.floor(getMinutes)}`;
-//   }
-//   if (getSeconds < 10) {
-//     currentSeconds.innerHTML = `${"0" + getSeconds}`;
-//   } else {
-//     currentSeconds.innerHTML = `${getSeconds}`;
-//   }
-// }
-// function fullscreen() {
-//   if (!document.fullscreenElement) {
-//     player.requestFullscreen();
-//   } else {
-//     if (document.exitFullscreen) {
-//       document.exitFullscreen();
-//     }
-//   }
-// }
+function addHotKeys(event) {
+  if (event.code === "KeyF") {
+    fullscreen();
+  }
+  if (event.code === "KeyM" && player.volume !== 0) {
+    player.volume = 0;
+    changeSoundButtonClassOnClick();
+  } else if (event.code === "KeyM") {
+    player.volume = 0.3;
 
-// function addHotKeys(event) {
-//   event.preventDefault();
-//   if (event.code === "KeyM" && player.volume !== 0) {
-//     player.volume = "0";
-//     soundBar.value = "0";
-//     sound.setAttribute("class", "muted");
-//   } else if (player.volume === 0 && event.code === "KeyM") {
-//     player.volume = "0.3";
-//     soundBar.value = player.volume;
-//     sound.setAttribute("class", "sound");
-//   }
+    changeSoundButtonClassOnClick();
+  }
+  if (event.code === "Space") {
+    playVideo(), changeClass(), changeVisibility();
+  } else if (event.code === "Space" && player.played) {
+  }
+  if (event.code === "Comma" && ("ShiftLeft" || "ShiftRight")) {
+    player.playbackRate += 0.25;
+  }
+  if (event.code === "Period" && ("ShiftLeft" || "ShiftRight")) {
+    player.playbackRate -= 0.25;
+  }
+}
 
-//   if (!document.fullscreenElement && event.code === "KeyF") {
-//     player.requestFullscreen();
-//   } else {
-//     if (document.exitFullscreen && event.code === "KeyF") {
-//       document.exitFullscreen();
-//     }
-//   }
-//   if (event.key === "ArrowLeft") {
-//     player.playbackRate -= 0.25;
-//     const span = document.createElement("span");
-//     span.textContent = `${player.playbackRate}`;
-//     span.style.cssText = "position:fixed; color:wheat";
-//     const coordinates = previus.getBoundingClientRect();
-//     span.style.left = coordinates.left + "px";
-//     span.style.top = coordinates.top + "-10px";
-//     document.body.append(span);
-
-//     setTimeout(() => span.remove(), 500);
-//   }
-//   if (event.key === "ArrowRight") {
-//     player.playbackRate += 0.25;
-//     const span = document.createElement("span");
-//     span.textContent = `${player.playbackRate}`;
-//     span.style.cssText = "position:fixed; color:wheat";
-//     const coordinates = next.getBoundingClientRect();
-//     span.style.left = coordinates.left + "px";
-//     span.style.top = coordinates.top + "-10px";
-//     document.body.append(span);
-
-//     setTimeout(() => span.remove(), 500);
-//   }
-//   if (event.code === "KeyL") {
-//     player.currentTime += 5;
-//     progressBar.value = player.currentTime;
-//   }
-//   if (event.code === "KeyJ") {
-//     player.currentTime -= 5;
-//     progressBar.value = player.currentTime;
-//   }
-//   if (event.key === "ArrowUp") {
-//     player.volume += 0.1;
-//     soundBar.value = player.volume;
-//   }
-//   if (event.key === "ArrowDown") {
-//     player.volume -= 0.1;
-//     soundBar.value = player.volume;
-//   }
-//   if (event.code === "KeyP") {
-//     player.requestPictureInPicture();
-//   }
-//   if (event.code === "KeyP" && document.pictureInPictureElement === player) {
-//     document.exitPictureInPicture();
-//   }
-// }
-
-// function stopPlayingOnSpace(event) {
-//   if (event.code === "Space" && player.paused) {
-//     player.play();
-//     playButtunSmall.setAttribute("class", "play");
-//     playButtonBig.setAttribute("class", "play_video");
-//   } else if (event.code === "Space" && player.played) {
-//     player.pause();
-//     playButtunSmall.setAttribute("class", "pause_video_small");
-//     playButtonBig.setAttribute("class", "pause_video_big");
-//   }
-// }
 //!!Add Events
 player.addEventListener("ended", () => {
-  playButtonBig.classList.toggle("video__playBig");
-  playButtonSmall.classList.toggle("video__playSmall");
+  playButtonBig.classList.remove("video__pausedBig");
+  playButtonBig.classList.add("video__playBig");
+  playButtonSmall.classList.remove("video__pausedSmall");
+  playButtonSmall.classList.add("video__playSmall");
 });
 player.addEventListener("loadeddata", getDuration);
 player.addEventListener("mouseover", changeVisibility);
 wrapper.addEventListener("click", playOnButtons);
 player.addEventListener("timeupdate", getCurrentTime);
-// player.addEventListener("timeupdate", progressBarUpdate);
-// playButtunSmall.addEventListener("click", playVideo);
-// playButtonBig.addEventListener("click", playVideo);
-// playButtunSmall.addEventListener("click", smallPlayButtonChangeClass);
-// progressBar.addEventListener("click", scrub);
-// playButtonBig.addEventListener("click", changeClass);
-// soundBar.addEventListener("click", changeSound);
-// sound.addEventListener("click", mute);
-// sound.addEventListener("click", changeSoundButtunClass);
-// fullScreenButton.addEventListener("click", fullscreen);
+progressBar.addEventListener("click", scrub);
+soundBar.addEventListener("click", changeSound);
+fullScreenButton.addEventListener("click", fullscreen);
+sound.addEventListener("click", changeSoundButtonClassOnClick);
+document.addEventListener("keydown", addHotKeys);
+document.addEventListener("keypress", (event) => event.preventDefault());
 
-// next.addEventListener("click", FasterPlayBackRate);
-// next.addEventListener("click", showPlaybackRateNext);
-// previus.addEventListener("click", SlowerPlaybackRate);
-// previus.addEventListener("click", setPlaybackRateSlower);
-// player.addEventListener("timeupdate", showDurationTime);
-// player.addEventListener("timeupdate", showCurrentTime);
-// document.documentElement.addEventListener("keydown", (event) =>
-//   addHotKeys(event)
-// );
-// document.documentElement.addEventListener("keydown", (event) =>
-//   stopPlayingOnSpace(event)
-// );
-// console.log(
-//   'реализован плеер +10 реализован обязательный дополнительный функционал +10 реализованы горячие клавиши "l" вперёд на 10 с. "J" назад на 5 секунд. Картинка в картинке "p", "ArrowUp" увеличить громкость, "ArrowDown" уменьшение звука. За каждую кнопку +2 балла. Итого +10'
-// );
+//!======================videoJourneuSlider=======================//
+const videoJouneuSlider = () => {
+  const videoContainer = document.querySelector(".video-list__container");
+  const items = document.querySelectorAll(".video-list__item");
+  const arrowNext = document.querySelector(".next");
+  const arrowPrew = document.querySelector(".prev");
+  let checked = document.querySelectorAll(".round");
+  let currentChecked = 0;
+  let currentItem = 0;
+  let isEnabled = true;
+  function slider() {}
+  arrowNext.addEventListener("click", slider);
+};
+videoJouneuSlider();
+
+//!===================Swiper================================//
+
+// let slider = document.querySelector(".promo-slider__oneline");
+// const swiper = (slider) => {
+//   let landscape = slider;
+//   let startValueX = 0;
+//   let startValueY = 0;
+//   let distX = 0;
+//   let distY = 0;
+
+//   let startTime = 0;
+//   let pastTime = 0;
+//   let threshould = 100;
+//   let allowedTime = 400;
+//   landscape.addEventListener("mousedown", function (event) {
+//     startValueX = event.pageX;
+//     startValueY = event.pageY;
+//     startTime = new Date().getTime();
+//     event.preventDefault();
+//   });
+//   landscape.addEventListener("mouseup", function (event) {
+//     distX = event.pageX - startValueX;
+//     distY = event.pageY - startValueY;
+//     startTime = new Date().getTime();
+//     event.preventDefault();
+//     pastTime = new Date().getTime() - startTime;
+//     event.preventDefault();
+//     if (pastTime <= allowedTime) {
+//       if (Math.abs(distX) > threshould) {
+//         if (distX > 0) {
+//           if (isEnabled) {
+//             previousItem(currentItem);
+//           }
+//         } else {
+//           if (isEnabled) {
+//             nextItem(currentItem);
+//           }
+//         }
+//       }
+//     }
+//   });
+//   landscape.addEventListener("touchstart", function (event) {
+//     let touchObj = event.changedTouches[0];
+//     startValueX = touchObj.pageX;
+//     startValueY = touchObj.pageY;
+//     startTime = new Date().getTime();
+//     event.preventDefault();
+//   });
+//   landscape.addEventListener("touchmove", function (event) {
+//     event.preventDefault();
+//   });
+//   landscape.addEventListener("touchend", function (event) {
+//     let touchObj = event.changedTouches[0];
+//     distX = touchObj.pageX - startValueX;
+//     distY = touchObj.pageY - startValueY;
+//     startTime = new Date().getTime();
+//     event.preventDefault();
+//     pastTime = new Date().getTime() - startTime;
+//     event.preventDefault();
+//     if (pastTime <= allowedTime) {
+//       if (Math.abs(distX) > threshould) {
+//         if (distX > 0) {
+//           if (isEnabled) {
+//             previousItem(currentItem);
+//           }
+//         } else {
+//           if (isEnabled) {
+//             nextItem(currentItem);
+//           }
+//         }
+//       }
+//     }
+//   });
+// };
+// swiper(slider);
+
+// function autoSlide() {
+//   let click = new Event("click");
+//   arrowNext.dispatchEvent(click);
+// }
+
+// function onMouseEnter() {
+//   setInterval(autoSlide, 8000);
+// }
+// document.addEventListener("DOMContentLoaded", onMouseEnter);
