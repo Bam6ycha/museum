@@ -531,15 +531,15 @@ soundBar.addEventListener("click", changeSound);
 fullScreenButton.addEventListener("click", fullscreen);
 sound.addEventListener("click", changeSoundButtonClassOnClick);
 document.addEventListener("keydown", addHotKeys);
-document.addEventListener("keydown", (event) => event.preventDefault());
+document.addEventListener("keypress", (event) => event.preventDefault());
 
 //!======================videoJourneuSlider=======================//
 const videoJouneuSlider = () => {
-  const items = document.querySelectorAll(".video-list__threeVideos");
+  const videoContainer = document.querySelector(".video-list__container");
+  const items = document.querySelectorAll(".video-list__item");
   const arrowNext = document.querySelector(".next");
   const arrowPrew = document.querySelector(".prev");
   let checked = document.querySelectorAll(".round");
-
   let currentChecked = 0;
   let currentItem = 0;
   let isEnabled = true;
@@ -679,24 +679,3 @@ videoJouneuSlider();
 //   setInterval(autoSlide, 8000);
 // }
 // document.addEventListener("DOMContentLoaded", onMouseEnter);
-
-//!===================================getHrefOnClick======================
-const changeVideoOnClick = () => {
-  const videoListContainer = document.querySelector(".video-list__container");
-  function getHref(event) {
-    if (player.paused) {
-      changeClass();
-    }
-    if (event.target.tagName !== "VIDEO") return;
-    let src = event.target.getAttribute("src");
-    let poster = event.target.getAttribute("poster");
-    console.log(src);
-    document
-      .querySelector(".video__player>video")
-      .setAttribute("poster", poster);
-    document.querySelector(".video__player>video").setAttribute("src", src);
-    playVideo();
-  }
-  videoListContainer.addEventListener("click", getHref);
-};
-changeVideoOnClick();
