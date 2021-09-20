@@ -700,3 +700,24 @@ const changeVideoOnClick = () => {
   videoListContainer.addEventListener("click", getHref);
 };
 changeVideoOnClick();
+
+//!=============================buy-ticket---calculator-------------//
+
+const calculator = () => {
+  const inputBasic18 = document.querySelector(
+    ".buy-tickets-content-amount__button>input"
+  );
+  const inputSeniour65 = document.querySelector(
+    ".buy-tickets-content-amount > div:nth-child(5) > input[type=number]"
+  );
+  const plus = document.querySelector(".plus");
+  const minus = document.querySelector(".minus");
+  function changeInputValue(event) {
+    if (event.target.classList.contains("plus")) {
+      console.log(123);
+      plus.closest("input").value += 1;
+    }
+  }
+  plus.addEventListener("click", changeInputValue);
+};
+calculator();
