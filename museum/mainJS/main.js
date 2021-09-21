@@ -60,45 +60,45 @@ function closeBuyTictetsMouse(event) {
 }
 document.addEventListener("pointerdown", closeBuyTictetsMouse);
 //!=============ByuTictets===inputs=======//
-const minusBlack18 = document.querySelector(
-  "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > button.minus_black"
-);
-const plusBlack18 = document.querySelector(
-  "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > button.plus_black"
-);
-const minusBlack65 = document.querySelector(
-  "div.new-ticket-buy__enteryTicket_input > div:nth-child(2) > button.minus_black"
-);
-const plusBlack65 = document.querySelector(
-  "div.new-ticket-buy__enteryTicket_input > div:nth-child(2) > button.plus_black"
-);
-const input18 = document.querySelector(
-  "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > input"
-);
-const input65 = document.querySelector(
-  "div.new-ticket-buy__enteryTicket_input > div:nth-child(2) > input"
-);
-input18.value = 0;
-input65.value = 0;
-function changeValue18(event) {
-  if (event.target === minusBlack18 && input18.value > 0) {
-    input18.value--;
-  }
-  if (event.target === plusBlack18) {
-    input18.value++;
-  }
-}
-function changeValue65(event) {
-  if (event.target === minusBlack65 && input65.value > 0) {
-    input65.value--;
-  }
-  if (event.target === plusBlack65) {
-    input65.value++;
-  }
-}
+// const minusBlack18 = document.querySelector(
+//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > button.minus_black"
+// );
+// const plusBlack18 = document.querySelector(
+//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > button.plus_black"
+// );
+// const minusBlack65 = document.querySelector(
+//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(2) > button.minus_black"
+// );
+// const plusBlack65 = document.querySelector(
+//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(2) > button.plus_black"
+// );
+// const input18 = document.querySelector(
+//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > input"
+// );
+// const input65 = document.querySelector(
+//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(2) > input"
+// );
+// input18.value = 0;
+// input65.value = 0;
+// function changeValue18(event) {
+//   if (event.target === minusBlack18 && input18.value > 0) {
+//     input18.value--;
+//   }
+//   if (event.target === plusBlack18) {
+//     input18.value++;
+//   }
+// }
+// function changeValue65(event) {
+//   if (event.target === minusBlack65 && input65.value > 0) {
+//     input65.value--;
+//   }
+//   if (event.target === plusBlack65) {
+//     input65.value++;
+//   }
+// }
 
-document.addEventListener("click", changeValue18);
-document.addEventListener("click", changeValue65);
+// document.addEventListener("click", changeValue18);
+// document.addEventListener("click", changeValue65);
 //!============Slider=============//
 const items = document.querySelectorAll(".promo-slider__img");
 const arrowNext = document.querySelector(".arrow__next");
@@ -536,7 +536,7 @@ document.addEventListener("keypress", (event) => event.preventDefault());
 //!======================videoJourneuSlider=======================//
 const videoJouneuSlider = () => {
   const videoContainer = document.querySelector(".video-list__container");
-  const items = document.querySelectorAll(".video-list__item");
+  const items = document.querySelectorAll(".video-list__threeVideos");
   const arrowNext = document.querySelector(".next");
   const arrowPrew = document.querySelector(".prev");
   let checked = document.querySelectorAll(".round");
@@ -679,3 +679,283 @@ videoJouneuSlider();
 //   setInterval(autoSlide, 8000);
 // }
 // document.addEventListener("DOMContentLoaded", onMouseEnter);
+
+//!===================================getHrefOnClick======================
+const changeVideoOnClick = () => {
+  const videoListContainer = document.querySelector(".video-list__container");
+  function getHref(event) {
+    if (player.paused) {
+      changeClass();
+    }
+    if (event.target.tagName !== "VIDEO") return;
+    let src = event.target.getAttribute("src");
+    let poster = event.target.getAttribute("poster");
+    console.log(src);
+    document
+      .querySelector(".video__player>video")
+      .setAttribute("poster", poster);
+    document.querySelector(".video__player>video").setAttribute("src", src);
+    playVideo();
+  }
+  videoListContainer.addEventListener("click", getHref);
+};
+changeVideoOnClick();
+
+//!=============================buy-ticket---calculator-------------//
+
+const calculator = () => {
+  const input65popUp = document.querySelector(
+    ".new-ticket-buy__enteryTicket_input > div:nth-child(2) > input"
+  );
+  let amountBasic = document.querySelector(
+    ".new-ticket-buy__overview_totalAmount18"
+  );
+  let amountSeniour = document.querySelector(
+    ".new-ticket-buy__overview_totalAmount65"
+  );
+  let amountBasicCost = document.querySelector(
+    ".new-ticket-buy__overview_totalAmoun__basic18_totalCost"
+  );
+  let amountSeniourCost = document.querySelector(
+    ".new-ticket-buy__overview_totalAmoun__senior65_totalCost"
+  );
+  const container = document.querySelector(".buy-tickets-content-amount");
+  const inputBasic18 = document.querySelector(
+    ".buy-tickets-content-amount > div:nth-child(3) > input[type=number]"
+  );
+  const inputSeniour65 = document.querySelector(
+    ".buy-tickets-content-amount > div:nth-child(5) > input[type=number]"
+  );
+  const input18Popup = document.querySelector(
+    "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > input"
+  );
+  let totalCost = document.querySelector(
+    ".new-ticket-buy__overview_creditCard > div.new-ticket-buy__overview_title > div"
+  );
+  function changeInputValue(event) {
+    let totalAmount = document.querySelector(
+      ".buy-tickets-content > div.buy-tickets-content-amount > div.buy-tickets-content-amount__totalAmount.buy-tickets-content__headlink_black"
+    );
+    const cost18 = 20;
+    const cost65 = 10;
+    if (event.target.classList.contains("plus18")) {
+      ++inputBasic18.value;
+      input18Popup.value = inputBasic18.value;
+      amountBasic.innerHTML = inputBasic18.value;
+      amountBasicCost.innerHTML = `${inputBasic18.value * cost18}€`;
+      totalCost.innerHTML = `${
+        inputBasic18.value * cost18 + inputSeniour65.value * cost65
+      }€`;
+      totalAmount.innerHTML = `Total €${
+        inputBasic18.value * cost18 + inputSeniour65.value * cost65
+      }`;
+    }
+    if (event.target.classList.contains("minus18") && inputBasic18.value > 0) {
+      --inputBasic18.value;
+      input18Popup.value = inputBasic18.value;
+      amountBasic.innerHTML = inputBasic18.value;
+      amountBasicCost.innerHTML = `${inputBasic18.value * cost18}€`;
+      totalCost.innerHTML = `${
+        inputBasic18.value * cost18 + inputSeniour65.value * cost65
+      }€`;
+      totalAmount.innerHTML = `Total €${
+        inputBasic18.value * cost18 + inputSeniour65.value * cost65
+      }`;
+    }
+    if (event.target.classList.contains("plus65")) {
+      ++inputSeniour65.value;
+      input65popUp.value = inputSeniour65.value;
+      amountSeniour.innerHTML = inputSeniour65.value;
+      amountSeniourCost.innerHTML = `${inputSeniour65.value * cost65}€`;
+      totalCost.innerHTML = `${
+        inputBasic18.value * cost18 + inputSeniour65.value * cost65
+      }€`;
+      totalCost.innerHTML = ` €${
+        inputBasic18.value * cost18 + inputSeniour65.value * cost65
+      }`;
+      totalAmount.innerHTML = `Total €${
+        inputSeniour65.value * cost65 + inputBasic18.value * cost18
+      }`;
+    }
+    if (
+      event.target.classList.contains("minus65") &&
+      inputSeniour65.value > 0
+    ) {
+      --inputSeniour65.value;
+      input65popUp.value = inputSeniour65.value;
+      amountSeniour.innerHTML = inputSeniour65.value;
+      amountSeniourCost.innerHTML = `${inputSeniour65.value * cost65}€`;
+      totalCost.innerHTML = `${
+        inputBasic18.value * cost18 + inputSeniour65.value * cost65
+      }€`;
+      totalCost.innerHTML = ` €${
+        inputBasic18.value * cost18 + inputSeniour65.value * cost65
+      }`;
+      totalAmount.innerHTML = `Total €${
+        inputSeniour65.value * cost65 + inputBasic18.value * cost18
+      }`;
+    }
+  }
+  let selectedTicketTypeDescription = document.querySelector(
+    ".new-ticket-buy__overview_subtitle_tictetTypeImformation"
+  );
+  const inputTypeRadioContainer = document.querySelector(
+    ".buy-tickets-content-type"
+  );
+  let selectedTicketType = document.querySelector(
+    ".new-ticket-buy__form > div.new-ticket-buy__select > select"
+  );
+  const inputTypeRadio = inputTypeRadioContainer.querySelectorAll("input");
+  function inputRadioChangeValue() {
+    let arrOfInputs = Array.from(inputTypeRadio);
+    let checked = arrOfInputs.filter((item) => item.checked === true);
+    selectedTicketTypeDescription.innerHTML = checked[0].value;
+    selectedTicketType.value = checked[0].value;
+    selectedTicketType.style.background = "transparent";
+  }
+  inputTypeRadioContainer.addEventListener("change", inputRadioChangeValue);
+  container.addEventListener("click", changeInputValue);
+};
+calculator();
+
+//!------------------------------------------------------popUpCalculator=============================//
+
+const popUpCalculator = () => {
+  const inputBasic18 = document.querySelector(
+    ".buy-tickets-content-amount > div:nth-child(3) > input[type=number]"
+  );
+
+  const cost18 = 20;
+  const cost65 = 10;
+
+  const input18Popup = document.querySelector(
+    ".new-ticket-buy__enteryTicket_input > div:nth-child(1) > input"
+  );
+  const input65popUp = document.querySelector(
+    ".new-ticket-buy__enteryTicket_input > div:nth-child(2) > input"
+  );
+
+  const time = document.querySelector(".new-ticket-buy__time>input");
+  const select = document.querySelector(".new-ticket-buy__select_select");
+  let amountBasic = document.querySelector(
+    ".new-ticket-buy__overview_totalAmount18"
+  );
+  let amountSeniour = document.querySelector(
+    ".new-ticket-buy__overview_totalAmount65"
+  );
+  let amountBasicCost = document.querySelector(
+    ".new-ticket-buy__overview_totalAmoun__basic18_totalCost"
+  );
+  let totalCost = document.querySelector(
+    ".new-ticket-buy__overview_creditCard > div.new-ticket-buy__overview_title > div"
+  );
+  let amountSeniourCost = document.querySelector(
+    ".new-ticket-buy__overview_totalAmoun__senior65_totalCost"
+  );
+  let selectedDate = document.querySelector(
+    ".new-ticket-buy__overview_subtitle_dateImformation"
+  );
+  let selectedTime = document.querySelector(
+    ".new-ticket-buy__tour_text > div:nth-child(4)"
+  );
+  let selectedTicketTypeDescription = document.querySelector(
+    ".new-ticket-buy__overview_subtitle_tictetTypeImformation"
+  );
+  let selectedTicketType = document.querySelector(
+    ".new-ticket-buy__form > div.new-ticket-buy__select > select"
+  );
+  const minusBlack18 = document.querySelector(
+    "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > button.minus_black"
+  );
+  const plusBlack18 = document.querySelector(
+    "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > button.plus_black"
+  );
+  const minusBlack65 = document.querySelector(
+    "div.new-ticket-buy__enteryTicket_input > div:nth-child(2) > button.minus_black"
+  );
+  const plusBlack65 = document.querySelector(
+    "div.new-ticket-buy__enteryTicket_input > div:nth-child(2) > button.plus_black"
+  );
+  const inputNumberContainer = document.querySelector(
+    ".new-ticket-buy__enteryTicket"
+  );
+  function calculateTotalAmount() {
+    if (event.target === plusBlack18) {
+      input18Popup.value++;
+      amountBasic.innerHTML = `${input18Popup.value}`;
+      amountBasicCost.innerHTML = `${cost18 * input18Popup.value} €`;
+      totalCost.innerHTML = `${
+        cost18 * input18Popup.value + cost65 * input65popUp.value
+      } €`;
+    }
+    if (event.target === minusBlack18 && input18Popup.value > 0) {
+      input18Popup.value--;
+      amountBasic.innerHTML = `${input18Popup.value}`;
+      amountBasicCost.innerHTML = `${cost18 * input18Popup.value} €`;
+      totalCost.innerHTML = `${
+        cost18 * input18Popup.value + cost65 * input65popUp.value
+      } €`;
+    }
+    if (event.target === plusBlack65) {
+      input65popUp.value++;
+      amountSeniour.innerHTML = `${input65popUp.value}`;
+      amountSeniourCost.innerHTML = `${cost65 * input65popUp.value} €`;
+      totalCost.innerHTML = `${
+        cost18 * input18Popup.value + cost65 * input65popUp.value
+      } €`;
+    }
+    if (event.target === minusBlack65 && input65popUp.value > 0) {
+      input65popUp.value--;
+      amountSeniour.innerHTML = `${input65popUp.value}`;
+      amountSeniourCost.innerHTML = `${cost65 * input65popUp.value} €`;
+      totalCost.innerHTML = `${
+        cost18 * input18Popup.value + cost65 * input65popUp.value
+      } €`;
+    }
+  }
+  function changeBackgroundOnSelect() {
+    if (selectedTicketType.selectedIndex > "0") {
+      selectedTicketType.style.background = "transparent";
+      selectedTicketTypeDescription.innerHTML = selectedTicketType.value;
+    } else {
+      selectedTicketType.style.background = "";
+    }
+  }
+  const date = document.querySelector(".selectDate");
+  function changeDate() {
+    const daysOftheWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const monthOfTheYear = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "November",
+      "December",
+    ];
+    const selectedDateMilliseconds = date.valueAsNumber;
+    let day = new Date(selectedDateMilliseconds).getDay();
+    let month = new Date(selectedDateMilliseconds).getMonth();
+    let dayOfMonth = new Date(selectedDateMilliseconds).getDate();
+    selectedDate.innerHTML = `${
+      daysOftheWeek[day] + "," + " " + monthOfTheYear[month] + " " + dayOfMonth
+    }`;
+    date.style.background = "transparent";
+  }
+  date.addEventListener("change", changeDate);
+  selectedTicketType.addEventListener("change", changeBackgroundOnSelect);
+  inputNumberContainer.addEventListener("click", calculateTotalAmount);
+};
+popUpCalculator();

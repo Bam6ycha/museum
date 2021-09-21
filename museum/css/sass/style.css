@@ -415,6 +415,10 @@ body._lock {
   letter-spacing: 2px;
   color: #ffffff;
   justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+.promo__button_red:hover {
+  background-color: #9d8665;
 }
 /*!===================Slider-Swiper=====================================================*/
 .promo-slider {
@@ -909,7 +913,6 @@ body._lock {
     transform: scale(0);
   }
 }
-/*!========================================videoJorneu Slider-swiper===============*/
 
 /*!!=======================================fullscreen================================*/
 .video-player-wrapper:fullscreen {
@@ -1355,7 +1358,12 @@ body._lock {
   height: 50px;
   justify-content: center;
   cursor: pointer;
+  transition: all 0.2s linear;
 }
+.buy-tickets-content-amount__buttonBuy:hover {
+  background-color: #9d8665;
+}
+
 .buy_tickets-1920px__image {
   max-width: 100%;
   overflow: hidden;
@@ -1669,6 +1677,12 @@ ul > li > a:hover {
   height: 45px;
   background: url(./date.svg) center no-repeat;
 }
+.selectDate:hover {
+  background: transparent;
+}
+.selectDate:focus {
+  background: transparent;
+}
 .new-ticket-buy__date .date {
   background: url(./arrowbuttom.svg) center no-repeat;
   width: 17px;
@@ -1746,6 +1760,10 @@ option::selection {
   width: 400px;
   height: 45px;
 }
+.new-ticket-buy__select_select:focus {
+  background: transparent;
+}
+
 .select__button {
   position: absolute;
   background: url(./arrowbuttom.svg) no-repeat center;
@@ -1876,6 +1894,7 @@ option::selection {
 }
 .new-ticket-buy__overview_subtitle_description {
   margin-bottom: 3px;
+  width: 200px;
 }
 
 .new-ticket-buy__overview_subtitle_img {
@@ -1902,7 +1921,7 @@ option::selection {
   font-family: Roboto;
   font-style: normal;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 21px;
   color: #030303;
 }
@@ -2012,7 +2031,7 @@ option::selection {
   font-weight: 500;
   font-size: 32px;
   line-height: 37px;
-
+  min-width: 92px;
   color: #030303;
 }
 .new-ticket-buy__overview_creditCard_img {

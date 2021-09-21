@@ -346,11 +346,15 @@
               <div class="video-list__container">
                 <div class="video-list__threeVideos visible__flex">
                   <div class="video-list__item">
-                    <video
-                      preload="metadata"
-                      src="./assets/video/02.mp4"
-                      poster="./assets/img/video_jorneu/05.jpg"
-                    ></video>
+                    <!-- <iframe
+                      width="560"
+                      height="315"
+                      src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0"
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                    ></iframe> -->
                   </div>
                   <div class="video-list__item">
                     <video
@@ -396,9 +400,9 @@
               <button class="prev"></button>
               <button class="round selected"></button>
               <button class="round"></button>
-              <!-- <button class="round"></button>
               <button class="round"></button>
-              <button class="round"></button> -->
+              <button class="round"></button>
+              <button class="round"></button>
               <button class="next"></button>
             </div>
           </div>
@@ -516,7 +520,13 @@
                   Ticket Type
                 </h4>
                 <div class="buy-tickets-content__input">
-                  <input type="radio" checked name="description" id="1" />
+                  <input
+                    type="radio"
+                    checked
+                    name="description"
+                    id="1"
+                    value="Permanent exhibition"
+                  />
                   <label for="1">
                     <span class="buy-tickets-content__description"
                       >Permanent exhibition</span
@@ -524,7 +534,12 @@
                   >
                 </div>
                 <div class="buy-tickets-content__input">
-                  <input type="radio" name="description" id="2" />
+                  <input
+                    type="radio"
+                    name="description"
+                    id="2"
+                    value="Temporary exhibition"
+                  />
                   <label for="2">
                     <span class="buy-tickets-content__description"
                       >Temporary exhibition</span
@@ -532,7 +547,12 @@
                   >
                 </div>
                 <div class="buy-tickets-content__input">
-                  <input type="radio" name="description" id="3" />
+                  <input
+                    type="radio"
+                    name="description"
+                    id="3"
+                    value="Combined Admission"
+                  />
                   <label for="3"
                     ><span class="buy-tickets-content__description"
                       >Combined Admission</span
@@ -551,15 +571,15 @@
                 </h4>
                 <div class="buy-tickets-content-amount__18">Basic 18+</div>
                 <div class="buy-tickets-content-amount__button button">
-                  <button class="plus">+</button>
-                  <input value="1" step="1" type="number" />
-                  <button class="minus">-</button>
+                  <button class="plus plus18">+</button>
+                  <input value="0" step="1" type="number" />
+                  <button class="minus minus18">-</button>
                 </div>
                 <div class="buy-tickets-content-amount__18">Basic 65+</div>
                 <div class="buy-tickets-content-amount__button button">
-                  <button class="plus">+</button>
-                  <input value="1" step="1" type="number" />
-                  <button class="minus">-</button>
+                  <button class="plus plus65">+</button>
+                  <input value="0" step="1" type="number" />
+                  <button class="minus minus65">-</button>
                 </div>
                 <div
                   class="
@@ -567,7 +587,7 @@
                     buy-tickets-content__headlink_black
                   "
                 >
-                  Total €220
+                  Total €0
                 </div>
                 <div class="buy-tickets-content-amount__buttonBuy">Buy Now</div>
               </div>
@@ -728,9 +748,15 @@
                 <div class="new-ticket-buy__select">
                   <select class="new-ticket-buy__select_select">
                     <option value="start" selected></option>
-                    <option value="Permanent">Permanent exhibition</option>
-                    <option value="Temporary">Temporary exhibition</option>
-                    <option value="Combined">Combined Admission</option></select
+                    <option value="Permanent exhibition">
+                      Permanent exhibition
+                    </option>
+                    <option value="Temporary exhibition">
+                      Temporary exhibition
+                    </option>
+                    <option value="Combined Admission">
+                      Combined Admission
+                    </option></select
                   ><button class="select__button"></button>
                 </div>
                 <div class="new-ticket-buy__enteryTicket">
@@ -760,12 +786,22 @@
                   <div class="new-ticket-buy__enteryTicket_input">
                     <div class="new-ticket-buy__enteryTicket_input_item">
                       <button class="minus_black">-</button>
-                      <input class="count_tickets" type="number" min="0" />
+                      <input
+                        class="count_tickets"
+                        value="0"
+                        type="number"
+                        min="0"
+                      />
                       <button class="plus_black">+</button>
                     </div>
                     <div class="new-ticket-buy__enteryTicket_input_item">
                       <button class="minus_black">-</button>
-                      <input class="count_tickets" type="number" min="0" />
+                      <input
+                        class="count_tickets"
+                        value="0"
+                        type="number"
+                        min="0"
+                      />
                       <button class="plus_black">+</button>
                     </div>
                   </div>
@@ -817,7 +853,7 @@
               </div>
               <div class="new-ticket-buy__overview_totalAmount">
                 <div class="new-ticket-buy__overview_totalAmount_basic">
-                  <div class="new-ticket-buy__overview_totalAmount18">2</div>
+                  <div class="new-ticket-buy__overview_totalAmount18">0</div>
                   <div class="new-ticket-buy__overview_totalAmoun__basic18">
                     Basic (20 €)
                   </div>
@@ -826,11 +862,11 @@
                       new-ticket-buy__overview_totalAmoun__basic18_totalCost
                     "
                   >
-                    40 €
+                    0 €
                   </div>
                 </div>
                 <div class="new-ticket-buy__overview_totalAmount_senior">
-                  <div class="new-ticket-buy__overview_totalAmount65">2</div>
+                  <div class="new-ticket-buy__overview_totalAmount65">0</div>
                   <div class="new-ticket-buy__overview_totalAmoun__senior65">
                     Senior (10 €)
                   </div>
@@ -839,14 +875,14 @@
                       new-ticket-buy__overview_totalAmoun__senior65_totalCost
                     "
                   >
-                    10 €
+                    0 €
                   </div>
                 </div>
               </div>
               <div class="new-ticket-buy__overview_creditCard">
                 <div class="new-ticket-buy__overview_title">
                   <p class="new-ticket-buy__overview_titleBlack">Total:</p>
-                  <div class="new-ticket-buy__overview_totalAmount">60€</div>
+                  <div class="new-ticket-buy__overview_totalAmount">0€</div>
                 </div>
                 <div class="new-ticket-buy__overview_creditCard_img">
                   <div class="new-ticket-buy__overview_creditCard_img_face">
