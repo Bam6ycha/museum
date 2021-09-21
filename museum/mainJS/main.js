@@ -59,46 +59,7 @@ function closeBuyTictetsMouse(event) {
   }
 }
 document.addEventListener("pointerdown", closeBuyTictetsMouse);
-//!=============ByuTictets===inputs=======//
-// const minusBlack18 = document.querySelector(
-//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > button.minus_black"
-// );
-// const plusBlack18 = document.querySelector(
-//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > button.plus_black"
-// );
-// const minusBlack65 = document.querySelector(
-//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(2) > button.minus_black"
-// );
-// const plusBlack65 = document.querySelector(
-//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(2) > button.plus_black"
-// );
-// const input18 = document.querySelector(
-//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > input"
-// );
-// const input65 = document.querySelector(
-//   "div.new-ticket-buy__enteryTicket_input > div:nth-child(2) > input"
-// );
-// input18.value = 0;
-// input65.value = 0;
-// function changeValue18(event) {
-//   if (event.target === minusBlack18 && input18.value > 0) {
-//     input18.value--;
-//   }
-//   if (event.target === plusBlack18) {
-//     input18.value++;
-//   }
-// }
-// function changeValue65(event) {
-//   if (event.target === minusBlack65 && input65.value > 0) {
-//     input65.value--;
-//   }
-//   if (event.target === plusBlack65) {
-//     input65.value++;
-//   }
-// }
 
-// document.addEventListener("click", changeValue18);
-// document.addEventListener("click", changeValue65);
 //!============Slider=============//
 const items = document.querySelectorAll(".promo-slider__img");
 const arrowNext = document.querySelector(".arrow__next");
@@ -531,7 +492,6 @@ soundBar.addEventListener("click", changeSound);
 fullScreenButton.addEventListener("click", fullscreen);
 sound.addEventListener("click", changeSoundButtonClassOnClick);
 document.addEventListener("keydown", addHotKeys);
-document.addEventListener("keypress", (event) => event.preventDefault());
 
 //!======================videoJourneuSlider=======================//
 const videoJouneuSlider = () => {
@@ -821,10 +781,6 @@ calculator();
 //!------------------------------------------------------popUpCalculator=============================//
 
 const popUpCalculator = () => {
-  const inputBasic18 = document.querySelector(
-    ".buy-tickets-content-amount > div:nth-child(3) > input[type=number]"
-  );
-
   const cost18 = 20;
   const cost65 = 10;
 
@@ -835,8 +791,6 @@ const popUpCalculator = () => {
     ".new-ticket-buy__enteryTicket_input > div:nth-child(2) > input"
   );
 
-  const time = document.querySelector(".new-ticket-buy__time>input");
-  const select = document.querySelector(".new-ticket-buy__select_select");
   let amountBasic = document.querySelector(
     ".new-ticket-buy__overview_totalAmount18"
   );
@@ -855,9 +809,7 @@ const popUpCalculator = () => {
   let selectedDate = document.querySelector(
     ".new-ticket-buy__overview_subtitle_dateImformation"
   );
-  let selectedTime = document.querySelector(
-    ".new-ticket-buy__tour_text > div:nth-child(4)"
-  );
+
   let selectedTicketTypeDescription = document.querySelector(
     ".new-ticket-buy__overview_subtitle_tictetTypeImformation"
   );
@@ -954,6 +906,43 @@ const popUpCalculator = () => {
     }`;
     date.style.background = "transparent";
   }
+  let selectedTime = document.querySelector(".new-ticket-buy__time > select");
+  const selectedTimeString = document.querySelector(
+    ".new-ticket-buy__overview_subtitle_dateTimeImformation"
+  );
+  function changeTime() {
+    selectedTimeString.innerHTML = selectedTime.value;
+    selectedTime.style.background = "transparent";
+    if (selectedTime.selectedIndex === 0) {
+      selectedTime.style.background = "";
+    }
+  }
+  const inputEmail = document.querySelector(".new-ticket-buy__eMail_Input");
+
+  function validateEmail() {
+    console.log(inputEmail.value.includes("@"));
+    if (!inputEmail.value.includes("@")) {
+      let div = document.createElement("div");
+      inputEmail.after(div);
+      div.style.position = "absolute";
+
+      let coordinates = inputEmail.getBoundingClientRect();
+      console.log(coordinates);
+      div.style.left = coordinates.left + coordinates.width / 2 + "px";
+      div.style.top =
+        coordinates.top + coordinates.height + div.clientHeight + "px";
+      div.style.cssText =
+        "border : 1px solid red; color:red; text-align:center";
+      div.innerHTML = "E-mail must contains '@'";
+    }
+  }
+  inputEmail.addEventListener("blur", validateEmail);
+  inputEmail.addEventListener("focus", () => {
+    document
+      .querySelector(".new-ticket-buy__eMail > div:nth-child(2)")
+      .remove();
+  });
+  selectedTime.addEventListener("change", changeTime);
   date.addEventListener("change", changeDate);
   selectedTicketType.addEventListener("change", changeBackgroundOnSelect);
   inputNumberContainer.addEventListener("click", calculateTotalAmount);
