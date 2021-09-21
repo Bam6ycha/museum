@@ -148,11 +148,11 @@ input {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: 590px;
     background-color: black;
-    opacity: 0.9;
-    padding: 100px 30px 30px 30px;
+
+    padding: 35px 30px 30px 30px;
     transition: left 0.3s ease 0s;
     display: flex;
     flex-direction: column;
@@ -162,13 +162,12 @@ input {
   }
   .menu__body._active {
     position: fixed;
-    top: 0;
-    left: 100%;
-    width: 100%;
-    height: 100%;
+    top: 147px;
+    left: 29%;
+    width: 297px;
     background-color: black;
-    opacity: 0.9;
-    padding: 100px 30px 30px 30px;
+
+    padding: 35px 30px 30px 30px;
     transition: left 0.3s ease 0s;
     display: flex;
     flex-direction: column;
@@ -183,7 +182,6 @@ input {
     top: 0px;
     left: 0;
     height: 100px;
-    background-color: #8f1c2a;
     opacity: 0.9;
   }
   .header_navigation {
@@ -256,6 +254,12 @@ body._lock {
   max-width: 1440px;
   margin: 0px auto;
 }
+@media (max-width: 1024px) {
+  ._container {
+    max-width: 1024px;
+    margin: 0px auto;
+  }
+}
 /*!----------------------------- header------------------*/
 
 .header-wrapper {
@@ -316,6 +320,17 @@ body._lock {
 }
 .header-navigation__list_item:first-child > a {
   margin-left: 0px;
+}
+@media (max-width: 1024px) {
+  .logo {
+    margin: 51px 735px 48px 0px;
+  }
+  .header-logo-ico > img {
+    margin-left: 25px;
+  }
+  .header-wrapper {
+    min-height: 130px;
+  }
 }
 /*!!--------------------------------Promo---------------------------------------------*/
 .promo {
@@ -420,6 +435,28 @@ body._lock {
 .promo__button_red:hover {
   background-color: #9d8665;
 }
+@media (max-width: 1024px) {
+  ._container {
+    max-width: 1004px;
+  }
+  .promo {
+    margin-top: 130px;
+  }
+  .promo-wrapper {
+    padding: 0px 20px;
+  }
+  .promo__headlink_white {
+    font-size: 50px;
+  }
+  .promo-content__headlink::after {
+    font-size: 50px;
+  }
+  .promo-content__paragraph {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 50px;
+  }
+}
 /*!===================Slider-Swiper=====================================================*/
 .promo-slider {
   margin-left: -10px;
@@ -494,6 +531,7 @@ body._lock {
   min-height: 120px;
   align-items: center;
   padding-left: 74px;
+  margin-bottom: -56px;
 }
 .promo-slider__count {
   font-family: Roboto;
