@@ -920,14 +920,16 @@ const popUpCalculator = () => {
   const inputEmail = document.querySelector(".new-ticket-buy__eMail_Input");
 
   function validateEmail() {
-    console.log(inputEmail.value.includes("@"));
+    if (inputEmail.value === "") {
+      return;
+    }
     if (!inputEmail.value.includes("@")) {
       let div = document.createElement("div");
       inputEmail.after(div);
       div.style.position = "absolute";
 
       let coordinates = inputEmail.getBoundingClientRect();
-      console.log(coordinates);
+
       div.style.left = coordinates.left + coordinates.width / 2 + "px";
       div.style.top =
         coordinates.top + coordinates.height + div.clientHeight + "px";
@@ -946,5 +948,35 @@ const popUpCalculator = () => {
   date.addEventListener("change", changeDate);
   selectedTicketType.addEventListener("change", changeBackgroundOnSelect);
   inputNumberContainer.addEventListener("click", calculateTotalAmount);
+  const phoneNumberInput = document.querySelector(
+    ".new-ticket-buy__number_input"
+  );
+  function validatePhoneNumber() {
+    let value = phoneNumberInput.value;
+    if (value === "") {
+      return;
+    }
+    if (!parseInt(value)) {
+      let div = document.createElement("div");
+      phoneNumberInput.after(div);
+      div.style.position = "absolute";
+
+      let coordinates = phoneNumberInput.getBoundingClientRect();
+
+      div.style.left = coordinates.left + coordinates.width / 2 + "px";
+      div.style.top =
+        coordinates.top + coordinates.height + div.clientHeight + "px";
+      div.style.cssText =
+        "border : 1px solid red; color:red; text-align:center";
+      div.innerHTML = "Phone number must contains numbers (1-9);";
+    }
+  }
+  phoneNumberInput.addEventListener("blur", validatePhoneNumber);
+  phoneNumberInput.addEventListener("focus", () => {
+    document
+      .querySelector(".new-ticket-buy__number > div:nth-child(2)")
+      .remove();
+  });
 };
+
 popUpCalculator();
