@@ -2,23 +2,25 @@
 //!------------MenuBurger------------//
 const icon = document.querySelector(".menu__ico");
 const menuBody = document.querySelector(".menu__body");
+const contentWrapper = document.querySelector(".promo-content");
 if (icon) {
   icon.addEventListener("click", function (event) {
     document.body.classList.toggle("_lock");
     icon.classList.toggle("_active");
     menuBody.classList.toggle("_active");
+    contentWrapper.classList.toggle("hidden");
   });
 }
-
 const link = document.querySelectorAll(".header-navigation__list_item");
-function onMenuListClock(event) {
+function onMenuListClick(event) {
   if (icon.classList.contains("_active")) {
+    contentWrapper.classList.toggle("hidden");
     document.body.classList.remove("_lock");
     icon.classList.remove("_active");
     menuBody.classList.remove("_active");
   }
 }
-link.forEach((links) => links.addEventListener("click", onMenuListClock));
+link.forEach((links) => links.addEventListener("click", onMenuListClick));
 
 //!============ByuTictets=====POPUP========//
 const button = document.querySelector(".buy-tickets-content-amount__buttonBuy");
@@ -201,41 +203,44 @@ const swiper = (slider) => {
 };
 swiper(slider);
 
-function autoSlide() {
-  let click = new Event("click");
-  arrowNext.dispatchEvent(click);
-}
+// function autoSlide() {
+//   let click = new Event("click");
+//   arrowNext.dispatchEvent(click);
+// }
 
-function onMouseEnter() {
-  setInterval(autoSlide, 8000);
-}
-document.addEventListener("DOMContentLoaded", onMouseEnter);
+// function onMouseEnter() {
+//   setInterval(autoSlide, 8000);
+// }
+// document.addEventListener("DOMContentLoaded", onMouseEnter);
 
 //!==========================slider_img===========================//
 const dragButton = document.querySelector(".picture-explore__drag");
 const div = document.querySelector(".picture-explore__img");
 const imgBefore = document.querySelector(".picture-explore__before");
+const img = document.querySelector(".picture-explore__after > img");
 
 function drag(e) {
-  e.preventDefault();
   dragButton.style.zIndex = 10;
   dragButton.style.position = "absolute";
   div.append(dragButton);
 
+  let styles = parseInt(getComputedStyle(div).paddingLeft);
   moveAt(event.pageX, event.pageY);
 
   function moveAt(pageX, pageY) {
-    if (pageX < 938) {
-      pageX = 938;
+    let coordinates = img.getBoundingClientRect();
+    if (pageX < coordinates.left) {
+      pageX = coordinates.left;
     }
-    if (pageX > 1660) {
-      pageX = 1660;
+    if (pageX > coordinates.left + coordinates.width) {
+      pageX = coordinates.left + coordinates.width;
     } else {
-      dragButton.style.left = pageX - div.clientWidth - 218 + "px";
+      dragButton.style.left = pageX - coordinates.left + styles + "px";
     }
   }
   function onMouseMove(event) {
-    imgBefore.style.width = dragButton.style.left;
+    let imgBeforeWidth = `${parseInt(dragButton.style.left) - styles}px`;
+    imgBefore.style.width = imgBeforeWidth;
     moveAt(event.pageX);
   }
   document.addEventListener("pointermove", onMouseMove);
