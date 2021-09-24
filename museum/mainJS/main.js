@@ -282,23 +282,28 @@ const animated = (arrayOfContainers) => {
   let newAnimated = arrayOfContainers;
   function addClass(event) {
     let scrollTop = window.pageYOffset;
+    let coordinates = imgContainerLeft[0].getBoundingClientRect();
+    let coordinatesSecond = imgContainerLeft[1].getBoundingClientRect();
+    let coordinatesThird = imgContainerLeft[2].getBoundingClientRect();
+    let coordinatesFourth = imgContainerLeft[3].getBoundingClientRect();
 
-    if (scrollTop > 4000) {
+    if (coordinates.top < 800) {
+      console.log;
       imgContainerLeft[0].classList.add("animated");
       imgContainerCenter[0].classList.add("animated");
       imgContainerRigtht[0].classList.add("animated");
     }
-    if (scrollTop > 4500) {
+    if (coordinatesSecond.top < 800) {
       imgContainerLeft[1].classList.add("animated");
       imgContainerCenter[1].classList.add("animated");
       imgContainerRigtht[1].classList.add("animated");
     }
-    if (scrollTop > 5000) {
+    if (coordinatesThird.top < 800) {
       imgContainerLeft[2].classList.add("animated");
       imgContainerCenter[2].classList.add("animated");
       imgContainerRigtht[2].classList.add("animated");
     }
-    if (scrollTop > 5500) {
+    if (coordinatesFourth.top < 800) {
       imgContainerLeft[3].classList.add("animated");
       imgContainerCenter[3].classList.add("animated");
       imgContainerRigtht[3].classList.add("animated");
@@ -432,24 +437,28 @@ function fullscreen() {
     wrapper.requestFullscreen();
     controlPannel.classList.remove("video__controllPanel");
     controlPannel.classList.add("fullscreen");
+    fullScreenButton.classList.add("exit__fullscreen");
   } else {
     if (document.exitFullscreen) {
       document.exitFullscreen();
       controlPannel.classList.add("video__controllPanel");
       controlPannel.classList.remove("fullscreen");
+      fullScreenButton.classList.remove("exit__fullscreen");
     }
   }
 }
 
 function changeSoundButtonClassOnClick() {
+  let volume = player.volume;
   if (sound.classList.contains("video__sound")) {
     sound.classList.remove("video__sound");
     sound.classList.add("muted");
     linearGradientSound.style.width = "0px";
     soundBar.value = 0;
-    player.volume = 0;
+    player.muted = true;
   } else {
-    player.volume = 0.3;
+    player.muted = "";
+    player.volume = volume;
     soundBar.value = player.volume;
     linearGradientSound.style.width = `${player.volume * 100 - 0.15}%`;
     sound.classList.add("video__sound");
@@ -462,11 +471,8 @@ function addHotKeys(event) {
     fullscreen();
   }
   if (event.code === "KeyM" && player.volume !== 0) {
-    player.volume = 0;
     changeSoundButtonClassOnClick();
   } else if (event.code === "KeyM") {
-    player.volume = 0.3;
-
     changeSoundButtonClassOnClick();
   }
   if (event.code === "Space") {
