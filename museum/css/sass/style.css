@@ -245,6 +245,9 @@ input {
     letter-spacing: 2px;
     margin: 10px 0px 15px 0px;
   }
+  .menu__body__icons > .footer-ico {
+    margin: 0 0;
+  }
 }
 
 /*!----------------------popup---------------*/
@@ -354,6 +357,11 @@ body._lock {
     height: 970px;
   }
 }
+@media (max-width: 420px) {
+  ._container {
+    max-width: 420px;
+  }
+}
 /*!----------------------------- header------------------*/
 
 .header-wrapper {
@@ -436,6 +444,50 @@ body._lock {
   }
   .header-wrapper {
     min-height: 110px;
+  }
+}
+@media (max-width: 420px) {
+  .header-logo_style {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .logo {
+    margin: 37px 211px 35px 0;
+  }
+  .menu__ico {
+    margin-bottom: 0;
+  }
+  .header-logo-ico > img {
+    margin-right: 5px;
+    margin-left: 21px;
+    margin-bottom: 5px;
+    max-width: 41%;
+  }
+  .menu__body__imgContainer {
+    flex-wrap: nowrap;
+    column-gap: 12px;
+    padding-bottom: 20px;
+  }
+  .img1 {
+    flex: 0 0 33.33%;
+  }
+  .img2,
+  .img3 {
+    flex: 0 0 33.33%;
+  }
+  .img1 > img,
+  .img2 > img,
+  .img3 > img {
+    object-position: center;
+    object-fit: cover;
+    width: 95px;
+    height: 95px;
+  }
+  .img2 {
+    order: -1;
+  }
+  .menu__body__icons > .footer-ico {
+    column-gap: 5px;
   }
 }
 /*!!--------------------------------Promo---------------------------------------------*/
@@ -2268,6 +2320,47 @@ iframe {
     background-position: center;
   }
 }
+@media (max-width: 768px) {
+  .buy-tictets__headlink_gold {
+    font-size: 40px;
+    line-height: 60px;
+  }
+  .buy-tictets__headlink {
+    margin-top: 41px;
+    margin-bottom: 40px;
+  }
+  .buy-tickets-content-img {
+    flex: 0 1 61%;
+    height: 340px;
+  }
+  .buy-tickets-content-amount {
+    margin-left: 60px;
+    align-items: flex-start;
+  }
+  .buy-tickets-content__headlinkAmount {
+    margin-bottom: 39px;
+  }
+  .buy-tickets-content-amount__button > input {
+    margin-bottom: 24px;
+  }
+  .buy-tickets-content-amount__totalAmount {
+    margin-top: 15px;
+    margin-bottom: 40px;
+  }
+  .parallax4 {
+    background-attachment: unset;
+    background-position: 50% 71%;
+    background-size: 188%;
+    height: 300px;
+  }
+  .buy-tickets-content {
+    margin-bottom: 40px;
+  }
+  .buy_tickets-1920px__image {
+    height: 300px;
+    margin-bottom: -30px;
+  }
+}
 /*!!-------------------------------------------------------contacts--------------------------*/
 @media (max-width: 1024px) {
   .contacts-wrapper {
@@ -2383,6 +2476,28 @@ iframe {
   }
   .cotacts-content-wrapper__text {
     margin-right: 48px;
+  }
+}
+@media (max-width: 768px) {
+  .contacts-wrapper__headlinlk {
+    margin-bottom: 38px;
+  }
+  .contacts-content-wrapper__headlink {
+    font-size: 20px;
+    line-height: 23px;
+    max-width: 165px;
+    margin-bottom: 40px;
+  }
+  .cotacts-content-wrapper__text a {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .contacts-content-wrapper__map {
+    margin-top: 21px;
+    flex: 1 0 100%;
+  }
+  .contacts-content-wrapper {
+    margin-bottom: 67px;
   }
 }
 
@@ -2541,6 +2656,39 @@ ul.footer-ico {
   width: 100%;
   height: 100%;
 }
+@media (max-width: 768px) {
+  .footer-navigation {
+    margin-top: 51px;
+  }
+  .footer-navigation__ullist > li a {
+    font-size: 18px;
+    line-height: 21px;
+
+    letter-spacing: 2px;
+  }
+  .footer-logo__text {
+    margin-right: 99px;
+  }
+  .footer-navigation-list {
+    margin-right: 0px;
+    margin-top: 7px;
+  }
+  .footer-navigation__ullist {
+    max-width: 360px;
+    column-gap: 184px;
+  }
+  .footer-navigation__ullist > li {
+    margin-bottom: 22px;
+  }
+  .footer-navigation__ullist > li:nth-child(5) {
+    margin-right: 19px;
+  }
+  ul.footer-ico {
+    margin-left: 41%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+  }
+}
 /*!==------------------------------Footer_about_______________________*/
 
 .footer-about {
@@ -2563,6 +2711,9 @@ ul.footer-ico {
 @media (max-width: 1024px) {
   .footer-about-wrapper {
     min-height: 110px;
+  }
+  .footer-about__RS {
+    padding-left: 32px;
   }
 }
 .footer-about_text > a {
@@ -2595,6 +2746,14 @@ ul.footer-ico {
 ul > li > a:hover {
   color: #9d8665;
 }
+@media (max-width: 768px) {
+  .footer-about-wrapper {
+    min-height: 91px;
+  }
+  .footer-about__RS {
+    padding-left: 34px;
+  }
+}
 
 /*!!-----------------------------------New Buy Tictet---------------------*/
 .buy-now {
@@ -2610,8 +2769,6 @@ ul > li > a:hover {
   justify-content: center;
 }
 
-.new-ticket-buy__booking {
-}
 .new-ticket-buy__textContent {
   display: flex;
   flex-wrap: wrap;
@@ -2744,7 +2901,7 @@ option {
   position: relative;
 }
 .new-ticket-buy__select_select {
-  background: url(./Ticket_type.svg);
+  background: url(./Ticket_type.svg) no-repeat left;
   width: 400px;
   height: 45px;
   font-family: Roboto;
@@ -2767,7 +2924,7 @@ option {
   height: 17px;
   border: none;
   top: 32%;
-  right: 3%;
+  right: 1%;
 }
 
 .new-ticket-buy__enteryTicket {
@@ -2922,8 +3079,6 @@ option {
   color: #030303;
 }
 
-.new-ticket-buy__overview_img {
-}
 .new-ticket-buy__overview_totalAmount {
   display: flex;
   flex-wrap: wrap;
@@ -3172,8 +3327,68 @@ option {
   font-weight: normal;
   font-size: 22px;
   line-height: 26px;
-
+  overflow: hidden;
   color: #ffffff;
   width: 220px;
   height: 45px;
+  position: relative;
+}
+.red_square > span {
+  position: absolute;
+  background: white;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  animation: ripple 1s linear infinite;
+}
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+  }
+}
+@media (max-width: 768px) {
+  .buy-now {
+    width: 79%;
+  }
+  .new-ticket-buy__booking {
+    flex: 1 0 100%;
+    padding: 0 30px;
+  }
+  .selectDate {
+    min-width: 251px;
+    background: url(./date768.svg) no-repeat center -2px;
+  }
+  .new-ticket-buy__date .date {
+    right: -29%;
+  }
+  .new-ticket-buy__time > select {
+    width: 251px;
+    margin-left: 0px;
+    position: relative;
+    left: 36%;
+    background: url(./Time768.svg) center no-repeat;
+  }
+  .time {
+    right: -67%;
+  }
+  .new-ticket-buy__nameInput,
+  .new-ticket-buy__eMail_Input,
+  .new-ticket-buy__number_input,
+  .new-ticket-buy__select_select,
+  .new-ticket-buy__enteryTicket {
+    min-width: 530px;
+  }
+  .new-ticket-buy__enteryTicketText {
+    margin-right: 129px;
+  }
+  .new-ticket-buy__select_select {
+    background: url(./Tickettype768.svg) center no-repeat;
+  }
 }
