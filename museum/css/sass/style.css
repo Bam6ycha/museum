@@ -1147,7 +1147,7 @@ body._lock {
 }
 .sound__item_linearGradient_progress {
   background: linear-gradient(to right, #911c1c, #a10a0a, #c70606, #f20202);
-  max-width: 810px;
+  max-width: 932px;
   width: 0%;
   position: absolute;
   height: 7px;
@@ -1452,7 +1452,7 @@ iframe {
   -webkit-appearance: none;
   position: absolute;
   border: 0.1px solid red;
-  top: -6px;
+  top: -2px;
 }
 
 @media (max-width: 1024px) {
