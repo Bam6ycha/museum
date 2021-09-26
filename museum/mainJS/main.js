@@ -129,14 +129,13 @@ arrowNext.addEventListener("click", function () {
 
 //!===================Swiper================================//
 
-let slider = document.querySelector(".promo-slider__oneline");
+const slider = document.querySelector(".promo-slider__oneline");
 const swiper = (slider) => {
   let landscape = slider;
   let startValueX = 0;
   let startValueY = 0;
   let distX = 0;
   let distY = 0;
-
   let startTime = 0;
   let pastTime = 0;
   let threshould = 100;
@@ -709,7 +708,7 @@ const calculator = () => {
     );
     const cost18 = 20;
     const cost65 = 10;
-    if (event.target.classList.contains("plus18")) {
+    if (event.target.classList.contains("plus18") && inputBasic18.value < 20) {
       ++inputBasic18.value;
       input18Popup.value = inputBasic18.value;
       amountBasic.innerHTML = inputBasic18.value;
@@ -733,7 +732,10 @@ const calculator = () => {
         inputBasic18.value * cost18 + inputSeniour65.value * cost65
       }`;
     }
-    if (event.target.classList.contains("plus65")) {
+    if (
+      event.target.classList.contains("plus65") &&
+      inputSeniour65.value < 20
+    ) {
       ++inputSeniour65.value;
       input65popUp.value = inputSeniour65.value;
       amountSeniour.innerHTML = inputSeniour65.value;
@@ -843,7 +845,7 @@ const popUpCalculator = () => {
     ".new-ticket-buy__enteryTicket"
   );
   function calculateTotalAmount() {
-    if (event.target === plusBlack18) {
+    if (event.target === plusBlack18 && input18Popup.value < 20) {
       input18Popup.value++;
       amountBasic.innerHTML = `${input18Popup.value}`;
       amountBasicCost.innerHTML = `${cost18 * input18Popup.value} €`;
@@ -859,7 +861,7 @@ const popUpCalculator = () => {
         cost18 * input18Popup.value + cost65 * input65popUp.value
       } €`;
     }
-    if (event.target === plusBlack65) {
+    if (event.target === plusBlack65 && input65popUp.value < 20) {
       input65popUp.value++;
       amountSeniour.innerHTML = `${input65popUp.value}`;
       amountSeniourCost.innerHTML = `${cost65 * input65popUp.value} €`;
@@ -991,3 +993,20 @@ const popUpCalculator = () => {
 };
 
 popUpCalculator();
+
+//!======================ripple_effect======================//
+
+const ripple = () => {
+  const bookButton = document.querySelector(".red_square");
+  function addRipple(event) {
+    let x = event.clientX - event.target.offsetLeft;
+    let y = event.clientY - event.target.offsetTop;
+    let effect = document.createElement("span");
+    effect.style.left = x + bookButton.clientWidth / 2 + "px";
+    effect.style.top = y + "px";
+    this.appendChild(effect);
+    setTimeout(() => effect.remove(), 1000);
+  }
+  bookButton.addEventListener("click", addRipple);
+};
+ripple();

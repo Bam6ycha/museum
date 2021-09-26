@@ -12,6 +12,11 @@
       rel="stylesheet"
     />
     <link href="css/sass/style.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/img/favicon/favicon.png"
+      type="image/png"
+    />
     <title>Louvre</title>
   </head>
   <body>
@@ -116,10 +121,8 @@
                   href="/tours/tour7.html"
                   class="promo-content__link"
                   target="_blank"
-                  ><button class="promo__button_red">
-                    Discover the Louvre
-                  </button></a
-                >
+                  >Discover the Louvre
+                </a>
               </div>
             </div>
             <div class="promo-slider">
@@ -354,6 +357,11 @@
                   src="./assets/video/05.mp4"
                   poster="./assets/video/01.jpg"
                 ></video>
+                <div class="video__player__progress768">
+                  <div
+                    class="video__player__progress768__linear_gradient"
+                  ></div>
+                </div>
               </div>
               <div class="video__controllPanel">
                 <button class="video__playSmall"></button>
@@ -399,82 +407,32 @@
                 <div class="video-list__threeVideos visible__flex">
                   <div class="video-list__item">
                     <iframe
-                      srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
-                        html,body{height:100%}
-                        img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
-                        span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
-                        </style>
-                        <a href=https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0>
-                        <img src=./assets/img/video_jorneu/02.jpg alt='Demo video'>
-                        <span>▶</span>
-                        </a>"
+                      loading="lazy"
                       src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0"
                       title="YouTube video player"
-                      frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     ></iframe>
                   </div>
                   <div class="video-list__item">
                     <iframe
-                      srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
-                        html,body{height:100%}
-                        img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
-                        span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
-                        </style>
-                        <a href=https://www.youtube.com/embed/aWmJ5DgyWPI?controls=0>
-                        <img src=./assets/img/video_jorneu/04.jpg alt='Demo video'>
-                        <span>▶</span>
-                        </a>"
+                      loading="lazy"
                       src="https://www.youtube.com/embed/aWmJ5DgyWPI?controls=0"
                       title="YouTube video player"
-                      frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     ></iframe>
                   </div>
                   <div class="video-list__item">
                     <iframe
-                      srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
-                        html,body{height:100%}
-                        img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
-                        span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
-                        </style>
-                        <a href=https://www.youtube.com/embed/NOhDysLnTvY?controls=0>
-                        <img src=./assets/img/video_jorneu/03.jpg alt='Demo video'>
-                        <span>▶</span>
-                        </a>"
+                      loading="lazy"
                       src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0"
                       title="YouTube video player"
-                      frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     ></iframe>
                   </div>
                 </div>
-                <!-- <div class="video-list__threeVideos">
-                  <div class="video-list__item">
-                    <video
-                      preload="metadata"
-                      src="./assets/video/04.mp4"
-                      poster="./assets/img/video_jorneu/04.jpg"
-                    ></video>
-                  </div>
-                  <div class="video-list__item">
-                    <video
-                      preload="metadata"
-                      src="./assets/video/04.mp4"
-                      poster="./assets/img/video_jorneu/04.jpg"
-                    ></video>
-                  </div>
-                  <div class="video-list__item">
-                    <video
-                      preload="metadata"
-                      src="./assets/video/04.mp4"
-                      poster="./assets/img/video_jorneu/04.jpg"
-                    ></video>
-                  </div>
-                </div> -->
               </div>
             </div>
             <div class="video__pages">
@@ -568,7 +526,7 @@
                   src="./assets/img/gallery/11.jpg"
                   alt="img"
                 />
-                <div class="img-container__img" class="parallax3">
+                <div class="img-container__img parallax3">
                   <div class="shadow"></div>
                   <img
                     class="img-container__random"
@@ -809,6 +767,7 @@
                   <h6 class="new-ticket-buy__sub_red">Tour to Louvre</h6>
                 </div>
               </div>
+              <form action="#"></form>
               <div class="new-ticket-buy__form">
                 <div class="new-ticket-buy__date">
                   <input class="selectDate" type="date" />
@@ -816,9 +775,9 @@
                 </div>
                 <div class="new-ticket-buy__time">
                   <select name="text">
-                    <option value="Select time"></option>
-                    <option value="16:00">16:00</option>
-                    <option value="16:30">16:30</option>
+                    <option value="Select time">16.00</option>
+                    <option value="16:00">16:30</option>
+                    <option value="16:30">17:00</option>
                   </select>
                   <button class="time"></button>
                 </div>
@@ -833,7 +792,7 @@
                 </div>
                 <div class="new-ticket-buy__select">
                   <select class="new-ticket-buy__select_select">
-                    <option value="start" selected></option>
+                    <option value="start" selected>.</option>
                     <option value="Permanent exhibition">
                       Permanent exhibition
                     </option>
@@ -894,6 +853,7 @@
                 </div>
               </div>
             </div>
+
             <div class="new-ticket-buy__overview">
               <div class="new-ticket-buy__tour">
                 <div class="new-ticket-buy__tour_text">

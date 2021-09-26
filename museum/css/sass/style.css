@@ -245,6 +245,9 @@ input {
     letter-spacing: 2px;
     margin: 10px 0px 15px 0px;
   }
+  .menu__body__icons > .footer-ico {
+    margin: 0 0;
+  }
 }
 
 /*!----------------------popup---------------*/
@@ -306,7 +309,6 @@ body._lock {
   height: 100%;
   display: flex;
   flex-direction: column;
-  touch-action: none;
 }
 
 ._container {
@@ -336,6 +338,7 @@ body._lock {
     padding-bottom: 35px;
     border-bottom: 1px solid white;
     margin-bottom: 35px;
+    margin-right: 26px;
   }
   .menu__body__img {
     display: flex;
@@ -352,6 +355,11 @@ body._lock {
   .menu__body._active {
     overflow-y: auto;
     height: 970px;
+  }
+}
+@media (max-width: 420px) {
+  ._container {
+    max-width: 420px;
   }
 }
 /*!----------------------------- header------------------*/
@@ -436,6 +444,50 @@ body._lock {
   }
   .header-wrapper {
     min-height: 110px;
+  }
+}
+@media (max-width: 420px) {
+  .header-logo_style {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .logo {
+    margin: 37px 211px 35px 0;
+  }
+  .menu__ico {
+    margin-bottom: 0;
+  }
+  .header-logo-ico > img {
+    margin-right: 5px;
+    margin-left: 21px;
+    margin-bottom: 5px;
+    max-width: 41%;
+  }
+  .menu__body__imgContainer {
+    flex-wrap: nowrap;
+    column-gap: 12px;
+    padding-bottom: 20px;
+  }
+  .img1 {
+    flex: 0 0 33.33%;
+  }
+  .img2,
+  .img3 {
+    flex: 0 0 33.33%;
+  }
+  .img1 > img,
+  .img2 > img,
+  .img3 > img {
+    object-position: center;
+    object-fit: cover;
+    width: 95px;
+    height: 95px;
+  }
+  .img2 {
+    order: -1;
+  }
+  .menu__body__icons > .footer-ico {
+    column-gap: 5px;
   }
 }
 /*!!--------------------------------Promo---------------------------------------------*/
@@ -526,28 +578,10 @@ body._lock {
   color: #ffffff;
   justify-content: center;
   text-decoration: none;
-}
-.promo__button_red {
-  background-color: #710707;
-  max-width: 360px;
-  max-height: 75px;
-  width: 360px;
-  height: 75px;
-  border-radius: 10px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 22px;
-  line-height: 26px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 2px;
-  color: #ffffff;
-  justify-content: center;
   transition: all 0.3s ease-in-out;
 }
-.promo__button_red:hover {
+
+.promo-content__button :first-child:hover {
   background-color: #9d8665;
 }
 @media (max-width: 1024px) {
@@ -896,6 +930,12 @@ body._lock {
   margin-bottom: 40px;
   max-width: 100%;
 }
+.video__player__progress768 {
+  display: none;
+}
+.video__player__progress768__linear_gradient {
+  display: none;
+}
 @media (max-width: 1024px) {
   .video-player-wrapper {
     padding: 0px 20px;
@@ -1150,6 +1190,17 @@ body._lock {
     top: 2px;
   }
 }
+@media (max-width: 768px) {
+  .sound__item {
+    display: none;
+  }
+  .muted {
+    order: -1;
+    width: 63px;
+    background-position: 4px 4px;
+    background-size: 43%;
+  }
+}
 .player__fullscreen {
   background: url(./full_screen.svg) center no-repeat;
   max-width: 100%;
@@ -1172,6 +1223,18 @@ body._lock {
   }
 }
 @media (max-width: 768px) {
+  .video-player-wrapper {
+    margin-bottom: 20px;
+  }
+  .player__fullscreen {
+    background-position: 31px;
+  }
+  .video__pausedBig {
+    top: 32%;
+    right: 45%;
+    width: 80px;
+    height: 80px;
+  }
   .video-jorneu__headlink_gold {
     font-size: 40px;
     line-height: 60px;
@@ -1183,15 +1246,63 @@ body._lock {
   .video__player > video {
     width: 728px;
     height: 329px;
+    margin-bottom: -7px;
   }
   .video__player {
     height: 329px;
+    margin-bottom: 5px;
   }
   .video__playBig {
     top: 32%;
     right: 45%;
     width: 80px;
     height: 80px;
+  }
+  .video__player__progress768 {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 5px;
+    background-color: #c4c4c4;
+  }
+  .video__player__progress768::after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background-color: white;
+    border-radius: 50%;
+    top: -3px;
+    left: 9%;
+    z-index: 2;
+  }
+  .video__player__progress768__linear_gradient {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 10%;
+    max-width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #911c1c, #a10a0a, #c70606, #f20202);
+  }
+  .video__controllPanel {
+    height: 53px;
+  }
+  .video__playSmall {
+    background-position: 31px;
+    order: -2;
+  }
+  .video__pausedSmall {
+    background-position: 30px;
+    order: -2;
+  }
+  .video__sound {
+    order: -1;
+    width: 63px;
+    background-position: 4px 14px;
+    background-size: 43%;
   }
 }
 /*!====================================sliderVideo=========================*/
@@ -1266,7 +1377,11 @@ iframe {
   height: 250px;
   max-width: 100%;
   max-height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
+
 @media (max-width: 1024px) {
   iframe {
     height: 170px;
@@ -1311,6 +1426,22 @@ iframe {
     left: 0;
   }
 }
+@media (max-width: 768px) {
+  .video-list__threeVideos.visible__flex {
+    width: 50%;
+    padding: 0px 10px;
+    column-gap: 18px;
+  }
+  .video-list {
+    height: 200px;
+  }
+  iframe {
+    height: 200px;
+  }
+  .video-list__container {
+    width: 98%;
+  }
+}
 /*!===================controllPanel===============*/
 .progressBar {
   width: 932px;
@@ -1329,6 +1460,11 @@ iframe {
     width: 570px;
 
     top: -6px;
+  }
+}
+@media (max-width: 768px) {
+  .progressBar {
+    width: 486px;
   }
 }
 .video__pages {
@@ -1398,7 +1534,13 @@ iframe {
     transform: scale(0);
   }
 }
-
+@media (max-width: 768px) {
+  .video__pages {
+    margin-top: -20px;
+    margin-bottom: 44px;
+    column-gap: 18px;
+  }
+}
 /*!!=======================================fullscreen================================*/
 .video-player-wrapper:fullscreen {
   width: 100%;
@@ -1584,6 +1726,9 @@ iframe {
   }
 }
 @media (max-width: 768px) {
+  .tree-colums-layout__row {
+    width: 269px;
+  }
   .virtual-tour__headlink {
     margin: 40px 20px;
   }
@@ -1593,7 +1738,7 @@ iframe {
   }
   .three-colums-layout {
     padding: 0px 20px 0px 76px;
-    column-gap: 37px;
+    column-gap: 47px;
     margin-bottom: 40px;
   }
   .tree-colums-layout__headlink_black {
@@ -1610,18 +1755,19 @@ iframe {
     line-height: 21px;
   }
   .tree-colums-layout-img {
-    max-width: 93%;
+    max-width: 97%;
     margin-bottom: 21px;
   }
   .three-columslayout__item {
     flex: 0 0 43%;
-    height: 339px;
+    height: 342px;
   }
 }
 /*!-----------------------------------picture Explore------------------------------*/
 .picture_explore_wrapper {
   display: flex;
   gap: 56px;
+  touch-action: none;
 }
 @media (max-width: 1024px) {
   .picture_explore_wrapper {
@@ -1902,7 +2048,26 @@ iframe {
   transform: translateY(0%);
   opacity: 1;
 }
-
+@media (max-width: 768px) {
+  .art-gallery__headlinkPosition {
+    padding-top: 40px;
+    margin-top: 35px;
+  }
+  .flex-column-3-wrapper {
+    margin-top: 40px;
+    column-gap: 24px;
+  }
+  .img-container__left,
+  .img-container__center {
+    flex: 0 0 48.3%;
+  }
+  .art-gallery {
+    padding: 0 17px 0 20px;
+  }
+  .img-container__right {
+    display: none;
+  }
+}
 /*!!----------------------------------buy-tictets----------------*/
 .buy-tictets__headlink {
   margin-top: 75px;
@@ -2155,6 +2320,47 @@ iframe {
     background-position: center;
   }
 }
+@media (max-width: 768px) {
+  .buy-tictets__headlink_gold {
+    font-size: 40px;
+    line-height: 60px;
+  }
+  .buy-tictets__headlink {
+    margin-top: 41px;
+    margin-bottom: 40px;
+  }
+  .buy-tickets-content-img {
+    flex: 0 1 61%;
+    height: 340px;
+  }
+  .buy-tickets-content-amount {
+    margin-left: 60px;
+    align-items: flex-start;
+  }
+  .buy-tickets-content__headlinkAmount {
+    margin-bottom: 39px;
+  }
+  .buy-tickets-content-amount__button > input {
+    margin-bottom: 24px;
+  }
+  .buy-tickets-content-amount__totalAmount {
+    margin-top: 15px;
+    margin-bottom: 40px;
+  }
+  .parallax4 {
+    background-attachment: unset;
+    background-position: 50% 71%;
+    background-size: 188%;
+    height: 300px;
+  }
+  .buy-tickets-content {
+    margin-bottom: 40px;
+  }
+  .buy_tickets-1920px__image {
+    height: 300px;
+    margin-bottom: -30px;
+  }
+}
 /*!!-------------------------------------------------------contacts--------------------------*/
 @media (max-width: 1024px) {
   .contacts-wrapper {
@@ -2270,6 +2476,28 @@ iframe {
   }
   .cotacts-content-wrapper__text {
     margin-right: 48px;
+  }
+}
+@media (max-width: 768px) {
+  .contacts-wrapper__headlinlk {
+    margin-bottom: 38px;
+  }
+  .contacts-content-wrapper__headlink {
+    font-size: 20px;
+    line-height: 23px;
+    max-width: 165px;
+    margin-bottom: 40px;
+  }
+  .cotacts-content-wrapper__text a {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .contacts-content-wrapper__map {
+    margin-top: 21px;
+    flex: 1 0 100%;
+  }
+  .contacts-content-wrapper {
+    margin-bottom: 67px;
   }
 }
 
@@ -2428,6 +2656,39 @@ ul.footer-ico {
   width: 100%;
   height: 100%;
 }
+@media (max-width: 768px) {
+  .footer-navigation {
+    margin-top: 51px;
+  }
+  .footer-navigation__ullist > li a {
+    font-size: 18px;
+    line-height: 21px;
+
+    letter-spacing: 2px;
+  }
+  .footer-logo__text {
+    margin-right: 99px;
+  }
+  .footer-navigation-list {
+    margin-right: 0px;
+    margin-top: 7px;
+  }
+  .footer-navigation__ullist {
+    max-width: 360px;
+    column-gap: 184px;
+  }
+  .footer-navigation__ullist > li {
+    margin-bottom: 22px;
+  }
+  .footer-navigation__ullist > li:nth-child(5) {
+    margin-right: 19px;
+  }
+  ul.footer-ico {
+    margin-left: 41%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+  }
+}
 /*!==------------------------------Footer_about_______________________*/
 
 .footer-about {
@@ -2450,6 +2711,9 @@ ul.footer-ico {
 @media (max-width: 1024px) {
   .footer-about-wrapper {
     min-height: 110px;
+  }
+  .footer-about__RS {
+    padding-left: 32px;
   }
 }
 .footer-about_text > a {
@@ -2482,6 +2746,14 @@ ul.footer-ico {
 ul > li > a:hover {
   color: #9d8665;
 }
+@media (max-width: 768px) {
+  .footer-about-wrapper {
+    min-height: 91px;
+  }
+  .footer-about__RS {
+    padding-left: 34px;
+  }
+}
 
 /*!!-----------------------------------New Buy Tictet---------------------*/
 .buy-now {
@@ -2497,8 +2769,6 @@ ul > li > a:hover {
   justify-content: center;
 }
 
-.new-ticket-buy__booking {
-}
 .new-ticket-buy__textContent {
   display: flex;
   flex-wrap: wrap;
@@ -2631,7 +2901,7 @@ option {
   position: relative;
 }
 .new-ticket-buy__select_select {
-  background: url(./Ticket_type.svg);
+  background: url(./Ticket_type.svg) no-repeat left;
   width: 400px;
   height: 45px;
   font-family: Roboto;
@@ -2654,7 +2924,7 @@ option {
   height: 17px;
   border: none;
   top: 32%;
-  right: 3%;
+  right: 1%;
 }
 
 .new-ticket-buy__enteryTicket {
@@ -2809,8 +3079,6 @@ option {
   color: #030303;
 }
 
-.new-ticket-buy__overview_img {
-}
 .new-ticket-buy__overview_totalAmount {
   display: flex;
   flex-wrap: wrap;
@@ -3059,8 +3327,68 @@ option {
   font-weight: normal;
   font-size: 22px;
   line-height: 26px;
-
+  overflow: hidden;
   color: #ffffff;
   width: 220px;
   height: 45px;
+  position: relative;
+}
+.red_square > span {
+  position: absolute;
+  background: white;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  animation: ripple 1s linear infinite;
+}
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+  }
+}
+@media (max-width: 768px) {
+  .buy-now {
+    width: 79%;
+  }
+  .new-ticket-buy__booking {
+    flex: 1 0 100%;
+    padding: 0 30px;
+  }
+  .selectDate {
+    min-width: 251px;
+    background: url(./date768.svg) no-repeat center -2px;
+  }
+  .new-ticket-buy__date .date {
+    right: -29%;
+  }
+  .new-ticket-buy__time > select {
+    width: 251px;
+    margin-left: 0px;
+    position: relative;
+    left: 36%;
+    background: url(./Time768.svg) center no-repeat;
+  }
+  .time {
+    right: -67%;
+  }
+  .new-ticket-buy__nameInput,
+  .new-ticket-buy__eMail_Input,
+  .new-ticket-buy__number_input,
+  .new-ticket-buy__select_select,
+  .new-ticket-buy__enteryTicket {
+    min-width: 530px;
+  }
+  .new-ticket-buy__enteryTicketText {
+    margin-right: 129px;
+  }
+  .new-ticket-buy__select_select {
+    background: url(./Tickettype768.svg) center no-repeat;
+  }
 }
