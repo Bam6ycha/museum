@@ -129,14 +129,13 @@ arrowNext.addEventListener("click", function () {
 
 //!===================Swiper================================//
 
-let slider = document.querySelector(".promo-slider__oneline");
+const slider = document.querySelector(".promo-slider__oneline");
 const swiper = (slider) => {
   let landscape = slider;
   let startValueX = 0;
   let startValueY = 0;
   let distX = 0;
   let distY = 0;
-
   let startTime = 0;
   let pastTime = 0;
   let threshould = 100;
