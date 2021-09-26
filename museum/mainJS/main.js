@@ -399,12 +399,12 @@ function getCurrentTime() {
   let curentTime = player.currentTime;
   let currentMinute = Math.floor(curentTime / 60);
   let currentSecond = Math.floor(curentTime - 60 * currentMinute);
-  currentMinute < 10
-    ? (currentMinutes.innerHTML = "0" + `${currentMinute}`)
-    : (currentMinutes.innerHTML = `${currentMinute}`);
-  currentSecond < 10
-    ? (currentSeconds.innerHTML = "0" + `${currentSecond}`)
-    : (currentSeconds.innerHTML = `${currentSecond}`);
+  // currentMinute < 10
+  //   ? (currentMinutes.innerHTML = "0" + `${currentMinute}`)
+  //   : (currentMinutes.innerHTML = `${currentMinute}`);
+  // currentSecond < 10
+  //   ? (currentSeconds.innerHTML = "0" + `${currentSecond}`)
+  //   : (currentSeconds.innerHTML = `${currentSecond}`);
   progressBar.max = player.duration;
   progressBar.value = curentTime;
   let step = (curentTime / player.duration) * 100;
@@ -1010,3 +1010,93 @@ const ripple = () => {
   bookButton.addEventListener("click", addRipple);
 };
 ripple();
+
+console.log("Результаты самооценки");
+console.log("Вёрстка валидная +10");
+console.log("Вёрстка семантическая +24");
+console.log("<header>, <main>, <footer> +2");
+console.log("семь элементов <section> (по количеству секций) +2");
+console.log("только один заголовок <h1> +2");
+console.log("семь заголовков <h2> (по количеству секций) +2");
+console.log("шесть заголовков <h3> (по количеству карточек) +2");
+console.log(
+  "три элемента <nav> (основная и вспомогательная панель навигации) +2"
+);
+console.log(
+  "три списка ul > li > a (основная и вспомогательная панель навигации, ссылки на соцсети) +2"
+);
+console.log(
+  "тринадцать кнопок button (четыре из них в секции Video, пять в секции Tickets, по две - стрелки слайдера и плейлиста) +2"
+);
+console.log("три тега input type='radio' (в секции Tickets) +2");
+console.log("два тега input type='number'(в секции Tickets) +2");
+console.log("для всех элементов <img> указан обязательный атрибут alt +2");
+console.log("Вёрстка соответствует макету +45");
+console.log("блок <header> +5");
+console.log("секция Welcome +5");
+console.log("секция Visiting +5");
+console.log("секция Explore +5");
+console.log("секция Video +5");
+console.log("секция Gallery +5");
+console.log("секция Tickets +5");
+console.log("секция Contacts +5");
+console.log("Форма покупки билетов +22");
+console.log(
+  "форма плавно выдвигается слева при открытии и плавно возвращается назад при закрытии. В открытом состоянии под формой есть полупрозрачный overlay, который занимает весь экран. Форма и overlay прокручиваются вместе со страницей +2"
+);
+console.log(
+  "форма открывается при клике по кнопке Buy Now в секции Tickets и закрывается кликом по иконке с крестиком в верхнем правом углу или кликом по overlay +2"
+);
+console.log(
+  "при вёрстке формы используются следующие элементы: form, input type='date', input type='time', input type='text', input type='email', input type='tel', input type='number', select +8"
+);
+console.log("Требования к css + 18");
+console.log("добавлен favicon +2");
+console.log("для построения сетки используются флексы или гриды +2");
+console.log(
+  "при уменьшении масштаба страницы браузера вёрстка размещается по центру, а не сдвигается в сторону +2"
+);
+console.log(
+  "фоновый цвет каждого блока и секции тянется на всю ширину страницы +2"
+);
+console.log(
+  "расстояние между буквами, там, где это требуется по макету, регулируется css-свойством letter-spacing +2"
+);
+console.log(
+  "переключаются радиокнопки в блоке Tickets, одновременно может быть выбрана только одна кнопка +2"
+);
+console.log(
+  "в блоке Contacts правильно указанны ссылки на почту mailto и на телефон tel +2"
+);
+console.log(
+  "в футере добавлены ссылки на соцсети. Круглая граница вокруг иконок соцсетей выполнена при помощи css +2"
+);
+console.log("Интерактивность, реализуемая через css +25");
+console.log("плавная прокрутка по якорям +5");
+console.log("параллакс +5");
+console.log(
+  "изменение стиля интерактивных элементов при наведении и клике +10"
+);
+console.log(
+  "интерактивность включает в себя не только изменение внешнего вида курсора, например, при помощи свойства cursor: pointer, но и другие визуальные эффекты – изменение цвета фона или шрифта, появление подчёркивания и т.д. Если в макете указаны стили при наведении и клике, для элемента указываем эти стили. Если в макете стили не указаны, реализуете их по своему усмотрению, руководствуясь общим стилем макета +4"
+);
+console.log(
+  "побязательное требование к интерактивности: плавное изменение внешнего вида элемента при наведении и клике не влияющее на соседние элементы +2"
+);
+console.log(
+  "интерактивность при наведении карточек в секции Visiting предусматривает плавное растягивание подчёркивания заголовка карточки на всю ширину карточки +2"
+);
+console.log(
+  "интерактивность при наведении иконок социальных сетей в футере предусматривает изменение цвета иконки и круглой границы вокруг иконки на золотистый +2"
+);
+console.log("Интерактивность, реализуемая через js +16");
+console.log(
+  "можно передвигать ползунки громкости и прогресс-бар видео, при этом цвет шкалы до и после ползунка отличается и соответствует макету +2"
+);
+console.log(
+  "кликами по кнопкам + и - в секции Tiskets можно менять количество билетов Basic и Senior от 0 до 20 +2"
+);
+console.log('кнопке "Book" в форме покупки билетов добавлен ripple-эффект');
+console.log(
+  "при перезагрузке (обновлении) страницы картины в блоке Galery отображаются в рандомном порядке + 10"
+);
