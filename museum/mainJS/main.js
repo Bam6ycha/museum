@@ -11,6 +11,8 @@ if (icon) {
     contentWrapper.classList.toggle("hidden");
   });
 }
+const burgerBody = document.querySelector(".header-navigation__list");
+
 const link = document.querySelectorAll(".header-navigation__list_item");
 function onMenuListClick(event) {
   if (icon.classList.contains("_active")) {
@@ -20,6 +22,7 @@ function onMenuListClick(event) {
     menuBody.classList.remove("_active");
   }
 }
+
 link.forEach((links) => links.addEventListener("click", onMenuListClick));
 
 //!============ByuTictets=====POPUP========//
@@ -50,9 +53,9 @@ function closeBuyTictetsKeyboard(event) {
   }
 }
 document.addEventListener("keydown", closeBuyTictetsKeyboard);
-
+const cross = document.querySelector(".cross_body");
 function closeBuyTictetsMouse(event) {
-  if (event.target === popupBody) {
+  if (event.target === popupBody || event.target === cross) {
     byuNow.classList.remove("open");
     popupBody.classList.remove("open");
     setTimeout(() => popup.classList.remove("open"), timeout);
@@ -66,9 +69,9 @@ document.addEventListener("pointerdown", closeBuyTictetsMouse);
 const items = document.querySelectorAll(".promo-slider__img");
 const arrowNext = document.querySelector(".arrow__next");
 const arrowPrew = document.querySelector(".arrow__prew");
+const promoWrapper = document.querySelector(".promo_wrapper");
 let currentValue = document.querySelector(".current");
 let checked = document.querySelectorAll(".current__checked");
-
 let currentChecked = 0;
 let currentItem = 0;
 let isEnabled = true;
@@ -115,7 +118,6 @@ function nextItem(number) {
     currentValue.innerHTML = "01";
   }
 }
-
 arrowPrew.addEventListener("click", function () {
   if (isEnabled) {
     previousItem(currentItem);
@@ -280,7 +282,6 @@ document.addEventListener("DOMContentLoaded", shuffle);
 const animated = (arrayOfContainers) => {
   let newAnimated = arrayOfContainers;
   function addClass(event) {
-    let scrollTop = window.pageYOffset;
     let coordinates = imgContainerLeft[0].getBoundingClientRect();
     let coordinatesSecond = imgContainerLeft[1].getBoundingClientRect();
     let coordinatesThird = imgContainerLeft[2].getBoundingClientRect();
@@ -306,6 +307,11 @@ const animated = (arrayOfContainers) => {
       imgContainerLeft[3].classList.add("animated");
       imgContainerCenter[3].classList.add("animated");
       imgContainerRigtht[3].classList.add("animated");
+    }
+    if (window.pageYOffset < 3333) {
+      imgContainerRigtht.forEach((item) => item.classList.remove("animated"));
+      imgContainerLeft.forEach((item) => item.classList.remove("animated"));
+      imgContainerCenter.forEach((item) => item.classList.remove("animated"));
     }
   }
   window.addEventListener("scroll", addClass);
@@ -466,7 +472,11 @@ function changeSoundButtonClassOnClick() {
 }
 
 function addHotKeys(event) {
-  if (event.code === "KeyF") {
+  if (
+    event.code === "KeyF" &&
+    window.pageYOffset > 2340 &&
+    window.pageYOffset < 4500
+  ) {
     fullscreen();
   }
   if (event.code === "KeyM" && player.volume !== 0) {
@@ -474,7 +484,11 @@ function addHotKeys(event) {
   } else if (event.code === "KeyM") {
     changeSoundButtonClassOnClick();
   }
-  if (event.code === "Space") {
+  if (
+    event.code === "Space" &&
+    window.pageYOffset > 2340 &&
+    window.pageYOffset < 4500
+  ) {
     playVideo(), changeClass(), changeVisibility();
   } else if (event.code === "Space" && player.played) {
   }
@@ -689,6 +703,12 @@ const calculator = () => {
   let amountSeniourCost = document.querySelector(
     ".new-ticket-buy__overview_totalAmoun__senior65_totalCost"
   );
+  const totalAmountTictetsType18 = document.querySelector(
+    ".new-ticket-buy__overview_totalAmoun__basic18"
+  );
+  const totalAmountTictetsType65 = document.querySelector(
+    ".new-ticket-buy__overview_totalAmoun__senior65"
+  );
   const container = document.querySelector(".buy-tickets-content-amount");
   const inputBasic18 = document.querySelector(
     ".buy-tickets-content-amount > div:nth-child(3) > input[type=number]"
@@ -706,8 +726,27 @@ const calculator = () => {
     let totalAmount = document.querySelector(
       ".buy-tickets-content > div.buy-tickets-content-amount > div.buy-tickets-content-amount__totalAmount.buy-tickets-content__headlink_black"
     );
-    const cost18 = 20;
-    const cost65 = 10;
+    let cost18;
+    let cost65;
+    const inputsRadio = document.querySelectorAll("input[type=radio]");
+    if (inputsRadio[0].checked === true) {
+      cost18 = 20;
+      cost65 = 10;
+      totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
+      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+    }
+    if (inputsRadio[1].checked === true) {
+      cost18 = 25;
+      cost65 = 12.5;
+      totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
+      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+    }
+    if (inputsRadio[2].checked === true) {
+      cost18 = 40;
+      cost65 = 20;
+      totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
+      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+    }
     if (event.target.classList.contains("plus18") && inputBasic18.value < 20) {
       ++inputBasic18.value;
       input18Popup.value = inputBasic18.value;
@@ -775,10 +814,10 @@ const calculator = () => {
   const inputTypeRadioContainer = document.querySelector(
     ".buy-tickets-content-type"
   );
+  const inputTypeRadio = inputTypeRadioContainer.querySelectorAll("input");
   let selectedTicketType = document.querySelector(
     ".new-ticket-buy__form > div.new-ticket-buy__select > select"
   );
-  const inputTypeRadio = inputTypeRadioContainer.querySelectorAll("input");
   function inputRadioChangeValue() {
     let arrOfInputs = Array.from(inputTypeRadio);
     let checked = arrOfInputs.filter((item) => item.checked === true);
@@ -786,6 +825,7 @@ const calculator = () => {
     selectedTicketType.value = checked[0].value;
     selectedTicketType.style.background = "transparent";
   }
+
   inputTypeRadioContainer.addEventListener("change", inputRadioChangeValue);
   container.addEventListener("click", changeInputValue);
 };
@@ -794,8 +834,9 @@ calculator();
 //!------------------------------------------------------popUpCalculator=============================//
 
 const popUpCalculator = () => {
-  const cost18 = 20;
-  const cost65 = 10;
+  const selectedTicketType = document.querySelector(
+    ".new-ticket-buy__form > div.new-ticket-buy__select > select"
+  );
 
   const input18Popup = document.querySelector(
     ".new-ticket-buy__enteryTicket_input > div:nth-child(1) > input"
@@ -826,9 +867,6 @@ const popUpCalculator = () => {
   let selectedTicketTypeDescription = document.querySelector(
     ".new-ticket-buy__overview_subtitle_tictetTypeImformation"
   );
-  let selectedTicketType = document.querySelector(
-    ".new-ticket-buy__form > div.new-ticket-buy__select > select"
-  );
   const minusBlack18 = document.querySelector(
     "div.new-ticket-buy__enteryTicket_input > div:nth-child(1) > button.minus_black"
   );
@@ -845,6 +883,38 @@ const popUpCalculator = () => {
     ".new-ticket-buy__enteryTicket"
   );
   function calculateTotalAmount() {
+    const totalAmountTictetsType18 = document.querySelector(
+      ".new-ticket-buy__overview_totalAmoun__basic18"
+    );
+    const totalAmountTictetsType65 = document.querySelector(
+      ".new-ticket-buy__overview_totalAmoun__senior65"
+    );
+    let cost18;
+    let cost65;
+    if (selectedTicketType.selectedIndex === 0) {
+      cost18 = 0;
+      cost65 = 0;
+      totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
+      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+    }
+    if (selectedTicketType.selectedIndex === 1) {
+      cost18 = 20;
+      cost65 = 10;
+      totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
+      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+    }
+    if (selectedTicketType.selectedIndex === 2) {
+      cost18 = 25;
+      cost65 = 12.5;
+      totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
+      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+    }
+    if (selectedTicketType.selectedIndex === 3) {
+      cost18 = 40;
+      cost65 = 20;
+      totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
+      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+    }
     if (event.target === plusBlack18 && input18Popup.value < 20) {
       input18Popup.value++;
       amountBasic.innerHTML = `${input18Popup.value}`;
@@ -931,63 +1001,153 @@ const popUpCalculator = () => {
     }
   }
   const inputEmail = document.querySelector(".new-ticket-buy__eMail_Input");
+  function showError(errorText, elem) {
+    let div = document.createElement("div");
+    elem.after(div);
+    div.style.position = "absolute";
 
+    let coordinates = elem.getBoundingClientRect();
+
+    div.style.left = coordinates.left + coordinates.width / 2 + "px";
+    div.style.top =
+      coordinates.top + coordinates.height + div.clientHeight + "px";
+    div.style.cssText = "border : 1px solid red; color:red; text-align:center";
+    div.innerHTML = errorText;
+  }
   function validateEmail() {
     if (inputEmail.value === "") {
+      this.style.cssText = "border-color:''";
       return;
     }
     if (!inputEmail.value.includes("@")) {
-      let div = document.createElement("div");
-      inputEmail.after(div);
-      div.style.position = "absolute";
-
-      let coordinates = inputEmail.getBoundingClientRect();
-
-      div.style.left = coordinates.left + coordinates.width / 2 + "px";
-      div.style.top =
-        coordinates.top + coordinates.height + div.clientHeight + "px";
-      div.style.cssText =
-        "border : 1px solid red; color:red; text-align:center";
-      div.innerHTML = "E-mail must contains '@'";
+      showError("Email must contains @", inputEmail);
+      this.style.cssText = "border-color:red";
+      return;
+    }
+    if (
+      inputEmail.value.indexOf("@") < 3 ||
+      inputEmail.value.indexOf("@") > 15
+    ) {
+      showError("Username must contains from 3 to 15 letters", inputEmail);
+      this.style.cssText = "border-color:red";
+      return;
+    }
+    if (
+      inputEmail.value.slice(0, inputEmail.value.indexOf("@")).includes(" ")
+    ) {
+      showError("Username can't contains white spaces", inputEmail);
+      this.style.cssText = "border-color:red";
+      return;
+    }
+    if (
+      inputEmail.value.slice(
+        inputEmail.value.indexOf("@"),
+        inputEmail.value.indexOf(".")
+      ).length <= 4 ||
+      inputEmail.value
+        .slice(inputEmail.value.indexOf("@") + 1, inputEmail.value.indexOf("."))
+        .match(/[^A-Z]/gi).length > 0
+    ) {
+      showError(
+        "domain must contains from 4 letters of Lathin alphabit",
+        inputEmail
+      );
+      this.style.cssText = "border-color:red";
+      return;
+    }
+    if (
+      inputEmail.value.slice(inputEmail.value.indexOf(".")).length < 2 ||
+      inputEmail.value.slice(inputEmail.value.indexOf(".")).match(/[^A-Z]/gi)
+        .length > 0 ||
+      inputEmail.value.slice(
+        inputEmail.value.indexOf("@"),
+        inputEmail.value.indexOf(".")
+      ).length >= 4
+    ) {
+      showError(
+        "subdomain must contains from 2 letters of Lathin alphabit",
+        inputEmail
+      );
+      this.style.cssText = "border-color:red";
+      return;
     }
   }
   inputEmail.addEventListener("blur", validateEmail);
   inputEmail.addEventListener("focus", () => {
     document
-      .querySelector(".new-ticket-buy__eMail > div:nth-child(2)")
-      .remove();
+      .querySelectorAll(".new-ticket-buy__eMail > div")
+      .forEach((item) => item.remove());
   });
   selectedTime.addEventListener("change", changeTime);
   date.addEventListener("change", changeDate);
   selectedTicketType.addEventListener("change", changeBackgroundOnSelect);
   inputNumberContainer.addEventListener("click", calculateTotalAmount);
+  selectedTicketType.addEventListener("change", calculateTotalAmount);
+
   const phoneNumberInput = document.querySelector(
     ".new-ticket-buy__number_input"
   );
   function validatePhoneNumber() {
     let value = phoneNumberInput.value;
     if (value === "") {
+      this.style.cssText = "border-color=''";
       return;
     }
     if (!parseInt(value)) {
-      let div = document.createElement("div");
-      phoneNumberInput.after(div);
-      div.style.position = "absolute";
-
-      let coordinates = phoneNumberInput.getBoundingClientRect();
-
-      div.style.left = coordinates.left + coordinates.width / 2 + "px";
-      div.style.top =
-        coordinates.top + coordinates.height + div.clientHeight + "px";
-      div.style.cssText =
-        "border : 1px solid red; color:red; text-align:center";
-      div.innerHTML = "Phone number must contains numbers (1-9);";
+      showError("Phone number must contains numbers (1-9)", phoneNumberInput);
+      this.style.cssText = "border-color:red";
     }
+    if (value.split("").length > 10) {
+      showError("Phone number must contains numbers (1-9)", phoneNumberInput);
+      this.style.cssText = "border-color:red";
+    }
+    this.style.cssText = "border-color=''";
   }
   phoneNumberInput.addEventListener("blur", validatePhoneNumber);
   phoneNumberInput.addEventListener("focus", () => {
     document
-      .querySelector(".new-ticket-buy__number > div:nth-child(2)")
+      .querySelectorAll(".new-ticket-buy__number > div")
+      .forEach((item) => item.remove());
+  });
+  const inputName = document.querySelector(".new-ticket-buy__nameInput");
+  function validateName() {
+    if (inputName.value === "") {
+      this.style.cssText = "border-color=''";
+      return;
+    }
+    if (inputName.value.includes(" ")) {
+      this.style.cssText = "border-color=''";
+      return;
+    }
+    if (inputName.value.length < 3 || inputName.value.length > 15) {
+      showError("Name must contains from 3 to 15 letters", inputName);
+      this.style.cssText = "border-color:red";
+      return;
+    }
+    if (
+      inputName.value.match(/\./) ||
+      inputName.value.match(/\@/) ||
+      inputName.value.match(/\#/) ||
+      inputName.value.match(/\^/) ||
+      inputName.value.match(/\&/) ||
+      inputName.value.match(/\*/) ||
+      inputName.value.match(/\(/) ||
+      inputName.value.match(/\)/) ||
+      inputName.value.match(/\\/) ||
+      inputName.value.match(/\$/) ||
+      inputName.value.match(/\%/)
+    ) {
+      showError(
+        "Name must contains letters of Cyrillic or Latin alphabets",
+        inputName
+      );
+      return;
+    }
+  }
+  inputName.addEventListener("blur", validateName);
+  inputName.addEventListener("focus", () => {
+    document
+      .querySelector("div.new-ticket-buy__name > div:nth-child(2)")
       .remove();
   });
 };
@@ -998,13 +1158,16 @@ popUpCalculator();
 
 const ripple = () => {
   const bookButton = document.querySelector(".red_square");
+
   function addRipple(event) {
     let x = event.clientX - event.target.offsetLeft;
     let y = event.clientY - event.target.offsetTop;
+    const poinerSize = 30;
     let effect = document.createElement("span");
-    effect.style.left = x + bookButton.clientWidth / 2 + "px";
-    effect.style.top = y + "px";
-    this.appendChild(effect);
+    effect.classList.add("ripple");
+    effect.style.left = x - bookButton.clientWidth / 2 - poinerSize + "px";
+    effect.style.top = y - bookButton.clientHeight / 2 - poinerSize / 2 + "px";
+    this.append(effect);
     setTimeout(() => effect.remove(), 1000);
   }
   bookButton.addEventListener("click", addRipple);
