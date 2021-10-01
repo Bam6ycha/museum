@@ -35,7 +35,7 @@ const timeout = 800;
 
 function OnButtonClick(event) {
   if (button) {
-    document.body.classList.toggle("_lock");
+    // document.body.classList.toggle("_lock");
     popup.classList.toggle("open");
     setTimeout(() => popupBody.classList.toggle("open"), 0);
   }
@@ -48,7 +48,7 @@ function closeBuyTictetsKeyboard(event) {
       byuNow.classList.remove("open");
       popupBody.classList.remove("open");
       setTimeout(() => popup.classList.remove("open"), timeout);
-      setTimeout(() => document.body.classList.remove("_lock"), timeout);
+      // setTimeout(() => document.body.classList.remove("_lock"), timeout);
     }
   }
 }
@@ -59,7 +59,7 @@ function closeBuyTictetsMouse(event) {
     byuNow.classList.remove("open");
     popupBody.classList.remove("open");
     setTimeout(() => popup.classList.remove("open"), timeout);
-    setTimeout(() => document.body.classList.remove("_lock"), timeout);
+    // setTimeout(() => document.body.classList.remove("_lock"), timeout);
     console.log(event.target);
   }
 }
@@ -129,6 +129,26 @@ arrowNext.addEventListener("click", function () {
   }
 });
 
+checked.forEach((item) =>
+  item.addEventListener("click", function (event) {
+    const arrayChecked = Array.from(checked);
+    const indexofEvent = arrayChecked.indexOf(event.target);
+    if (currentItem >= indexofEvent) {
+      for (let i = 0; i < currentItem - indexofEvent; i++) {
+        if (isEnabled) {
+          nextItem(indexofEvent - 1);
+        }
+      }
+    }
+    if (currentItem <= indexofEvent) {
+      for (let i = 0; i < indexofEvent - currentItem; i++) {
+        if (isEnabled) {
+          previousItem(indexofEvent + 1);
+        }
+      }
+    }
+  })
+);
 //!===================Swiper================================//
 
 const slider = document.querySelector(".promo-slider__oneline");
@@ -286,6 +306,7 @@ const animated = (arrayOfContainers) => {
     let coordinatesSecond = imgContainerLeft[1].getBoundingClientRect();
     let coordinatesThird = imgContainerLeft[2].getBoundingClientRect();
     let coordinatesFourth = imgContainerLeft[3].getBoundingClientRect();
+    let coordinatesfive = imgContainerLeft[4].getBoundingClientRect();
 
     if (coordinates.top < 800) {
       console.log;
@@ -345,6 +366,7 @@ let currentSeconds = document.querySelector(".seconds");
 let currentMinutes = document.querySelector(".minutes");
 let minutesDuration = document.querySelector(".total_minutes_duration");
 let secondsDuration = document.querySelector(".total_seconds_duration");
+
 player.volume = soundBar.value;
 //! Create functions
 function playVideo() {
@@ -524,9 +546,37 @@ const videoJouneuSlider = () => {
   const arrowNext = document.querySelector(".next");
   const arrowPrew = document.querySelector(".prev");
   let checked = document.querySelectorAll(".round");
+  let checedSelected = document.querySelector(".selected");
+  console.log(checedSelected);
   let currentChecked = 0;
   let currentItem = 0;
   let isEnabled = true;
+  const player = document.querySelector(".video__player>video");
+
+  function playVideo() {
+    player.paused ? player.play() : player.pause();
+  }
+
+  function changeClass() {
+    if (player.play) {
+      playButtonBig.hidden = "";
+      playButtonBig.classList.toggle("video__playBig");
+      playButtonBig.classList.toggle("video__pausedBig");
+      playButtonSmall.classList.toggle("video__playSmall");
+      playButtonSmall.classList.toggle("video__pausedSmall");
+      if (playButtonBig.classList.contains("video__pausedBig")) {
+        setTimeout(() => (playButtonBig.hidden = true), 500);
+      }
+    }
+  }
+  function changeVisibility() {
+    if (playButtonBig.classList.contains("video__playBig")) {
+      playButtonBig.hidden = "";
+    } else {
+      playButtonBig.hidden = "";
+      setTimeout(() => (playButtonBig.hidden = true), 2000);
+    }
+  }
 
   function chengeCurrentItem(number) {
     currentItem = (number + items.length) % items.length;
@@ -557,12 +607,28 @@ const videoJouneuSlider = () => {
     hideItem("to__right");
     chengeCurrentItem(number - 1);
     showItem("from__left");
+    if (player.paused) {
+      return;
+    } else {
+      playVideo();
+      changeClass();
+      changeVisibility();
+      player.currentTime = 0;
+    }
   }
 
   function nextItem(number) {
     hideItem("to__left");
     chengeCurrentItem(number + 1);
     showItem("from__right");
+    if (player.paused) {
+      return;
+    } else {
+      playVideo();
+      changeClass();
+      changeVisibility();
+      player.currentTime = 0;
+    }
   }
 
   arrowPrew.addEventListener("click", function () {
@@ -575,13 +641,34 @@ const videoJouneuSlider = () => {
       nextItem(currentItem);
     }
   });
+  checked.forEach((item) =>
+    item.addEventListener("click", function (event) {
+      const arrayChecked = Array.from(checked);
+      arrayChecked.push(checedSelected);
+      const indexofEvent = arrayChecked.indexOf(event.target);
+      if (currentItem >= indexofEvent) {
+        for (let i = 0; i < currentItem - indexofEvent; i++) {
+          if (isEnabled) {
+            nextItem(indexofEvent - 1);
+          }
+        }
+      }
+      if (currentItem <= indexofEvent) {
+        for (let i = 0; i < indexofEvent - currentItem; i++) {
+          if (isEnabled) {
+            previousItem(indexofEvent + 1);
+          }
+        }
+      }
+    })
+  );
 };
 videoJouneuSlider();
 
 //!===================Swiper================================//
 
-// let slider = document.querySelector(".promo-slider__oneline");
-// const swiper = (slider) => {
+// let slidervideo = document.querySelector(".video-list > div > div");
+// const swipervideo = (slider) => {
 //   let landscape = slider;
 //   let startValueX = 0;
 //   let startValueY = 0;
@@ -652,7 +739,7 @@ videoJouneuSlider();
 //     }
 //   });
 // };
-// swiper(slider);
+// swipervideo(slidervideo);
 
 // function autoSlide() {
 //   let click = new Event("click");
@@ -666,15 +753,20 @@ videoJouneuSlider();
 
 //!===================================getHrefOnClick======================
 const changeVideoOnClick = () => {
+  const video = document.querySelector(
+    "#movie_player > div.html5-video-container > video"
+  );
   const videoListContainer = document.querySelector(".video-list__container");
   function getHref(event) {
-    if (player.paused) {
+    if (!player.paused) {
       changeClass();
+      player.pause();
     }
-    if (event.target.tagName !== "VIDEO") return;
-    let src = event.target.getAttribute("src");
+    if (!event.target.classList.contains("ytp-cued-thumbnail-overlay-image"))
+      return;
+    let src = event.target.closest("video").getAttribute("src");
+
     let poster = event.target.getAttribute("poster");
-    console.log(src);
     document
       .querySelector(".video__player>video")
       .setAttribute("poster", poster);
@@ -733,19 +825,19 @@ const calculator = () => {
       cost18 = 20;
       cost65 = 10;
       totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
-      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+      totalAmountTictetsType65.innerHTML = `Senior (${cost65})€`;
     }
     if (inputsRadio[1].checked === true) {
       cost18 = 25;
       cost65 = 12.5;
       totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
-      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+      totalAmountTictetsType65.innerHTML = `Senior (${cost65})€`;
     }
     if (inputsRadio[2].checked === true) {
       cost18 = 40;
       cost65 = 20;
       totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
-      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+      totalAmountTictetsType65.innerHTML = `Senior (${cost65})€`;
     }
     if (event.target.classList.contains("plus18") && inputBasic18.value < 20) {
       ++inputBasic18.value;
@@ -895,25 +987,25 @@ const popUpCalculator = () => {
       cost18 = 0;
       cost65 = 0;
       totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
-      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+      totalAmountTictetsType65.innerHTML = `Senior (${cost65})€`;
     }
     if (selectedTicketType.selectedIndex === 1) {
       cost18 = 20;
       cost65 = 10;
       totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
-      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+      totalAmountTictetsType65.innerHTML = `Senior (${cost65})€`;
     }
     if (selectedTicketType.selectedIndex === 2) {
       cost18 = 25;
       cost65 = 12.5;
       totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
-      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+      totalAmountTictetsType65.innerHTML = `Senior (${cost65})€`;
     }
     if (selectedTicketType.selectedIndex === 3) {
       cost18 = 40;
       cost65 = 20;
       totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
-      totalAmountTictetsType65.innerHTML = `Basic (${cost65})€`;
+      totalAmountTictetsType65.innerHTML = `Senior (${cost65})€`;
     }
     if (event.target === plusBlack18 && input18Popup.value < 20) {
       input18Popup.value++;
@@ -1165,7 +1257,7 @@ const ripple = () => {
     const poinerSize = 30;
     let effect = document.createElement("span");
     effect.classList.add("ripple");
-    effect.style.left = x - bookButton.clientWidth / 2 - poinerSize + "px";
+    effect.style.left = x - bookButton.clientWidth - poinerSize / 2 + "px";
     effect.style.top = y - bookButton.clientHeight / 2 - poinerSize / 2 + "px";
     this.append(effect);
     setTimeout(() => effect.remove(), 1000);
@@ -1212,6 +1304,49 @@ jeoJson.features.forEach(function (marker) {
     .addTo(map);
 });
 
+//!=====================buttonScrollTop=================//
+const circle = document.querySelector(".progress-ring__circle");
+
+const circleProgress = (elem) => {
+  const circleContainer = document.querySelector(".progress-ring");
+  const arrowUp = document.querySelector(".progress-ring__arrowUp");
+  const progress = circle;
+  const radius = progress.r.baseVal.value;
+  const circumference = 2 * Math.PI * radius;
+  progress.style.strokeDasharray = `${circumference} ${circumference}`;
+  progress.style.strokeDashoffset = circumference;
+  function setProgress(percent) {
+    const offset = circumference - (percent / 100) * circumference;
+    progress.style.strokeDashoffset = offset;
+  }
+  document.addEventListener("scroll", function () {
+    console.log(window.pageYOffset > document.documentElement.clientHeight);
+    if (window.pageYOffset > document.documentElement.clientHeight) {
+      circleContainer.classList.add("show");
+      arrowUp.classList.add("show");
+      const percet =
+        ((window.pageYOffset + document.documentElement.clientHeight) * 100) /
+        Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.offsetHeight,
+          document.body.clientHeight,
+          document.documentElement.clientHeight
+        );
+      setProgress(percet);
+    } else {
+      circleContainer.classList.remove("show");
+      arrowUp.classList.remove("show");
+    }
+  });
+  function scrollBy() {
+    if (event.target !== arrowUp) return;
+    window.scrollTo(0, 0);
+  }
+  document.addEventListener("click", scrollBy);
+};
+circleProgress(circle);
 console.log("Результаты самооценки");
 console.log("Вёрстка валидная +10");
 console.log("Вёрстка семантическая +24");

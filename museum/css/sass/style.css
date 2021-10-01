@@ -290,12 +290,12 @@ input {
   justify-content: center;
   padding: 30px 10px;
   transition: all 0.8s ease 0s;
-  transform: translate(-100px, 0px);
+  transform: translate(0px, 0px);
 }
 
 @media (max-width: 1024px) {
   .popup__body.open {
-    transform: translate(0, 0px);
+    transform: translate(0px, 0px);
   }
 }
 .buy-now {
@@ -433,6 +433,7 @@ body._lock {
   .header-logo-ico > img {
     margin-left: 21px;
     margin-bottom: 11px;
+    margin-right: 22px;
   }
   .header-wrapper {
     min-height: 130px;
@@ -635,6 +636,9 @@ body._lock {
   .promo-slider__buttons {
     margin-bottom: -70px;
   }
+  .current {
+    padding-left: 10px;
+  }
 }
 @media (max-width: 768px) {
   .promo {
@@ -817,6 +821,11 @@ body._lock {
 }
 .verticalLine {
   margin: 0px 10px 0px 10px;
+}
+@media (max-width: 1024px) {
+  .verticalLine {
+    margin: 0px 6px 0px 4px;
+  }
 }
 @media (max-width: 768px) {
   .promo-slider {
@@ -1225,7 +1234,8 @@ body._lock {
 @media (max-width: 1024px) {
   .video__sound {
     width: 98px;
-    background-size: 27%;
+    background-size: 28%;
+    background-position: 51% 47%;
   }
 }
 .sound__item__progress {
@@ -1240,6 +1250,7 @@ body._lock {
   position: absolute;
   height: 7px;
   border-radius: 10px;
+  top: -4px;
 }
 
 .sound__value {
@@ -1462,7 +1473,7 @@ body._lock {
 @media (max-width: 1024px) {
   .video-list {
     min-height: 170px;
-    padding: 0px 20px;
+    padding: 0px 12px;
   }
 }
 .video-list__container {
@@ -1478,6 +1489,9 @@ body._lock {
 .video-list__item {
   margin: 0px;
   flex: 1 0 100%;
+}
+.video-list__item:nth-child(2) {
+  margin-right: 9px;
 }
 .video-list__threeVideos {
   display: none;
@@ -1620,7 +1634,7 @@ iframe {
   .progressBar {
     width: 570px;
 
-    top: -6px;
+    top: -2px;
   }
 }
 @media (max-width: 768px) {
@@ -2214,10 +2228,14 @@ iframe {
 .art-gallery {
   width: 100%;
   background-color: #030303;
+  height: 2200px;
+  overflow: hidden;
 }
 @media (max-width: 1024px) {
   .art-gallery {
     padding: 0px 20px;
+    height: 1460px;
+    overflow: hidden;
   }
 }
 
@@ -2326,6 +2344,7 @@ iframe {
   }
   .art-gallery {
     padding: 0 17px 0 20px;
+    height: 1220px;
   }
   .img-container__right {
     display: none;
@@ -3441,8 +3460,7 @@ option {
   border-bottom: 2px solid #710707;
   padding-bottom: 4px;
 }
-.new-ticket-buy__enteryTicketText {
-}
+
 .new-ticket-buy__enteryTicketText_paragraph18 {
   margin-right: 127px;
   margin-top: 3px;
@@ -3740,8 +3758,7 @@ option {
   padding-bottom: 20px;
   margin-bottom: -10px;
 }
-.new-ticket-buy__overview_creditCard_img_faceNumber_holder {
-}
+
 .holder_name {
   font-family: Roboto;
   font-style: normal;
@@ -3795,8 +3812,7 @@ option {
   width: 75px;
   height: 35px;
 }
-.new-ticket-buy__overview_creditCard_CVC_input {
-}
+
 .new-ticket-buy__overview_creditCard_CVC_description {
   font-family: Roboto;
   font-style: normal;
@@ -3887,6 +3903,7 @@ option {
     background: url(./Tickettype768.svg) center no-repeat;
   }
 }
+
 @media (max-width: 420px) {
   .popup__body.open {
     max-width: 100%;
@@ -3894,5 +3911,211 @@ option {
   }
   .buy-now {
     width: 100%;
+  }
+}
+@media (max-width: 420px) {
+  .new-ticket-buy__headlink_gold {
+    font-size: 32px;
+    line-height: 35px;
+  }
+  .new-ticket-buy__sub_red {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .new-ticket-buy__sub {
+    margin-bottom: 40px;
+  }
+  .new-ticket-buy__form {
+    max-width: 360px;
+    width: 360px;
+  }
+  .selectDate {
+    min-width: 360px;
+    background: url(./date420.svg) center no-repeat;
+  }
+  .new-ticket-buy__date .date {
+    right: -165px;
+  }
+  .new-ticket-buy__time > select {
+    width: 360px;
+    left: -6%;
+    background: url(./Time420.svg) center no-repeat;
+  }
+  .time {
+    right: -76%;
+  }
+
+  .new-ticket-buy__nameInput {
+    min-width: 360px;
+    max-width: 360px;
+    width: 360px;
+    background: url(./Name420.svg) center no-repeat;
+  }
+  .new-ticket-buy__eMail_Input {
+    min-width: 360px;
+    max-width: 360px;
+    width: 360px;
+    background: url(./Email420.svg) center no-repeat;
+  }
+  .new-ticket-buy__number_input {
+    min-width: 360px;
+    max-width: 360px;
+    width: 360px;
+    background: url(./Tel420.svg) center no-repeat;
+  }
+  .new-ticket-buy__select_select {
+    min-width: 360px;
+    max-width: 360px;
+    width: 360px;
+    background: url(./Tickettype420.svg) center no-repeat;
+  }
+  .new-ticket-buy__enteryTicketText_paragraph18_black {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .new-ticket-buy__enteryTicketText {
+    margin-right: -33px;
+  }
+  .new-ticket-buy__enteryTicket {
+    max-width: 360px;
+    width: 360px;
+    min-width: 360px;
+    min-height: 135px;
+    height: 135px;
+  }
+  .new-ticket-buy__enteryTicketText_paragraph18 {
+    margin-right: 119px;
+  }
+  .new-ticket-buy__overview {
+    min-width: 360px;
+    width: 360px;
+    padding: 25px 15px;
+    height: 885px;
+  }
+  .new-ticket-buy__tour img {
+    margin-right: 0px;
+    max-width: 81%;
+  }
+  .new-ticket-buy__tour {
+    column-gap: 8px;
+    margin-bottom: 30px;
+    height: 142px;
+  }
+  .new-ticket-buy {
+    gap: 49px;
+  }
+  .new-ticket-buy__overview_subtitle_red {
+    margin-bottom: 7px;
+  }
+  .new-ticket-buy__overview_totalAmoun__basic18 {
+    margin-right: 143px;
+  }
+  .new-ticket-buy__overview_totalAmoun__senior65 {
+    margin-right: 133px;
+  }
+  .new-ticket-buy__overview_totalAmount_senior {
+    flex: none;
+  }
+  .new-ticket-buy__overview_title {
+    column-gap: 212px;
+  }
+  .new-ticket-buy__overview_creditCard_img_face {
+    width: 330px;
+    margin-bottom: 25px;
+  }
+  .creditCard-type__img {
+    margin-left: 16px;
+  }
+  .inputText > input {
+    width: 290px;
+  }
+  .creditCard-type__img :first-child {
+    padding-bottom: 25px;
+  }
+  .new-ticket-buy__overview_creditCard_CVC {
+    margin-left: 0px;
+    width: 330px;
+  }
+  .new-ticket-buy__overview_button {
+    margin-right: 54px;
+    margin-top: 23px;
+  }
+  .red_square {
+    margin-left: 0;
+  }
+}
+
+/*!--------------------------progressring----------------------*/
+.progress-ring {
+  display: none;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  right: 1%;
+  bottom: 5%;
+  z-index: 10000;
+  cursor: pointer;
+}
+.progress-ring__circle {
+  fill: transparent;
+  stroke: #710707;
+  background-color: transparent;
+  stroke-width: 4px;
+  transform-origin: center;
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 0.3s ease-in;
+  position: relative;
+  z-index: 9999;
+  cursor: pointer;
+}
+.progress-ring.show,
+.progress-ring__arrowUp.show {
+  display: block;
+}
+.progress-ring__arrowUp {
+  display: none;
+  position: fixed;
+  right: 39px;
+  bottom: 51px;
+  color: #9d8665;
+  font-size: 36px;
+  font-weight: bold;
+  transform: rotate(-90deg) translateX(0px);
+  z-index: 10000;
+  cursor: pointer;
+  text-align: center;
+}
+.progress-ring:hover + .progress-ring__arrowUp,
+.progress-ring__arrowUp:hover,
+.progress-ring__circle:hover + .progress-ring__arrowUp {
+  animation: upNdown 0.3s ease-in-out infinite;
+}
+@keyframes upNdown {
+  from {
+    transform: rotate(-90deg) translateX(0px);
+  }
+  50% {
+    transform: rotate(-90deg) translateX(7px);
+  }
+  to {
+    transform: rotate(-90deg) translateX(0px);
+  }
+}
+@media (max-width: 1024px) {
+  .progress-ring__arrowUp {
+    right: 30px;
+    bottom: 47px;
+  }
+}
+@media (max-width: 768px) {
+  .progress-ring__arrowUp {
+    right: 28px;
+    bottom: 45px;
+  }
+}
+@media (max-width: 420px) {
+  .progress-ring__arrowUp {
+    right: 24px;
+    bottom: 44px;
   }
 }
