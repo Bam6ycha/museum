@@ -1174,6 +1174,44 @@ const ripple = () => {
 };
 ripple();
 
+//*=============================================================================MapBox===================
+import { accesToken } from "./acssesToken.js";
+import { jeoJson } from "./data.js";
+
+mapboxgl.accessToken = accesToken;
+
+const map = new mapboxgl.Map({
+  container: "map",
+  style: "mapbox://styles/mapbox/light-v9",
+  zoom: 16,
+  center: [2.3364, 48.86091],
+  pitch: 35,
+  bearing: 10,
+});
+
+const nav = new mapboxgl.NavigationControl({
+  showCompass: true,
+  showZoom: true,
+});
+map.addControl(nav, "top-right");
+function creatPoiner(number, elem = "div") {
+  for (let i = 0; i < number; i++) {
+    let div = document.createElement(elem);
+    div.classList.add("marker");
+  }
+}
+jeoJson.features.forEach(function (marker) {
+  new mapboxgl.Marker(creatPoiner(1))
+    .setLngLat(marker.geometry.coordinates)
+    .setPopup(
+      new mapboxgl.Popup({ offset: 25 }).setHTML(
+        "<h3>" + marker.properties.title + "<h3><p>"
+      )
+    )
+
+    .addTo(map);
+});
+
 console.log("Результаты самооценки");
 console.log("Вёрстка валидная +10");
 console.log("Вёрстка семантическая +24");

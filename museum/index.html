@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer="defer"
+      src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"
+    ></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <link href="/css/sass/style.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -660,7 +668,12 @@
                 </div>
               </div>
               <div class="contacts-content-wrapper__map">
-                <img src="./assets/img/contact/map.png" alt="map" />
+                <div class="contacts-content-wrapper__overlay">
+                  <div id="location-title"></div>
+                  <div id="location-description"></div>
+                </div>
+                <nav id="menu"></nav>
+                <div id="map"></div>
               </div>
             </div>
           </div>
@@ -1034,6 +1047,8 @@
         </section>
       </div>
     </div>
-    <script src="./mainJS/main.js"></script>
+    <script type="module" src="./mainJS/data.js"></script>
+    <script type="module" src="./mainJS/acssesToken.js"></script>
+    <script type="module" src="./mainJS/main.js"></script>
   </body>
 </html>
