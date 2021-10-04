@@ -1320,7 +1320,6 @@ const circleProgress = (elem) => {
     progress.style.strokeDashoffset = offset;
   }
   document.addEventListener("scroll", function () {
-    console.log(window.pageYOffset > document.documentElement.clientHeight);
     if (window.pageYOffset > document.documentElement.clientHeight) {
       circleContainer.classList.add("show");
       arrowUp.classList.add("show");
