@@ -2631,7 +2631,7 @@ iframe {
 }
 @media (max-width: 1024px) {
   .parallax4 {
-    background: url(/assets/img/buy_ticket/parallax1024px.jpg);
+    background: url(../../assets/img/buy_ticket/parallax1024px.jpg);
     background-attachment: unset;
     background-position: center;
   }
@@ -2665,7 +2665,7 @@ iframe {
     margin-bottom: 40px;
   }
   .parallax4 {
-    background: url(/assets/img/buy_ticket/parallax768.jpg);
+    background: url(../../assets/img/buy_ticket/buytickets768px.jpg);
 
     height: 300px;
   }
@@ -2731,7 +2731,8 @@ iframe {
     letter-spacing: 2px;
   }
   .parallax4 {
-    background: url(/assets/img/buy_ticket/parallax420px.jpg) center no-repeat;
+    background: url(../../assets/img/buy_ticket/parallax420px.jpg) center
+      no-repeat;
   }
 }
 /*!!-------------------------------------------------------contacts--------------------------*/
