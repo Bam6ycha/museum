@@ -1478,29 +1478,168 @@ body._lock {
   overflow: hidden;
   position: relative;
 }
+.video-list__container {
+  display: flex;
+  position: relative;
+  column-gap: 42px;
+  height: 255px;
+  width: 100%;
+  overflow: hidden;
+}
+.video-list__iframe {
+  flex: 0 0 31.4%;
+  display: none;
+  animation: 0.2s ease-in;
+}
+.active,
+.nextActive {
+  display: block;
+  animation: 0.2s ease-in;
+}
+.nextActive {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  animation: 0.2s ease-in;
+}
+.prevActive {
+  position: absolute;
+  top: 0;
+  left: -34.2%;
+  animation: 0.2s ease-in;
+}
+.from-left-show {
+  animation-name: left-show;
+}
+
+@keyframes left-show {
+  from {
+    left: -34.2%;
+  }
+  to {
+    left: 0;
+  }
+}
+.currentActiveCenter {
+  width: 31.4%;
+  height: 100%;
+  position: absolute;
+  left: 34.2%;
+  top: 0;
+  animation: 0.2s ease-in;
+}
+.currentActiveRight {
+  width: 31.4%;
+  height: 100%;
+  position: absolute;
+  left: 68.4%;
+  top: 0;
+  animation: 0.2s ease-in;
+}
+.currentActiveLeft {
+  width: 31.4%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: 0.2s ease-in;
+}
+.to-left {
+  animation-name: toLeft;
+}
+.to-right {
+  animation-name: toRight;
+  animation-direction: reverse;
+}
+.from-left {
+  animation-name: toLeft;
+  animation-direction: reverse;
+}
+.from-right {
+  animation-name: toRight;
+}
+
+@keyframes toLeft {
+  from {
+    left: 0;
+  }
+  to {
+    left: -34.2%;
+  }
+}
+@keyframes toRight {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 68.4%;
+  }
+}
+
+.center-to-left {
+  animation-name: center-left;
+}
+.center-to-right {
+  animation-name: center-left;
+  animation-direction: reverse;
+}
+.right-to-center {
+  animation-name: right-center;
+}
+.left-to-center {
+  animation-name: left-center;
+}
+.right-hide {
+  animation: right-hide 0.2s ease-in;
+}
+@keyframes left-center {
+  from {
+    left: 0;
+  }
+  to {
+    left: 34.2%;
+  }
+}
+@keyframes right-center {
+  form {
+    left: 68.4%;
+  }
+  to {
+    left: 34.2%;
+  }
+}
+
+@keyframes center-left {
+  from {
+    left: 34.2%;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes right-hide {
+  from {
+    left: 68.4%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
 @media (max-width: 1024px) {
   .video-list {
     min-height: 170px;
     padding: 0px 12px;
   }
 }
-.video-list__container {
-  margin-left: -10px;
-  position: absolute;
-  width: 100%;
-  height: 255px;
-  display: flex;
-  justify-content: flex-start;
-  column-gap: 42px;
-  cursor: pointer;
-}
-.video-list__item {
+
+/* .video-list__item {
   margin: 0px;
   flex: 1 0 100%;
 }
 .video-list__item:nth-child(2) {
   margin-right: 9px;
-}
+} */
 .video-list__threeVideos {
   display: none;
   position: absolute;
@@ -1517,49 +1656,19 @@ body._lock {
     padding: 0px 18px;
   }
 }
-.video-list__threeVideos.nextVisible__flex {
-  display: flex;
-  column-gap: 42px;
-  width: 33.33%;
-}
+
 @media (max-width: 1024px) {
-  .video-list__threeVideos.nextVisible__flex {
-    column-gap: 30px;
-    padding: 0px 18px;
-  }
 }
-.video-list__item {
+/* .video-list__item {
   flex: 1 0 96%;
-}
+} */
 @media (max-width: 1024px) {
-  .video-list__item {
+  /* .video-list__item {
     flex: 1 0 100%;
-  }
+  } */
 }
-.video-list__item > video {
+/* .video-list__item > video {
   max-width: 100%;
-}
-iframe {
-  width: 100%;
-  height: 250px;
-  max-width: 100%;
-  max-height: 100%;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-}
-
-@media (max-width: 1024px) {
-  iframe {
-    height: 170px;
-  }
-}
-
-/* .visible__flex,
-.nextVisible__flex {
-  display: flex;
-  width: 100%;
-  height: 100%;
 } */
 
 .to__left {
@@ -1602,7 +1711,7 @@ iframe {
   .video-list {
     height: 200px;
   }
-  iframe {
+  .video-list__iframe {
     height: 200px;
   }
   .video-list__container {
@@ -1613,7 +1722,7 @@ iframe {
   .video-list__threeVideos.visible__flex {
     width: 49%;
   }
-  iframe {
+  .video-list__iframe {
     height: 104px;
   }
   .video-list__container {
