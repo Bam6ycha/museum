@@ -562,13 +562,13 @@ const videoJouneuSlider = () => {
     );
     const playButtonBig = document.querySelector(".video__playBig");
     const sliderItem = document.querySelector(".slider__item ");
-    const bulletst = document.querySelectorAll(".slick-dots>button");
+    const bulletst = document.querySelectorAll(".slick-dots> li>button");
     const arrowPrev = document.querySelector(".slick-prev");
     const arrowNext = document.querySelector(".slick-next");
     function playVideo() {
       player.paused ? player.play() : player.pause();
     }
-
+    console.log(bulletst);
     function changeClass() {
       if (player.play) {
         playButtonBig.hidden = "";
@@ -595,6 +595,28 @@ const videoJouneuSlider = () => {
       "./assets/video/04.jpg",
       "./assets/video/05.jpg",
     ];
+    function getSrcOnBullets(event) {
+      if (!event.target.hasAttribute("type")) return;
+      isEnabled = false;
+      setTimeout(() => (isEnabled = true), 700);
+      linearGradientProgress.style.width = 0;
+      video.curentTime = 0;
+      const arrayFromBullets = Array.from(bulletst);
+      video.setAttribute(
+        "src",
+        `${arrayOfCrs[arrayFromBullets.indexOf(event.target)]}`
+      );
+      video.setAttribute(
+        "poster",
+        `${posters[arrayFromBullets.indexOf(event.target)]}`
+      );
+      if (playButtonBig.classList.contains("video__pausedBig")) {
+        changeClass();
+        return;
+      } else {
+        return;
+      }
+    }
     function getSrcOnArrowPrev(event) {
       if (event.target !== arrowPrev) return;
       isEnabled = false;
@@ -743,6 +765,11 @@ const videoJouneuSlider = () => {
         return;
       }
     }
+    container.addEventListener("click", function (event) {
+      if (isEnabled) {
+        getSrcOnBullets(event);
+      }
+    });
     container.addEventListener("click", function (event) {
       if (isEnabled) {
         getSrcOnArrowNext(event);
