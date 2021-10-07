@@ -431,57 +431,56 @@
             </div>
             <div class="video-list">
               <div class="video-list__container">
-                <iframe
-                  class="video-list__iframe active"
-                  src="https://www.youtube.com/embed/2OR0OCr6uRE?controls=0"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-                <iframe
-                  class="video-list__iframe active"
-                  loading="lazy"
-                  src="https://www.youtube.com/embed/zp1BXPX8jcU?controls=0"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-                <iframe
-                  class="video-list__iframe active"
-                  loading="lazy"
-                  src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-
-                <iframe
-                  class="video-list__iframe"
-                  loading="lazy"
-                  src="https://www.youtube.com/embed/aWmJ5DgyWPI?controls=0"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-
-                <iframe
-                  class="video-list__iframe"
-                  loading="lazy"
-                  src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0"
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
+                <div class="slider__item">
+                  <iframe
+                    class="video-list__iframe"
+                    src="https://www.youtube.com/embed/2OR0OCr6uRE?controls=0"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="slider__item">
+                  <iframe
+                    class="video-list__iframe"
+                    loading="lazy"
+                    src="https://www.youtube.com/embed/zp1BXPX8jcU?controls=0"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="slider__item">
+                  <iframe
+                    class="video-list__iframe"
+                    loading="lazy"
+                    src="https://www.youtube.com/embed/Vi5D6FKhRmo?controls=0"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="slider__item">
+                  <iframe
+                    class="video-list__iframe"
+                    loading="lazy"
+                    src="https://www.youtube.com/embed/aWmJ5DgyWPI?controls=0"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <div class="slider__item">
+                  <iframe
+                    class="video-list__iframe"
+                    loading="lazy"
+                    src="https://www.youtube.com/embed/NOhDysLnTvY?controls=0"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
               </div>
-            </div>
-            <div class="video__pages">
-              <button class="prev"></button>
-              <button class="round selected"></button>
-              <button class="round"></button>
-              <button class="round"></button>
-              <button class="round"></button>
-              <button class="round"></button>
-              <button class="next"></button>
             </div>
           </div>
         </section>
@@ -1107,8 +1106,13 @@
         </section>
       </div>
     </div>
-    <script type="module" async="async" src="./mainJS/data.js"></script>
-    <script type="module" async="async" src="./mainJS/acssesToken.js"></script>
-    <script type="module" async="async" src="./mainJS/main.js"></script>
+    <script
+      defer="defer"
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+    ></script>
+    <script defer="defer" src="./mainJS/slick.min.js"></script>
+    <script type="module" defer="defer" src="./mainJS/data.js"></script>
+    <script type="module" defer="defer" src="./mainJS/acssesToken.js"></script>
+    <script type="module" defer="defer" src="./mainJS/main.js"></script>
   </body>
 </html>
