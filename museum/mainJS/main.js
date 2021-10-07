@@ -136,14 +136,14 @@ checked.forEach((item) =>
     if (currentItem >= indexofEvent) {
       for (let i = 0; i < currentItem - indexofEvent; i++) {
         if (isEnabled) {
-          nextItem(indexofEvent - 1);
+          previousItem(indexofEvent + 1);
         }
       }
     }
     if (currentItem <= indexofEvent) {
       for (let i = 0; i < indexofEvent - currentItem; i++) {
         if (isEnabled) {
-          previousItem(indexofEvent + 1);
+          nextItem(indexofEvent - 1);
         }
       }
     }
@@ -546,40 +546,218 @@ const videoJouneuSlider = () => {
       arrows: true,
       dots: true,
       slidesToShow: 3,
-      speed: 500,
+      speed: 700,
       easing: "ease-in-out",
+    });
+    const container = document.querySelector(".video-list");
+    const video = document.querySelector(".video__player>video");
+    let src = document
+      .querySelector(".video__player>video")
+      .getAttribute("src");
+    let poster = document
+      .querySelector(".video__player>video")
+      .getAttribute("poster");
+    const linearGradientProgress = document.querySelector(
+      ".sound__item_linearGradient_progress"
+    );
+    const playButtonBig = document.querySelector(".video__playBig");
+    const sliderItem = document.querySelector(".slider__item ");
+    const bulletst = document.querySelectorAll(".slick-dots>button");
+    const arrowPrev = document.querySelector(".slick-prev");
+    const arrowNext = document.querySelector(".slick-next");
+    function playVideo() {
+      player.paused ? player.play() : player.pause();
+    }
+
+    function changeClass() {
+      if (player.play) {
+        playButtonBig.hidden = "";
+        playButtonBig.classList.toggle("video__playBig");
+        playButtonBig.classList.toggle("video__pausedBig");
+        playButtonSmall.classList.toggle("video__playSmall");
+        playButtonSmall.classList.toggle("video__pausedSmall");
+        if (playButtonBig.classList.contains("video__pausedBig")) {
+          setTimeout(() => (playButtonBig.hidden = true), 500);
+        }
+      }
+    }
+    const arrayOfCrs = [
+      "./assets/video/01.mp4",
+      "./assets/video/02.mp4",
+      "./assets/video/03.mp4",
+      "./assets/video/04.mp4",
+      "./assets/video/05.mp4",
+    ];
+    const posters = [
+      "./assets/video/01.jpg",
+      "./assets/video/02.jpg",
+      "./assets/video/03.jpg",
+      "./assets/video/04.jpg",
+      "./assets/video/05.jpg",
+    ];
+    function getSrcOnArrowPrev(event) {
+      if (event.target !== arrowPrev) return;
+      isEnabled = false;
+      setTimeout(() => (isEnabled = true), 700);
+
+      if (arrayOfCrs.indexOf(src) === 0) {
+        src = arrayOfCrs[4];
+        poster = posters[4];
+        video.setAttribute("src", `${arrayOfCrs[4]}`);
+        video.setAttribute("poster", `${posters[4]}`);
+        linearGradientProgress.style.width = 0;
+        video.curentTime = 0;
+        if (playButtonBig.classList.contains("video__pausedBig")) {
+          changeClass();
+          return;
+        } else {
+          return;
+        }
+      }
+      if (arrayOfCrs.indexOf(src) === 4) {
+        src = arrayOfCrs[3];
+        poster = posters[3];
+        video.setAttribute("src", `${arrayOfCrs[3]}`);
+        video.setAttribute("poster", `${posters[3]}`);
+        linearGradientProgress.style.width = 0;
+        video.curentTime = 0;
+        if (playButtonBig.classList.contains("video__pausedBig")) {
+          changeClass();
+        } else {
+          return;
+        }
+      }
+      if (arrayOfCrs.indexOf(src) === 3) {
+        src = arrayOfCrs[2];
+        poster = posters[2];
+        video.setAttribute("src", `${arrayOfCrs[2]}`);
+        video.setAttribute("poster", `${posters[2]}`);
+        linearGradientProgress.style.width = 0;
+        video.curentTime = 0;
+        if (playButtonBig.classList.contains("video__pausedBig")) {
+          changeClass();
+          return;
+        }
+        return;
+      }
+      if (arrayOfCrs.indexOf(src) === 2) {
+        src = arrayOfCrs[1];
+        poster = posters[1];
+        video.setAttribute("src", `${arrayOfCrs[1]}`);
+        video.setAttribute("poster", `${posters[1]}`);
+
+        linearGradientProgress.style.width = 0;
+        video.curentTime = 0;
+        if (playButtonBig.classList.contains("video__pausedBig")) {
+          changeClass();
+          return;
+        }
+        return;
+      }
+      if (arrayOfCrs.indexOf(src) === 1) {
+        src = arrayOfCrs[0];
+        poster = posters[0];
+        video.setAttribute("src", `${arrayOfCrs[0]}`);
+        video.setAttribute("poster", `${posters[0]}`);
+
+        linearGradientProgress.style.width = 0;
+        video.curentTime = 0;
+        if (playButtonBig.classList.contains("video__pausedBig")) {
+          changeClass();
+          return;
+        }
+        return;
+      }
+    }
+    let isEnabled = true;
+    function getSrcOnArrowNext(event) {
+      if (event.target !== arrowNext) return;
+      isEnabled = false;
+      setTimeout(() => (isEnabled = true), 700);
+
+      if (arrayOfCrs.indexOf(src) === 0) {
+        src = arrayOfCrs[1];
+        poster = posters[1];
+        video.setAttribute("src", `${arrayOfCrs[1]}`);
+        video.setAttribute("poster", `${posters[1]}`);
+        linearGradientProgress.style.width = 0;
+        video.curentTime = 0;
+        if (playButtonBig.classList.contains("video__pausedBig")) {
+          changeClass();
+          return;
+        }
+        return;
+      }
+      if (arrayOfCrs.indexOf(src) === 1) {
+        src = arrayOfCrs[2];
+        poster = posters[2];
+        video.setAttribute("src", `${arrayOfCrs[2]}`);
+        video.setAttribute("poster", `${posters[2]}`);
+        linearGradientProgress.style.width = 0;
+        video.curentTime = 0;
+        if (playButtonBig.classList.contains("video__pausedBig")) {
+          changeClass();
+          return;
+        }
+        return;
+      }
+      if (arrayOfCrs.indexOf(src) === 2) {
+        src = arrayOfCrs[3];
+        poster = posters[3];
+        video.setAttribute("src", `${arrayOfCrs[3]}`);
+        video.setAttribute("poster", `${posters[3]}`);
+        linearGradientProgress.style.width = 0;
+        video.curentTime = 0;
+        if (playButtonBig.classList.contains("video__pausedBig")) {
+          changeClass();
+          return;
+        }
+        return;
+      }
+      if (arrayOfCrs.indexOf(src) === 3) {
+        src = arrayOfCrs[4];
+        poster = posters[4];
+        video.setAttribute("src", `${arrayOfCrs[4]}`);
+        video.setAttribute("poster", `${posters[4]}`);
+
+        linearGradientProgress.style.width = 0;
+        video.curentTime = 0;
+        if (playButtonBig.classList.contains("video__pausedBig")) {
+          changeClass();
+          return;
+        }
+        return;
+      }
+      if (arrayOfCrs.indexOf(src) === 4) {
+        src = arrayOfCrs[0];
+        poster = posters[0];
+        video.setAttribute("src", `${arrayOfCrs[0]}`);
+        video.setAttribute("poster", `${posters[0]}`);
+
+        linearGradientProgress.style.width = 0;
+        video.curentTime = 0;
+        if (playButtonBig.classList.contains("video__pausedBig")) {
+          changeClass();
+          return;
+        }
+        return;
+      }
+    }
+    container.addEventListener("click", function (event) {
+      if (isEnabled) {
+        getSrcOnArrowNext(event);
+      }
+    });
+    container.addEventListener("click", function (event) {
+      if (isEnabled) {
+        getSrcOnArrowPrev(event);
+      }
     });
   });
 };
 videoJouneuSlider();
 
-//!===================Swiper================================//
-
 //!===================================getHrefOnClick======================
-const changeVideoOnClick = () => {
-  const video = document.querySelector(
-    "#movie_player > div.html5-video-container > video"
-  );
-  const videoListContainer = document.querySelector(".video-list__container");
-  function getHref(event) {
-    if (!player.paused) {
-      changeClass();
-      player.pause();
-    }
-    if (!event.target.classList.contains("ytp-cued-thumbnail-overlay-image"))
-      return;
-    let src = event.target.closest("video").getAttribute("src");
-
-    let poster = event.target.getAttribute("poster");
-    document
-      .querySelector(".video__player>video")
-      .setAttribute("poster", poster);
-    document.querySelector(".video__player>video").setAttribute("src", src);
-    playVideo();
-  }
-  videoListContainer.addEventListener("click", getHref);
-};
-changeVideoOnClick();
 
 //!=============================buy-ticket---calculator-------------//
 
