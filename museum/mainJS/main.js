@@ -526,14 +526,26 @@ function addHotKeys(event) {
 player.addEventListener("ended", () => {
   playButtonBig.classList.remove("video__pausedBig");
   playButtonBig.classList.add("video__playBig");
+  playButtonBig.hidden = "";
   playButtonSmall.classList.remove("video__pausedSmall");
   playButtonSmall.classList.add("video__playSmall");
 });
+soundBar.addEventListener("mousemove", changeSound);
 player.addEventListener("loadeddata", getDuration);
+
 player.addEventListener("mouseover", changeVisibility);
 wrapper.addEventListener("click", playOnButtons);
 player.addEventListener("timeupdate", getCurrentTime);
-progressBar.addEventListener("click", scrub);
+progressBar.addEventListener("mousedown", (event) => {
+  scrub(event);
+  function returnScrub(event) {
+    return scrub(event);
+  }
+  progressBar.addEventListener("mousemove", returnScrub);
+  progressBar.addEventListener("mouseup", () =>
+    progressBar.removeEventListener("mousemove", returnScrub)
+  );
+});
 soundBar.addEventListener("click", changeSound);
 fullScreenButton.addEventListener("click", fullscreen);
 sound.addEventListener("click", changeSoundButtonClassOnClick);
@@ -565,10 +577,32 @@ const videoJouneuSlider = () => {
     const bulletst = document.querySelectorAll(".slick-dots> li>button");
     const arrowPrev = document.querySelector(".slick-prev");
     const arrowNext = document.querySelector(".slick-next");
-    function playVideo() {
-      player.paused ? player.play() : player.pause();
+
+    const iframe0 = document.getElementById("iframe0");
+    const iframe1 = document.getElementById("iframe1");
+    const iframe2 = document.getElementById("iframe2");
+    const iframe3 = document.getElementById("iframe3");
+    const iframe4 = document.getElementById("iframe4");
+    let activeElement;
+    function getActiveElement() {
+      if (document.activeElement === iframe0) {
+        activeElement = iframe0;
+      }
+      if (document.activeElement === iframe1) {
+        activeElement = iframe1;
+      }
+      if (document.activeElement === iframe2) {
+        activeElement = iframe2;
+      }
+      if (document.activeElement === iframe3) {
+        activeElement = iframe3;
+      }
+      if (document.activeElement === iframe4) {
+        activeElement = iframe4;
+      }
     }
-    console.log(bulletst);
+    container.addEventListener("mouseout", getActiveElement);
+
     function changeClass() {
       if (player.play) {
         playButtonBig.hidden = "";
@@ -767,17 +801,17 @@ const videoJouneuSlider = () => {
     }
     container.addEventListener("click", function (event) {
       if (isEnabled) {
-        getSrcOnBullets(event);
-      }
-    });
-    container.addEventListener("click", function (event) {
-      if (isEnabled) {
         getSrcOnArrowNext(event);
       }
     });
     container.addEventListener("click", function (event) {
       if (isEnabled) {
         getSrcOnArrowPrev(event);
+      }
+    });
+    container.addEventListener("click", function (event) {
+      if (isEnabled) {
+        getSrcOnBullets(event);
       }
     });
   });
@@ -823,7 +857,7 @@ const calculator = () => {
   let totalCost = document.querySelector(
     ".new-ticket-buy__overview_creditCard > div.new-ticket-buy__overview_title > div"
   );
-  function changeInputValue(event) {
+  function changeInputValue(target = document.querySelector(".plus18")) {
     let totalAmount = document.querySelector(
       ".buy-tickets-content > div.buy-tickets-content-amount > div.buy-tickets-content-amount__totalAmount.buy-tickets-content__headlink_black"
     );
@@ -848,8 +882,15 @@ const calculator = () => {
       totalAmountTictetsType18.innerHTML = `Basic (${cost18})€`;
       totalAmountTictetsType65.innerHTML = `Senior (${cost65})€`;
     }
-    if (event.target.classList.contains("plus18") && inputBasic18.value < 20) {
-      ++inputBasic18.value;
+    if (
+      (event.target.classList.contains("plus18") && inputBasic18.value < 20) ||
+      event.target === document.getElementById("1")
+    ) {
+      if (event.target === document.getElementById("1")) {
+        inputBasic18.value;
+      } else {
+        ++inputBasic18.value;
+      }
       input18Popup.value = inputBasic18.value;
       amountBasic.innerHTML = inputBasic18.value;
       amountBasicCost.innerHTML = `${inputBasic18.value * cost18}€`;
@@ -873,10 +914,22 @@ const calculator = () => {
       }`;
     }
     if (
-      event.target.classList.contains("plus65") &&
-      inputSeniour65.value < 20
+      (event.target.classList.contains("plus65") &&
+        inputSeniour65.value < 20) ||
+      event.target === document.getElementById("1") ||
+      event.target === document.getElementById("2") ||
+      event.target === document.getElementById("3")
     ) {
-      ++inputSeniour65.value;
+      if (
+        event.target === document.getElementById("1") ||
+        event.target === document.getElementById("2") ||
+        event.target === document.getElementById("3")
+      ) {
+        inputSeniour65.value;
+      } else {
+        ++inputSeniour65.value;
+      }
+
       input65popUp.value = inputSeniour65.value;
       amountSeniour.innerHTML = inputSeniour65.value;
       amountSeniourCost.innerHTML = `${inputSeniour65.value * cost65}€`;
@@ -927,7 +980,19 @@ const calculator = () => {
     selectedTicketType.style.background = "transparent";
   }
 
-  inputTypeRadioContainer.addEventListener("change", inputRadioChangeValue);
+  inputTypeRadioContainer.addEventListener("change", () => {
+    inputRadioChangeValue;
+  });
+  inputTypeRadio.forEach((item) =>
+    item.addEventListener(
+      "click",
+      (target = document.querySelector(".plus18")) => {
+        inputRadioChangeValue();
+        changeInputValue((target = document.querySelector(".plus18")));
+      }
+    )
+  );
+
   container.addEventListener("click", changeInputValue);
 };
 calculator();
@@ -1355,6 +1420,9 @@ const circleProgress = (elem) => {
   document.addEventListener("click", scrollBy);
 };
 circleProgress(circle);
+
+//!!-----------Restrict To ifrmames play=====================
+
 console.log("Результаты самооценки 145");
 console.log("Вёрстка соответствует макету. Ширина экрана 1024px +40");
 console.log("");
