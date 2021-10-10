@@ -552,6 +552,7 @@ sound.addEventListener("click", changeSoundButtonClassOnClick);
 document.addEventListener("keydown", addHotKeys);
 
 //!======================videoJourneuSlider=======================//
+
 const videoJouneuSlider = () => {
   $(document).ready(function () {
     $(".video-list__container").slick({
@@ -561,6 +562,7 @@ const videoJouneuSlider = () => {
       speed: 700,
       easing: "ease-in-out",
     });
+
     const container = document.querySelector(".video-list");
     const video = document.querySelector(".video__player>video");
     let src = document
@@ -577,31 +579,6 @@ const videoJouneuSlider = () => {
     const bulletst = document.querySelectorAll(".slick-dots> li>button");
     const arrowPrev = document.querySelector(".slick-prev");
     const arrowNext = document.querySelector(".slick-next");
-
-    const iframe0 = document.getElementById("iframe0");
-    const iframe1 = document.getElementById("iframe1");
-    const iframe2 = document.getElementById("iframe2");
-    const iframe3 = document.getElementById("iframe3");
-    const iframe4 = document.getElementById("iframe4");
-    let activeElement;
-    function getActiveElement() {
-      if (document.activeElement === iframe0) {
-        activeElement = iframe0;
-      }
-      if (document.activeElement === iframe1) {
-        activeElement = iframe1;
-      }
-      if (document.activeElement === iframe2) {
-        activeElement = iframe2;
-      }
-      if (document.activeElement === iframe3) {
-        activeElement = iframe3;
-      }
-      if (document.activeElement === iframe4) {
-        activeElement = iframe4;
-      }
-    }
-    container.addEventListener("mouseout", getActiveElement);
 
     function changeClass() {
       if (player.play) {

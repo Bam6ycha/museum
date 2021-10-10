@@ -425,9 +425,9 @@
               <div class="video-list__container">
                 <div class="slider__item">
                   <iframe
-                    id="iframe0"
+                    id="player"
                     class="video-list__iframe"
-                    src="https://www.youtube.com/embed/2OR0OCr6uRE"
+                    src="https://www.youtube.com/embed/2OR0OCr6uRE?showinfo=0&enablejsapi=1&origin=http://127.0.0.1:5500"
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
@@ -435,10 +435,10 @@
                 </div>
                 <div class="slider__item">
                   <iframe
-                    id="iframe1"
+                    id="player1"
                     class="video-list__iframe"
                     loading="lazy"
-                    src="https://www.youtube.com/embed/zp1BXPX8jcU"
+                    src="https://www.youtube.com/embed/zp1BXPX8jcU?showinfo=0&enablejsapi=1&origin=http://127.0.0.1:5500"
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
@@ -446,10 +446,10 @@
                 </div>
                 <div class="slider__item">
                   <iframe
-                    id="iframe2"
+                    id="player2"
                     class="video-list__iframe"
                     loading="lazy"
-                    src="https://www.youtube.com/embed/Vi5D6FKhRmo"
+                    src="https://www.youtube.com/embed/Vi5D6FKhRmo?showinfo=0&enablejsapi=1&origin=http://127.0.0.1:5500"
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
@@ -457,10 +457,10 @@
                 </div>
                 <div class="slider__item">
                   <iframe
-                    id="iframe3"
+                    id="player3"
                     class="video-list__iframe"
                     loading="lazy"
-                    src="https://www.youtube.com/embed/aWmJ5DgyWPI"
+                    src="https://www.youtube.com/embed/aWmJ5DgyWPI?showinfo=0&enablejsapi=1&origin=http://127.0.0.1:5500"
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
@@ -468,10 +468,10 @@
                 </div>
                 <div class="slider__item">
                   <iframe
-                    id="iframe4"
+                    id="player4"
                     class="video-list__iframe"
                     loading="lazy"
-                    src="https://www.youtube.com/embed/NOhDysLnTvY"
+                    src="https://www.youtube.com/embed/NOhDysLnTvY?showinfo=0&enablejsapi=1&origin=http://127.0.0.1:5500"
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
@@ -1103,6 +1103,67 @@
         </section>
       </div>
     </div>
+    <script defer="defer">
+      var tag = document.createElement("script");
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      var player;
+      var player1;
+      var player2;
+      var player3;
+      var player4;
+      function onYouTubeIframeAPIReady() {
+        (player = new YT.Player("player", {
+          events: {
+            onStateChange: onPlayerStateChange,
+          },
+        })),
+          (player1 = new YT.Player("player1", {
+            events: {
+              onStateChange: onPlayerStateChange,
+            },
+          })),
+          (player2 = new YT.Player("player2", {
+            events: {
+              onStateChange: onPlayerStateChange,
+            },
+          })),
+          (player3 = new YT.Player("player3", {
+            events: {
+              onStateChange: onPlayerStateChange,
+            },
+          })),
+          (player4 = new YT.Player("player4", {
+            events: {
+              onStateChange: onPlayerStateChange,
+            },
+          }));
+        let playing = [];
+        const arrFromIframes = [player, player1, player2, player3, player4];
+        function onPlayerStateChange(event) {
+          let stateChange = player.getPlayerState();
+          let stateChange1 = player1.getPlayerState();
+          let stateChange2 = player2.getPlayerState();
+          let stateChange3 = player3.getPlayerState();
+          let stateChange4 = player4.getPlayerState();
+          if (
+            event.target.getPlayerState() === 1 ||
+            event.target.getPlayerState() === -1
+          ) {
+            playing.push(event.target);
+            console.log(playing);
+            if (playing.length > 1 && playing[0] === playing[1]) {
+              playing.pop();
+            } else if (playing.length > 1 && playing[0] !== playing[1]) {
+              playing[0].pauseVideo();
+              playing.shift();
+            }
+          }
+        }
+      }
+    </script>
     <script
       defer="defer"
       src="https://code.jquery.com/jquery-3.6.0.min.js"
