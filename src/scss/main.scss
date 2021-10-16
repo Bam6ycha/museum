@@ -1,0 +1,218 @@
+@import "./vendor.scss";
+@import "./_ibg";
+@import "./mixins/buttons.scss";
+
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Staatliches, sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 22px;
+  position: relative;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: brightness(0.8);
+  animation: 3s ease-in-out;
+  background-color: black;
+}
+.show {
+  animation-name: disapear;
+  animation-direction: reverse;
+}
+.hide {
+  animation-name: disapear;
+}
+@keyframes disapear {
+  from {
+    filter: brightness(0.8);
+  }
+  to {
+    filter: brightness(0);
+  }
+}
+
+.header {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  height: 25%;
+}
+.header-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 15px;
+}
+.header-audio-player {
+  display: flex;
+  flex-direction: column;
+}
+.header-audio-player__controllPanel {
+  display: flex;
+
+  column-gap: 3%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-audio-player__buttonPrev,
+.header-audio-player__buttonNext {
+  min-width: 30px;
+  min-height: 30px;
+  background-color: transparent;
+  border-style: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.header-audio-player__buttonPrev {
+  background: url(../assets/prev.svg) center no-repeat;
+  background-size: 100%;
+}
+.header-audio-player__buttonNext {
+  background: url(../assets/next.svg) center no-repeat;
+  background-size: 100%;
+}
+
+.header-audio-player__buttonPlay {
+  min-width: 50px;
+  min-height: 50px;
+  background: url(../assets/play.svg) center no-repeat;
+  background-size: 100%;
+  border-style: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.header-audio-player__buttonPause {
+  min-width: 50px;
+  min-height: 50px;
+  background: url(../assets/pause.svg) center no-repeat;
+  background-size: 100%;
+  border-style: none;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: appears 0.2s ease-in;
+}
+
+@keyframes appears {
+  from {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.header-audio-player__buttonPlay:hover,
+.header-audio-player__buttonNext:hover,
+.header-audio-player__buttonPrev:hover,
+.header-audio-player__playSmall:hover {
+  box-shadow: 0px 0px 10px white;
+}
+.header-audio-player__buttonPlay:active,
+.header-audio-player__buttonNext:active,
+.header-audio-player__buttonPrev:active,
+.header-audio-player__playSmall:active {
+  box-shadow: 0px 0px 15px white;
+
+  transform: scale(0.98);
+}
+
+.header-audio-player__playSmall {
+  width: 15px;
+  height: 15px;
+  background: url(../assets/play.svg) center no-repeat;
+  background-color: transparent;
+  background-size: contain;
+  border-radius: 50%;
+  border-style: none;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.header-audio-player__pauseSmall {
+  width: 15px;
+  height: 15px;
+  background: url(../assets/pause.svg) center no-repeat;
+  background-color: transparent;
+  background-size: contain;
+  border-radius: 50%;
+  border-style: none;
+  margin-right: 10px;
+  cursor: pointer;
+  animation: appears 1s ease-in;
+}
+.header-audio-player__playList {
+  margin-bottom: 3px;
+  cursor: pointer;
+}
+
+@import "./body.scss";
+@import "./quotes";
+@import "./slider";
+
+.current-time span:nth-child(4) {
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+.header-weather {
+  display: flex;
+  margin-right: 50px;
+  flex-direction: column;
+  max-width: 15%;
+}
+.city {
+  margin: 10px;
+  width: 100%;
+
+  font-size: 2rem;
+  text-align: center;
+  color: rgba($color: rgba(255, 255, 255, 0.59), $alpha: 0.4);
+  border: 0;
+  border-bottom: 1px solid #eee;
+  color: #eee;
+  background-color: transparent;
+}
+.city:focus {
+  border-color: transparent;
+  border-bottom: 1px solid #eee;
+  box-shadow: inset 0 0 10px white;
+  border-radius: 10px;
+  color: #eee;
+}
+.weather-icon {
+  width: 100%;
+  height: 100%;
+}
+.weather-description {
+  font-size: inherit;
+  font-family: inherit;
+  text-transform: capitalize;
+}
+@import "./audioPlayer";

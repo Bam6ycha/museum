@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="./scss/owfont-regular.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Momentum</title>
+  </head>
+  <body>
+    <div class="container ibg"> </div>
+      <header class="header">
+        <div class="header-container">
+          <audio class="audio_player">
+            
+           
+          </audio>
+          <div class="header-audio-player">
+            <div class="header-audio-player__controllPanel">
+              <button
+                class="
+                  header-audio-player__buttonPrev
+                  header-audio-player_borderWhite
+                "
+              ></button>
+              <button
+                class="
+                  header-audio-player__buttonPlay
+                  header-audio-player_borderWhite
+                "
+              ></button>
+              <button
+                class="
+                  header-audio-player__buttonNext
+                  header-audio-player_borderWhite
+                "
+              ></button>
+              <div class="header-audio-player__songInfo">
+                <div class="header-audio-player__songName"></div>
+                <div class="progressBar"></div>
+                <div class="linearGradient"></div>
+              </div>
+              <div class="duration">
+                <span class="currentMinute">00</span>
+                <span class="durationDoubleDots">:</span>
+                <span class="currentSecond">00</span>
+                <span >/</span>
+                <span class="TotalMinute">00</span>
+                <span class="durationDoubleDots">:</span>
+                <span class="TotalSeconds">00</span>
+                
+              </div>
+              <div class="sound"></div>
+              <input class="soundBar" value="30" step="0.1" min="0" max="100" type="range">
+            </div>
+            <div class="header-audio-player__playList">
+              <button class="header-audio-player__playSmall"></button> Aqua
+              Cealestis
+            </div>
+            <div class="header-audio-player__playList">
+              <button class="header-audio-player__playSmall"></button>Ennio
+              Morricone
+            </div>
+            <div class="header-audio-player__playList">
+              <button class="header-audio-player__playSmall"></button>River
+              Flows in You
+            </div>
+            <div class="header-audio-player__playList">
+              <button class="header-audio-player__playSmall"></button>Summer
+              Wind
+            </div>
+          </div>
+          <div class="header-weather">
+            <input type="text" name="city" class="city" value="Минск">
+            <i class="weather-icon owf"></i>
+            <div class="temperature"></div>
+            <div  class="weather-description"></div>
+            <div class="humidity"></div>
+            <div class="wind"></div>
+          </div>
+        </div>
+      </header>
+      <div class="_container">
+        <div class="current-time">
+          <span class="current-time__hours current_time_bigWhite"></span
+          ><span class="current-time__doubleDots current_time_bigWhite">:</span>
+          <span class="current-time__minutes current_time_bigWhite">55</span
+          ><span class="current-time__doubleDots current_time_bigWhite">:</span>
+          <span class="current-time__seconds current_time_bigWhite">12</span>
+        </div>
+        <div class="current-date">
+          <div class="current-date__day current_date_bigWhite">Monay,</div>
+          <div class="current-date__month current_date_bigWhite">October</div>
+          <div class="current-date__date current_date_bigWhite">15</div>
+        </div>
+        <div class="greetings">
+          <div class="greetingsText">Good <span class="timeOfday"></span>,</div>
+          <input type="text" class="name" placeholder="[Enter name]" />
+        </div>
+      </div>
+      <div class="qutotes-day">
+        <button class="reload"></button>
+        <div class="quote">
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, sed"
+        </div>
+        <div class="author"></div>
+      </div>
+    </div>
+    <button class="slide_prev"></button>
+    <button class="slide_next"></button>
+    
+  </body>
+</html>

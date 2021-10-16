@@ -1,0 +1,71 @@
+.header-audio-player__songInfo {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.linearGradient {
+  position: absolute;
+  max-width: 300px;
+  width: 0%;
+  background-color: tomato;
+  z-index: 2;
+  height: 5px;
+  border-radius: 10px;
+  top: 79%;
+  left: 1%;
+}
+
+.progressBar {
+  width: 300px;
+  height: 5px;
+  border: 1px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+}
+.duration {
+  width: 320px;
+}
+.header-audio-player__songName {
+  min-height: 30px;
+}
+.sound {
+  min-width: 30px;
+  min-height: 30px;
+  background: url(../assets/sound.svg) center no-repeat;
+  background-size: 100%;
+  border: none;
+
+  cursor: pointer;
+}
+.mute {
+  min-width: 30px;
+  min-height: 30px;
+  background: url(../assets/mute.svg) center no-repeat;
+  background-size: 100%;
+  border: none;
+  animation: change 0.2s ease-in;
+  cursor: pointer;
+}
+@keyframes change {
+  from {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.89);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.soundBar {
+  cursor: pointer;
+}
+.currentMinute,
+.currentSecond {
+  min-width: 26px;
+  display: inline-block;
+}
