@@ -17,14 +17,14 @@ const soundBar:any = document.querySelector(".soundBar")
 let currentTrack = 0;
 
 //!Functions
-function changeSoundButtonClassOnClick(){
-  if(sound?.classList.contains("mute")){
-    sound.classList.remove("mute");
-    sound.classList.add("sound")
+function changeSoundButtonClassOnClick(event:any){
+  if(sound?.classList.contains("mute") && event.code === 'KeyM'){
+    sound?.classList.remove("mute");
+    sound?.classList.add("sound")
     audio.muted = false;
     soundBar.value = (audio.volume*100)
 
-  }else{
+  }else if(sound?.classList.contains("sound") && event.code === 'KeyM'){
     sound?.classList.remove("sound")
     sound?.classList.add("mute");
     soundBar.value = 0
@@ -33,7 +33,7 @@ function changeSoundButtonClassOnClick(){
 
 }
 function changeSoundButtonClassOnSoundChange(event:any){
-  if(!audio.volume || event.code==='KeyM'){
+  if(!audio.volume){
     sound?.classList.remove("sound")
     sound?.classList.add("mute")
   }else{
@@ -263,3 +263,4 @@ soundBar.addEventListener("click",()=>{
 });
 document.addEventListener("DOMContentLoaded", ()=> audio.volume = 0.3)
 sound?.addEventListener("click", changeSoundButtonClassOnClick);
+document.addEventListener("keydown",changeSoundButtonClassOnClick)
