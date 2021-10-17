@@ -163,8 +163,23 @@ body {
   margin-bottom: 3px;
   cursor: pointer;
   max-width: 270px;
+  animation: 0.5s ease-in-out forwards;
 }
-
+.invisible {
+  animation-name: changeOpasity;
+}
+.visible {
+  animation-name: changeOpasity;
+  animation-direction: reverse;
+}
+@keyframes changeOpasity {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 @import "./body.scss";
 @import "./quotes";
 @import "./slider";
@@ -187,6 +202,7 @@ body {
   margin-right: 50px;
   flex-direction: column;
   max-width: 15%;
+  animation: 0.5s ease-in-out forwards;
 }
 .city {
   margin: 10px;

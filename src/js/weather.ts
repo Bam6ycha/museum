@@ -35,14 +35,14 @@ const wind:any = document.querySelector(".wind")
       div.style.position = "absolute";
       div.classList.add("err")
       let coordinates = city.getBoundingClientRect()
-      div.style.left = coordinates.left -coordinates.width + "px"
+      div.style.left = coordinates.left -coordinates.width - coordinates.width/2 + "px"
       div.style.top = coordinates.top + "px"
       div.textContent = `${"Your input isn`t correct"}`
     }
   }
   createWeatherApi()
-  city.addEventListener("focus", ()=>document.querySelector("error"));
-  city.addEventListener("change",()=>{
+  city.addEventListener("focus", ()=>document.querySelector(".err")?.remove());
+  city.addEventListener("blur",()=>{
     localStorage.setItem("city",city.value);
     createWeatherApi()
   })

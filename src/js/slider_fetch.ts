@@ -20,7 +20,7 @@ function getRandomPictureIndex():number{
   const maxPictureIndex:number = 20;
   randomPictureIndex = (Math.floor(minPictureIndex - 0.5+Math.random() * (maxPictureIndex - minPictureIndex +1)))
 
-  return randomPictureIndex
+  return randomPictureIndex === 0||21 ? randomPictureIndex = 1 : randomPictureIndex
 }
 
 
@@ -41,6 +41,7 @@ setTimeout(()=>container?.classList.remove("show"),3000)
 
 
 myImage.classList.add("ibg");
+
 
 }
 document.addEventListener("DOMContentLoaded", function(){

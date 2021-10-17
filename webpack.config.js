@@ -84,7 +84,7 @@ module.exports = {
     historyApiFallback: true,
     static: path.resolve(__dirname, "app"),
     open: true,
-    compress: true,
+    compress: false,
     hot: true,
     port: 3000,
   },
