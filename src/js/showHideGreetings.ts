@@ -1,46 +1,35 @@
-function showHideGreetings(){
-  const greetings:any = document.querySelector(".greetings")
-  const greetingsbuttonOn = document.querySelector(".settings-container__greatings > button.on")
-  const greetingsbuttonOff = document.querySelector(".settings-container__greatings > button.off")
-  function toggleVisibilitiGreetings(){
-    if(greetingsbuttonOff?.classList.contains("turnOn") && greetings.style.visibility!=="hidden"){
-      greetings.classList.add("invisible")
-      setTimeout(()=> greetings.style.visibility="hidden",500)
-      greetings.addEventListener("animationend",()=>{
-        greetings.classList.remove("invisible")
-        greetings.style.opacity = "0"
-        localStorage.setItem("opacityGreetings", `${greetings.style.opacity}`)
-    })
+import toggle from "./utulyties";
+import { OpacityValues } from "./enums";
+function showHideGreetings() {
+  const greetings = document.querySelector(".greetings") as HTMLDivElement;
+  const greetingsbuttonOn = document.querySelector(
+    ".settings-container__greatings > button.on"
+  ) as HTMLButtonElement;
+  const greetingsbuttonOff = document.querySelector(
+    ".settings-container__greatings > button.off"
+  ) as HTMLButtonElement;
+  toggle([greetings], greetingsbuttonOn, greetingsbuttonOff, "Greetings");
+
+  window.addEventListener("DOMContentLoaded", () => {
+    greetings.style.opacity = `${localStorage.getItem("opacityGreetings")}`;
+    toggle([greetings], greetingsbuttonOn, greetingsbuttonOff, "Greetings");
+    if (localStorage.getItem("opacityGreetings") === OpacityValues.On) {
+      greetingsbuttonOn?.classList.add("turnOn");
+      greetingsbuttonOff?.classList.add("turnOff");
+      greetings.style.visibility = "";
     }
-    if(greetingsbuttonOn?.classList.contains("turnOn")&&greetings.style.opacity!=="1"){
-      greetings.style.visibility=""
-      greetings.classList.add("visible");
-      greetings.addEventListener("animationend",()=>{
-        greetings.classList.remove("visible")
+    if (localStorage.getItem("opacityGreetings") === OpacityValues.Off) {
+      greetingsbuttonOn?.classList.add("turnOff");
+      greetingsbuttonOff?.classList.add("turnOn");
+      greetings.style.visibility = "hidden";
+    }
+  });
+  greetingsbuttonOn?.addEventListener("click", () =>
+    toggle([greetings], greetingsbuttonOn, greetingsbuttonOff, "Greetings")
+  );
+  greetingsbuttonOff?.addEventListener("click", () =>
+    toggle([greetings], greetingsbuttonOn, greetingsbuttonOff, "Greetings")
+  );
+}
 
-        greetings.style.opacity = "1"
-        localStorage.setItem("opacityGreetings", `${greetings.style.opacity}`)
-    })
-  
-    
-    
-
-}
-}
-window.addEventListener("DOMContentLoaded",()=>{
-  
-  greetings.style.opacity = `${localStorage.getItem("opacityGreetings")}`
-  toggleVisibilitiGreetings()
-  if(localStorage.getItem("opacityGreetings") === "1"){
-    greetingsbuttonOn?.classList.add("turnOn")
-    greetingsbuttonOff?.classList.add("turnOff")
-  }
-  if(localStorage.getItem("opacityGreetings") === "0"){
-    greetingsbuttonOn?.classList.add("turnOff")
-    greetingsbuttonOff?.classList.add("turnOn")
-  }
-})
-greetingsbuttonOn?.addEventListener("click",toggleVisibilitiGreetings)
-greetingsbuttonOff?.addEventListener("click",toggleVisibilitiGreetings)
-}
-showHideGreetings()
+showHideGreetings();

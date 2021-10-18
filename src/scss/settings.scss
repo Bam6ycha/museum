@@ -46,9 +46,10 @@
 }
 .settings-container-wrapper {
   position: absolute;
-  top: 19%;
+  top: 0;
   left: -100%;
   z-index: 10;
+  height: 100%;
   width: 300px;
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
@@ -58,6 +59,7 @@
   row-gap: 10px;
   transition: all 0.3s ease-in-out;
   transform: translate(-100%, 0);
+  overflow-y: auto;
 }
 .settings-container-wrapper.toggle {
   left: 0;
@@ -113,4 +115,18 @@
 .turnOff {
   transform: scale(0.8);
   background-color: darkgrey;
+}
+#source {
+  border-radius: 10px;
+  outline: none;
+}
+.settings-container__pisctureAPI {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sourceContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 100%;
 }

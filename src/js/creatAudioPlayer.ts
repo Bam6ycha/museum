@@ -9,7 +9,7 @@ const linearGradient:any = document.querySelector(".linearGradient");
 const sound = document.querySelector(".sound")
 const progressBar:any = document.querySelector(".progressBar")
 const currentMinutes:any = document.querySelector(".currentMinute")
-const currentSeconds:any = document.querySelector(".currentSecond")
+const currentSeconds = document.querySelector(".currentSecond") as HTMLSpanElement; 
 const totalSeconds:any = document.querySelector(".TotalSeconds")
 const totalMinutes:any = document.querySelector(".TotalMinute")
 const trackName:any = document.querySelector(".header-audio-player__songName")
@@ -17,20 +17,47 @@ const soundBar:any = document.querySelector(".soundBar")
 let currentTrack = 0;
 
 //!Functions
-function changeSoundButtonClassOnClick(event:any){
-  if(sound?.classList.contains("mute") && event.code === 'KeyM'){
+function changeSoundButtonClassOnClick(event: MouseEvent| KeyboardEvent){
+  if("code" in event) {
+    if(sound?.classList.contains("mute") && event.code === 'KeyM'){
+      sound?.classList.remove("mute");
+      sound?.classList.add("sound")
+      audio.muted = false;
+      soundBar.value = (audio.volume*100)
+      console.log(1)
+      return
+  
+  
+    } 
+    if(sound?.classList.contains("sound") && event.code === 'KeyM'){
+      sound?.classList.remove("sound")
+      sound?.classList.add("mute");
+      soundBar.value = 0
+      audio.muted = true;
+      console.log(2)
+  return
+    }
+  }
+  if(!("code" in event)){
+  if(sound?.classList.contains("mute")){
     sound?.classList.remove("mute");
     sound?.classList.add("sound")
     audio.muted = false;
     soundBar.value = (audio.volume*100)
+    console.log(4)
+    return
 
-  }else if(sound?.classList.contains("sound") && event.code === 'KeyM'){
+
+  } if(sound?.classList.contains("sound")){
     sound?.classList.remove("sound")
     sound?.classList.add("mute");
     soundBar.value = 0
     audio.muted = true;
+    console.log(5)
+return
   }
-
+}
+  console.log(3)
 }
 function changeSoundButtonClassOnSoundChange(event:any){
   if(!audio.volume){
@@ -48,7 +75,7 @@ function changeVolume(){
 }
 
 function showCurrentTime(){
-  
+   
     let curentTime = audio.currentTime;
     let currentMinute = Math.floor(curentTime / 60);
     let currentSecond = Math.floor(curentTime - 60 * currentMinute);
@@ -262,5 +289,6 @@ soundBar.addEventListener("click",()=>{
   changeSoundButtonClassOnSoundChange(event)
 });
 document.addEventListener("DOMContentLoaded", ()=> audio.volume = 0.3)
-sound?.addEventListener("click", changeSoundButtonClassOnClick);
+// sound?.addEventListener("click", changeSoundButtonClassOnClick);
 document.addEventListener("keydown",changeSoundButtonClassOnClick)
+type t = EventListener

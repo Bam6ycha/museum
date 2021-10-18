@@ -84,12 +84,12 @@ module.exports = {
     historyApiFallback: true,
     static: path.resolve(__dirname, "app"),
     open: true,
-    compress: false,
+    compress: true,
     hot: true,
     port: 3000,
   },
   optimization: {
-    minimize: true,
+    minimize: isProd ? true : false,
     minimizer: [new TerserWebpackPlugin()],
   },
 
