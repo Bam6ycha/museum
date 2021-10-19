@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const { type } = require("os");
+const ts = require("typescript");
 const isDev = process.env.NODE_ENV === "development";
 
 const filename = (ext) =>
@@ -105,8 +106,10 @@ module.exports = {
       {
         test: /\.[tj]s$/,
         use: `ts-loader`,
+
         exclude: /node_modules/,
       },
+
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|svg|mp3|aac)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         type: "asset/resource",

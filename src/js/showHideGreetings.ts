@@ -11,7 +11,8 @@ function showHideGreetings() {
   toggle([greetings], greetingsbuttonOn, greetingsbuttonOff, "Greetings");
 
   window.addEventListener("DOMContentLoaded", () => {
-    greetings.style.opacity = `${localStorage.getItem("opacityGreetings")}`;
+    greetings.style.opacity =
+      localStorage.getItem("opacityGreetings") ?? OpacityValues.On;
     toggle([greetings], greetingsbuttonOn, greetingsbuttonOff, "Greetings");
     if (localStorage.getItem("opacityGreetings") === OpacityValues.On) {
       greetingsbuttonOn?.classList.add("turnOn");

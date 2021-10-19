@@ -10,7 +10,8 @@ function showHideQuotes() {
   ) as HTMLButtonElement;
   toggle([quotes], quotesButtonOn, quotesButtonOff, "quotes");
   window.addEventListener("DOMContentLoaded", () => {
-    quotes.style.opacity = `${localStorage.getItem("opacityquotes")}`;
+    quotes.style.opacity =
+      localStorage.getItem("opacityquotes") ?? OpacityValues.On;
     toggle([quotes], quotesButtonOn, quotesButtonOff, "quotes");
     if (localStorage.getItem("opacityquotes") === OpacityValues.On) {
       quotesButtonOn?.classList.add("turnOn");

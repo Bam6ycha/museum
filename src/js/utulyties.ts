@@ -11,6 +11,7 @@ export default function toggle(
     elements[0].style.opacity === OpacityValues.On
   ) {
     hideBlockElements(elements, blockName);
+    console.log(123);
   }
 
   if (
@@ -18,6 +19,7 @@ export default function toggle(
     elements[0].style.opacity === OpacityValues.Off
   ) {
     showBlockElements(elements, blockName);
+    console.log(456);
   }
 }
 
@@ -36,7 +38,6 @@ function hideBlockElements(elements: HTMLDivElement[], blockName: string) {
 function showBlockElements(elements: HTMLDivElement[], blockName: string) {
   elements.forEach((item) => {
     item.style.visibility = "";
-
     item.classList.add("visible");
     item.addEventListener("animationend", () => {
       item.classList.remove("visible");

@@ -11,7 +11,8 @@ function showhideCurrentDate() {
   toggle([currentDate], currentDateButtonOn, currentDateButtonOff, "Date");
 
   window.addEventListener("DOMContentLoaded", () => {
-    currentDate.style.opacity = `${localStorage.getItem("opacityDate")}`;
+    currentDate.style.opacity =
+      localStorage.getItem("opacityDate") ?? OpacityValues.On;
     toggle([currentDate], currentDateButtonOn, currentDateButtonOff, "Date");
     if (localStorage.getItem("opacityDate") === OpacityValues.On) {
       currentDateButtonOn?.classList.add("turnOn");

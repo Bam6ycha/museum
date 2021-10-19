@@ -18,15 +18,9 @@ function hideShowHeaderWeaher() {
   );
 
   window.addEventListener("DOMContentLoaded", () => {
-    weatherContainer.style.opacity = `${localStorage.getItem(
-      "opacityHeaderWeather"
-    )}`;
-    toggle(
-      [weatherContainer],
-      weatherBurronTurnOn,
-      weatherBurronTurnOff,
-      "HeaderWeather"
-    );
+    weatherContainer.style.opacity =
+      localStorage.getItem("opacityHeaderWeather") ?? OpacityValues.On;
+
     if (localStorage.getItem("opacityHeaderWeather") === OpacityValues.On) {
       weatherBurronTurnOn?.classList.add("turnOn");
       weatherBurronTurnOff?.classList.add("turnOff");

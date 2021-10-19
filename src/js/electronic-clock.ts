@@ -31,7 +31,8 @@ function electronicClock(
 }
 export { electronicClock };
 
-const language = localStorage.getItem("language");
+const language = localStorage.getItem("language") as string;
+
 export default function getDayOfTheWeek(): void {
   let day: number = new Date().getDay();
   let currentDayDependsOnLanguage;
@@ -96,7 +97,8 @@ function setMonth(): void {
     ".current-date__month"
   ) as HTMLDivElement;
   const month: number = new Date().getMonth();
-  const currentMonthList = language === "ru" ? monthListRu : monthListEn;
+  const currentMonthList: string[] =
+    language === "ru" ? monthListRu : monthListEn;
 
   currentMonth.innerHTML = currentMonthList[month];
 }

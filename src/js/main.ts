@@ -27,3 +27,6 @@ import "../js/showHideGreetings";
 import "../js/showHideQuotes";
 import "../js/changeLaguage";
 import "../js/translateSettings";
+import "../js/onlyOneSource";
+import "../js/utulyties";
+import "../js/enums";

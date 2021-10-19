@@ -130,3 +130,11 @@
   flex-wrap: wrap;
   flex: 0 0 100%;
 }
+.sourceButton {
+  border-radius: 10px;
+}
+
+.sourceButton:hover {
+  cursor: pointer;
+  color: tomato;
+}

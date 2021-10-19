@@ -15,7 +15,8 @@ function hideShowPlayLlist() {
   window.addEventListener("DOMContentLoaded", () => {
     playlist.forEach(
       (item) =>
-        (item.style.opacity = `${localStorage.getItem("opacityPlayList")}`)
+        (item.style.opacity =
+          localStorage.getItem("opacityPlayList") ?? OpacityValues.On)
     );
     toggle(playlist, playlistButtonOn, playlistButtonOff, "PlayList");
     if (localStorage.getItem("opacityPlayList") === OpacityValues.On) {

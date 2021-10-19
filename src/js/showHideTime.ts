@@ -13,12 +13,13 @@ function showHideTime() {
   toggle([timeContainer], showTimeButtonOn, showTimeButtonOff, "Time");
 
   window.addEventListener("DOMContentLoaded", () => {
-    timeContainer.style.opacity = `${localStorage.getItem("opacityTime")}`;
+    timeContainer.style.opacity =
+      localStorage.getItem("opacityTime") ?? OpacityValues.On;
     toggle([timeContainer], showTimeButtonOn, showTimeButtonOff, "Time");
     if (localStorage.getItem("opacityTime") === OpacityValues.On) {
       showTimeButtonOn?.classList.add("turnOn");
       showTimeButtonOff?.classList.add("turnOff");
-      timeContainer.style.visibility = "hidden";
+      timeContainer.style.visibility = "";
     }
     if (localStorage.getItem("opacityTime") === OpacityValues.Off) {
       showTimeButtonOn?.classList.add("turnOff");
