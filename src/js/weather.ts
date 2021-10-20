@@ -41,7 +41,7 @@ const wind:any = document.querySelector(".wind")
     }
   }
   createWeatherApi()
-  city.addEventListener("focus", ()=>document.querySelector("error"));
+  city.addEventListener("focus", ()=>document.querySelector("error")?.remove());
   city.addEventListener("change",()=>{
     localStorage.setItem("city",city.value);
     createWeatherApi()
