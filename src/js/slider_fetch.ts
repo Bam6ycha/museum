@@ -1,3 +1,5 @@
+import { setDate } from "./electronic-clock";
+
 let currentTimeOfDay: string;
 function getCurrentTimeOfDay() {
   const currentHour = new Date().getHours();
@@ -94,6 +96,7 @@ if (currentSource === "Unsplash") {
         ?.remove();
     }
   });
+
   prev.addEventListener("click", () => {
     container.classList.add("hide");
     container.addEventListener("animationend", () =>
@@ -108,6 +111,7 @@ if (currentSource === "Unsplash") {
   });
   window.addEventListener("DOMContentLoaded", photoesFromUnsplash);
 }
+
 if (currentSource === "GitHub") {
   function getUrl(): string {
     let indexToString: string = "";
@@ -155,6 +159,7 @@ if (currentSource === "GitHub") {
     myImage.classList.add("ibg");
   }
   document.addEventListener("DOMContentLoaded", function () {
+    localStorage.getItem("source") ?? "GitHub";
     getRandomPictureIndex();
     getUrl();
     getImg();

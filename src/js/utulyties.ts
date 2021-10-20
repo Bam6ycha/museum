@@ -11,7 +11,6 @@ export default function toggle(
     elements[0].style.opacity === OpacityValues.On
   ) {
     hideBlockElements(elements, blockName);
-    console.log(123);
   }
 
   if (
@@ -19,7 +18,6 @@ export default function toggle(
     elements[0].style.opacity === OpacityValues.Off
   ) {
     showBlockElements(elements, blockName);
-    console.log(456);
   }
 }
 

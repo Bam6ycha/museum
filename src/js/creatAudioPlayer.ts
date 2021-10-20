@@ -1,44 +1,53 @@
-const audio: any = document.querySelector(".audio_player");
-const playButton = document.querySelector(".header-audio-player__buttonPlay");
+const audio = document.querySelector(".audio_player") as HTMLAudioElement;
+const playButton = document.querySelector(
+  ".header-audio-player__buttonPlay"
+) as HTMLButtonElement;
 const audioContainer: any = document.querySelector(".header-audio-player");
 const previousButton = document.querySelector(
   ".header-audio-player__buttonPrev"
 );
 const nextButton = document.querySelector(".header-audio-player__buttonNext");
-const playButtonSmall = document.querySelectorAll(
+const playButtonSmall = document.querySelectorAll<HTMLButtonElement>(
   ".header-audio-player__playSmall"
 );
 const songs = document.querySelectorAll<HTMLDivElement>(
-  ".header-audio-player__playList"
+  ".header-audio-player__SongName"
 );
-const linearGradient: any = document.querySelector(".linearGradient");
+const linearGradient = document.querySelector(
+  ".linearGradient"
+) as HTMLDivElement;
 const sound = document.querySelector(".sound") as HTMLButtonElement;
-const progressBar: any = document.querySelector(".progressBar");
-const currentMinutes: any = document.querySelector(".currentMinute");
+const progressBar = document.querySelector(".progressBar") as HTMLDivElement;
+const currentMinutes = document.querySelector(
+  ".currentMinute"
+) as HTMLSpanElement;
 const currentSeconds = document.querySelector(
   ".currentSecond"
 ) as HTMLSpanElement;
-const totalSeconds: any = document.querySelector(".TotalSeconds");
-const totalMinutes: any = document.querySelector(".TotalMinute");
-const trackName: any = document.querySelector(".header-audio-player__songName");
-const soundBar: any = document.querySelector(".soundBar");
+const totalSeconds = document.querySelector(".TotalSeconds") as HTMLSpanElement;
+const totalMinutes = document.querySelector(".TotalMinute") as HTMLSpanElement;
+const trackName = document.querySelector(
+  ".header-audio-player__songName"
+) as HTMLDivElement;
+const soundBar = document.querySelector(".soundBar") as HTMLInputElement;
 let currentTrack = 0;
 
 //!Functions
+
 function changeSoundButtonClassOnKeyboard(event: KeyboardEvent) {
   if ("code" in event) {
     if (sound?.classList.contains("mute") && event.code === "KeyM") {
       sound?.classList.remove("mute");
       sound?.classList.add("sound");
       audio.muted = false;
-      soundBar.value = audio.volume * 100;
+      soundBar.value = `${audio.volume * 100}`;
 
       return;
     }
     if (sound?.classList.contains("sound") && event.code === "KeyM") {
       sound?.classList.remove("sound");
       sound?.classList.add("mute");
-      soundBar.value = 0;
+      soundBar.value = "0";
       audio.muted = true;
       console.log(2);
       return;
@@ -50,14 +59,14 @@ function changeSoundButtonClassOnClick() {
     sound?.classList.remove("mute");
     sound?.classList.add("sound");
     audio.muted = false;
-    soundBar.value = audio.volume * 100;
+    soundBar.value = `${audio.volume * 100}`;
 
     return;
   }
   if (sound?.classList.contains("sound")) {
     sound?.classList.remove("sound");
     sound?.classList.add("mute");
-    soundBar.value = 0;
+    soundBar.value = "0";
     audio.muted = true;
 
     return;
@@ -74,7 +83,7 @@ function changeSoundButtonClassOnSoundChange() {
 }
 
 function changeVolume() {
-  audio.volume = soundBar.value / 100;
+  audio.volume = +soundBar.value / 100;
 }
 
 function showCurrentTime() {
@@ -105,7 +114,7 @@ function showTotalDuration() {
     totalSeconds.innerHTML = `${seconds}`;
   }
 }
-function changeCurrentTimeWithMouse(event: any) {
+function changeCurrentTimeWithMouse(event: MouseEvent) {
   const scrubTime = (event.offsetX / progressBar.offsetWidth) * audio.duration;
   audio.currentTime = scrubTime;
 }
@@ -117,17 +126,46 @@ function isPaused() {
   audio.paused ? audio.play() : audio.pause();
 }
 
-function PlayOnButton(event: object | any) {
+function PlayOnButton(event: MouseEvent) {
   if (event.target !== playButton) return;
   isPaused();
 }
+
 function showCurrentTrackName() {
   trackName.textContent = `${songs[currentTrack].textContent}`;
 }
-function changeCurrentSongOnListClick(event: any) {
-  const arrayFromSongs = Array.from(songs);
 
-  const eventTargetIndex: number = arrayFromSongs.indexOf(event.target);
+function changeCurrentSongOnListClick(event: MouseEvent) {
+  const target = event.target as HTMLDivElement;
+  if (!target.classList.contains("header-audio-player__SongName")) {
+    return;
+  }
+  const arrayFromSongs = Array.from(songs);
+  const eventTargetIndex: number = arrayFromSongs.indexOf(target);
+  playButtonSmall[currentTrack].classList.remove(
+    "header-audio-player__pauseSmall"
+  );
+  console.log(audio.paused);
+  playButtonSmall[currentTrack].classList.add("header-audio-player__playSmall");
+  currentTrack = eventTargetIndex;
+  const { src, type } = playList[currentTrack];
+  audio.setAttribute("src", src);
+  audio.setAttribute("type", type);
+  changeClassOnClick();
+  isPaused();
+}
+function changeCurrentSongOnButtonOlaySmallClick(event: MouseEvent) {
+  const target = event.target as HTMLButtonElement;
+  if (
+    !(
+      target.classList.contains("header-audio-player__playSmall") ||
+      target.classList.contains("header-audio-player__pauseSmall")
+    )
+  ) {
+    return;
+  }
+  const arrayFromButtons = Array.from(playButtonSmall);
+  const eventTargetIndex: number = arrayFromButtons.indexOf(target);
   playButtonSmall[currentTrack].classList.remove(
     "header-audio-player__pauseSmall"
   );
@@ -137,10 +175,20 @@ function changeCurrentSongOnListClick(event: any) {
   const { src, type } = playList[currentTrack];
   audio.setAttribute("src", src);
   audio.setAttribute("type", type);
-  changeClassOnClick();
+}
+function playPauseOnPlaySmall(event: MouseEvent) {
+  const target = event.target as HTMLButtonElement;
+
+  if (
+    !(
+      target.classList.contains("header-audio-player__playSmall") ||
+      target.classList.contains("header-audio-player__pauseSmall")
+    )
+  ) {
+    return;
+  }
   isPaused();
 }
-
 function changeClassOnClick() {
   if (audio.paused) {
     playButton?.classList.remove("header-audio-player__buttonPlay");
@@ -287,6 +335,14 @@ window.addEventListener("DOMContentLoaded", () => {
   audio.setAttribute("type", `${type}`);
 });
 //!===========Events
+
+playButtonSmall.forEach((item) =>
+  item.addEventListener("click", (event) => {
+    changeCurrentSongOnButtonOlaySmallClick(event);
+    changeClassOnClick();
+    playPauseOnPlaySmall(event);
+  })
+);
 songs.forEach((item) =>
   item.addEventListener("click", changeCurrentSongOnListClick)
 );

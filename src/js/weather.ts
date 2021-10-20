@@ -72,7 +72,7 @@ const api = () => {
     createWeatherApi();
   });
   window.addEventListener("DOMContentLoaded", () => {
-    city.value = localStorage.getItem("city");
+    city.value = localStorage.getItem("city") ?? "Minsk";
   });
 };
 

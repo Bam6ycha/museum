@@ -30,3 +30,4 @@ import "../js/translateSettings";
 import "../js/onlyOneSource";
 import "../js/utulyties";
 import "../js/enums";
+import "../js/showHIdeSearchPannel";
