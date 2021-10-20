@@ -4,9 +4,9 @@
   "description": "config",
   "main": "main.ts",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --mode production",
-    "dev": "cross-env NODE_ENV=development webpack --mode development",
-    "start": "cross-env NODE_ENV=development webpack server --mode development"
+    "build": "cross-env NODE_ENV='production' webpack --mode production",
+    "dev": "cross-env NODE_ENV='development' webpack --mode development",
+    "start": "cross-env NODE_ENV='development' webpack server --mode development"
   },
   "author": "Bam6ycha <kosarev-d@mail.ru>",
   "license": "ISC",

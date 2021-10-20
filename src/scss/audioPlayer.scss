@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  animation: 0.5s ease-in-out forwards;
 }
 
 .linearGradient {
@@ -12,8 +13,9 @@
   z-index: 2;
   height: 5px;
   border-radius: 10px;
-  top: 79%;
-  left: 1%;
+  top: 85%;
+  left: 0;
+  animation: 0.5s ease-in-out forwards;
 }
 
 .progressBar {
@@ -24,12 +26,15 @@
   cursor: pointer;
   position: relative;
   z-index: 3;
+  animation: 0.5s ease-in-out forwards;
 }
 .duration {
   width: 320px;
+  animation: 0.5s ease-in-out forwards;
 }
 .header-audio-player__songName {
   min-height: 30px;
+  animation: 0.5s ease-in-out forwards;
 }
 .sound {
   min-width: 30px;
@@ -37,7 +42,7 @@
   background: url(../assets/sound.svg) center no-repeat;
   background-size: 100%;
   border: none;
-
+  animation: 0.5s ease-in-out forwards;
   cursor: pointer;
 }
 .mute {
@@ -63,9 +68,25 @@
 
 .soundBar {
   cursor: pointer;
+  animation: 0.5s ease-in-out forwards;
 }
 .currentMinute,
 .currentSecond {
   min-width: 26px;
   display: inline-block;
+}
+.invisible {
+  animation-name: changeOpasity;
+}
+.visible {
+  animation-name: changeOpasity;
+  animation-direction: reverse;
+}
+@keyframes changeOpasity {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

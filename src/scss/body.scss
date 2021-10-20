@@ -21,6 +21,7 @@
   justify-content: center;
   align-items: center;
   font-size: 10rem;
+  animation: 0.5s ease-in-out forwards;
 }
 
 .current-date {
@@ -30,6 +31,7 @@
   justify-content: center;
   align-items: center;
   font-size: 4rem;
+  animation: 0.5s ease-in-out forwards;
 }
 .greetings {
   display: flex;
@@ -38,6 +40,7 @@
   justify-content: center;
   align-items: center;
   font-size: 6rem;
+  animation: 0.5s ease-in-out forwards;
 }
 .current-date__date {
   margin-left: 10px;
@@ -104,4 +107,20 @@
 .slide_prev:active,
 .slide_next:active {
   transform: scale(0.95);
+}
+.invisible {
+  animation-name: changeOpasity;
+  z-index: -1;
+}
+.visible {
+  animation-name: changeOpasity;
+  animation-direction: reverse;
+}
+@keyframes changeOpasity {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
