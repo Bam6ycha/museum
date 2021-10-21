@@ -1,0 +1,562 @@
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:0.35em 0.75em 0.625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}.ibg{background-position:center;object-fit:cover;background-repeat:no-repeat;position:relative}.ibg img{animation:1s ease-in;width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1}html{width:100%;max-width:100%;overflow-x:hidden}body{width:100%;max-width:100%;height:100vh;overflow:hidden;font-family:Staatliches, sans-serif;font-weight:400;color:white;font-size:22px;position:relative}.container{width:100%;height:100%;max-width:100%;overflow:hidden;margin:0 auto;display:flex;flex-direction:column;position:absolute;top:0;left:0;z-index:-1;filter:brightness(0.8);animation:3s ease-in-out;background-color:black}.show{animation-name:disapear;animation-direction:reverse}.hide{animation-name:disapear}@keyframes disapear{from{filter:brightness(0.8)}to{filter:brightness(0)}}.header{width:100%;max-width:100%;margin:0 auto;height:25%}.header-container{display:flex;box-sizing:content-box;padding:15px 15px;align-items:center;justify-content:space-between}.header-audio-player{display:flex;flex-direction:column}.header-audio-player__controllPanel{display:flex;column-gap:3%;justify-content:flex-start;align-items:center;margin-bottom:20px}.header-audio-player__buttonPrev,.header-audio-player__buttonNext{min-width:30px;min-height:30px;background-color:transparent;border-style:none;border-radius:50%;cursor:pointer;animation:0.5s ease-in forwards}.header-audio-player__buttonPrev{background:url(.././img/prev.eb72570c53e6f1db73a0.svg) center no-repeat;background-size:100%}.header-audio-player__buttonNext{background:url(.././img/next.827ac099ee6909e6267e.svg) center no-repeat;background-size:100%}.header-audio-player__buttonPlay{min-width:50px;min-height:50px;background:url(.././img/play.13a4572d442258d61953.svg) center no-repeat;background-size:100%;border-style:none;border-radius:50%;cursor:pointer;animation:0.5s ease-in forwards}.header-audio-player__buttonPause{min-width:50px;min-height:50px;background:url(.././img/pause.cd3a49c1b4a9552744d8.svg) center no-repeat;background-size:100%;border-style:none;border-radius:50%;cursor:pointer;animation:appears 0.2s ease-in}@keyframes appears{from{transform:scale(0.8)}50%{transform:scale(1.1)}to{transform:scale(1)}}.header-audio-player__buttonPlay:hover,.header-audio-player__buttonNext:hover,.header-audio-player__buttonPrev:hover,.header-audio-player__playSmall:hover{box-shadow:0px 0px 10px white}.header-audio-player__buttonPlay:active,.header-audio-player__buttonNext:active,.header-audio-player__buttonPrev:active,.header-audio-player__playSmall:active{box-shadow:0px 0px 15px white;transform:scale(0.98)}.header-audio-player__playSmall{width:15px;height:15px;background:url(.././img/play.13a4572d442258d61953.svg) center no-repeat;background-color:transparent;background-size:contain;border-radius:50%;border-style:none;margin-right:10px;cursor:pointer}.header-audio-player__pauseSmall{width:15px;height:15px;background:url(.././img/pause.cd3a49c1b4a9552744d8.svg) center no-repeat;background-color:transparent;background-size:contain;border-radius:50%;border-style:none;margin-right:10px;cursor:pointer;animation:appears 1s ease-in}.header-audio-player__playList{margin-bottom:3px;cursor:pointer;max-width:270px;animation:0.5s ease-in-out forwards}.invisible{animation-name:changeOpasity}.visible{animation-name:changeOpasity;animation-direction:reverse}@keyframes changeOpasity{from{opacity:1}to{opacity:0}}._container{width:100%;max-width:100%;overflow:hidden;margin:0 auto;display:flex;flex-wrap:wrap;row-gap:15px;font-size:2rem;justify-content:center;align-items:center;height:50%;max-height:75%}.current-time{display:flex;flex-wrap:wrap;width:100%;justify-content:center;align-items:center;font-size:10rem;animation:0.5s ease-in-out forwards}.current-date{display:flex;flex-wrap:wrap;width:100%;justify-content:center;align-items:center;font-size:4rem;animation:0.5s ease-in-out forwards}.greetings{display:flex;width:100%;justify-content:center;align-items:center;font-size:6rem;animation:0.5s ease-in-out forwards}.current-date__date{margin-left:10px}.current-date__month{margin-left:10px}.name{margin:10px;width:25%;font-size:4rem;text-align:center;color:rgba(255,255,255,0.4);border:0;border-bottom:1px solid #eee;color:#eee;background-color:transparent}.name:focus{border-color:transparent;border-bottom:1px solid #eee;box-shadow:inset 0 0 10px white;border-radius:10px;color:#eee;text-align:left}.current-time__seconds{width:10%}@media (max-width: 1475px){.name{padding:5px;font-size:3.5rem}}@media (max-width: 1200px){.name{font-size:3rem;padding:5px;min-width:300px}}.slide_prev,.slide_next{background-color:transparent;border-color:transparent;width:50px;height:50px;position:absolute;top:50%;cursor:pointer}.slide_prev{background:url(.././img/slider_prev.997f38354e38ffc0bb6a.svg) center no-repeat;background-size:cover;left:2%}.slide_next{background:url(.././img/slider_next.a48839bebf91cf694589.svg) center no-repeat;background-size:cover;right:2%}.slide_prev:active,.slide_next:active{transform:scale(0.95)}.invisible{animation-name:changeOpasity;z-index:-1}.visible{animation-name:changeOpasity;animation-direction:reverse}@keyframes changeOpasity{from{opacity:1}to{opacity:0}}@media (max-width: 1100px){.greetings{flex-wrap:wrap}.current-time{font-size:9rem}}@media (max-width: 900px){.current-time{font-size:8rem}}@media (max-width: 768px){.current-time{font-size:7rem}.greetings{font-size:5rem}.current-date{font-size:3rem}}@media (max-width: 590px){._container{row-gap:0;height:32%;margin-top:180px}.current-time{font-size:4rem}.greetings{font-size:4rem}}@media (max-width: 376px){body{overflow-y:auto}.slide_next,.slide_prev{display:none}._container{margin-top:250px;height:60%}.greetings{font-size:3rem}}@media (max-width: 320px){._container{margin-top:348px;height:55%}.greetings{font-size:2.7rem}}.qutotes-day{display:flex;flex-direction:column;width:100%;margin:0 auto;justify-content:center;align-items:center;height:25%;min-height:10%;animation:0.5s ease-in-out forwards}.reload{background:url(.././img/reload.769d136287ab5a7ede73.svg) center no-repeat;background-size:89%;width:50px;height:50px;background-color:transparent;border-radius:50%;border-color:transparent;cursor:pointer}.reload:active{transform:scale(0.98)}.quote{padding:0 15px}@media (max-width: 590px){.qutotes-day{height:10%}}@media (max-width: 376px){.qutotes-day{height:20%;overflow-y:scroll}}@media (max-width: 320px){.qutotes-day{height:29%;overflow-y:scroll}}.current-time span:nth-child(4){animation:blink 1s ease-in-out infinite}@keyframes blink{from{opacity:1}to{opacity:0}}.header-weather{display:flex;flex-direction:column;max-width:15%;animation:0.5s ease-in-out forwards}.city{width:85%;font-size:2rem;text-align:center;color:rgba(255,255,255,0.4);border:0;border-bottom:1px solid #eee;color:#eee;background-color:transparent}.city:focus{border-color:transparent;border-bottom:1px solid #eee;box-shadow:inset 0 0 10px white;border-radius:10px;color:#eee}.weather-icon{width:100%;height:100%}.weather-description{font-size:inherit;font-family:inherit;text-transform:capitalize}.header-audio-player__songInfo{display:flex;flex-direction:column;position:relative;animation:0.5s ease-in-out forwards}.linearGradient{position:absolute;max-width:300px;width:0%;background-color:tomato;z-index:2;height:5px;border-radius:10px;top:85%;left:0;animation:0.5s ease-in-out forwards}.progressBar{width:300px;height:5px;border:1px solid white;border-radius:10px;cursor:pointer;position:relative;z-index:3;animation:0.5s ease-in-out forwards}.duration{width:320px;animation:0.5s ease-in-out forwards}.header-audio-player__songName{min-height:30px;animation:0.5s ease-in-out forwards}.sound{min-width:30px;min-height:30px;background:url(.././img/sound.1483c324182ba1a96d2d.svg) center no-repeat;background-size:100%;border:none;animation:0.5s ease-in-out forwards;cursor:pointer}.mute{min-width:30px;min-height:30px;background:url(.././img/mute.474c7b07e54020d45803.svg) center no-repeat;background-size:100%;border:none;animation:change 0.2s ease-in;cursor:pointer}@keyframes change{from{transform:scale(1.1)}50%{transform:scale(0.89)}to{transform:scale(1)}}.soundBar{cursor:pointer;animation:0.5s ease-in-out forwards}.currentMinute,.currentSecond{min-width:26px;display:inline-block}.invisible{animation-name:changeOpasity}.visible{animation-name:changeOpasity;animation-direction:reverse}@keyframes changeOpasity{from{opacity:1}to{opacity:0}}@media (max-width: 1200px){.duration,.sound,.soundBar{display:none}}@media (max-width: 730px){.header-audio-player__songName,.progressBar,.linearGradient{display:none}}@media (max-width: 590px){.header-audio-player,.header-weather{width:100%}}.settings{min-width:40px;min-height:40px;position:absolute;left:3%;bottom:5%;background:url(.././img/codewheel.1016ec53836fe66a85a5.svg) center no-repeat;background-size:cover}.settings::after{content:"";width:100%;height:200%;position:absolute;top:-100%}.settings:hover{animation:rotate 0.5s ease-in-out 1;cursor:pointer}@keyframes rotate{from{transform:rotate(0)}50%{transform:rotate(180deg)}to{transform:rotate(0)}}.settings:active{animation:scale 0.2s ease-in-out}@keyframes scale{from{transform:scale(1)}50%{transform:scale(0.89)}to{transform:scale(1)}}.settings-container-wrapper{position:absolute;top:0;left:-100%;z-index:10;height:100%;width:300px;background-color:rgba(0,0,0,0.7);border-radius:10px;padding:10px;display:flex;flex-direction:column;row-gap:10px;transition:all 0.3s ease-in-out;transform:translate(-100%, 0);overflow-y:auto}.settings-container-wrapper.toggle{left:0;transform:translate(0);z-index:1000}.settings-container{display:flex;align-items:center;justify-content:space-between}.on{flex:0 0 23%;border-radius:10px}.off{flex:0 0 23%;border-radius:10px}.settings-container__description{flex:1 0 50%}.on:hover{color:tomato;cursor:pointer}.off:hover{color:tomato;cursor:pointer}.en{flex:0 0 23%;border-radius:10px}.ru{flex:0 0 23%;border-radius:10px}.en:hover,.ru:hover{color:tomato;cursor:pointer}.active{color:tomato}.turnOn{color:goldenrod}.turnOff{transform:scale(0.8);background-color:darkgrey}#source{border-radius:10px;outline:none}.settings-container__pisctureAPI{display:flex;flex-wrap:wrap}.sourceContainer{display:flex;flex-wrap:wrap;flex:0 0 100%}.sourceButton{border-radius:10px}.sourceButton:hover{cursor:pointer;color:tomato}@media (max-width: 376px){.settings{bottom:93%;left:85%}.settings-container-wrapper{top:65px}}@media (max-width: 320px){.settings{bottom:91%;left:85%}.settings-container-wrapper{top:65px}}.footer{position:absolute;bottom:0;width:100%;height:4%;background-color:wheat;opacity:0.7;z-index:3;left:0}.year{font-size:0.9em;color:black}.footer-container{display:flex;justify-content:space-between;align-items:center;box-sizing:content-box;padding:0 15px}.gitHubLink{background:url(.././img/github.0807ab790d3dfa56f4eb.png) center no-repeat;min-width:50px;min-height:35px;width:50px;height:38px;position:relative;z-index:10}.rsScgoolLogo{background:url(.././img/rs.ad178c0df28bc133be34.svg) center no-repeat;background-size:contain;width:100px;height:38px}button{padding:0}@media (max-width: 376px){.footer{bottom:-50%}.year{font-size:0.6rem}}@media (max-width: 320px){.footer{bottom:-80%;height:7%}}.searchform{position:absolute;bottom:75%;right:35%;z-index:2;width:30%;animation:0.5s ease-in forwards}.invisible{animation-name:changeOpasity}.visible{animation-name:changeOpasity;animation-direction:reverse}@keyframes changeOpasity{from{opacity:1}to{opacity:0}}.form-control{margin:10px;width:100%;min-width:100%;font-size:4rem;text-align:center;color:rgba(255,255,255,0.4);border:0;border-bottom:1px solid #eee;color:#eee;background-color:transparent}.form-control:focus{border-color:transparent;border-bottom:1px solid #eee;box-shadow:inset 0 0 10px white;border-radius:10px;color:#eee;outline:none}.form-control:placeholder-shown{border-color:transparent;border-bottom:1px solid #eee;box-shadow:inset 0 0 10px white;border-radius:10px;color:#eee}.form-control:checked{display:none}.button{visibility:hidden}@media (max-width: 1475px){.form-control{font-size:3.5rem}}@media (max-width: 1200px){.form-control{font-size:3rem}}@media (max-width: 1000px){.form-control{font-size:2.5rem}}@media (max-width: 590px){.searchform{bottom:54%;width:97%;right:3.5%}.form-control{width:100%}.header-weather{max-width:100%}.city{width:100%}}@media (max-width: 376px){.searchform{bottom:39%;width:97%;right:4.6%}}@media (max-width: 320px){.searchform{bottom:10%}}@media (max-width: 590px){.header-container{flex-direction:column;justify-content:center}}@media (max-width: 376px){.container{height:151vh}}@media (max-width: 320px){.container{height:180vh}}
+
+/*!
+ *  owfont-regular 1.0.0 by Deniz Fuchidzhiev - http://websygen.com
+ *  License - font: SIL OFL 1.1, css: MIT License
+ */
+/* FONT PATH
+ * -------------------------- */
+@font-face {
+  font-family: "owfont";
+  src: url(.././img/owfont-regular.77585afbae07886acc4e.eot);
+  src: url(.././img/owfont-regular.77585afbae07886acc4e.eot?#iefix&v=1.0.0)
+      format("embedded-opentype"),
+    url(.././img/owfont-regular.165d3deef009efd0c531.woff) format("woff"),
+    url(.././img/owfont-regular.3d46599b045b6a14f599.ttf) format("truetype"),
+    url(.././img/owfont-regular.096a225d79281b53be79.svg#owf-regular) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+.owf {
+  display: inline-block;
+  font: normal normal normal 14px/1 owfont;
+  font-size: 4rem;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+/* makes the font 33% larger relative to the icon container */
+.owf-lg {
+  font-size: 1.33333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.owf-2x {
+  font-size: 2em;
+}
+.owf-3x {
+  font-size: 3em;
+}
+.owf-4x {
+  font-size: 4em;
+}
+.owf-5x {
+  font-size: 5em;
+}
+.owf-fw {
+  width: 1.28571429em;
+  text-align: center;
+}
+.owf-ul {
+  padding-left: 0;
+  margin-left: 2.14285714em;
+  list-style-type: none;
+}
+.owf-ul > li {
+  position: relative;
+}
+.owf-li {
+  position: absolute;
+  left: -2.14285714em;
+  width: 2.14285714em;
+  top: 0.14285714em;
+  text-align: center;
+}
+.owf-li.owf-lg {
+  left: -1.85714286em;
+}
+.owf-border {
+  padding: 0.2em 0.25em 0.15em;
+  border: solid 0.08em #eeeeee;
+  border-radius: 0.1em;
+}
+.owf-pull-right {
+  float: right;
+}
+.owf-pull-left {
+  float: left;
+}
+.owf.owf-pull-left {
+  margin-right: 0.3em;
+}
+.owf.owf-pull-right {
+  margin-left: 0.3em;
+}
+
+/* owfont uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+
+/*   Weather Condition Codes    */
+
+/*   Thunderstorm - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+/* thunderstorm with light rain */
+.owf-200:before,
+.owf-200-d:before,
+.owf-200-n:before {
+  content: "\EB28";
+}
+/* thunderstorm with rain */
+.owf-201:before,
+.owf-201-d:before,
+.owf-201-n:before {
+  content: "\EB29";
+}
+/* thunderstorm with heavy rain */
+.owf-202:before,
+.owf-202-d:before,
+.owf-202-n:before {
+  content: "\EB2A";
+}
+/*  light thunderstorm  */
+.owf-210:before,
+.owf-210-d:before,
+.owf-210-n:before {
+  content: "\EB32";
+}
+/*  thunderstorm  */
+.owf-211:before,
+.owf-211-d:before,
+.owf-211-n:before {
+  content: "\EB33";
+}
+/*   heavy thunderstorm   */
+.owf-212:before,
+.owf-212-d:before,
+.owf-212-n:before {
+  content: "\EB34";
+}
+/*   ragged thunderstorm   */
+.owf-221:before,
+.owf-221-d:before,
+.owf-221-n:before {
+  content: "\EB3D";
+}
+/*  thunderstorm with light drizzle    */
+.owf-230:before,
+.owf-230-d:before,
+.owf-230-n:before {
+  content: "\EB46";
+}
+/*  thunderstorm with drizzle     */
+.owf-231:before,
+.owf-231-d:before,
+.owf-231-n:before {
+  content: "\EB47";
+}
+/* thunderstorm with heavy drizzle     */
+.owf-232:before,
+.owf-232-d:before,
+.owf-232-n:before {
+  content: "\EB48";
+}
+
+/*   Drizzle - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+/*  light intensity drizzle */
+.owf-300:before,
+.owf-300-d:before,
+.owf-300-n:before {
+  content: "\EB8C";
+}
+/*  drizzle */
+.owf-301:before,
+.owf-301-d:before,
+.owf-301-n:before {
+  content: "\EB8D";
+}
+/*  heavy intensity drizzle  */
+.owf-302:before,
+.owf-302-d:before,
+.owf-302-n:before {
+  content: "\EB8E";
+}
+/*   light intensity drizzle rain  */
+.owf-310:before,
+.owf-310-d:before,
+.owf-310-n:before {
+  content: "\EB96";
+}
+/*  drizzle rain  */
+.owf-311:before,
+.owf-311-d:before,
+.owf-311-n:before {
+  content: "\EB97";
+}
+/* heavy intensity drizzle rain */
+.owf-312:before,
+.owf-312-d:before,
+.owf-312-n:before {
+  content: "\EB98";
+}
+/* shower rain and drizzle  */
+.owf-313:before,
+.owf-313-d:before,
+.owf-313-n:before {
+  content: "\EB99";
+}
+/* heavy shower rain and drizzle*/
+.owf-314:before,
+.owf-314-d:before,
+.owf-314-n:before {
+  content: "\EB9A";
+}
+/* shower drizzle */
+.owf-321:before,
+.owf-321-d:before,
+.owf-321-n:before {
+  content: "\EBA1";
+}
+
+/*   Rain - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+/* light rain  */
+.owf-500:before,
+.owf-500-d:before,
+.owf-500-n:before {
+  content: "\EC54";
+}
+/* moderate rain  */
+.owf-501:before,
+.owf-501-d:before,
+.owf-501-n:before {
+  content: "\EC55";
+}
+/* heavy intensity rain  */
+.owf-502:before,
+.owf-502-d:before,
+.owf-502-n:before {
+  content: "\EC56";
+}
+/* very heavy rain   */
+.owf-503:before,
+.owf-503-d:before,
+.owf-503-n:before {
+  content: "\EC57";
+}
+/* extreme rain    */
+.owf-504:before,
+.owf-504-d:before,
+.owf-504-n:before {
+  content: "\EC58";
+}
+/* freezing rain    */
+.owf-511:before,
+.owf-511-d:before,
+.owf-511-n:before {
+  content: "\EC5F";
+}
+/*  light intensity shower rain    */
+.owf-520:before,
+.owf-520-d:before,
+.owf-520-n:before {
+  content: "\EC68";
+}
+/* shower rain  */
+.owf-521:before,
+.owf-521-d:before,
+.owf-521-n:before {
+  content: "\EC69";
+}
+/*  heavy intensity shower rain  */
+.owf-522:before,
+.owf-522-d:before,
+.owf-522-n:before {
+  content: "\EC6A";
+}
+/* ragged shower rain  */
+.owf-531:before,
+.owf-531-d:before,
+.owf-531-n:before {
+  content: "\EC73";
+}
+
+/*   Snow - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+/* light snow  */
+.owf-600:before,
+.owf-600-d:before,
+.owf-600-n:before {
+  content: "\ECB8";
+}
+/*  snow  */
+.owf-601:before,
+.owf-601-d:before,
+.owf-601-n:before {
+  content: "\ECB9";
+}
+/*   heavy snow   */
+.owf-602:before,
+.owf-602-d:before,
+.owf-602-n:before {
+  content: "\ECBA";
+}
+/*  sleet  */
+.owf-611:before,
+.owf-611-d:before,
+.owf-611-n:before {
+  content: "\ECC3";
+}
+/*   shower sleet */
+.owf-612:before,
+.owf-612-d:before,
+.owf-612-n:before {
+  content: "\ECC4";
+}
+/* light rain and snow */
+.owf-615:before,
+.owf-615-d:before,
+.owf-615-n:before {
+  content: "\ECC7";
+}
+/* rain and snow  */
+.owf-616:before,
+.owf-616-d:before,
+.owf-616-n:before {
+  content: "\ECC8";
+}
+/* light shower snow  */
+.owf-620:before,
+.owf-620-d:before,
+.owf-620-n:before {
+  content: "\ECCC";
+}
+/* shower snow  */
+.owf-621:before,
+.owf-621-d:before,
+.owf-621-n:before {
+  content: "\ECCD";
+}
+/* heavy shower snow  */
+.owf-622:before,
+.owf-622-d:before,
+.owf-622-n:before {
+  content: "\ECCE";
+}
+
+/*   Atmosphere - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+/* mist */
+.owf-701:before,
+.owf-701-d:before,
+.owf-701-n:before {
+  content: "\ED1D";
+}
+/* smoke */
+.owf-711:before,
+.owf-711-d:before,
+.owf-711-n:before {
+  content: "\ED27";
+}
+/* haze */
+.owf-721:before,
+.owf-721-d:before,
+.owf-721-n:before {
+  content: "\ED31";
+}
+/* Sand/Dust Whirls */
+.owf-731:before,
+.owf-731-d:before,
+.owf-731-n:before {
+  content: "\ED3B";
+}
+/* Fog */
+.owf-741:before,
+.owf-741-d:before,
+.owf-741-n:before {
+  content: "\ED45";
+}
+/* sand */
+.owf-751:before,
+.owf-751-d:before,
+.owf-751-n:before {
+  content: "\ED4F";
+}
+/* dust */
+.owf-761:before,
+.owf-761-d:before,
+.owf-761-n:before {
+  content: "\ED59";
+}
+/*  VOLCANIC ASH  */
+.owf-762:before,
+.owf-762-d:before,
+.owf-762-n:before {
+  content: "\ED5A";
+}
+/* SQUALLS */
+.owf-771:before,
+.owf-771-d:before,
+.owf-771-n:before {
+  content: "\ED63";
+}
+/* TORNADO */
+.owf-781:before,
+.owf-781-d:before,
+.owf-781-n:before {
+  content: "\ED6D";
+}
+
+/*   Clouds - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+/*  sky is clear  */ /*  Calm  */
+.owf-800:before,
+.owf-800-d:before,
+.owf-951:before,
+.owf-951-d:before {
+  content: "\ED80";
+}
+.owf-800-n:before,
+.owf-951-n:before {
+  content: "\F168";
+}
+/*  few clouds   */
+.owf-801:before,
+.owf-801-d:before {
+  content: "\ED81";
+}
+.owf-801-n:before {
+  content: "\F169";
+}
+/* scattered clouds */
+.owf-802:before,
+.owf-802-d:before {
+  content: "\ED82";
+}
+.owf-802-n:before {
+  content: "\F16A";
+}
+/* broken clouds  */
+.owf-803:before,
+.owf-803-d:before,
+.owf-803-n:before {
+  content: "\ED83";
+}
+/* overcast clouds  */
+.owf-804:before,
+.owf-804-d:before,
+.owf-804-n:before {
+  content: "\ED84";
+}
+
+/*   Extreme - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+/* tornado  */
+.owf-900:before,
+.owf-900-d:before,
+.owf-900-n:before {
+  content: "\EDE4";
+}
+/*  tropical storm  */
+.owf-901:before,
+.owf-901-d:before,
+.owf-901-n:before {
+  content: "\EDE5";
+}
+/* hurricane */
+.owf-902:before,
+.owf-902-d:before,
+.owf-902-n:before {
+  content: "\EDE6";
+}
+/* cold */
+.owf-903:before,
+.owf-903-d:before,
+.owf-903-n:before {
+  content: "\EDE7";
+}
+/* hot */
+.owf-904:before,
+.owf-904-d:before,
+.owf-904-n:before {
+  content: "\EDE8";
+}
+/* windy */
+.owf-905:before,
+.owf-905-d:before,
+.owf-905-n:before {
+  content: "\EDE9";
+}
+/* hail */
+.owf-906:before,
+.owf-906-d:before,
+.owf-906-n:before {
+  content: "\EDEA";
+}
+
+/*   Additional - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+/* Setting */
+.owf-950:before,
+.owf-950-d:before,
+.owf-950-n:before {
+  content: "\EE16";
+}
+/*  Light breeze  */
+.owf-952:before,
+.owf-952-d:before,
+.owf-952-n:before {
+  content: "\EE18";
+}
+/*  Gentle Breeze  */
+.owf-953:before,
+.owf-953-d:before,
+.owf-953-n:before {
+  content: "\EE19";
+}
+/*  Moderate breeze  */
+.owf-954:before,
+.owf-954-d:before,
+.owf-954-n:before {
+  content: "\EE1A";
+}
+/* Fresh Breeze  */
+.owf-955:before,
+.owf-955-d:before,
+.owf-955-n:before {
+  content: "\EE1B";
+}
+/* Strong  Breeze  */
+.owf-956:before,
+.owf-956-d:before,
+.owf-956-n:before {
+  content: "\EE1C";
+}
+/* High wind, near gale  */
+.owf-957:before,
+.owf-957-d:before,
+.owf-957-n:before {
+  content: "\EE1D";
+}
+/* Gale */
+.owf-958:before,
+.owf-958-d:before,
+.owf-958-n:before {
+  content: "\EE1E";
+}
+/*  Severe Gale  */
+.owf-959:before,
+.owf-959-d:before,
+.owf-959-n:before {
+  content: "\EE1F";
+}
+/* Storm */
+.owf-960:before,
+.owf-960-d:before,
+.owf-960-n:before {
+  content: "\EE20";
+}
+/*  Violent Storm  */
+.owf-961:before,
+.owf-961-d:before,
+.owf-961-n:before {
+  content: "\EE21";
+}
+/* Hurricane */
+.owf-962:before,
+.owf-962-d:before,
+.owf-962-n:before {
+  content: "\EE22";
+}
+
