@@ -19,8 +19,19 @@ function hideShowDeluxe() {
   const duration = document.querySelector(".duration") as HTMLDivElement;
   const sound = document.querySelector(".sound") as HTMLDivElement;
   const soundBar = document.querySelector(".soundBar") as HTMLInputElement;
-
+  const prev = document.querySelector(
+    "button.header-audio-player__buttonPrev.header-audio-player_borderWhite"
+  ) as HTMLButtonElement;
+  const playButtonBig = document.querySelector(
+    "button.header-audio-player__buttonPlay.header-audio-player_borderWhite"
+  ) as HTMLButtonElement;
+  const next = document.querySelector(
+    "button.header-audio-player__buttonNext.header-audio-player_borderWhite"
+  ) as HTMLButtonElement;
   const elementsOfPlayer = [
+    prev,
+    playButtonBig,
+    next,
     songName,
     progressBarContainer,
     progressBarLinearGradient,

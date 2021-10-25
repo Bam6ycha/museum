@@ -90,3 +90,25 @@
     opacity: 0;
   }
 }
+
+@media (max-width: 1200px) {
+  .duration,
+  .sound,
+  .soundBar {
+    display: none;
+  }
+}
+@media (max-width: 730px) {
+  .header-audio-player__songName,
+  .progressBar,
+  .linearGradient {
+    display: none;
+  }
+}
+
+@media (max-width: 590px) {
+  .header-audio-player,
+  .header-weather {
+    width: 100%;
+  }
+}

@@ -1,9 +1,7 @@
 import toggle from "./utulyties";
 import { OpacityValues } from "./enums";
 function showHideSearchPannel() {
-  const searcPannel = document.querySelector(
-    ".form-control"
-  ) as HTMLInputElement;
+  const searcPannel = document.querySelector(".searchform") as HTMLInputElement;
   const searchPannelOn = document.querySelector(
     ".settings-container__searchPannel > button.on"
   ) as HTMLButtonElement;

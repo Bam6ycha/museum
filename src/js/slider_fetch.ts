@@ -1,5 +1,3 @@
-import { setDate } from "./electronic-clock";
-
 let currentTimeOfDay: string;
 function getCurrentTimeOfDay() {
   const currentHour = new Date().getHours();
@@ -44,7 +42,7 @@ if (currentSource === "Unsplash") {
       );
       const result = await response.json();
       const collection = await result;
-      console.log(response);
+
       const randomPicture = (randomPictureIndex = Math.floor(
         1 - 0.5 + Math.random() * (collection.results.length - 1 - 1 + 1)
       ));
@@ -115,11 +113,13 @@ if (currentSource === "Unsplash") {
 if (currentSource === "GitHub") {
   function getUrl(): string {
     let indexToString: string = "";
+
     if (randomPictureIndex < 10) {
       indexToString = `0${randomPictureIndex}`;
     } else {
       indexToString = `${randomPictureIndex}`;
     }
+    console.log(indexToString);
     return `https://raw.githubusercontent.com/Bam6ycha/stage1-tasks/assets/images/${getCurrentTimeOfDay()}/${indexToString}.jpg`;
   }
 
@@ -131,12 +131,10 @@ if (currentSource === "GitHub") {
         0.5 +
         Math.random() * (maxPictureIndex - minPictureIndex + 1)
     );
-
-    return randomPictureIndex === 0 || 21
-      ? (randomPictureIndex = 1)
-      : randomPictureIndex;
+    console.log(randomPictureIndex);
+    return randomPictureIndex;
   }
-
+  getRandomPictureIndex();
   async function getImg() {
     const response = await fetch(getUrl(), {
       method: "GET",
@@ -158,6 +156,7 @@ if (currentSource === "GitHub") {
 
     myImage.classList.add("ibg");
   }
+
   document.addEventListener("DOMContentLoaded", function () {
     localStorage.getItem("source") ?? "GitHub";
     getRandomPictureIndex();

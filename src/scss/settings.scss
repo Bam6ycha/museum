@@ -2,8 +2,8 @@
   min-width: 40px;
   min-height: 40px;
   position: absolute;
-  left: 2%;
-  bottom: 2%;
+  left: 3%;
+  bottom: 5%;
   background: url(../assets/codewheel.svg) center no-repeat;
   background-size: cover;
 }
@@ -137,4 +137,22 @@
 .sourceButton:hover {
   cursor: pointer;
   color: tomato;
+}
+@media (max-width: 376px) {
+  .settings {
+    bottom: 93%;
+    left: 85%;
+  }
+  .settings-container-wrapper {
+    top: 65px;
+  }
+}
+@media (max-width: 320px) {
+  .settings {
+    bottom: 91%;
+    left: 85%;
+  }
+  .settings-container-wrapper {
+    top: 65px;
+  }
 }

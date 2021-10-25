@@ -1,7 +1,7 @@
 import { OpacityValues } from "./enums";
 
 export default function toggle(
-  elements: HTMLDivElement[],
+  elements: any[],
   turnOnButton: HTMLButtonElement,
   turnOffButton: HTMLButtonElement,
   blockName: string

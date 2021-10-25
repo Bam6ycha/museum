@@ -11,15 +11,11 @@ function setUser() {
 function changePlaceholder() {
   input.placeholder = currentPlaceholder;
 }
-function getUser() {
-  const value: string | null = localStorage.getItem("user");
-  if (value === null) return;
-  input.value = value;
-}
 
 input.addEventListener("blur", setUser);
 
-document.addEventListener("DOMContentLoaded", () => {
-  setUser();
+window.addEventListener("DOMContentLoaded", () => {
+  const user = localStorage.getItem("user") as string;
+  input.value = user;
   changePlaceholder();
 });

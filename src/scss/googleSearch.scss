@@ -4,13 +4,29 @@
   right: 35%;
   z-index: 2;
   width: 30%;
+  animation: 0.5s ease-in forwards;
 }
 
+.invisible {
+  animation-name: changeOpasity;
+}
+.visible {
+  animation-name: changeOpasity;
+  animation-direction: reverse;
+}
+@keyframes changeOpasity {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 .form-control {
   margin: 10px;
   width: 100%;
   min-width: 100%;
-  animation: 0.5s ease-in forwards;
+
   font-size: 4rem;
   text-align: center;
   color: rgba($color: rgba(255, 255, 255, 0.59), $alpha: 0.4);
@@ -39,4 +55,50 @@
 }
 .button {
   visibility: hidden;
+}
+@media (max-width: 1475px) {
+  .form-control {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .form-control {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 1000px) {
+  .form-control {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 590px) {
+  .searchform {
+    bottom: 54%;
+    width: 97%;
+    right: 3.5%;
+  }
+  .form-control {
+    width: 100%;
+  }
+  .header-weather {
+    max-width: 100%;
+  }
+  .city {
+    width: 100%;
+  }
+}
+
+@media (max-width: 376px) {
+  .searchform {
+    bottom: 39%;
+    width: 97%;
+    right: 4.6%;
+  }
+}
+@media (max-width: 320px) {
+  .searchform {
+    bottom: 10%;
+  }
 }
