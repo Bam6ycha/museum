@@ -37,11 +37,11 @@ const api = () => {
       weatherIcon.classList.add(`owf-${result.weather[0].id}`);
       temperature.textContent = `${Math.ceil(result.main.temp)}°C`;
       weatherDescription.textContent = result.weather[0].description;
-      wind.textContent = `${language === "ru" ? "Ветер" : "Wind"} ${
+      wind.textContent = `${language === "ru" ? "Влажность" : "Humidity"} ${
         result.main.humidity
       }%`;
       humidity.textContent = `${
-        language === "ru" ? "Влажность" : "Humidity"
+        language === "ru" ? "Ветер" : "Wind"
       } ${Math.ceil(result.wind.speed)} ${language === "ru" ? "м/c" : "m/s"}`;
     } catch (err: any) {
       let cityDependsOnLanguage;
