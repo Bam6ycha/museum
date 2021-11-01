@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-wrapper">
+        <div class="header-wrapper__logo">
+          <img src="./assets/logo.jpg" alt="logo" />
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="main-content">
+        <div class="main-content-wrapper">
+          <div class="artist-quiz">
+            <div class="artist-quiz__imgContainer">
+              <picture class="artist-quiz__img">
+                <source
+                  srcset="./assets/artists-quiz_mobile_520px.jpg"
+                  media="(max-width:320px)"
+                />
+                <source
+                  srcset="./assets/artists-quiz_tab_768px.jpg"
+                  media="(max-width:768px)"
+                />
+                <source
+                  srcset="./assets/artists-quiz_desktop.jpg"
+                  media="(max-width:1024px)"
+                />
+                <img src="./assets/artists-quiz_mobile_520px.jpg" alt="" />
+              </picture>
+              <div class="artist-quiz__description">
+                <p class="artist-quiz__category artist-quiz__category_bold_red">
+                  ARTISTS
+                </p>
+                <p class="quiz">QUIZ</p>
+              </div>
+            </div>
+            <div class="artist-quiz__imgContainer">
+              <picture class="artist-quiz__img">
+                <source
+                  srcset="./assets/pictures-quiz_mobile_520px.jpg"
+                  media="(max-width:320px)"
+                />
+                <source
+                  srcset="./assets/pictures-quiz_tab_768px.jpg"
+                  media="(max-width:768px)"
+                />
+                <source
+                  srcset="./assets/pictures-quizd_desktop.jpg"
+                  type="image/jpg"
+                  media="(max-width:1024px)"
+                />
+                <img
+                  src="./assets/pictures-quiz_mobile_520px.jpg"
+                  alt="artist-quiz"
+                />
+              </picture>
+              <div class="artist-quiz__description">
+                <p class="artist-quiz__category artist-quiz__category_bold_red">
+                  PICTURE
+                </p>
+                <p class="quiz">QUIZ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <section class="footer-wrapper">
+          <div class="footer-settings">
+            <div class="footer-settings__img">
+              <img src="./assets/settings.svg" alt="settings" />
+            </div>
+            <div class="footer-settings__text footer-settings__text_white">
+              SETTINGS
+            </div>
+          </div>
+        </section>
+      </footer>
+      <section class="settings"></section>
+        <div class="settings-header">
+          <div class="settings-header-settings__logo">
+            <img src="./assets/logo.jpg" alt="logo" />
+          </div>
+          <div class="settings-header__text">SETTINGS</div>
+        </div>
+        <div class="settings-main">
+          <div class="settings-main-volume">
+            <div class="settings-main-volume__soundBAr">
+              <div class="settings-main-volume__soundLittle"></div>
+            </div>
+            <div class="settings-main-volume__description">VOLUME</div>
+          </div>
+          <div class="settings-main-timer">
+            <div class="settings-main-timer__clock">
+              <input type="checkbox" />
+              <div class="settings-main-timer__checkboxText">ON/OFF</div>
+              <div class="settings-main-clock__description">TIME GAME</div>
+            </div>
+          </div>
+          <div class="settings-footer"></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+.footer {
+  width: 100%;
+  overflow: hidden;
+  max-width: 100%;
+}
+.footer-wrapper {
+  width: 330px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-settings {
+  background-color: $cherry;
+  display: flex;
+  max-width: 150px;
+  max-height: 50px;
+}
+.footer-settings:active {
+  background-color: $activeGreen;
+}
+
+.footer-settings__text {
+  align-self: center;
+}
+.footer-settings__text_white {
+  color: white;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+
+  text-align: right;
+  text-transform: uppercase;
+}
