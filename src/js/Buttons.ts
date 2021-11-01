@@ -2,12 +2,12 @@ class Buttons {
   element: HTMLButtonElement;
   container: HTMLDivElement;
 
-  buttonClassName: string;
-  constructor(conteinerClassName: string, buttonClassName: string) {
+  // buttonClassName: string;
+  constructor(buttonClassName: string) {
     this.element = this.createButtonElement();
-    this.container = this.findNecessaryContainer(conteinerClassName);
-    this.addElementinContainer();
-    this.buttonClassName = this.addClassToButtonElement(buttonClassName);
+    this.container = this.findNecessaryContainer(buttonClassName);
+    // this.addElementinContainer();
+    // this.buttonClassName = this.addClassToButtonElement(buttonClassName);
   }
   createButtonElement() {
     return (this.element = document.createElement("button"));

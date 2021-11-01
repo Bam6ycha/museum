@@ -1,19 +1,24 @@
 import { Buttons } from "./Buttons";
 
 class ButtonsWithText extends Buttons {
-  buttonText: string;
-  constructor(
-    buttonText: string,
-    conteinerClassName: string,
-    buttonClassName: string
-  ) {
-    super(conteinerClassName, buttonClassName);
-    this.buttonText = this.addTextToButton(buttonText);
+  constructor(buttonClassName: string) {
+    super(buttonClassName);
   }
 
   addTextToButton(text: string) {
     return (this.element.textContent = `${text}`);
   }
+  createFullElement(
+    containerClassName: string,
+    buttonClassName: string,
+    buttonText: string
+  ) {
+    super.createButtonElement();
+    super.findNecessaryContainer(containerClassName);
+    super.addElementinContainer();
+    super.addClassToButtonElement(buttonClassName);
+    this.addTextToButton(buttonText);
+  }
 }
-
-export { ButtonsWithText };
+const buttonsCreator = new ButtonsWithText(".settings-footer");
+export { buttonsCreator };
