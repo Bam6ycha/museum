@@ -1,57 +1,35 @@
 .footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-
-  height: 4%;
-  background-color: wheat;
-  opacity: 0.7;
-  z-index: 3;
-  left: 0;
+  overflow: hidden;
+  max-width: 100%;
 }
-.year {
-  font-size: 0.9em;
-  color: black;
-}
-.footer-container {
+.footer-wrapper {
+  width: 330px;
+  max-width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  box-sizing: content-box;
-  padding: 0 15px;
+  justify-content: center;
 }
-.gitHubLink {
-  background: url(../assets/github.png) center no-repeat;
-
-  min-width: 50px;
-  min-height: 35px;
-  width: 50px;
-  height: 38px;
-  position: relative;
-  z-index: 10;
+.footer-settings {
+  background-color: $cherry;
+  display: flex;
+  max-width: 150px;
+  max-height: 50px;
 }
-.rsScgoolLogo {
-  background: url(../assets/rs.svg) center no-repeat;
-  background-size: contain;
-  width: 100px;
-  height: 38px;
-}
-button {
-  padding: 0;
+.footer-settings:active {
+  background-color: $activeGreen;
 }
 
-@media (max-width: 376px) {
-  .footer {
-    bottom: -50%;
-  }
-  .year {
-    font-size: 0.6rem;
-  }
+.footer-settings__text {
+  align-self: center;
 }
+.footer-settings__text_white {
+  color: white;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
 
-@media (max-width: 320px) {
-  .footer {
-    bottom: -80%;
-    height: 7%;
-  }
+  text-align: right;
+  text-transform: uppercase;
 }
