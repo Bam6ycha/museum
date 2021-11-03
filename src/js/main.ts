@@ -1,4 +1,4 @@
 import "../index.html";
 import "../scss/main.scss";
-import { creatingSettingsPage } from "./settings";
-creatingSettingsPage();
+import { createSettingsPage } from "./settings";
+createSettingsPage();

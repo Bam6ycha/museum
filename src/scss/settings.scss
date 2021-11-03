@@ -23,7 +23,19 @@
 .from-left {
   animation-name: left;
 }
-
+.settings-header__logo {
+  width: 100px;
+  height: 65px;
+  background: center no-repeat;
+}
+.settings-main__volume {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: center;
+  min-height: 150px;
+  background-color: white;
+}
 @keyframes left {
   from {
     left: -100;
@@ -76,4 +88,13 @@
 .volume-small:active,
 .settings-clock:active {
   transform: scale(0.95);
+}
+.settings-main__VolumeDescription_cherryCappytalize,
+.settings-main__TimerDescription_cherryCappytalize {
+  color: $cherry;
+  text-transform: capitalize;
+  font-size: 2rem;
+}
+.settings-main__checkBoxDescription_cherrySmall {
+  color: $cherry;
 }
