@@ -153,3 +153,24 @@
 .settings-main__checkboxContainer > input {
   display: block;
 }
+.settings-main__timer {
+  animation: 0.5s ease-in-out forwards;
+  outline: none;
+  text-align: center;
+}
+
+.invisible {
+  animation-name: changeOpasity;
+}
+.visible {
+  animation-name: changeOpasity;
+  animation-direction: reverse;
+}
+@keyframes changeOpasity {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

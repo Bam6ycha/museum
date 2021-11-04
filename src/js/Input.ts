@@ -76,4 +76,4 @@ const settingSoundBar = new Input("0", "100", "30", "0.1", "type", "range");
 
 const timerSteps = new Input("5", "30", "30", "5", "type", "number");
 
-export { checkbox, settingSoundBar, timerSteps };
+export { checkbox, settingSoundBar, timerSteps, Input };

@@ -4,7 +4,7 @@ import { ButtonWithText } from "./ButtonWithText";
 
 import { Container } from "./Container";
 
-import { checkbox, settingSoundBar } from "./Input";
+import { checkbox, settingSoundBar, timerSteps } from "./Input";
 
 function createSettingsPage() {
   const settingsPageContainer = new Container("settings");
@@ -66,7 +66,10 @@ function createSettingsPage() {
   settingsMainClockContainer.prepend(timerButton.element);
   const checkboxContainer = new Container("settings-main__checkboxContainer");
   settingsMainTimer.append(checkboxContainer.element);
-
+  const timer = timerSteps.element;
+  checkboxContainer.append(timer);
+  timerSteps.addClass("settings-main__timer");
+  timerSteps.addClass("invisible");
   checkboxContainer.prepend(checkbox.element);
 
   const checkboxDescription = new Container(
