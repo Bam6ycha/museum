@@ -1,64 +1,74 @@
+import { Button } from "./Button";
+
 import { ButtonWithText } from "./ButtonWithText";
-import { ButtonWithImg } from "./ButtonWithImg";
+
 import { Container } from "./Container";
-import { Input } from "./Input";
-import { insert } from "./Insert";
+
+import { checkbox, settingSoundBar } from "./Input";
+
 function createSettingsPage() {
   const settingsPageContainer = new Container("settings");
-  settingsPageContainer.addClassName("from-left");
   document.body.append(settingsPageContainer.element);
+  settingsPageContainer.addClassName("hidden");
   const settingsPageHeader = new Container("settings-header");
-  insert.prepend(settingsPageHeader.element);
+  settingsPageContainer.prepend(settingsPageHeader.element);
+
   const settingHeaderWrapper = new Container("settings-header__wrapper");
-  insert.prepend(settingHeaderWrapper.element);
+  settingsPageHeader.prepend(settingHeaderWrapper.element);
+
   const settingsHeaderLogo = new Container("settings-header__logo");
   settingsHeaderLogo.setBackgroundImg("../assets/logo.jpg");
-  insert.prepend(settingsHeaderLogo.element);
+  settingHeaderWrapper.prepend(settingsHeaderLogo.element);
+
+  const headerDescription = new Container("settings-header__description");
+  settingHeaderWrapper.append(headerDescription.element);
+  headerDescription.setText("SETTINGS");
+  headerDescription.addClassName("settings-header__description");
+
   const mainContainer = new Container("settings-main");
-  insert.append(mainContainer.element);
+  settingsPageContainer.append(mainContainer.element);
+
   const settingsMainVolume = new Container("settings-main__volume");
-  insert.prepend(settingsMainVolume.element);
+  mainContainer.prepend(settingsMainVolume.element);
+
   const settingsMainVolumeButtonContainer = new Container(
     "settings-main__volumeButtonContainer"
   );
-  insert.prepend(settingsMainVolumeButtonContainer.element);
-  const volumeBigButton = new ButtonWithImg(
-    "../assets/volume-on.svg",
-    "volume"
-  );
-  insert.append(volumeBigButton.element);
+  settingsMainVolume.prepend(settingsMainVolumeButtonContainer.element);
+  const volumeBigButton = new Button("volume");
+  settingsMainVolumeButtonContainer.append(volumeBigButton.element);
 
   const settingVolumeBarContainer = new Container("settings-main__soundBar");
-  insert.append(settingVolumeBarContainer.element);
-  const volumeSmallButton = new ButtonWithImg(
-    "../assets/volume-off.svg",
-    "volume-small"
-  );
-  insert.prepend(volumeSmallButton.element);
-  const settingSoundBar = new Input("0", "100", "30", "0.1", "type", "range");
-  insert.append(settingSoundBar.element);
+  settingsMainVolume.append(settingVolumeBarContainer.element);
+  const volumeSmallButton = new Button("volume-small");
+
+  settingVolumeBarContainer.prepend(volumeSmallButton.element);
+  const soundBar = settingSoundBar.element;
+
+  settingVolumeBarContainer.append(soundBar);
+  settingSoundBar.addClass("soundBar");
   const settingsMainDescription = new Container(
     "settings-main__VolumeDescription"
   );
-  insert.append(settingsMainDescription.element);
+  settingsMainVolume.append(settingsMainDescription.element);
   settingsMainDescription.setText("VOLUME");
   settingsMainDescription.addClassName(
     "settings-main__VolumeDescription_cherryCappytalize"
   );
 
   const settingsMainTimer = new Container("settings-main__Timer");
-  insert.append(settingsMainTimer.element);
+  mainContainer.append(settingsMainTimer.element);
   const settingsMainClockContainer = new Container(
     "settings-main__ClockContainer"
   );
-  insert.prepend(settingsMainClockContainer.element);
-  const timerButton = new ButtonWithImg(
-    "../assets/timer-picture.svg",
-    "settings-clock"
-  );
-  insert.append(timerButton.element);
-  const checkbox = new Input("", "", "", "", "type", "checkbox");
-  insert.append(checkbox.element);
+  settingsMainTimer.prepend(settingsMainClockContainer.element);
+  const timerButton = new Button("settings-clock");
+  settingsMainClockContainer.prepend(timerButton.element);
+  const checkboxContainer = new Container("settings-main__checkboxContainer");
+  settingsMainTimer.append(checkboxContainer.element);
+
+  checkboxContainer.prepend(checkbox.element);
+
   const checkboxDescription = new Container(
     "settings-main__checkBoxDescription"
   );
@@ -66,12 +76,28 @@ function createSettingsPage() {
     "settings-main__checkBoxDescription_cherrySmall"
   );
   checkboxDescription.setText("ON/OFF");
-  insert.append(checkboxDescription.element);
+  checkboxContainer.append(checkboxDescription.element);
+
   const mainSettingsTimerDescription = new Container(
     "settings-main__TimerDescription_cherryCappytalize"
   );
   mainSettingsTimerDescription.setText("TIME GAME");
-  insert.append(mainSettingsTimerDescription.element);
+  settingsMainTimer.append(mainSettingsTimerDescription.element);
+
+  const footer = new Container("settings-footer");
+  settingsPageContainer.append(footer.element);
+
+  const footerSettingsSaveButton = new ButtonWithText(
+    "settings-footer__cherryButton",
+    "SAVE"
+  );
+  footer.prepend(footerSettingsSaveButton.element);
+
+  const footerSettingsDefaultButton = new ButtonWithText(
+    "settings-footer__cherryButton",
+    "DEFAULTS"
+  );
+  footer.append(footerSettingsDefaultButton.element);
 }
 
 export { createSettingsPage };

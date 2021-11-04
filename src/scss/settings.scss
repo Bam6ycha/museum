@@ -6,14 +6,26 @@
   max-width: 100%;
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 0;
   height: 100%;
   background-color: white;
   transform: translate(0);
-  animation: 0.5s ease-in-out forwards;
+  animation: 0.5s ease-in-out;
   box-sizing: content-box;
   padding: 5px;
   background: linear-gradient(to bottom, white 25%, grey);
+}
+
+.settings.hidden {
+  left: -100%;
+}
+.settings-header__wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+.settings-header__description {
+  font-size: 1.3rem;
+  color: $cherry;
 }
 .settings-main {
   display: flex;
@@ -23,18 +35,23 @@
 .from-left {
   animation-name: left;
 }
+.to-right {
+  animation-name: left;
+  animation-direction: reverse;
+}
 .settings-header__logo {
   width: 100px;
   height: 65px;
   background: center no-repeat;
+  flex: 0 0 50%;
 }
-.settings-main__volume {
+.settings-main__volume,
+.settings-main__Timer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-self: center;
   min-height: 150px;
-  background-color: white;
 }
 @keyframes left {
   from {
@@ -50,7 +67,6 @@
 .settings-footer {
   display: flex;
   column-gap: 20px;
-  padding-bottom: 30px;
 }
 .settings-footer__cherryButton {
   border-radius: 5px;
@@ -63,26 +79,43 @@
 .settings-footer__cherryButton:active {
   background-color: $activeGreen;
 }
-.volume {
+.volume,
+.mute {
   min-width: 70px;
   min-height: 50px;
+}
+.volume {
+  background: url(../assets/volume-on.svg);
 }
 .settings-clock {
   min-width: 70px;
   min-height: 70px;
+  background: url(../assets/timer-picture.svg);
 }
 .volume,
+.mute,
 .volume-small,
+.mute-small,
 .settings-clock {
   background-color: transparent;
   border-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
-.volume-small {
+.volume-small,
+.mute-small {
   min-width: 14px;
   min-height: 20px;
+}
+.mute-small {
+  background: url(../assets/volume-off.svg) center no-repeat;
+  background-size: contain;
+  transition: background 0.3s ease;
+}
+.volume-small {
+  background: url(../assets/volume-on.svg) center no-repeat;
+  background-size: contain;
 }
 .volume:active,
 .volume-small:active,
@@ -97,4 +130,26 @@
 }
 .settings-main__checkBoxDescription_cherrySmall {
   color: $cherry;
+}
+.settings-main__ClockContainer {
+  display: flex;
+  justify-content: center;
+}
+.settings-main__volumeButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+.mute {
+  background: url(../assets/volume-off.svg) center no-repeat;
+  background-size: contain;
+  transition: background 0.3s ease;
+}
+.settings-main__checkboxContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.settings-main__checkboxContainer > input {
+  display: block;
 }
