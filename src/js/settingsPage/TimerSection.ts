@@ -24,4 +24,8 @@ export class TimerSection {
 
     this.element = this.timerContainer.element;
   }
+
+  getTimer() {
+    return this.timer.toogleCheckBoxOnButton();
+  }
 }

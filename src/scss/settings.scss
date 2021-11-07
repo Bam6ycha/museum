@@ -157,9 +157,13 @@
   outline: none;
   text-align: center;
 }
+
 .settings-main__timerAmountContainer {
   animation: 0.5s ease-in-out forwards;
+  display: flex;
+  justify-content: center;
 }
+
 .invisible {
   animation-name: changeOpasity;
 }

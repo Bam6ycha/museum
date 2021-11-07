@@ -2,7 +2,7 @@ import "../index.html";
 
 import "../scss/main.scss";
 import "../js/audioPlayer/playerConfiguration";
-import "../js/timer/settingsTimer";
+
 import { SettingsPage } from "./settingsPage/Page";
 
 const settingsPage = new SettingsPage();
@@ -16,3 +16,9 @@ const settingsButton = document.querySelector(
 settingsButton.addEventListener("click", () => {
   settingsPage.show();
 });
+
+settingsPage.toggleCheckBox();
+document.addEventListener(
+  "DOMContentLoaded",
+  () => settingsPage.toggleCheckBox
+);

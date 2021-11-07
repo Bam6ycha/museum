@@ -38,4 +38,8 @@ export class SettingsPage {
       });
     }
   }
+
+  toggleCheckBox() {
+    this.main.getTimer();
+  }
 }

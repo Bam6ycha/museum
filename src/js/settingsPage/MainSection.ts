@@ -23,4 +23,8 @@ export class Main {
     ]);
     this.element = this.main.element;
   }
+
+  getTimer() {
+    return this.timerSection.getTimer();
+  }
 }

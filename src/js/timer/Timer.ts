@@ -12,7 +12,7 @@ const settingInputData: NumberOrRangeInputParameters = {
 
   value: "30",
 
-  step: "5 "
+  step: "5"
 };
 export class Timer {
   element: HTMLDivElement;
@@ -37,9 +37,7 @@ export class Timer {
     this.checkbox = new Checkbox();
 
     this.timerSteps = new NumberInput(settingInputData);
-
-    this.timerButton = new Button("settings-clock");
-
+    this.timerSteps.addClassName("settigs-main__amount");
     this.timerButton = new Button("settings-clock");
 
     this.timerButtonContainer = new Container("settings-main__ClockContainer", [
@@ -49,9 +47,7 @@ export class Timer {
     this.timerStepsContainer = new Container(
       "settings-main__timerAmountContainer",
       [this.timerSteps.element]
-    )
-      .addClassName("invisible")
-      .addClassName("settigs-main__amount");
+    );
 
     this.checkboxContainer = new Container("settings-main__checkboxContainer", [
       this.checkbox.element
@@ -71,6 +67,44 @@ export class Timer {
     ]);
 
     this.element = this.container.element;
+  }
+
+  toogleCheckBoxOnButton() {
+    this.timerButton.OnClick(() => {
+      this.checkbox.toggle();
+      if (this.timerStepsContainer.element.style.opacity === "0") {
+        localStorage.setItem(
+          "timerStempsVisibility",
+          this.timerStepsContainer.element.style.opacity
+        );
+        this.showTimerStemps();
+      } else {
+        this.hideTimerStemps();
+        localStorage.setItem(
+          "timerStempsVisibility",
+          this.timerStepsContainer.element.style.opacity
+        );
+      }
+    });
+  }
+
+  showTimerStemps() {
+    this.timerStepsContainer.element.style.visibility = "";
+    this.timerStepsContainer.addClassName("visible");
+    setTimeout(() => {
+      this.timerStepsContainer.removeClassName("visible");
+      this.timerStepsContainer.element.style.opacity = "1";
+    }, 500);
+  }
+
+  hideTimerStemps() {
+    this.timerStepsContainer.removeClassName("visible");
+    this.timerStepsContainer.addClassName("invisible");
+    setTimeout(() => {
+      this.timerStepsContainer.removeClassName("invisible");
+      this.timerStepsContainer.element.style.visibility = "hidden";
+      this.timerStepsContainer.element.style.opacity = "0";
+    }, 500);
   }
 
   onChange(callback: EventListenerOrEventListenerObject) {

@@ -20,8 +20,8 @@ export class Button {
     return this;
   }
 
-  OnClick(callBack: EventListener) {
-    this.element.addEventListener("click", () => callBack);
+  OnClick(listener: EventListener) {
+    this.element.addEventListener("click", listener);
   }
 
   isContainsClass(className: string) {

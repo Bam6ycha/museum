@@ -12,7 +12,7 @@ export class Input {
     return document.createElement("input");
   }
 
-  addClass(className: string) {
+  addClassName(className: string) {
     this.element.classList.add(className);
     return this;
   }
