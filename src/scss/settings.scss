@@ -30,7 +30,7 @@
 .settings-main {
   display: flex;
   flex-direction: column;
-  row-gap: 100px;
+  row-gap: 80px;
 }
 .from-left {
   animation-name: left;
@@ -42,7 +42,7 @@
 .settings-header__logo {
   width: 100px;
   height: 65px;
-  background: center no-repeat;
+  background: url(../assets/logo.jpg) center no-repeat;
   flex: 0 0 50%;
 }
 .settings-main__volume,
@@ -130,6 +130,7 @@
 }
 .settings-main__checkBoxDescription_cherrySmall {
   color: $cherry;
+  text-align: center;
 }
 .settings-main__ClockContainer {
   display: flex;
@@ -138,6 +139,7 @@
 .settings-main__volumeButtonContainer {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 .mute {
   background: url(../assets/volume-off.svg) center no-repeat;
@@ -150,15 +152,14 @@
   align-items: center;
   justify-content: center;
 }
-.settings-main__checkboxContainer > input {
-  display: block;
-}
-.settings-main__timer {
-  animation: 0.5s ease-in-out forwards;
+
+.settigs-main__amount {
   outline: none;
   text-align: center;
 }
-
+.settings-main__timerAmountContainer {
+  animation: 0.5s ease-in-out forwards;
+}
 .invisible {
   animation-name: changeOpasity;
 }
