@@ -111,19 +111,28 @@ class AudioPlayer {
     this.volume.onChange(() => {
       this.audio.volume = +this.volume.value;
       localStorage.setItem("volume", `${this.getVolume()}`);
+      localStorage.setItem("isMuted", `${this.isMute()}`);
+
       if (
         this.getVolume() === 0 &&
         this.soundBigButton.isContainsClass("volume")
       ) {
         this.changeClassFromUnmuteToMute();
-        return;
+        this.toggleSound();
+        return this;
       }
+
       if (
         this.getVolume() !== 0 &&
         this.soundBigButton.isContainsClass("mute")
       ) {
         this.changeClassFromMuteToUnmute();
+        this.toggleSound();
+
+        return this;
       }
+
+      return this;
     });
   }
 
@@ -143,11 +152,23 @@ class AudioPlayer {
     }
   }
 
-  setVolumeOnDomContentLoaded() {
+  setVolumeOnDomLoad() {
     document.addEventListener("DOMContentLoaded", () => {
       const volume = localStorage.getItem("volume") ?? "0.3";
-      this.audio.volume = +volume;
-      this.volume.element.value = volume;
+      if (volume === "0") {
+        this.changeClassFromUnmuteToMute();
+      } else {
+        this.audio.volume = +volume;
+        this.volume.element.value = volume;
+        this.changeClassFromMuteToUnmute();
+      }
+      const mute = localStorage.getItem("isMuted") ?? "false";
+
+      if (mute[0] === "f") {
+        this.audio.muted = false;
+      } else {
+        this.audio.muted = true;
+      }
     });
   }
 
@@ -157,10 +178,12 @@ class AudioPlayer {
         this.changeClassFromUnmuteToMute();
         this.volume.element.value = "0";
         this.toggleSound();
+        localStorage.setItem("isMuted", `${this.isMute()}`);
       } else {
         this.changeClassFromMuteToUnmute();
         this.volume.element.value = `${this.getVolume()}`;
         this.toggleSound();
+        localStorage.setItem("isMuted", `${this.isMute()}`);
       }
     });
   }

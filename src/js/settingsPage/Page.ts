@@ -29,6 +29,14 @@ export class SettingsPage {
     this.element = this.container.element;
   }
 
+  public onDomLoad() {
+    return this.main.onDomLoad();
+  }
+
+  public toggleCheckBox() {
+    this.main.getTimer();
+  }
+
   public show() {
     if (this.container.hasClass("hidden")) {
       this.container.addClassName("from-left");
@@ -39,7 +47,7 @@ export class SettingsPage {
     }
   }
 
-  toggleCheckBox() {
-    this.main.getTimer();
+  public validateInput() {
+    return this.main.validateInput();
   }
 }

@@ -24,7 +24,15 @@ export class Main {
     this.element = this.main.element;
   }
 
+  onDomLoad() {
+    return this.timerSection.onDomLoad();
+  }
+
   getTimer() {
     return this.timerSection.getTimer();
+  }
+
+  validateInput() {
+    return this.timerSection.validateInput();
   }
 }

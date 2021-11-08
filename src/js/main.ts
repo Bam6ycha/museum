@@ -18,7 +18,5 @@ settingsButton.addEventListener("click", () => {
 });
 
 settingsPage.toggleCheckBox();
-document.addEventListener(
-  "DOMContentLoaded",
-  () => settingsPage.toggleCheckBox
-);
+settingsPage.validateInput();
+settingsPage.onDomLoad();
