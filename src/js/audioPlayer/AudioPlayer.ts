@@ -51,9 +51,14 @@ class AudioPlayer {
     ]);
     this.element = this.container.element;
     this.audio.volume = 0.3;
+    this.volume.setValue("0.3");
+    this.soundOffOnClick();
+    this.setVolumeOnChange();
+    this.checkVolume();
+    this.setVolumeOnDomLoad();
   }
 
-  changeClassFromUnmuteToMute() {
+  showMuteButton() {
     this.soundBigButton
       .removeClassFromButtonElement("volume")
       .addClassToButtonElement("mute");
@@ -63,7 +68,7 @@ class AudioPlayer {
     return this;
   }
 
-  changeClassFromMuteToUnmute() {
+  showUnmuteButton() {
     this.soundBigButton
       .removeClassFromButtonElement("mute")
       .addClassToButtonElement("volume");
@@ -97,17 +102,25 @@ class AudioPlayer {
     return this.audio.volume;
   }
 
-  getCurrentSource() {
+  public returnDefaults() {
+    this.audio.volume = 0.3;
+    this.volume.setValue("0.3");
+    this.showUnmuteButton();
+    this.audio.muted = false;
+    localStorage.setItem("isMuted", "false");
+  }
+
+  private getCurrentSource() {
     return this.audio.getAttribute("src");
   }
 
-  setSourceAndType(src: string, type: string) {
+  private setSourceAndType(src: string, type: string) {
     this.audio.setAttribute("src", src);
     this.audio.setAttribute("type", type);
     return this;
   }
 
-  setVolumeOnChange() {
+  private setVolumeOnChange() {
     this.volume.onChange(() => {
       this.audio.volume = +this.volume.value;
       localStorage.setItem("volume", `${this.getVolume()}`);
@@ -117,8 +130,9 @@ class AudioPlayer {
         this.getVolume() === 0 &&
         this.soundBigButton.isContainsClass("volume")
       ) {
-        this.changeClassFromUnmuteToMute();
         this.toggleSound();
+        localStorage.setItem("isMuted", `${this.isMute()}`);
+        this.showMuteButton();
         return this;
       }
 
@@ -126,17 +140,47 @@ class AudioPlayer {
         this.getVolume() !== 0 &&
         this.soundBigButton.isContainsClass("mute")
       ) {
-        this.changeClassFromMuteToUnmute();
-        this.toggleSound();
+        this.audio.muted = false;
+        localStorage.setItem("isMuted", `${this.isMute()}`);
 
-        return this;
+        this.showUnmuteButton();
       }
-
       return this;
     });
   }
 
-  togglePlay() {
+  private setVolumeOnDomLoad() {
+    document.addEventListener("DOMContentLoaded", () => {
+      const volume = localStorage.getItem("volume") ?? "0.3";
+      const mute = localStorage.getItem("isMuted") ?? "false";
+      if (mute === "true") {
+        this.showMuteButton();
+        this.volume.setValue("0");
+      } else {
+        this.audio.volume = +volume;
+        this.volume.element.value = volume;
+        this.showUnmuteButton();
+      }
+    });
+  }
+
+  private soundOffOnClick() {
+    this.soundBigButton.OnClick(() => {
+      if (this.soundBigButton.isContainsClass("volume")) {
+        this.showMuteButton();
+        this.volume.element.value = "0";
+        this.toggleSound();
+        localStorage.setItem("isMuted", `${this.isMute()}`);
+      } else {
+        this.showUnmuteButton();
+        this.volume.element.value = `${this.getVolume()}`;
+        this.toggleSound();
+        localStorage.setItem("isMuted", `${this.isMute()}`);
+      }
+    });
+  }
+
+  private togglePlay() {
     if (this.isPaused()) {
       this.audio.play();
     } else {
@@ -144,48 +188,12 @@ class AudioPlayer {
     }
   }
 
-  toggleSound() {
+  private toggleSound() {
     if (this.isMute()) {
       this.audio.muted = false;
     } else {
       this.audio.muted = true;
     }
-  }
-
-  setVolumeOnDomLoad() {
-    document.addEventListener("DOMContentLoaded", () => {
-      const volume = localStorage.getItem("volume") ?? "0.3";
-      if (volume === "0") {
-        this.changeClassFromUnmuteToMute();
-      } else {
-        this.audio.volume = +volume;
-        this.volume.element.value = volume;
-        this.changeClassFromMuteToUnmute();
-      }
-      const mute = localStorage.getItem("isMuted") ?? "false";
-
-      if (mute[0] === "f") {
-        this.audio.muted = false;
-      } else {
-        this.audio.muted = true;
-      }
-    });
-  }
-
-  soundOffOnClick() {
-    this.soundBigButton.OnClick(() => {
-      if (this.soundBigButton.isContainsClass("volume")) {
-        this.changeClassFromUnmuteToMute();
-        this.volume.element.value = "0";
-        this.toggleSound();
-        localStorage.setItem("isMuted", `${this.isMute()}`);
-      } else {
-        this.changeClassFromMuteToUnmute();
-        this.volume.element.value = `${this.getVolume()}`;
-        this.toggleSound();
-        localStorage.setItem("isMuted", `${this.isMute()}`);
-      }
-    });
   }
 }
 

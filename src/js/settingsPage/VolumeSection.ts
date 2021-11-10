@@ -23,4 +23,8 @@ export class Volume {
 
     this.element = this.volume.element;
   }
+
+  public returnDefaults() {
+    player.returnDefaults();
+  }
 }

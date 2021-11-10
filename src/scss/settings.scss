@@ -1,26 +1,27 @@
 .settings {
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  justify-content: space-evenly;
   max-height: 100%;
   max-width: 100%;
+  width: 100%;
   position: absolute;
   top: 0;
-  left: 0;
   height: 100%;
-  background-color: white;
-  transform: translate(0);
+  background: linear-gradient(to bottom, white, grey);
   animation: 0.5s ease-in-out;
   box-sizing: content-box;
-  padding: 5px;
-  background: linear-gradient(to bottom, white 25%, grey);
 }
 
 .settings.hidden {
-  left: -100%;
+  transform: translate(-100%);
+}
+.settings.show {
+  transform: translate(0%);
 }
 .settings-header__wrapper {
   display: flex;
+  justify-content: space-evenly;
   align-items: flex-end;
 }
 .settings-header__description {
@@ -39,11 +40,19 @@
   animation-name: left;
   animation-direction: reverse;
 }
+@keyframes left {
+  from {
+    transform: translate(-100%);
+  }
+  to {
+    transform: translate(0%);
+  }
+}
 .settings-header__logo {
   width: 100px;
   height: 65px;
-  background: url(../assets/logo.jpg) center no-repeat;
-  flex: 0 0 50%;
+  background: url(../assets/logo.svg) center no-repeat;
+  background-size: contain;
 }
 .settings-main__volume,
 .settings-main__Timer {
@@ -53,31 +62,24 @@
   align-self: center;
   min-height: 150px;
 }
-@keyframes left {
-  from {
-    left: -100;
-    transform: translate(0);
-  }
-  to {
-    left: 0;
-    transform: translate(0);
-  }
-}
 
 .settings-footer {
   display: flex;
   column-gap: 20px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 .settings-footer__cherryButton {
-  border-radius: 5px;
-  width: 145px;
-  height: 50px;
-  background-color: $cherry;
-  color: white;
+  @include button;
 }
 
 .settings-footer__cherryButton:active {
   background-color: $activeGreen;
+}
+.settings-footer__cherryButton:hover {
+  box-shadow: $buttonShadow;
+  transform: scale(1.01);
 }
 .volume,
 .mute {
@@ -102,11 +104,24 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
+
 .volume-small,
 .mute-small {
   min-width: 14px;
   min-height: 20px;
+}
+
+.volume:hover,
+.mute:hover,
+.volume-small:hover,
+.mute-small:hover,
+.settings-clock:hover,
+.volume-small:hover,
+.mute-small:hover {
+  transform: scale(1.05);
 }
 .mute-small {
   background: url(../assets/volume-off.svg) center no-repeat;

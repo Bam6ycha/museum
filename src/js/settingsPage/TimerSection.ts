@@ -25,15 +25,7 @@ export class TimerSection {
     this.element = this.timerContainer.element;
   }
 
-  onDomLoad() {
-    return this.timer.onDomLoad();
-  }
-
-  getTimer() {
-    return this.timer.toogleCheckBoxOnButton();
-  }
-
-  validateInput() {
-    this.timer.validateInputAndSetTimer();
+  public returnDefaults() {
+    this.timer.returnDefaults();
   }
 }

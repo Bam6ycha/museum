@@ -27,11 +27,19 @@ export class RangeInput extends Input {
     return this.element.step;
   }
 
+  setValue(value: string) {
+    this.element.value = value;
+  }
+
   onChange(listener: EventListener) {
     this.element.addEventListener("change", listener);
   }
 
   onThumbDrag(listener: EventListener) {
     this.element.addEventListener("mousedown", listener);
+  }
+
+  public returnDefaults() {
+    this.setValue("0.3");
   }
 }

@@ -27,14 +27,18 @@ export class SettingsPage {
       this.footer.element
     ]).addClassName("hidden");
     this.element = this.container.element;
+    this.saveSettings(() => this.hide());
+    this.defaultSettings(() => {
+      this.returnDefaults();
+    });
   }
 
-  public onDomLoad() {
-    return this.main.onDomLoad();
+  private defaultSettings(listener: EventListener) {
+    this.footer.defaultSettings(listener);
   }
 
-  public toggleCheckBox() {
-    this.main.getTimer();
+  private returnDefaults() {
+    this.main.returnDefaults();
   }
 
   public show() {
@@ -43,11 +47,21 @@ export class SettingsPage {
       this.container.addListeners("animationend", () => {
         this.container.removeClassName("from-left");
         this.container.removeClassName("hidden");
+        this.container.addClassName("show");
       });
     }
   }
 
-  public validateInput() {
-    return this.main.validateInput();
+  private hide() {
+    this.container.addClassName("to-right");
+    this.container.addListeners("animationend", () => {
+      this.container.addClassName("hidden");
+      this.container.removeClassName("to-right");
+      this.container.removeClassName("show");
+    });
+  }
+
+  private saveSettings(listener: EventListener) {
+    this.footer.saveSettigs(listener);
   }
 }

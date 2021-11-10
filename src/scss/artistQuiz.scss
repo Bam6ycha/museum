@@ -1,0 +1,180 @@
+.artistQuiz-page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, white, grey);
+  animation: 0.5s ease-in-out;
+  box-sizing: content-box;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.artistQuiz-page.hidden {
+  transform: translate(-100%);
+}
+.artistQuiz-page.show {
+  transform: translate(0%);
+}
+
+.artistQuiz-page__wrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+}
+.artistQuiz-header {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.artistQuiz-header__wrapper {
+  max-width: 1220px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.artistQuiz-header__logo {
+  background: url(../assets/logo.svg) center no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 130px;
+}
+
+.categorie-artistQuiz__wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.artistQuiz-main {
+  padding: 10px;
+  min-height: 1700px;
+  position: relative;
+}
+.artistQuiz__card {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  justify-content: center;
+  animation: 0.5s ease-in-out;
+}
+.artistQuiz-main__card {
+  flex: 0 0 31%;
+}
+
+.artistQuiz-main__card > img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.artistQuiz-main__card {
+  filter: grayscale(1);
+  transition: all 0.2s ease-in-out;
+}
+.artistQuiz-main__card:hover {
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+
+.artistQuiz-main__card > img:visited {
+  filter: grayscale(0);
+}
+
+.categorie-artistQuiz__description {
+  color: $cherry;
+  font-size: 1.3rem;
+}
+
+.categorie-artistQuiz__homeButton {
+  @include button;
+  position: relative;
+  text-align: right;
+}
+.categorie-artistQuiz__homeButton:hover {
+  box-shadow: $buttonShadow;
+  transform: scale(1.01);
+}
+
+.categorie-artistQuiz__homeButton:active {
+  background-color: $activeGreen;
+}
+
+.categorie-artistQuiz__homeButton::before {
+  content: "";
+  background: url(../assets/home.svg) no-repeat;
+  position: absolute;
+  left: 10%;
+  top: 5%;
+  width: 40px;
+  height: 40px;
+}
+
+.artistQuiz__card_description {
+  text-align: center;
+  color: $cherry;
+  font-size: 1rem;
+}
+.artisquiz-footer > a {
+  display: block;
+}
+
+.artisquiz-footer {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+a > img {
+  width: 100px;
+  height: 50px;
+}
+
+.authorName {
+  color: $cherry;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.authorName:hover {
+  color: $activeGreen;
+  transform: scale(1.1);
+}
+
+.authorName:visited {
+  color: lightgreen;
+}
+
+.footer__rsLogo {
+  transition: all 0.2s ease-in-out;
+}
+.footer__rsLogo:hover {
+  transform: scale(1.1);
+}
+.to-right {
+  animation-name: left;
+  animation-direction: reverse;
+}
+
+@keyframes left {
+  from {
+    transform: translate(-100%);
+  }
+  to {
+    transform: translate(0%);
+  }
+}
+.from-left {
+  animation-name: left;
+}

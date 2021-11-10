@@ -1,18 +1,33 @@
 @import "./vendor";
 @import "./mixins/fonts-face";
 @import "./varibles";
-
+@import "./mixins";
 html {
-  overflow: hidden;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
 }
 body {
   box-sizing: content-box;
-  padding: 15px;
+  height: 100%;
+  width: 100%;
   font-family: "Montserrat", sans-serif;
-  background: linear-gradient(to bottom, white 25%, grey);
-  overflow: hidden;
+  background: linear-gradient(to bottom, white, grey);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1220px;
+  margin: 0 auto;
+}
 .header {
   width: 100%;
   max-width: 100%;
@@ -20,11 +35,12 @@ body {
   margin: 0 auto;
 }
 .header-wrapper {
-  width: 330px;
+  width: 100%;
   max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 }
 .header-wrapper__logo {
   object-fit: cover;
@@ -39,12 +55,14 @@ body {
 .main-content {
   max-height: 422px;
 }
+
 .artist-quiz__imgContainer {
-  min-height: 219px;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
 }
 
-.artist-quiz__imgContainer:active .artist-quiz__description {
-  background-color: $activeGreen;
+.artist-quiz__imgContainer:hover {
+  transform: scale(1.01);
 }
 .artist-quiz__description {
   display: flex;
@@ -54,8 +72,8 @@ body {
   align-items: center;
   justify-content: center;
   width: 263px;
-  background-color: rgba(255, 255, 255, 0.75);
-  margin-left: 15px;
+
+  margin-left: 36px;
 }
 .artist-quiz__category_bold_red {
   color: $cherry;
@@ -78,10 +96,11 @@ body {
   margin: 0;
 }
 
-.artist-quiz__img > img {
-  width: 100%;
-  height: 220px;
-  margin-bottom: -64px;
+.artist-quiz {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @import "./footer";
 @import "./settings";
+@import "./artistQuiz.scss";

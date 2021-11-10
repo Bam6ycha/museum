@@ -1,0 +1,9 @@
+@mixin button {
+  background-color: $cherry;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+  color: white;
+}

@@ -28,4 +28,12 @@ export class Footer {
 
     this.element = this.footer.element;
   }
+
+  defaultSettings(listener: EventListener) {
+    this.defaultsButton.OnClick(listener);
+  }
+
+  saveSettigs(listener: EventListener) {
+    this.saveButton.OnClick(listener);
+  }
 }

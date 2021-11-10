@@ -1,5 +1,5 @@
 export class Input {
-  element: HTMLInputElement;
+  public element: HTMLInputElement;
 
   constructor(inputType: string, value = "") {
     this.element = this.createInputElement();
@@ -8,26 +8,26 @@ export class Input {
     this.setAttribute("type", inputType);
   }
 
-  createInputElement() {
-    return document.createElement("input");
-  }
-
-  addClassName(className: string) {
+  public addClassName(className: string) {
     this.element.classList.add(className);
     return this;
   }
 
-  setAttribute(attribute: string, value: string) {
-    this.element.setAttribute(attribute, value);
-    return this;
-  }
-
-  addListener(event: string, listener: EventListener) {
+  public addListener(event: string, listener: EventListener) {
     this.element.addEventListener(event, listener);
     return this;
   }
 
-  removeListener(event: string, listener: EventListener) {
+  public createInputElement() {
+    return document.createElement("input");
+  }
+
+  public setAttribute(attribute: string, value: string) {
+    this.element.setAttribute(attribute, value);
+    return this;
+  }
+
+  public removeListener(event: string, listener: EventListener) {
     this.element.removeEventListener(event, listener);
     return this;
   }
