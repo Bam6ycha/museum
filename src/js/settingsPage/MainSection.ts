@@ -1,4 +1,4 @@
-import { Container } from "../Container";
+import { Container } from "../Container/Container";
 import { TimerSection } from "./TimerSection";
 
 import { Volume } from "./VolumeSection";

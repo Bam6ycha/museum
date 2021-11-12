@@ -1,8 +1,7 @@
 import { Button } from "../buttons/Button";
-import { Container } from "../Container";
+import { Container } from "../Container/Container";
 import { RangeInput } from "../inputs/Range";
 import { NumberOrRangeInputParameters } from "../inputs/types";
-import { playList } from "../playlist";
 
 const rangeInputData: NumberOrRangeInputParameters = {
   max: "1",
@@ -13,6 +12,7 @@ const rangeInputData: NumberOrRangeInputParameters = {
 
   step: "0.1"
 };
+
 class AudioPlayer {
   public element: HTMLDivElement;
 
@@ -30,7 +30,16 @@ class AudioPlayer {
 
   private volumeButtonContainer: Container;
 
+  private playlist: {
+    correct: string[];
+    incorrect: string[];
+  };
+
   constructor() {
+    this.playlist = {
+      correct: ["../assets/correct.mp3", "audio/mpeg"],
+      incorrect: ["../assets/incorrect.mp3", "audio/mpeg"]
+    };
     this.audio = this.createAudioElement();
     this.soundBigButton = new Button("volume");
     this.soundSmallButton = new Button("volume-small");
@@ -80,9 +89,7 @@ class AudioPlayer {
 
   checkVolume() {
     this.volume.onChange(() => {
-      const [source, type] = playList.correct;
-      this.setSourceAndType(source, type);
-      this.togglePlay();
+      this.playCorrect();
     });
   }
 
@@ -110,13 +117,23 @@ class AudioPlayer {
     localStorage.setItem("isMuted", "false");
   }
 
-  private getCurrentSource() {
+  public getCurrentSource() {
     return this.audio.getAttribute("src");
   }
 
-  private setSourceAndType(src: string, type: string) {
-    this.audio.setAttribute("src", src);
+  public playCorrect() {
+    const [source, type] = this.playlist.correct;
+    this.audio.setAttribute("src", source);
     this.audio.setAttribute("type", type);
+    this.togglePlay();
+    return this;
+  }
+
+  public playIncorrect() {
+    const [source, type] = this.playlist.incorrect;
+    this.audio.setAttribute("src", source);
+    this.audio.setAttribute("type", type);
+    this.togglePlay();
     return this;
   }
 
@@ -180,7 +197,7 @@ class AudioPlayer {
     });
   }
 
-  private togglePlay() {
+  public togglePlay() {
     if (this.isPaused()) {
       this.audio.play();
     } else {

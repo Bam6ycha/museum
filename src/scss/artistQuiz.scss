@@ -63,11 +63,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 36px;
+  padding-right: 15px;
   justify-content: center;
   animation: 0.5s ease-in-out;
 }
 .artistQuiz-main__card {
   flex: 0 0 31%;
+  position: relative;
+  z-index: 100;
 }
 
 .artistQuiz-main__card > img {
@@ -75,6 +78,9 @@
   max-height: 100%;
   width: 100%;
   cursor: pointer;
+  border-radius: 20% 0 20% 0;
+  position: relative;
+  z-index: 1;
 }
 
 .artistQuiz-main__card {
@@ -132,7 +138,7 @@
   display: flex;
   padding: 10px;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 a > img {
@@ -143,7 +149,7 @@ a > img {
 .authorName {
   color: $cherry;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   transition: all 0.2s ease-in-out;
 }
 
@@ -153,7 +159,7 @@ a > img {
 }
 
 .authorName:visited {
-  color: lightgreen;
+  color: $gold;
 }
 
 .footer__rsLogo {
@@ -162,7 +168,7 @@ a > img {
 .footer__rsLogo:hover {
   transform: scale(1.1);
 }
-.to-right {
+.to-left {
   animation-name: left;
   animation-direction: reverse;
 }
@@ -177,4 +183,29 @@ a > img {
 }
 .from-left {
   animation-name: left;
+}
+.artistQuiz__card.hiddenBottom {
+  transform: translate(0, 113%);
+}
+
+.artistQuiz__card.showFromBottom {
+  transform: translate(0, 0);
+}
+
+.from-bottom {
+  animation-name: bottom;
+}
+
+.to-bottom {
+  animation-name: bottom;
+  animation-direction: reverse;
+}
+
+@keyframes bottom {
+  from {
+    transform: translate(0, 113%);
+  }
+  to {
+    transform: translate(0, 0);
+  }
 }

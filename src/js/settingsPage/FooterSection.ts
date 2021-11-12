@@ -1,5 +1,5 @@
 import { ButtonWithText } from "../buttons/ButtonWithText";
-import { Container } from "../Container";
+import { Container } from "../Container/Container";
 
 export class Footer {
   public element: HTMLDivElement;

@@ -1,5 +1,5 @@
 import { Anchor } from "../Ancor";
-import { Container } from "../Container";
+import { Container } from "../Container/Container";
 
 export class ArtisQuizFooter {
   element: HTMLDivElement;
@@ -16,7 +16,6 @@ export class ArtisQuizFooter {
     this.author.setText("Bambycha");
 
     this.rsLogo = new Anchor("https://rs.school/");
-
     this.rsLogo.setImg("../../assets/rs.svg");
     this.rsLogo.addClassName("footer__rsLogo");
 

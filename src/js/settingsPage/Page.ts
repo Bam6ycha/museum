@@ -1,4 +1,4 @@
-import { Container } from "../Container";
+import { Container } from "../Container/Container";
 
 import { Footer } from "./FooterSection";
 
@@ -44,7 +44,7 @@ export class SettingsPage {
   public show() {
     if (this.container.hasClass("hidden")) {
       this.container.addClassName("from-left");
-      this.container.addListeners("animationend", () => {
+      this.container.addListener("animationend", () => {
         this.container.removeClassName("from-left");
         this.container.removeClassName("hidden");
         this.container.addClassName("show");
@@ -53,10 +53,10 @@ export class SettingsPage {
   }
 
   private hide() {
-    this.container.addClassName("to-right");
-    this.container.addListeners("animationend", () => {
+    this.container.addClassName("to-left");
+    this.container.addListener("animationend", () => {
       this.container.addClassName("hidden");
-      this.container.removeClassName("to-right");
+      this.container.removeClassName("to-left");
       this.container.removeClassName("show");
     });
   }

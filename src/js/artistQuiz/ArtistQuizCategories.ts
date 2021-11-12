@@ -1,5 +1,5 @@
 import { ButtonWithText } from "../buttons/ButtonWithText";
-import { Container } from "../Container";
+import { Container } from "../Container/Container";
 
 export class Categories {
   public element: HTMLDivElement;
@@ -26,5 +26,9 @@ export class Categories {
     ]);
 
     this.element = this.wrapper.element;
+  }
+
+  hideCardsAndArtisQuiz(listener: EventListener) {
+    this.homeButton.OnClick(listener);
   }
 }

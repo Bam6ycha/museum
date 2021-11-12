@@ -1,0 +1,109 @@
+.pictureDescriptionPage {
+  top: -18%;
+  left: -90%;
+  position: fixed;
+  min-width: 2500px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: 1s ease;
+}
+
+.pictureDescriptionPage.hidden {
+  transform: translate(100%);
+}
+.pictureDescriptionPage.show {
+  transform: translate(-14%);
+}
+
+.from-right {
+  animation-name: right;
+}
+
+.to-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+@keyframes left {
+  from {
+    transform: translate(-100%);
+  }
+  to {
+    transform: translate(-14%);
+  }
+}
+@keyframes right {
+  from {
+    transform: translate(100%);
+  }
+  90% {
+    transform: translate(-16%);
+  }
+  to {
+    transform: translate(-14%);
+  }
+}
+
+.pictureDescriptionPage-wrapper {
+  max-width: 1220px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pictureDescriptionPage-header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.pictureDescriptionPage-header__image {
+  width: 40px;
+  height: 40px;
+}
+
+.pictureDescriptionPage-header__image.correct {
+  background: url(../assets/correct.png) center no-repeat;
+  background-size: contain;
+}
+
+.pictureDescriptionPage-header__image.wrong {
+  background: url(../assets/wrong.png) center no-repeat;
+  background-size: contain;
+}
+
+.pictureDescriptionPage-main__descriptionContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.pictureDescriptionPage-main__text {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pictureDescriptionPage-main__description {
+  flex: 0 0 100%;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.pictureDescriptionPage-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pictureDescriptionPage-main__descriptionContainer > img {
+  border-radius: 20% 0 20% 0;
+}

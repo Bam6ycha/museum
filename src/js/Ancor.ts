@@ -4,11 +4,16 @@ export class Anchor {
   constructor(href: string) {
     this.element = this.createAnchorElement();
     this.setHref(href);
+    this.setAttributeTarget();
   }
 
   public addClassName(className: string) {
     this.element.classList.add(className);
     return this;
+  }
+
+  private setAttributeTarget() {
+    this.element.setAttribute("target", "_blank");
   }
 
   private createAnchorElement() {

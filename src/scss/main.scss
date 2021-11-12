@@ -99,8 +99,14 @@ body {
 .artist-quiz {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.artist-quiz__img > img {
+  border-radius: 20% 0 20% 0;
 }
 @import "./footer";
 @import "./settings";
 @import "./artistQuiz.scss";
+@import "./artistQuizQestions.scss";
+@import "./pictureDescription.scss";

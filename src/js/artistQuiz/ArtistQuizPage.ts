@@ -1,4 +1,4 @@
-import { Container } from "../Container";
+import { Container } from "../Container/Container";
 import { Categories } from "./ArtistQuizCategories";
 import { ArtisQuizFooter } from "./ArtistQuizFooter";
 import { ArtisQuizHeader } from "./ArtistQuizHeader";
@@ -36,7 +36,40 @@ export class ArtisQuizPage {
     ]);
 
     this.container = new Container("artistQuiz-page", [this.wrapper.element]);
-
+    this.container.addClassName("hidden");
     this.element = this.container.element;
+    this.hideArtisQuiz();
+  }
+
+  hideArtisQuiz() {
+    this.categories.hideCardsAndArtisQuiz(() => {
+      this.main.showCardsContainer();
+      if (this.container.hasClass("show")) {
+        setTimeout(() => this.hidePage(), 500);
+      }
+    });
+  }
+
+  hidePage() {
+    this.container.addClassName("to-left");
+    setTimeout(() => {
+      this.container
+        .addClassName("hidden")
+        .removeClassName("show")
+        .removeClassName("to-left");
+    }, 500);
+  }
+
+  showPage() {
+    if (this.container.hasClass("hidden")) {
+      this.main.showCards();
+      this.container.addClassName("from-left");
+      this.container.addListener("animationend", () => {
+        this.container
+          .addClassName("show")
+          .removeClassName("from-left")
+          .removeClassName("hidden");
+      });
+    }
   }
 }

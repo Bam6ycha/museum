@@ -1,5 +1,5 @@
 import { player } from "../audioPlayer/AudioPlayer";
-import { Container } from "../Container";
+import { Container } from "../Container/Container";
 
 export class Volume {
   public element: HTMLDivElement;

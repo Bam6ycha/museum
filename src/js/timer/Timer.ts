@@ -1,5 +1,5 @@
 import { Button } from "../buttons/Button";
-import { Container } from "../Container";
+import { Container } from "../Container/Container";
 import { Checkbox } from "../inputs/CheckBox";
 import { NumberInput } from "../inputs/Number";
 

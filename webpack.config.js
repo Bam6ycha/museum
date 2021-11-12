@@ -18,29 +18,29 @@ const plugins = () => {
       template: path.resolve(__dirname, "src/index.html"),
       filename: "index.html",
       minify: {
-        collapseWhitespace: isProd,
-      },
+        collapseWhitespace: isProd
+      }
     }),
     new CleanWebpackPlugin({
-      cleanStaleWebpackAssets: false,
+      cleanStaleWebpackAssets: false
     }),
     new MiniCssExtractPlugin({
-      filename: `./css/${filename("css")}`,
+      filename: `./css/${filename("css")}`
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, "src/assets"),
-          to: (__dirname, "assets"),
-        },
-      ],
+          to: (__dirname, "assets")
+        }
+      ]
     }),
     new ImageminPlugin({
       disable: process.env.NODE_ENV !== "production", // Disable during development
       pngquant: {
-        quality: "95-100",
-      },
-    }),
+        quality: "95-100"
+      }
+    })
   ];
   if (isProd) {
     basePlugins.push(
@@ -57,13 +57,13 @@ const plugins = () => {
               {
                 plugins: [
                   {
-                    removeViewBox: false,
-                  },
-                ],
-              },
-            ],
-          ],
-        },
+                    removeViewBox: false
+                  }
+                ]
+              }
+            ]
+          ]
+        }
       })
     );
   }
@@ -77,7 +77,7 @@ module.exports = {
   output: {
     filename: `./js/${filename("js")}`,
     path: path.resolve(__dirname, "app"),
-    assetModuleFilename: `./img/[name].[contenthash][ext]`,
+    assetModuleFilename: `./img/[name].[contenthash][ext]`
   },
   devServer: {
     historyApiFallback: true,
@@ -85,11 +85,11 @@ module.exports = {
     open: true,
     compress: true,
     hot: true,
-    port: 3000,
+    port: 3000
   },
   optimization: {
-    minimize: true,
-    minimizer: [new TerserWebpackPlugin()],
+    minimize: isDev ? false : true,
+    minimizer: [new TerserWebpackPlugin()]
   },
 
   plugins: plugins(),
@@ -99,32 +99,32 @@ module.exports = {
     rules: [
       {
         test: /\.html$/,
-        loader: "html-loader",
+        loader: "html-loader"
       },
       {
         test: /\.[tj]s$/,
         use: `ts-loader`,
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
-        type: "asset/resource",
+        test: /\.(?:ico||svg|gif|png|jpg|jpeg)$/i,
+        type: "asset/resource"
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        type: "asset/resource",
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource"
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
         test: /\.s[ac]ss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      },
-    ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+      }
+    ]
   },
   resolve: {
-    extensions: [".ts", ".js"],
-  },
+    extensions: [".ts", ".js"]
+  }
 };
