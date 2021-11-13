@@ -1,4 +1,5 @@
 import { ChildElement } from "../childElementType";
+import { utilites } from "../Utilities";
 
 class Container {
   public element: HTMLDivElement;
@@ -42,6 +43,16 @@ class Container {
 
   protected createDivElement() {
     return document.createElement("div");
+  }
+
+  public async getImg(imgNumber: number) {
+    const url = utilites.creatURLImg(imgNumber);
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const imgUrl = URL.createObjectURL(blob);
+    const img = document.createElement("img");
+    img.src = imgUrl;
+    return img;
   }
 
   public hasClass(className: string) {

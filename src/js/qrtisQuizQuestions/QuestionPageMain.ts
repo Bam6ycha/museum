@@ -1,7 +1,6 @@
 import { player } from "../audioPlayer/AudioPlayer";
 import { Container } from "../Container/Container";
 import { ContainerBullets } from "../Container/ContainerBullets";
-import { ContainerImg } from "../Container/ContainerImg";
 import { utilites } from "../Utilities";
 import { PictureDescription } from "./pictureDescriptionPage";
 
@@ -10,120 +9,116 @@ export class QuestionsPageMain {
 
   private mainContainer: Container;
 
-  private imgContainer: ContainerImg;
+  private imgContainer: Container;
 
   private bulletsContainer: ContainerBullets;
 
-  private questionsContainer: Container;
+  private answerContainer: Container;
 
   private answerDiscription: PictureDescription;
 
+  public answerContainers: HTMLDivElement[];
+
   private score: number;
 
+  private random: number;
+
+  private min: number;
+
+  private max: number;
+
   constructor() {
+    [this.min, this.max] = utilites.randomNumberGap("ArtisQuizCategory");
+    this.random = utilites.getRandomNumber(this.min, this.max);
     this.score = 0;
     this.answerDiscription = new PictureDescription(
       "pictureDescriptionPage"
     ).addClassName("hidden");
 
-    this.questionsContainer = new Container(
-      "artistQuizQuestions-mainContainer__questionsContainer"
+    this.answerContainers = this.creatAnswerContainers();
+
+    this.answerContainer = new Container(
+      "artistQuizQuestions-mainContainer__answersContainer",
+      [...this.answerContainers]
     );
 
     this.bulletsContainer = new ContainerBullets(
       "artistQuizQuestions-mainContainer__bullets"
     );
 
-    this.imgContainer = new ContainerImg(
-      "artistQuizQuestions-mainContainer__imgContainer",
-
-      [this.bulletsContainer.element]
+    this.imgContainer = new Container(
+      "artistQuizQuestions-mainContainer__imgContainer"
     );
 
     this.mainContainer = new Container("artistQuizQuestions-mainContainer", [
       this.imgContainer.element,
-      this.questionsContainer.element,
+      this.bulletsContainer.element,
+      this.answerContainer.element,
       this.answerDiscription.element
     ]);
 
     this.mainContainer.addClassName("show");
     this.element = this.mainContainer.element;
-    this.createImgAndAnswer();
-    this.onAnswer();
+    this.getImage(this.random);
+    this.addAnswers();
+    this.showResult();
   }
 
-  public async createImgAndAnswer() {
-    const [min, max] = utilites.randomNumberGap("artistQuizCategory");
-    const randomNumber = utilites.getRandomNumber(min, max);
-    const img = await this.imgContainer.getImg(randomNumber);
-    const answerDescriptionImg = await this.imgContainer.getImg(randomNumber);
-    this.imgContainer.append(img);
-    this.answerDiscription.setImg(answerDescriptionImg);
-    const rigthAnswer = await utilites.getAuthor(randomNumber);
-    const answerDiscriptionChilds =
-      this.answerDiscription.createChildElements();
-    answerDiscriptionChilds[0].textContent = rigthAnswer.author;
-    answerDiscriptionChilds[1].textContent = rigthAnswer.name;
-    answerDiscriptionChilds[2].textContent = rigthAnswer.year;
-    answerDiscriptionChilds.forEach((child) =>
-      this.answerDiscription.addDescription(child)
-    );
-    const answers: string[] = [rigthAnswer.author];
-    for (let i = 0; i < 3; i++) {
-      const randomIndex = utilites.getRandomNumber(1, 200);
-      const randomAutor = await utilites.getAuthor(randomIndex);
-      answers.push(randomAutor.author);
+  protected creatAnswerContainers(amount = 4) {
+    const answerContainers: HTMLDivElement[] = [];
+    for (let i = 0; i < amount; i++) {
+      const conteiner = new Container(
+        "artistQuizQuestions-mainContainer__answer"
+      );
+      answerContainers.push(conteiner.element);
     }
+    return answerContainers;
+  }
 
+  private async getImage(order: number) {
+    const img = await this.imgContainer.getImg(order);
+    this.imgContainer.append(img);
+  }
+
+  public async getRightAnswer(order: number) {
+    const { author, name, year } = await utilites.getAuthor(order);
+    return [author, name, year];
+  }
+
+  public async getAnswerOptions() {
+    const responses = [];
+    const maxAuthorAmount = 220;
+    for (let i = 0; i < 3; i++) {
+      const random = utilites.getRandomNumber(this.max + 2, maxAuthorAmount);
+      const response = utilites.getAuthor(random);
+      responses.push(response);
+    }
+    const results = await Promise.all(responses);
+    const authors: string[] = [];
+    results.forEach(({ author }) => authors.push(author));
+    return authors;
+  }
+
+  private async addAnswers() {
+    const [author]: string[] = await this.getRightAnswer(this.random);
+    const wrongAnswers = await this.getAnswerOptions();
+    const answers: string[] = [author, ...wrongAnswers];
     utilites.shuffle(answers);
-
-    localStorage.setItem(
-      "RightAnswerAtristQuiz",
-      `${answers.indexOf(rigthAnswer.author)}`
+    this.answerContainers.forEach(
+      (container, index) => (container.textContent = answers[index])
     );
-    // const elementsCount = 4;
-    // this.questionsContainer
-    //   .cleateSomeElements(
-    //     elementsCount,
-    //     "artistQuizQuestions-mainContainer__questions"
-    //   )
-    //   .forEach((answer, index) => {
-    //     this.questionsContainer.append(answer);
-    //     answer.textContent = answers[index];
-    //   });
+    return answers;
   }
 
-  public hideMainContainer() {
-    this.mainContainer.addClassName("to-left");
-    this.answerDiscription.hideResult();
-    setTimeout(() => this.mainContainer.element.remove(), 1000);
-  }
-
-  public onAnswer() {
-    this.questionsContainer.addListener("click", async ({ target }) => {
-      if (!target) {
-        return;
-      }
-
-      const children = Array.from(this.questionsContainer.element.children);
-      const rightAnswer = +(localStorage.getItem("RightAnswerAtristQuiz") ?? 0);
-
-      if (rightAnswer === children.indexOf(target as HTMLDivElement)) {
-        this.bulletsContainer.rightAnswer();
-        this.bulletsContainer.nextActive();
-        this.answerDiscription.showResult("correct");
-        player.playCorrect();
-        this.score++;
-      } else {
-        this.bulletsContainer.nextActive();
-        this.bulletsContainer.wrongAnswer();
-        this.answerDiscription.showResult("wrong");
-        player.playIncorrect();
-      }
+  private showResult() {
+    this.answerContainers.forEach((answer) => {
+      answer.addEventListener("click", async ({ target }) => {
+        if (!target) {
+          return;
+        }
+        
+        );
+      });
     });
-  }
-
-  public removeMainPage(listener: EventListener) {
-    this.answerDiscription.removeMainPage(listener);
   }
 }

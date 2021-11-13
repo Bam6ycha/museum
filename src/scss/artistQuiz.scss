@@ -58,7 +58,7 @@
   min-height: 1700px;
   position: relative;
 }
-.artistQuiz__card {
+.artistQuiz-main__cardsContainer {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
@@ -71,6 +71,7 @@
   flex: 0 0 31%;
   position: relative;
   z-index: 100;
+  overflow: hidden;
 }
 
 .artistQuiz-main__card > img {
@@ -208,4 +209,23 @@ a > img {
   to {
     transform: translate(0, 0);
   }
+}
+.artistQuiz-main__score {
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 90%;
+  background-color: $cherry;
+  border-radius: 0 0 38% 0;
+  transform: translate(0, 100%);
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.artistQuiz-main__card:hover .artistQuiz-main__score {
+  transform: translate(0, 0);
 }

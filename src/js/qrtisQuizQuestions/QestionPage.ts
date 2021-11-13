@@ -35,35 +35,5 @@ export class QusetionPage {
     ]);
 
     this.element = this.container.element;
-    this.onNextButtonClick(() => {
-      this.hideMainPage();
-    });
-  }
-
-  onNextButtonClick(listener: EventListener) {
-    this.main.removeMainPage(listener);
-  }
-
-  hideMainPage() {
-    this.main.element.classList.add("to-left");
-    setTimeout(() => {
-      this.removeMainPage();
-      this.addMainPage();
-    }, 1000);
-  }
-
-  removeMainPage() {
-    this.main.element.remove();
-  }
-
-  addMainPage() {
-    this.main = new QuestionsPageMain();
-    this.wrapper.append(this.main.element);
-    this.main.element.classList.add("hidden");
-    this.main.element.classList.add("from-left");
-    setTimeout(() => {
-      this.main.element.classList.remove("hidden", "from-left");
-      this.main.element.classList.add("show");
-    }, 1000);
   }
 }
