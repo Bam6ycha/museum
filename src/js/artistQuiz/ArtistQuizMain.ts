@@ -43,4 +43,8 @@ export class ArtisQuizMain {
       this.showCards();
     }
   }
+
+  public showQuestionPage(listener: EventListener) {
+    this.cards.showQuestionPage(listener);
+  }
 }

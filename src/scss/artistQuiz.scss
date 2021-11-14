@@ -4,6 +4,7 @@
   top: 0;
   display: flex;
   flex-direction: column;
+
   max-width: 100%;
   width: 100%;
   background: linear-gradient(to bottom, white, grey);
@@ -65,7 +66,7 @@
   gap: 36px;
   padding-right: 15px;
   justify-content: center;
-  animation: 0.5s ease-in-out;
+  animation: 0.5s ease;
 }
 .artistQuiz-main__card {
   flex: 0 0 31%;
@@ -127,6 +128,11 @@
 }
 
 .artistQuiz__card_description {
+  display: flex;
+  justify-content: space-between;
+}
+
+h2 {
   text-align: center;
   color: $cherry;
   font-size: 1rem;
@@ -139,7 +145,7 @@
   display: flex;
   padding: 10px;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 a > img {
@@ -169,9 +175,12 @@ a > img {
 .footer__rsLogo:hover {
   transform: scale(1.1);
 }
-.to-left {
+.artistQuiz-page.to-left {
   animation-name: left;
   animation-direction: reverse;
+}
+.artistQuiz-page.from-left {
+  animation-name: left;
 }
 
 @keyframes left {
@@ -182,14 +191,11 @@ a > img {
     transform: translate(0%);
   }
 }
-.from-left {
-  animation-name: left;
-}
-.artistQuiz__card.hiddenBottom {
+.artistQuiz-main__cardsContainer.hiddenBottom {
   transform: translate(0, 113%);
 }
 
-.artistQuiz__card.showFromBottom {
+.artistQuiz-main__cardsContainer.showFromBottom {
   transform: translate(0, 0);
 }
 

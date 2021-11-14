@@ -31,3 +31,13 @@ const artisQuizButton = document.querySelector(
 ) as HTMLDivElement;
 
 artisQuizButton.addEventListener("click", () => artisQuizPage.showPage());
+
+artisqQuizQuestionsPage.showCategoriesPage(() => {
+  artisqQuizQuestionsPage.hideQuestionPage();
+  artisQuizPage.showPage();
+});
+
+artisQuizPage.showQuestionPage(() => {
+  artisQuizPage.hidePage();
+  artisqQuizQuestionsPage.showQuestionPage();
+});

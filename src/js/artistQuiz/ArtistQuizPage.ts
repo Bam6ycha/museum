@@ -41,7 +41,7 @@ export class ArtisQuizPage {
     this.hideArtisQuiz();
   }
 
-  hideArtisQuiz() {
+  public hideArtisQuiz() {
     this.categories.hideCardsAndArtisQuiz(() => {
       this.main.showCardsContainer();
       if (this.container.hasClass("show")) {
@@ -71,5 +71,9 @@ export class ArtisQuizPage {
           .removeClassName("hidden");
       });
     }
+  }
+
+  public showQuestionPage(listener: EventListener) {
+    this.main.showQuestionPage(listener);
   }
 }

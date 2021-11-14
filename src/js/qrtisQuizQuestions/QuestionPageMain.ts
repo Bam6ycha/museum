@@ -4,6 +4,11 @@ import { ContainerBullets } from "../Container/ContainerBullets";
 import { utilites } from "../Utilities";
 import { PictureDescription } from "./pictureDescriptionPage";
 
+enum AnswerDescriptionState {
+  right = "correct",
+  wrong = "wrong"
+}
+
 export class QuestionsPageMain {
   public element: HTMLDivElement;
 
@@ -27,6 +32,8 @@ export class QuestionsPageMain {
 
   private max: number;
 
+  private indexofRightAnswer: number;
+
   constructor() {
     [this.min, this.max] = utilites.randomNumberGap("ArtisQuizCategory");
     this.random = utilites.getRandomNumber(this.min, this.max);
@@ -34,6 +41,8 @@ export class QuestionsPageMain {
     this.answerDiscription = new PictureDescription(
       "pictureDescriptionPage"
     ).addClassName("hidden");
+
+    this.indexofRightAnswer = 0;
 
     this.answerContainers = this.creatAnswerContainers();
 
@@ -59,7 +68,7 @@ export class QuestionsPageMain {
 
     this.mainContainer.addClassName("show");
     this.element = this.mainContainer.element;
-    this.getImage(this.random);
+    this.getImage(this.min);
     this.addAnswers();
     this.showResult();
   }
@@ -76,18 +85,21 @@ export class QuestionsPageMain {
   }
 
   private async getImage(order: number) {
-    const img = await this.imgContainer.getImg(order);
-    this.imgContainer.append(img);
+    const image = await utilites.getImg(order);
+    const imageForDescription = await utilites.getImg(order);
+    this.answerDiscription.setImg(imageForDescription);
+    this.imgContainer.append(image);
   }
 
   public async getRightAnswer(order: number) {
     const { author, name, year } = await utilites.getAuthor(order);
+
     return [author, name, year];
   }
 
   public async getAnswerOptions() {
     const responses = [];
-    const maxAuthorAmount = 220;
+    const maxAuthorAmount = 200;
     for (let i = 0; i < 3; i++) {
       const random = utilites.getRandomNumber(this.max + 2, maxAuthorAmount);
       const response = utilites.getAuthor(random);
@@ -96,28 +108,45 @@ export class QuestionsPageMain {
     const results = await Promise.all(responses);
     const authors: string[] = [];
     results.forEach(({ author }) => authors.push(author));
+
     return authors;
   }
 
   private async addAnswers() {
-    const [author]: string[] = await this.getRightAnswer(this.random);
+    const description: string[] = await this.getRightAnswer(this.min);
+    const author = description[0];
     const wrongAnswers = await this.getAnswerOptions();
     const answers: string[] = [author, ...wrongAnswers];
     utilites.shuffle(answers);
+    this.indexofRightAnswer = answers.indexOf(author);
     this.answerContainers.forEach(
       (container, index) => (container.textContent = answers[index])
     );
+    this.answerDiscription.addDescription(description);
     return answers;
   }
 
   private showResult() {
     this.answerContainers.forEach((answer) => {
-      answer.addEventListener("click", async ({ target }) => {
+      answer.addEventListener("click", ({ target }) => {
         if (!target) {
           return;
         }
-        
-        );
+        if (
+          this.answerContainers.indexOf(target as HTMLDivElement) ===
+          this.indexofRightAnswer
+        ) {
+          player.playCorrect();
+          this.bulletsContainer.rightAnswer();
+          this.bulletsContainer.nextActive();
+          this.answerDiscription.showResult(AnswerDescriptionState.right);
+          this.score++;
+        } else {
+          player.playIncorrect();
+          this.bulletsContainer.wrongAnswer();
+          this.bulletsContainer.nextActive();
+          this.answerDiscription.showResult(AnswerDescriptionState.wrong);
+        }
       });
     });
   }

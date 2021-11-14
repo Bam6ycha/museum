@@ -23,6 +23,8 @@ export class PictureDescription extends Container {
 
   private nextButton: ButtonWithText;
 
+  private answerContainers: HTMLDivElement[];
+
   constructor(className: string, children?: ChildElement[]) {
     super(className, children);
 
@@ -30,6 +32,8 @@ export class PictureDescription extends Container {
       "settings-footer__cherryButton",
       "Next"
     );
+
+    this.answerContainers = this.createChildElements();
 
     this.footer = new Container("pictureDescriptionPage-footer", [
       this.nextButton.element
@@ -40,7 +44,8 @@ export class PictureDescription extends Container {
     );
 
     this.pictureDescriptionContainer = new Container(
-      "pictureDescriptionPage-main__text"
+      "pictureDescriptionPage-main__text",
+      [...this.answerContainers]
     );
 
     this.main = new Container("pictureDescriptionPage-main", [
@@ -70,8 +75,10 @@ export class PictureDescription extends Container {
     this.nextButton.OnClick(listener);
   }
 
-  public addDescription(element: HTMLDivElement) {
-    this.pictureDescriptionContainer.append(element);
+  public addDescription(descriprion: string[]) {
+    this.answerContainers.forEach((element, index) => {
+      element.textContent = descriprion[index];
+    });
   }
 
   public createChildElements() {

@@ -4,4 +4,5 @@ export type ChildElement =
   | HTMLButtonElement
   | HTMLImageElement
   | HTMLInputElement
-  | HTMLImageElement;
+  | HTMLImageElement
+  | HTMLHeadingElement;

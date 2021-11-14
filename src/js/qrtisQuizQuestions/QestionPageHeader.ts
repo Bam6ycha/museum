@@ -60,4 +60,12 @@ export class QuestionsPageHeader {
       }
     }
   }
+
+  public showHomePage(listener: EventListener) {
+    this.homeButton.OnClick(listener);
+  }
+
+  public showCategoriesPage(listener: EventListener) {
+    this.categoriesButton.OnClick(listener);
+  }
 }

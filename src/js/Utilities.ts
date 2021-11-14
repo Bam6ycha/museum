@@ -21,6 +21,16 @@ class Utilites {
     return imgUrl;
   }
 
+  public async getImg(imgNumber: number) {
+    const url = this.creatURLImg(imgNumber);
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const imgUrl = URL.createObjectURL(blob);
+    const img = document.createElement("img");
+    img.src = imgUrl;
+    return img;
+  }
+
   public randomNumberGap(category: string) {
     let min = 0;
     let max = 0;

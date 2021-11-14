@@ -36,7 +36,8 @@
         "object-curly-newline": "off",
         "no-await-in-loop": "off",
         "no-useless-constructor": "off",
-        "@typescript-eslint/no-empty-function": ["off"]
+        "@typescript-eslint/no-empty-function": ["off"],
+        "no-shadow": "off"
       }
     }
   ]

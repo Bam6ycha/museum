@@ -1,49 +1,49 @@
 .pictureDescriptionPage {
-  top: -18%;
-  left: -90%;
-  position: fixed;
-  min-width: 2500px;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba($color: white, $alpha: 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   animation: 1s ease;
+  border-radius: 10%;
+  padding: 10px;
 }
 
 .pictureDescriptionPage.hidden {
-  transform: translate(100%);
+  transform: translate(300%);
 }
 .pictureDescriptionPage.show {
-  transform: translate(-14%);
+  transform: translate(0);
 }
 
-.from-right {
+.pictureDescriptionPage.from-right {
   animation-name: right;
 }
 
-.to-left {
-  animation-name: left;
+.pictureDescriptionPage.to-left {
+  animation-name: pictureDescriptionleft;
   animation-direction: reverse;
 }
-@keyframes left {
+@keyframes pictureDescriptionleft {
   from {
-    transform: translate(-100%);
+    transform: translate(300%);
   }
   to {
-    transform: translate(-14%);
+    transform: translate(0%);
   }
 }
 @keyframes right {
   from {
-    transform: translate(100%);
+    transform: translate(300%);
   }
   90% {
-    transform: translate(-16%);
+    transform: translate(-2%);
   }
   to {
-    transform: translate(-14%);
+    transform: translate(0);
   }
 }
 
@@ -94,7 +94,7 @@
   text-align: center;
   margin-top: 10px;
   font-size: 1.2rem;
-  color: white;
+  color: black;
 }
 
 .pictureDescriptionPage-footer {
