@@ -5,6 +5,7 @@ import { ArtisQuizPage } from "./artistQuiz/ArtistQuizPage";
 import { QusetionPage } from "./qrtisQuizQuestions/QestionPage";
 
 import { SettingsPage } from "./settingsPage/Page";
+import { utilites } from "./Utilities";
 
 const settingsPage = new SettingsPage();
 
@@ -32,12 +33,30 @@ const artisQuizButton = document.querySelector(
 
 artisQuizButton.addEventListener("click", () => artisQuizPage.showPage());
 
+artisqQuizQuestionsPage.hideQuestionPageShowHome(() => {
+  const [score] = artisqQuizQuestionsPage.getScoreAndCounder();
+  artisQuizPage.addScore(score);
+  artisqQuizQuestionsPage.hideQuestionPage();
+});
+
+artisqQuizQuestionsPage.hideQuestionPageShowCategories(() => {
+  const [score] = artisqQuizQuestionsPage.getScoreAndCounder();
+
+  artisqQuizQuestionsPage.hideQuestionPage();
+  artisQuizPage.showPage();
+
+  artisQuizPage.addScore(score);
+});
+
 artisqQuizQuestionsPage.showCategoriesPage(() => {
   artisqQuizQuestionsPage.hideQuestionPage();
   artisQuizPage.showPage();
 });
 
-artisQuizPage.showQuestionPage(() => {
+artisQuizPage.showQuestionPage(async () => {
+  await artisqQuizQuestionsPage.startQuiz(
+    utilites.randomNumberGap("ArtisQuizCategory")[0]
+  );
   artisQuizPage.hidePage();
   artisqQuizQuestionsPage.showQuestionPage();
 });

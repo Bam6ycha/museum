@@ -38,6 +38,10 @@ export class QusetionPage {
     this.showHomePage(() => this.hideQuestionPage());
   }
 
+  public getScoreAndCounder() {
+    return this.main.getScoreAndCounter();
+  }
+
   public showHomePage(listener: EventListener) {
     this.header.showHomePage(listener);
   }
@@ -68,5 +72,19 @@ export class QusetionPage {
 
   public showCategoriesPage(listener: EventListener) {
     this.header.showCategoriesPage(listener);
+  }
+
+  public async startQuiz(number: number) {
+    await this.main.startQuiz(number);
+    const animationendTime = 1000;
+    setTimeout(() => this.header.timerGame(), animationendTime);
+  }
+
+  public hideQuestionPageShowHome(listener: EventListener) {
+    this.main.hideQuestionPageShowHomePage(listener);
+  }
+
+  public hideQuestionPageShowCategories(listener: EventListener) {
+    this.main.hideQuestionPageShowCategories(listener);
   }
 }

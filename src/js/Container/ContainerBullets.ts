@@ -22,7 +22,7 @@ export class ContainerBullets extends Container {
       "artistQuizQuestions-mainContainer__bullets",
       [...this.bullets.map((bullet) => bullet.element)]
     );
-    this.nextActive();
+
     this.element = this.bulletsContainer.element;
   }
 
@@ -37,10 +37,12 @@ export class ContainerBullets extends Container {
   }
 
   public nextActive() {
-    this.bullets[this.counter].changeBulletState(BulletStates.Active);
-    this.counter++;
-    if (this.counter === 10) {
-      this.counter = 1;
+    if (this.counter < 10) {
+      this.bullets[this.counter].changeBulletState(BulletStates.Active);
+      this.counter++;
+    }
+    if (this.counter > 10) {
+      this.counter = 0;
     }
   }
 
@@ -50,5 +52,24 @@ export class ContainerBullets extends Container {
 
   public wrongAnswer() {
     this.bullets[this.counter - 1].changeBulletState(BulletStates.WrongAnswer);
+  }
+
+  public nullifyCounter() {
+    this.counter = 0;
+  }
+
+  public updateBulletsState() {
+    this.bullets.forEach((bullet) =>
+      bullet.element.classList.remove(
+        BulletStates.RightAnswer,
+        BulletStates.WrongAnswer,
+        BulletStates.Active
+      )
+    );
+    this.nextActive();
+  }
+
+  getCounter() {
+    return this.counter;
   }
 }

@@ -1,5 +1,10 @@
 import { ButtonWithText } from "../buttons/ButtonWithText";
 import { Container } from "../Container/Container";
+import {
+  OpacityClasses,
+  OpacityValues,
+  AnswerDescriptionState
+} from "../enums";
 
 export class QuestionsPageHeader {
   public element: HTMLDivElement;
@@ -25,9 +30,7 @@ export class QuestionsPageHeader {
     this.question.setText("Кто автор данной картины?");
 
     this.timerContainer = new Container("artistQuizQuestions-header__timer");
-    this.timerContainer.setOpacity(
-      localStorage.getItem("timerStempsOpacity") ?? "0"
-    );
+    this.timerContainer.setOpacity(OpacityValues.Invisible);
     this.timerContainer.setText(
       `${"00:"}${localStorage.getItem("timerCount") ?? "30"}`
     );
@@ -45,18 +48,51 @@ export class QuestionsPageHeader {
     ]);
 
     this.element = this.wrapper.element;
+    this.getSeconds();
+  }
+
+  getSeconds() {
+    const totalTime = this.timerContainer.element.textContent ?? "0";
+
+    const seconds = +totalTime.slice(3);
+
+    return seconds;
   }
 
   public decreasingTimer() {
-    if (this.timerContainer.element.textContent) {
-      const value: string = this.timerContainer.element.textContent;
+    let seconds = this.getSeconds();
 
-      let seconds = +value.slice(3);
+    seconds -= 1;
+    this.timerContainer.element.textContent = `${"00:"}${seconds}`;
+    if (seconds < 10) {
+      this.timerContainer.element.textContent = `${"00:"}${"0"}${seconds}`;
+    }
+    return seconds;
+  }
 
-      seconds -= 1;
-      this.timerContainer.element.textContent = `${"00:"}${seconds}`;
-      if (seconds < 10) {
-        this.timerContainer.element.textContent = `${"00:"}${"0"}${seconds}`;
+  public isTimerGame() {
+    const timerState = +(localStorage.getItem("timerStempsOpacity") ?? "0");
+    if (timerState) {
+      return true;
+    }
+    return false;
+  }
+
+  public timerGame(action?: CallableFunction) {
+    if (this.isTimerGame()) {
+      this.timerContainer.setText(
+        `${"00:"}${localStorage.getItem("timerCount") ?? "30"}`
+      );
+      this.timerContainer.setOpacity(OpacityValues.Visible);
+      const timer = setInterval(() => {
+        this.decreasingTimer();
+        if (this.getSeconds() === 0) {
+          clearTimeout(timer);
+        }
+      }, 1000);
+
+      if (this.decreasingTimer() && action) {
+        action();
       }
     }
   }

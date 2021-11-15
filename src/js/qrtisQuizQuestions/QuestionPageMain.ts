@@ -1,13 +1,14 @@
 import { player } from "../audioPlayer/AudioPlayer";
 import { Container } from "../Container/Container";
 import { ContainerBullets } from "../Container/ContainerBullets";
+import { FinalResults } from "../FinalResutls";
 import { utilites } from "../Utilities";
 import { PictureDescription } from "./pictureDescriptionPage";
-
-enum AnswerDescriptionState {
-  right = "correct",
-  wrong = "wrong"
-}
+import {
+  OpacityClasses,
+  OpacityValues,
+  AnswerDescriptionState
+} from "../enums";
 
 export class QuestionsPageMain {
   public element: HTMLDivElement;
@@ -34,10 +35,14 @@ export class QuestionsPageMain {
 
   private indexofRightAnswer: number;
 
+  private finalResutl: FinalResults;
+
   constructor() {
     [this.min, this.max] = utilites.randomNumberGap("ArtisQuizCategory");
     this.random = utilites.getRandomNumber(this.min, this.max);
     this.score = 0;
+
+    this.finalResutl = new FinalResults("final-resultsPage");
     this.answerDiscription = new PictureDescription(
       "pictureDescriptionPage"
     ).addClassName("hidden");
@@ -51,6 +56,8 @@ export class QuestionsPageMain {
       [...this.answerContainers]
     );
 
+    this.answerContainer.setOpacity(OpacityValues.Visible);
+
     this.bulletsContainer = new ContainerBullets(
       "artistQuizQuestions-mainContainer__bullets"
     );
@@ -58,19 +65,21 @@ export class QuestionsPageMain {
     this.imgContainer = new Container(
       "artistQuizQuestions-mainContainer__imgContainer"
     );
+    this.imgContainer.setOpacity(OpacityValues.Visible);
 
     this.mainContainer = new Container("artistQuizQuestions-mainContainer", [
       this.imgContainer.element,
       this.bulletsContainer.element,
       this.answerContainer.element,
-      this.answerDiscription.element
+      this.answerDiscription.element,
+      this.finalResutl.element
     ]);
 
     this.mainContainer.addClassName("show");
     this.element = this.mainContainer.element;
-    this.getImage(this.min);
-    this.addAnswers();
+    this.addAnswers(this.min);
     this.showResult();
+    this.nextQuestion();
   }
 
   protected creatAnswerContainers(amount = 4) {
@@ -112,8 +121,8 @@ export class QuestionsPageMain {
     return authors;
   }
 
-  private async addAnswers() {
-    const description: string[] = await this.getRightAnswer(this.min);
+  private async addAnswers(order: number) {
+    const description: string[] = await this.getRightAnswer(order);
     const author = description[0];
     const wrongAnswers = await this.getAnswerOptions();
     const answers: string[] = [author, ...wrongAnswers];
@@ -124,6 +133,32 @@ export class QuestionsPageMain {
     );
     this.answerDiscription.addDescription(description);
     return answers;
+  }
+
+  public makeInvisible() {
+    if (this.imgContainer.getOpacity() === OpacityValues.Visible) {
+      this.imgContainer.addClassName(OpacityClasses.Invisible);
+      this.answerContainer.addClassName(OpacityClasses.Invisible);
+      setTimeout(() => {
+        this.imgContainer.setOpacity(OpacityValues.Invisible);
+        this.answerContainer.setOpacity(OpacityValues.Invisible);
+        this.imgContainer.removeClassName(OpacityClasses.Invisible);
+        this.answerContainer.removeClassName(OpacityClasses.Invisible);
+      }, 500);
+    }
+  }
+
+  public makeVisible() {
+    if (this.imgContainer.getOpacity() === OpacityValues.Invisible) {
+      this.imgContainer.addClassName(OpacityClasses.Visible);
+      this.answerContainer.addClassName(OpacityClasses.Visible);
+    }
+    setTimeout(() => {
+      this.imgContainer.setOpacity(OpacityValues.Visible);
+      this.answerContainer.setOpacity(OpacityValues.Visible);
+      this.imgContainer.removeClassName(OpacityClasses.Visible);
+      this.answerContainer.removeClassName(OpacityClasses.Visible);
+    }, 500);
   }
 
   private showResult() {
@@ -149,5 +184,55 @@ export class QuestionsPageMain {
         }
       });
     });
+  }
+
+  public removeQuestionImage() {
+    const image = this.imgContainer.element.children;
+    if (image.length > 1) {
+      image[0].remove();
+    }
+  }
+
+  public async startQuiz(number: number) {
+    await this.getImage(number);
+    await this.addAnswers(number);
+    [this.min, this.max] = utilites.randomNumberGap("ArtisQuizCategory");
+    this.answerDiscription.removeImage();
+    this.removeQuestionImage();
+    this.bulletsContainer.nullifyCounter();
+    this.bulletsContainer.updateBulletsState();
+    this.score = 0;
+  }
+
+  private nextQuestion() {
+    this.answerDiscription.nextQuestion(() => {
+      this.makeInvisible();
+      setTimeout(async () => {
+        this.removeQuestionImage();
+        ++this.min;
+        await this.getImage(this.min);
+        this.removeQuestionImage();
+        this.answerDiscription.removeImage();
+        await this.addAnswers(this.min);
+        this.makeVisible();
+        if (this.bulletsContainer.getCounter() === 10) {
+          this.finalResutl.showFinalResult();
+          this.finalResutl.setTotal(`${this.score}`);
+          player.playEndRound();
+        }
+      }, 1000);
+    });
+  }
+
+  public getScoreAndCounter() {
+    return [this.score];
+  }
+
+  public hideQuestionPageShowHomePage(listener: EventListener) {
+    this.finalResutl.hideQuestionPageShowHomePage(listener);
+  }
+
+  public hideQuestionPageShowCategories(listener: EventListener) {
+    this.finalResutl.hideQuestionPageShowCategories(listener);
   }
 }

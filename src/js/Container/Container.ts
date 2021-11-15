@@ -41,6 +41,10 @@ class Container {
     return this;
   }
 
+  public getOpacity() {
+    return this.element.style.opacity;
+  }
+
   protected createDivElement() {
     return document.createElement("div");
   }

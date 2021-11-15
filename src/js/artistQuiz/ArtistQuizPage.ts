@@ -41,6 +41,10 @@ export class ArtisQuizPage {
     this.hideArtisQuiz();
   }
 
+  public addScore(score: number) {
+    this.main.addScore(score);
+  }
+
   public hideArtisQuiz() {
     this.categories.hideCardsAndArtisQuiz(() => {
       this.main.showCardsContainer();

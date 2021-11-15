@@ -35,8 +35,16 @@ export class ContainerCards extends Container {
     return this;
   }
 
-  public addTotalScore() {
-    this.cards.forEach((card) => card.addScore(""));
+  public addTotalScore(score: number) {
+    const necessaryCardIndex = +(
+      localStorage.getItem("ArtisQuizCategory") ?? 0
+    );
+    this.cards.forEach((card, index) => {
+      if (index === necessaryCardIndex) {
+        card.addScore(`${score}`);
+        card.addClassName("played");
+      }
+    });
     return this;
   }
 
@@ -46,7 +54,7 @@ export class ContainerCards extends Container {
     });
   }
 
-  private createCards(amount = 11) {
+  private createCards(amount = 12) {
     const cards: Card[] = [];
     for (let i = 0; i < amount; i++) {
       const card = new Card("artistQuiz-main__card");
@@ -55,7 +63,7 @@ export class ContainerCards extends Container {
     return cards;
   }
 
-  private async createImages(amount = 11) {
+  private async createImages(amount = 12) {
     const images: HTMLImageElement[] = [];
     for (let i = 0; i < amount; i++) {
       const image = await utilites.getImg(imgNumer[i]);

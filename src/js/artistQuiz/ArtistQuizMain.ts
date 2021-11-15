@@ -16,6 +16,10 @@ export class ArtisQuizMain {
     this.element = this.wrapper.element;
   }
 
+  public addScore(score: number) {
+    this.cards.addTotalScore(score);
+  }
+
   hideCards() {
     this.cards.addClassName("to-bottom");
     this.cards.addListener("animationend", () => {

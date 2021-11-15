@@ -1,0 +1,88 @@
+.final-resultsPage {
+  background-color: rgba($color: white, $alpha: 1);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: 1s ease;
+  border-radius: 10%;
+  padding: 10px;
+  max-height: 700px;
+  height: 700px;
+}
+
+.final-resultsPage.hidden {
+  transform: translate(300%);
+}
+.final-resultsPage.show {
+  transform: translate(0);
+}
+
+.final-resultsPage.from-right {
+  animation-name: right;
+}
+
+.final-resultsPage.to-left {
+  animation-name: pictureDescriptionleft;
+  animation-direction: reverse;
+}
+@keyframes pictureDescriptionleft {
+  from {
+    transform: translate(300%);
+  }
+  to {
+    transform: translate(0%);
+  }
+}
+@keyframes right {
+  from {
+    transform: translate(300%);
+  }
+  90% {
+    transform: translate(-2%);
+  }
+  to {
+    transform: translate(0);
+  }
+}
+.final-resultsPage-main__image {
+  background: url(../assets/goodJob.png) center no-repeat;
+  width: 200px;
+  height: 200px;
+}
+
+.final-resultsPage__wrapper {
+  max-width: 1220px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.final-resultsPage-header__textContainer_cappitalizeGrey {
+  font-size: 1.5rem;
+  color: grey;
+}
+
+.final-resultsPage-header {
+  min-height: 150px;
+}
+
+.final-resultsPage-main__results {
+  text-align: center;
+}
+
+.final-resultsPage-main__results_GreyBig {
+  color: grey;
+  font-size: 3rem;
+}
+
+.final-resultsPage-footer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}

@@ -71,10 +71,6 @@ export class PictureDescription extends Container {
     this.hideResult();
   }
 
-  public removeMainPage(listener: EventListener) {
-    this.nextButton.OnClick(listener);
-  }
-
   public addDescription(descriprion: string[]) {
     this.answerContainers.forEach((element, index) => {
       element.textContent = descriprion[index];
@@ -125,5 +121,16 @@ export class PictureDescription extends Container {
         this.image.removeClassName("correct").removeClassName("wrong");
       }, 1000);
     });
+  }
+
+  public removeImage() {
+    const image = this.pictureDescriptionImgContainer.element.children;
+    if (image.length > 1) {
+      image[0].remove();
+    }
+  }
+
+  public nextQuestion(listener: EventListener) {
+    this.nextButton.OnClick(listener);
   }
 }

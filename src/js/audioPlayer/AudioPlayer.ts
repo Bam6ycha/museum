@@ -33,12 +33,14 @@ class AudioPlayer {
   private playlist: {
     correct: string[];
     incorrect: string[];
+    roundEnd: string[];
   };
 
   constructor() {
     this.playlist = {
       correct: ["../assets/correct.mp3", "audio/mpeg"],
-      incorrect: ["../assets/incorrect.mp3", "audio/mpeg"]
+      incorrect: ["../assets/incorrect.mp3", "audio/mpeg"],
+      roundEnd: ["../assets/roundEnd.mp3", "audio/mpeg"]
     };
     this.audio = this.createAudioElement();
     this.soundBigButton = new Button("volume");
@@ -131,6 +133,14 @@ class AudioPlayer {
 
   public playIncorrect() {
     const [source, type] = this.playlist.incorrect;
+    this.audio.setAttribute("src", source);
+    this.audio.setAttribute("type", type);
+    this.togglePlay();
+    return this;
+  }
+
+  public playEndRound() {
+    const [source, type] = this.playlist.roundEnd;
     this.audio.setAttribute("src", source);
     this.audio.setAttribute("type", type);
     this.togglePlay();
