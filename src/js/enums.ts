@@ -1,16 +1,14 @@
-enum AnswerDescriptionState {
-  right = "correct",
-  wrong = "wrong"
+export enum AnswerDescriptionState {
+  Right = "correct",
+  Wrong = "wrong"
 }
 
-enum OpacityClasses {
+export enum OpacityClassNames {
   Visible = "visible",
   Invisible = "invisible"
 }
 
-enum OpacityValues {
+export enum OpacityValues {
   Visible = "1",
   Invisible = "0"
 }
-
-export { AnswerDescriptionState, OpacityClasses, OpacityValues };

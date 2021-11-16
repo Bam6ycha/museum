@@ -1,49 +1,41 @@
 import { ArtisQuizFooter } from "../artistQuiz/ArtistQuizFooter";
 import { Container } from "../Container/Container";
-import { QuestionsPageHeader } from "./QestionPageHeader";
-import { QuestionsPageMain } from "./QuestionPageMain";
+import { PictureQustionPageMain } from "./pictureQestionPageMain";
+import { QueistionPicturePageHeader } from "./pictureQuestionPageHeader";
 
-export class QusetionPage {
+export class PictureQuizPage {
   public element: HTMLDivElement;
 
   private container: Container;
 
+  private header: QueistionPicturePageHeader;
+
   private wrapper: Container;
 
-  private header: QuestionsPageHeader;
-
-  private main: QuestionsPageMain;
+  private main: PictureQustionPageMain;
 
   private footer: ArtisQuizFooter;
 
   constructor() {
-    this.header = new QuestionsPageHeader();
+    this.header = new QueistionPicturePageHeader();
 
-    this.main = new QuestionsPageMain();
+    this.main = new PictureQustionPageMain();
 
     this.footer = new ArtisQuizFooter();
 
-    this.wrapper = new Container("artistQuizQuestions-wrapper", [
+    this.wrapper = new Container("pictureQuizQuestions-wrapper", [
       this.header.element,
       this.main.element,
       this.footer.element
     ]);
 
-    this.container = new Container("artistQuizQuestions-container", [
+    this.container = new Container("pictureQuizQuestions-container", [
       this.wrapper.element
     ]);
-    this.container.addClassName("hidden");
+    this.container.addClassName("show");
     this.element = this.container.element;
-    this.showHomePage(() => this.hideQuestionPage());
-    this.resetTimer(() => {
-      this.header.timerGame(() => {
-        this.main.showWrongAnswer();
-      });
-    });
-  }
 
-  public getScoreAndCounder() {
-    return this.main.getScor();
+    this.changeAuthor(() => this.addAuthor());
   }
 
   public showHomePage(listener: EventListener) {
@@ -78,24 +70,20 @@ export class QusetionPage {
     this.header.showCategoriesPage(listener);
   }
 
-  public async startQuiz(number: number) {
-    await this.main.startQuiz(number);
-    const animationendTime = 1000;
-    setTimeout(
-      () => this.header.timerGame(() => this.main.showWrongAnswer()),
-      animationendTime
-    );
+  private changeAuthor(listener: EventListener) {
+    this.main.changeAuthor(listener);
   }
 
-  private resetTimer(listener: EventListener) {
-    this.main.resetTimer(listener);
+  private async addAuthor() {
+    let order = this.main.getMin();
+    ++order;
+    await this.header.getAuthor(order);
   }
+  // public hideQuestionPageShowHome(listener: EventListener) {
+  //   this.main.hideQuestionPageShowHomePage(listener);
+  // }
 
-  public hideQuestionPageShowHome(listener: EventListener) {
-    this.main.hideQuestionPageShowHomePage(listener);
-  }
-
-  public hideQuestionPageShowCategories(listener: EventListener) {
-    this.main.hideQuestionPageShowCategories(listener);
-  }
+  // public hideQuestionPageShowCategories(listener: EventListener) {
+  //   this.main.hideQuestionPageShowCategories(listener);
+  // }
 }

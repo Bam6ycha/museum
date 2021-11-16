@@ -31,10 +31,10 @@ class Utilites {
     return img;
   }
 
-  public randomNumberGap(category: string) {
+  public randomNumberGapArtistQuiz() {
     let min = 0;
     let max = 0;
-    const categoryNumber = +(localStorage.getItem(category) ?? "0");
+    const categoryNumber = +(localStorage.getItem("ArtisQuizCategory") ?? "0");
     if (categoryNumber === 0) {
       min = 0;
       max = 9;
@@ -86,7 +86,64 @@ class Utilites {
     return [min, max];
   }
 
-  public shuffle(array: string[]) {
+  public randomNumberGapPictureQuiz() {
+    let min = 0;
+    let max = 0;
+    const categoryNumber = +(
+      localStorage.getItem("PictureQuizCategory") ?? "0"
+    );
+    if (categoryNumber === 0) {
+      min = 90;
+      max = 99;
+    }
+    if (categoryNumber === 1) {
+      min = 100;
+      max = 109;
+    }
+    if (categoryNumber === 2) {
+      min = 110;
+      max = 119;
+    }
+    if (categoryNumber === 3) {
+      min = 120;
+      max = 129;
+    }
+    if (categoryNumber === 4) {
+      min = 130;
+      max = 139;
+    }
+    if (categoryNumber === 5) {
+      min = 140;
+      max = 149;
+    }
+    if (categoryNumber === 6) {
+      min = 150;
+      max = 159;
+    }
+    if (categoryNumber === 7) {
+      min = 160;
+      max = 169;
+    }
+    if (categoryNumber === 8) {
+      min = 170;
+      max = 179;
+    }
+    if (categoryNumber === 9) {
+      min = 180;
+      max = 189;
+    }
+    if (categoryNumber === 10) {
+      min = 190;
+      max = 199;
+    }
+    if (categoryNumber === 11) {
+      min = 80;
+      max = 89;
+    }
+    return [min, max];
+  }
+
+  public shuffle(array: string[] | HTMLImageElement[]) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];

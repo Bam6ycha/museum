@@ -77,7 +77,7 @@ export class PictureDescription extends Container {
     });
   }
 
-  public createChildElements() {
+  private createChildElements() {
     const elements: HTMLDivElement[] = [];
 
     for (let i = 0; i < 3; i++) {

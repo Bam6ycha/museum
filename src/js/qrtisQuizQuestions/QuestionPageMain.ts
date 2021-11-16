@@ -5,7 +5,7 @@ import { FinalResults } from "../FinalResutls";
 import { utilites } from "../Utilities";
 import { PictureDescription } from "./pictureDescriptionPage";
 import {
-  OpacityClasses,
+  OpacityClassNames,
   OpacityValues,
   AnswerDescriptionState
 } from "../enums";
@@ -21,7 +21,7 @@ export class QuestionsPageMain {
 
   private answerContainer: Container;
 
-  private answerDiscription: PictureDescription;
+  private answerDescription: PictureDescription;
 
   public answerContainers: HTMLDivElement[];
 
@@ -33,21 +33,21 @@ export class QuestionsPageMain {
 
   private max: number;
 
-  private indexofRightAnswer: number;
+  private indexOfRightAnswer: number;
 
   private finalResutl: FinalResults;
 
   constructor() {
-    [this.min, this.max] = utilites.randomNumberGap("ArtisQuizCategory");
+    [this.min, this.max] = utilites.randomNumberGapArtistQuiz();
     this.random = utilites.getRandomNumber(this.min, this.max);
     this.score = 0;
 
     this.finalResutl = new FinalResults("final-resultsPage");
-    this.answerDiscription = new PictureDescription(
+    this.answerDescription = new PictureDescription(
       "pictureDescriptionPage"
     ).addClassName("hidden");
 
-    this.indexofRightAnswer = 0;
+    this.indexOfRightAnswer = 0;
 
     this.answerContainers = this.creatAnswerContainers();
 
@@ -71,7 +71,7 @@ export class QuestionsPageMain {
       this.imgContainer.element,
       this.bulletsContainer.element,
       this.answerContainer.element,
-      this.answerDiscription.element,
+      this.answerDescription.element,
       this.finalResutl.element
     ]);
 
@@ -96,7 +96,7 @@ export class QuestionsPageMain {
   private async getImage(order: number) {
     const image = await utilites.getImg(order);
     const imageForDescription = await utilites.getImg(order);
-    this.answerDiscription.setImg(imageForDescription);
+    this.answerDescription.setImg(imageForDescription);
     this.imgContainer.append(image);
   }
 
@@ -127,60 +127,77 @@ export class QuestionsPageMain {
     const wrongAnswers = await this.getAnswerOptions();
     const answers: string[] = [author, ...wrongAnswers];
     utilites.shuffle(answers);
-    this.indexofRightAnswer = answers.indexOf(author);
+    this.indexOfRightAnswer = answers.indexOf(author);
     this.answerContainers.forEach(
       (container, index) => (container.textContent = answers[index])
     );
-    this.answerDiscription.addDescription(description);
+    this.answerDescription.addDescription(description);
     return answers;
   }
 
-  public makeInvisible() {
+  public hide() {
     if (this.imgContainer.getOpacity() === OpacityValues.Visible) {
-      this.imgContainer.addClassName(OpacityClasses.Invisible);
-      this.answerContainer.addClassName(OpacityClasses.Invisible);
+      this.imgContainer.addClassName(OpacityClassNames.Invisible);
+      this.answerContainer.addClassName(OpacityClassNames.Invisible);
       setTimeout(() => {
         this.imgContainer.setOpacity(OpacityValues.Invisible);
         this.answerContainer.setOpacity(OpacityValues.Invisible);
-        this.imgContainer.removeClassName(OpacityClasses.Invisible);
-        this.answerContainer.removeClassName(OpacityClasses.Invisible);
+        this.imgContainer.removeClassName(OpacityClassNames.Invisible);
+        this.answerContainer.removeClassName(OpacityClassNames.Invisible);
       }, 500);
     }
   }
 
-  public makeVisible() {
+  private increaseScore() {
+    this.score += 1;
+  }
+
+  private resetScore() {
+    this.score = 0;
+  }
+
+  public show() {
     if (this.imgContainer.getOpacity() === OpacityValues.Invisible) {
-      this.imgContainer.addClassName(OpacityClasses.Visible);
-      this.answerContainer.addClassName(OpacityClasses.Visible);
+      this.imgContainer.addClassName(OpacityClassNames.Visible);
+      this.answerContainer.addClassName(OpacityClassNames.Visible);
     }
     setTimeout(() => {
       this.imgContainer.setOpacity(OpacityValues.Visible);
       this.answerContainer.setOpacity(OpacityValues.Visible);
-      this.imgContainer.removeClassName(OpacityClasses.Visible);
-      this.answerContainer.removeClassName(OpacityClasses.Visible);
+      this.imgContainer.removeClassName(OpacityClassNames.Visible);
+      this.answerContainer.removeClassName(OpacityClassNames.Visible);
     }, 500);
   }
 
-  private showResult() {
+  public showWrongAnswer() {
+    player.incorrectAnswerSound();
+    this.bulletsContainer.showWrongAnswer();
+    this.bulletsContainer.showNextActive();
+    this.answerDescription.showResult(AnswerDescriptionState.Wrong);
+  }
+
+  public showRightAnswer() {
+    player.playCorrect();
+    this.bulletsContainer.showRightAnswer();
+    this.bulletsContainer.showNextActive();
+    this.answerDescription.showResult(AnswerDescriptionState.Right);
+    this.increaseScore();
+  }
+
+  public showResult(action?: CallableFunction) {
     this.answerContainers.forEach((answer) => {
       answer.addEventListener("click", ({ target }) => {
-        if (!target) {
-          return;
+        if (!target && action) {
+          action();
         }
+
         if (
           this.answerContainers.indexOf(target as HTMLDivElement) ===
-          this.indexofRightAnswer
+          this.indexOfRightAnswer
         ) {
-          player.playCorrect();
-          this.bulletsContainer.rightAnswer();
-          this.bulletsContainer.nextActive();
-          this.answerDiscription.showResult(AnswerDescriptionState.right);
-          this.score++;
+          this.showRightAnswer();
         } else {
-          player.playIncorrect();
-          this.bulletsContainer.wrongAnswer();
-          this.bulletsContainer.nextActive();
-          this.answerDiscription.showResult(AnswerDescriptionState.wrong);
+          this.showWrongAnswer();
         }
       });
     });
@@ -196,35 +213,42 @@ export class QuestionsPageMain {
   public async startQuiz(number: number) {
     await this.getImage(number);
     await this.addAnswers(number);
-    [this.min, this.max] = utilites.randomNumberGap("ArtisQuizCategory");
-    this.answerDiscription.removeImage();
+    [this.min, this.max] = utilites.randomNumberGapArtistQuiz();
+    this.answerDescription.removeImage();
     this.removeQuestionImage();
-    this.bulletsContainer.nullifyCounter();
-    this.bulletsContainer.updateBulletsState();
-    this.score = 0;
+    this.bulletsContainer.resetState();
+    this.bulletsContainer.updateState();
+    this.resetScore();
+  }
+
+  public resetTimer(listener: EventListener) {
+    this.answerDescription.nextQuestion(listener);
   }
 
   private nextQuestion() {
-    this.answerDiscription.nextQuestion(() => {
-      this.makeInvisible();
+    this.answerDescription.nextQuestion(() => {
+      this.hide();
       setTimeout(async () => {
-        this.removeQuestionImage();
         ++this.min;
         await this.getImage(this.min);
         this.removeQuestionImage();
-        this.answerDiscription.removeImage();
+        this.answerDescription.removeImage();
         await this.addAnswers(this.min);
-        this.makeVisible();
-        if (this.bulletsContainer.getCounter() === 10) {
-          this.finalResutl.showFinalResult();
-          this.finalResutl.setTotal(`${this.score}`);
-          player.playEndRound();
-        }
+        this.show();
+        this.endGame();
       }, 1000);
     });
   }
 
-  public getScoreAndCounter() {
+  public endGame() {
+    if (this.bulletsContainer.getCounter() === 10) {
+      this.finalResutl.showFinalResult();
+      this.finalResutl.setTotal(`${this.score}`);
+      player.playEndRound();
+    }
+  }
+
+  public getScor() {
     return [this.score];
   }
 

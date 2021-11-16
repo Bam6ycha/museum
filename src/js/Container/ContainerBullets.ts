@@ -24,6 +24,7 @@ export class ContainerBullets extends Container {
     );
 
     this.element = this.bulletsContainer.element;
+    this.showNextActive();
   }
 
   private createBullets() {
@@ -36,7 +37,7 @@ export class ContainerBullets extends Container {
     return bullets;
   }
 
-  public nextActive() {
+  public showNextActive() {
     if (this.counter < 10) {
       this.bullets[this.counter].changeBulletState(BulletStates.Active);
       this.counter++;
@@ -46,19 +47,19 @@ export class ContainerBullets extends Container {
     }
   }
 
-  public rightAnswer() {
+  public showRightAnswer() {
     this.bullets[this.counter - 1].changeBulletState(BulletStates.RightAnswer);
   }
 
-  public wrongAnswer() {
+  public showWrongAnswer() {
     this.bullets[this.counter - 1].changeBulletState(BulletStates.WrongAnswer);
   }
 
-  public nullifyCounter() {
+  public resetState() {
     this.counter = 0;
   }
 
-  public updateBulletsState() {
+  public updateState() {
     this.bullets.forEach((bullet) =>
       bullet.element.classList.remove(
         BulletStates.RightAnswer,
@@ -66,7 +67,7 @@ export class ContainerBullets extends Container {
         BulletStates.Active
       )
     );
-    this.nextActive();
+    this.showNextActive();
   }
 
   getCounter() {

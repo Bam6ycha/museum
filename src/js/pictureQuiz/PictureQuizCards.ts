@@ -1,19 +1,18 @@
-import { cardsTitle } from "../artisCardsTitle";
-import { ChildElement } from "../childElementType";
 import { Card } from "../components/Card";
-import { imgNumer } from "../defaultArtisQuizImg";
+import { Container } from "../Container/Container";
+import { pictureQuizImages } from "../defaultPictureQuizImages";
+import { pictureQiuzTitles } from "../pictureQuizTitle";
 import { utilites } from "../Utilities";
-import { Container } from "./Container";
 
-export class ContainerCards extends Container {
-  element: HTMLDivElement;
+export class PictureQuizCards extends Container {
+  public element: HTMLDivElement;
 
   cardsContainer: Container;
 
   cards: Card[];
 
-  constructor(className: string, children?: ChildElement[]) {
-    super(className, children);
+  constructor(className: string) {
+    super(className);
 
     this.cards = this.createCards();
 
@@ -30,9 +29,15 @@ export class ContainerCards extends Container {
 
   private addDescriptionToCard() {
     this.cards.forEach((item, index) => {
-      item.addHeaderText(cardsTitle[index]);
+      item.addHeaderText(pictureQiuzTitles[index]);
     });
     return this;
+  }
+
+  private async addImages() {
+    this.cards.forEach(async (card, index) => {
+      await card.addImage(pictureQuizImages[index]);
+    });
   }
 
   public addTotalScore(score: number) {
@@ -48,12 +53,6 @@ export class ContainerCards extends Container {
     return this;
   }
 
-  private async addImages() {
-    this.cards.forEach(async (card, index) => {
-      await card.addImage(imgNumer[index]);
-    });
-  }
-
   private createCards(amount = 12) {
     const cards: Card[] = [];
     for (let i = 0; i < amount; i++) {
@@ -66,7 +65,7 @@ export class ContainerCards extends Container {
   private async createImages(amount = 12) {
     const images: HTMLImageElement[] = [];
     for (let i = 0; i < amount; i++) {
-      const image = await utilites.getImg(imgNumer[i]);
+      const image = await utilites.getImg(pictureQuizImages[i]);
       images.push(image);
     }
     return images;
@@ -79,7 +78,7 @@ export class ContainerCards extends Container {
           return;
         }
         localStorage.setItem(
-          "ArtisQuizCategory",
+          "PictureQuizCategory",
           `${this.cards.indexOf(card)}`
         );
       });

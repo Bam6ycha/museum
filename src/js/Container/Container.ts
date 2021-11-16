@@ -1,5 +1,4 @@
 import { ChildElement } from "../childElementType";
-import { utilites } from "../Utilities";
 
 class Container {
   public element: HTMLDivElement;

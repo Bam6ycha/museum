@@ -1,0 +1,81 @@
+.pictureQuizQuestions-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, white, grey);
+  animation: 1s ease-in-out;
+  box-sizing: content-box;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.pictureQuizQuestions-wrapper {
+  max-width: 1220px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+.pictureQuizQuestions-mainContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.pictureQuize-main__imageMainContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 55%;
+  animation: 0.5s ease;
+  height: 665px;
+}
+
+.pictureQuize-main__imageContainer {
+  max-width: 320px;
+  max-height: 326px;
+}
+
+.pictureQuize-main__imageContainer > img {
+  max-width: 100%;
+  border-radius: 20% 0 20% 0;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.pictureQuize-main__imageContainer > img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 10px black;
+}
+
+.artistQuizQuestions-header__question {
+  animation: 0.5s ease;
+}
+
+.invisible {
+  animation-name: changeOpasity;
+}
+.visible {
+  animation-name: changeOpasity;
+  animation-direction: reverse;
+}
+@keyframes changeOpasity {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.artistQuizQuestions-header__question {
+  width: 330px;
+}

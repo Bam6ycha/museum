@@ -1,8 +1,9 @@
 import { ButtonWithText } from "../buttons/ButtonWithText";
 import { Container } from "../Container/Container";
 import { OpacityValues } from "../enums";
+import { utilites } from "../Utilities";
 
-export class QuestionsPageHeader {
+export class QueistionPicturePageHeader {
   public element: HTMLDivElement;
 
   private homeButton: ButtonWithText;
@@ -22,8 +23,6 @@ export class QuestionsPageHeader {
     );
 
     this.question = new Container("artistQuizQuestions-header__question");
-
-    this.question.setText("Кто автор данной картины?");
 
     this.timerContainer = new Container("artistQuizQuestions-header__timer");
     this.timerContainer.setOpacity(OpacityValues.Invisible);
@@ -45,6 +44,12 @@ export class QuestionsPageHeader {
 
     this.element = this.wrapper.element;
     this.getSeconds();
+    this.getAuthor(utilites.randomNumberGapPictureQuiz()[0]);
+  }
+
+  async getAuthor(number: number) {
+    const { author } = await utilites.getAuthor(number);
+    this.question.setText(`${"Какую картину написал "}${author}?`);
   }
 
   getSeconds() {

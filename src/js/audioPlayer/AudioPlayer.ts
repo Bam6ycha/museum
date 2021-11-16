@@ -131,7 +131,7 @@ class AudioPlayer {
     return this;
   }
 
-  public playIncorrect() {
+  public incorrectAnswerSound() {
     const [source, type] = this.playlist.incorrect;
     this.audio.setAttribute("src", source);
     this.audio.setAttribute("type", type);
