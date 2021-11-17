@@ -91,16 +91,16 @@ export class PictureQuizCards extends Container {
       const answersJSON = localStorage.getItem("answers");
       if (answersJSON) {
         const answers: Array<string[]> = JSON.parse(answersJSON);
-        answers.forEach((category, index) => {
-          if (category) {
-            const rightAnswerAmount = category.filter(
+        for (let index = 0; index < 11; index++) {
+          if (answers[index]) {
+            const rightAnswerAmount = answers[index].filter(
               (item) => item === "correct"
             ).length;
             this.cards[index]
               .addScore(`${rightAnswerAmount}`)
               .addClassName("played");
           }
-        });
+        }
       }
     });
   }

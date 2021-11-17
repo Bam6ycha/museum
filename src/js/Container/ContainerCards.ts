@@ -26,7 +26,7 @@ export class ContainerCards extends Container {
     this.determinateCategory();
     this.addDescriptionToCard();
     this.addImages();
-    // this.domLoaded();
+    this.domLoaded();
   }
 
   private addDescriptionToCard() {
@@ -91,22 +91,23 @@ export class ContainerCards extends Container {
     this.cards.forEach((card) => card.addListener("click", listener));
   }
 
-  // private domLoaded() {
-  //   document.addEventListener("DOMContentLoaded", () => {
-  //     const answersJSON = localStorage.getItem("answers");
-  //     if (answersJSON) {
-  //       const answers: Array<string[]> = JSON.parse(answersJSON);
-  //       answers.forEach((category, index) => {
-  //         if (category) {
-  //           const rightAnswerAmount = category.filter(
-  //             (item) => item === "correct"
-  //           ).length;
-  //           this.cards[index]
-  //             .addScore(`${rightAnswerAmount}`)
-  //             .addClassName("played");
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
+  private domLoaded() {
+    document.addEventListener("DOMContentLoaded", () => {
+      const answersJSON = localStorage.getItem("answers");
+      const startPoint = 12;
+      if (answersJSON) {
+        const answers: Array<string[]> = JSON.parse(answersJSON);
+        for (let index = startPoint; index < 23; index++) {
+          if (answers[index]) {
+            const rightAnswerAmount = answers[index].filter(
+              (item) => item === "correct"
+            ).length;
+            this.cards[index - startPoint]
+              .addScore(`${rightAnswerAmount}`)
+              .addClassName("played");
+          }
+        }
+      }
+    });
+  }
 }

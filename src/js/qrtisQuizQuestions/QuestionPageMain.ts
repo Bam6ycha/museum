@@ -37,7 +37,18 @@ export class QuestionsPageMain {
 
   private finalResutl: FinalResults;
 
+  private currentSessionAnswers: string[];
+
+  private answers: Array<string[]>;
+
   constructor() {
+    const answersJSON = localStorage.getItem("answers") ?? null;
+    if (!answersJSON) {
+      this.answers = [];
+    } else {
+      this.answers = JSON.parse(localStorage.getItem("answers") as string);
+    }
+    this.currentSessionAnswers = [];
     [this.min, this.max] = utilites.randomNumberGapArtistQuiz();
     this.random = utilites.getRandomNumber(this.min, this.max);
     this.score = 0;
@@ -195,9 +206,13 @@ export class QuestionsPageMain {
           this.answerContainers.indexOf(target as HTMLDivElement) ===
           this.indexOfRightAnswer
         ) {
+          const questionNumber = this.bulletsContainer.getCounter();
           this.showRightAnswer();
+          this.currentSessionAnswers[questionNumber] = "correct";
         } else {
+          const questionNumber = this.bulletsContainer.getCounter();
           this.showWrongAnswer();
+          this.currentSessionAnswers[questionNumber] = "incorrect";
         }
       });
     });
@@ -242,9 +257,15 @@ export class QuestionsPageMain {
 
   public endGame() {
     if (this.bulletsContainer.getCounter() === 10) {
+      const currentCategory = +(localStorage.getItem("ArtisQuizCategory") ?? 0);
       this.finalResutl.showFinalResult();
       this.finalResutl.setTotal(`${this.score}`);
       player.playEndRound();
+      const pictureCategoriesAmount = 12;
+      this.answers[currentCategory + pictureCategoriesAmount] =
+        this.currentSessionAnswers;
+      localStorage.setItem("answers", JSON.stringify(this.answers));
+      this.currentSessionAnswers = [];
     }
   }
 

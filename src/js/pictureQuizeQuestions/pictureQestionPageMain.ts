@@ -205,7 +205,7 @@ export class PictureQustionPageMain {
     this.resetScore();
   }
 
-  public endGame() {
+  private endGame() {
     if (this.bulletsContainer.getCounter() === 10) {
       const currentCategory = +(
         localStorage.getItem("PictureQuizCategory") ?? 0
