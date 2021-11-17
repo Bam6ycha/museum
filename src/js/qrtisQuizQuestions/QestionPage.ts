@@ -54,10 +54,9 @@ export class QusetionPage {
     if (this.container.hasClass("show")) {
       this.container.addClassName("to-left");
       this.container.addListener("animationend", () => {
-        this.container
-          .removeClassName("show")
-          .removeClassName("to-left")
-          .addClassName("hidden");
+        this.container.removeClassName("to-left");
+        this.container.removeClassName("show");
+        this.container.addClassName("hidden");
       });
     }
   }

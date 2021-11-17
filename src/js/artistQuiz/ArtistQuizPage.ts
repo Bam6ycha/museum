@@ -56,6 +56,7 @@ export class ArtisQuizPage {
 
   hidePage() {
     this.container.addClassName("to-left");
+
     setTimeout(() => {
       this.container
         .addClassName("hidden")

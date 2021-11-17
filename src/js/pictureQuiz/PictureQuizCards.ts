@@ -91,7 +91,7 @@ export class PictureQuizCards extends Container {
       const answersJSON = localStorage.getItem("answers");
       if (answersJSON) {
         const answers: Array<string[]> = JSON.parse(answersJSON);
-        for (let index = 0; index < 11; index++) {
+        for (let index = 0; index < 12; index++) {
           if (answers[index]) {
             const rightAnswerAmount = answers[index].filter(
               (item) => item === "correct"

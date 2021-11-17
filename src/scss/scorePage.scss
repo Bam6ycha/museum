@@ -1,0 +1,15 @@
+.score-page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+
+  max-width: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, white, grey);
+  animation: 0.5s ease-in-out 0.1s;
+  box-sizing: content-box;
+  overflow-y: auto;
+  height: 100vh;
+}

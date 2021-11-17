@@ -97,7 +97,7 @@ export class ContainerCards extends Container {
       const startPoint = 12;
       if (answersJSON) {
         const answers: Array<string[]> = JSON.parse(answersJSON);
-        for (let index = startPoint; index < 23; index++) {
+        for (let index = startPoint; index < 24; index++) {
           if (answers[index]) {
             const rightAnswerAmount = answers[index].filter(
               (item) => item === "correct"
