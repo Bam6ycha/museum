@@ -5,12 +5,18 @@
   max-width: 100%;
   width: 100%;
   background: linear-gradient(to bottom, white, grey);
-  animation: 1s ease-in-out;
+  animation: 0.5s ease-in-out;
   box-sizing: content-box;
   overflow: hidden;
   height: 100vh;
 }
 
+.pictureQuizQuestions-container.hidden {
+  transform: translate(-100%);
+}
+.pictureQuizQuestions-container.show {
+  transform: translate(0%);
+}
 .pictureQuizQuestions-wrapper {
   max-width: 1220px;
   width: 100%;
@@ -78,4 +84,32 @@
 
 .artistQuizQuestions-header__question {
   width: 330px;
+}
+
+.from-right {
+  animation-name: right;
+}
+
+.to-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+@keyframes left {
+  from {
+    transform: translate(-100%);
+  }
+  to {
+    transform: translate(0%);
+  }
+}
+@keyframes right {
+  from {
+    transform: translate(100%);
+  }
+  90% {
+    transform: translate(-2%);
+  }
+  to {
+    transform: translate(0);
+  }
 }

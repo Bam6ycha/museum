@@ -32,7 +32,7 @@ export class PictureQuizPage {
     this.container = new Container("pictureQuizQuestions-container", [
       this.wrapper.element
     ]);
-    this.container.addClassName("show");
+    this.container.addClassName("hidden");
     this.element = this.container.element;
 
     this.changeAuthor(() => this.addAuthor());
@@ -66,6 +66,11 @@ export class PictureQuizPage {
     }
   }
 
+  public async startQuiz() {
+    await this.main.strartQuiz();
+    await this.addAuthor();
+  }
+
   public showCategoriesPage(listener: EventListener) {
     this.header.showCategoriesPage(listener);
   }
@@ -75,15 +80,20 @@ export class PictureQuizPage {
   }
 
   private async addAuthor() {
-    let order = this.main.getMin();
-    ++order;
+    const order = this.main.getMin();
+
     await this.header.getAuthor(order);
   }
-  // public hideQuestionPageShowHome(listener: EventListener) {
-  //   this.main.hideQuestionPageShowHomePage(listener);
-  // }
 
-  // public hideQuestionPageShowCategories(listener: EventListener) {
-  //   this.main.hideQuestionPageShowCategories(listener);
-  // }
+  public hideQuestionPageShowHome(listener: EventListener) {
+    this.main.hideQuestionPageShowHomePage(listener);
+  }
+
+  public hideQuestionPageShowCategories(listener: EventListener) {
+    this.main.hideQuestionPageShowCategories(listener);
+  }
+
+  public getScore() {
+    return this.main.getScore();
+  }
 }

@@ -43,19 +43,19 @@ const artisQuizButton = document.querySelector(
 
 const pictureQuizButton = document.querySelector(
   ".artist-quiz>div:nth-child(2)"
-);
+) as HTMLDivElement;
 
 artisQuizButton.addEventListener("click", () => artisQuizPage.showPage());
-pictureQuizButton?.addEventListener("click", () => pictureQuizPage.showPage());
+pictureQuizButton.addEventListener("click", () => pictureQuizPage.showPage());
 
 artisqQuizQuestionsPage.hideQuestionPageShowHome(() => {
-  const [score] = artisqQuizQuestionsPage.getScoreAndCounder();
+  const [score] = artisqQuizQuestionsPage.getScore();
   artisQuizPage.addScore(score);
   artisqQuizQuestionsPage.hideQuestionPage();
 });
 
 artisqQuizQuestionsPage.hideQuestionPageShowCategories(() => {
-  const [score] = artisqQuizQuestionsPage.getScoreAndCounder();
+  const [score] = artisqQuizQuestionsPage.getScore();
 
   artisqQuizQuestionsPage.hideQuestionPage();
   artisQuizPage.showPage();
@@ -74,4 +74,32 @@ artisQuizPage.showQuestionPage(async () => {
   );
   artisQuizPage.hidePage();
   artisqQuizQuestionsPage.showQuestionPage();
+});
+
+pictureQusetionPage.showCategoriesPage(() => {
+  pictureQusetionPage.hideQuestionPage();
+  pictureQuizPage.showPage();
+});
+
+pictureQusetionPage.showHomePage(() => {
+  pictureQusetionPage.hideQuestionPage();
+});
+
+pictureQuizPage.showQuestionPage(async () => {
+  await pictureQusetionPage.startQuiz();
+  await pictureQusetionPage.showQuestionPage();
+  pictureQuizPage.hidePage();
+});
+
+pictureQusetionPage.hideQuestionPageShowCategories(() => {
+  const [score] = pictureQusetionPage.getScore();
+  pictureQusetionPage.hideQuestionPage();
+  pictureQuizPage.showPage();
+  pictureQuizPage.addScore(score);
+});
+
+pictureQusetionPage.hideQuestionPageShowHome(() => {
+  const [score] = pictureQusetionPage.getScore();
+  pictureQuizPage.addScore(score);
+  pictureQusetionPage.hideQuestionPage();
 });

@@ -42,8 +42,8 @@ export class QusetionPage {
     });
   }
 
-  public getScoreAndCounder() {
-    return this.main.getScor();
+  public getScore() {
+    return this.main.getScore();
   }
 
   public showHomePage(listener: EventListener) {

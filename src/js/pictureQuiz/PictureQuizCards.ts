@@ -25,6 +25,7 @@ export class PictureQuizCards extends Container {
     this.determinateCategory();
     this.addDescriptionToCard();
     this.addImages();
+    this.domLoaded();
   }
 
   private addDescriptionToCard() {
@@ -42,7 +43,7 @@ export class PictureQuizCards extends Container {
 
   public addTotalScore(score: number) {
     const necessaryCardIndex = +(
-      localStorage.getItem("ArtisQuizCategory") ?? 0
+      localStorage.getItem("PictureQuizCategory") ?? 0
     );
     this.cards.forEach((card, index) => {
       if (index === necessaryCardIndex) {
@@ -82,6 +83,25 @@ export class PictureQuizCards extends Container {
           `${this.cards.indexOf(card)}`
         );
       });
+    });
+  }
+
+  private domLoaded() {
+    document.addEventListener("DOMContentLoaded", () => {
+      const answersJSON = localStorage.getItem("answers");
+      if (answersJSON) {
+        const answers: Array<string[]> = JSON.parse(answersJSON);
+        answers.forEach((category, index) => {
+          if (category) {
+            const rightAnswerAmount = category.filter(
+              (item) => item === "correct"
+            ).length;
+            this.cards[index]
+              .addScore(`${rightAnswerAmount}`)
+              .addClassName("played");
+          }
+        });
+      }
     });
   }
 

@@ -55,3 +55,9 @@
 .footer-settings:hover .footer-settings__img {
   transform: rotate(180deg);
 }
+
+.footer__rsLogo {
+  background: url(../assets/rs.svg) center no-repeat;
+  width: 80px;
+  height: 30px;
+}

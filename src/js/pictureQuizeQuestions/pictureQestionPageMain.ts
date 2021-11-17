@@ -34,7 +34,19 @@ export class PictureQustionPageMain {
 
   private finalResult: FinalResults;
 
+  private currentSessionAnswers: string[];
+
+  private answers: Array<string[]>;
+
   constructor() {
+    const answersJSON = localStorage.getItem("answers") ?? null;
+    if (!answersJSON) {
+      this.answers = [];
+    } else {
+      this.answers = JSON.parse(localStorage.getItem("answers") as string);
+    }
+
+    this.currentSessionAnswers = [];
     [this.min, this.max] = utilites.randomNumberGapPictureQuiz();
     this.random = utilites.getRandomNumber(this.min, this.max);
     this.score = 0;
@@ -100,45 +112,50 @@ export class PictureQustionPageMain {
     return images;
   }
 
-  public makeInvisible() {
+  public hide() {
     if (this.imagesContainer.getOpacity() === OpacityValues.Visible) {
       this.imagesContainer.addClassName(OpacityClassNames.Invisible);
-      // this.answerContainer.addClassName(OpacityClasses.Invisible);
+
       setTimeout(() => {
         this.imagesContainer.setOpacity(OpacityValues.Invisible);
-        // this.answerContainer.setOpacity(OpacityValues.Invisible);
         this.imagesContainer.removeClassName(OpacityClassNames.Invisible);
-        // this.answerContainer.removeClassName(OpacityClasses.Invisible);
       }, 500);
     }
   }
 
-  public makeVisible() {
+  public show() {
     if (this.imagesContainer.getOpacity() === OpacityValues.Invisible) {
       this.imagesContainer.addClassName(OpacityClassNames.Visible);
-      // this.answerContainer.addClassName(OpacityClasses.Visible);
     }
     setTimeout(() => {
       this.imagesContainer.setOpacity(OpacityValues.Visible);
-      // this.answerContainer.setOpacity(OpacityValues.Visible);
+
       this.imagesContainer.removeClassName(OpacityClassNames.Visible);
-      // this.answerContainer.removeClassName(OpacityClasses.Visible);
     }, 500);
+  }
+
+  private increaseScore() {
+    this.score += 1;
+  }
+
+  private resetScore() {
+    this.score = 0;
   }
 
   public showWrongAnswer() {
     player.incorrectAnswerSound();
-    this.bulletsContainer.showWrongAnswer();
     this.bulletsContainer.showNextActive();
+    this.bulletsContainer.showWrongAnswer();
     this.answerDescription.showResult(AnswerDescriptionState.Wrong);
   }
 
   public showRightAnswer() {
     player.playCorrect();
-    this.bulletsContainer.showRightAnswer();
     this.bulletsContainer.showNextActive();
+    this.bulletsContainer.showRightAnswer();
+
     this.answerDescription.showResult(AnswerDescriptionState.Right);
-    this.score++;
+    this.increaseScore();
   }
 
   private showResult() {
@@ -151,26 +168,55 @@ export class PictureQustionPageMain {
       if (
         children.indexOf(target as HTMLImageElement) === this.indexOfRightAnswer
       ) {
+        const questionNumber = this.bulletsContainer.getCounter();
         this.showRightAnswer();
+        this.currentSessionAnswers[questionNumber] = "correct";
       } else {
+        const questionNumber = this.bulletsContainer.getCounter();
         this.showWrongAnswer();
+        this.currentSessionAnswers[questionNumber] = "incorrect";
       }
     });
   }
 
   public nextQuestion() {
     this.answerDescription.nextQuestion(() => {
-      this.makeInvisible();
+      this.hide();
+      ++this.min;
       setTimeout(async () => {
         this.imagesContainer.removeChildren();
-        ++this.min;
         await this.getRandomImages();
         this.answerDescription.removeImage();
         this.setDescription();
-        this.makeVisible();
-        //  this.endGame();
+        this.show();
+        this.endGame();
       }, 1000);
     });
+  }
+
+  public async strartQuiz() {
+    [this.min, this.max] = utilites.randomNumberGapPictureQuiz();
+    await this.getRandomImages();
+    await this.setDescription();
+    this.answerDescription.removeImage();
+    this.imagesContainer.removeChildren();
+    this.bulletsContainer.resetState();
+    this.bulletsContainer.updateState();
+    this.resetScore();
+  }
+
+  public endGame() {
+    if (this.bulletsContainer.getCounter() === 10) {
+      const currentCategory = +(
+        localStorage.getItem("PictureQuizCategory") ?? 0
+      );
+      this.finalResult.showFinalResult();
+      this.finalResult.setTotal(`${this.score}`);
+      player.playEndRound();
+      this.answers[currentCategory] = this.currentSessionAnswers;
+      localStorage.setItem("answers", JSON.stringify(this.answers));
+      this.currentSessionAnswers = [];
+    }
   }
 
   changeAuthor(listener: EventListener) {
@@ -179,5 +225,17 @@ export class PictureQustionPageMain {
 
   public getMin() {
     return this.min;
+  }
+
+  public getScore() {
+    return [this.score];
+  }
+
+  public hideQuestionPageShowHomePage(listener: EventListener) {
+    this.finalResult.hideQuestionPageShowHomePage(listener);
+  }
+
+  public hideQuestionPageShowCategories(listener: EventListener) {
+    this.finalResult.hideQuestionPageShowCategories(listener);
   }
 }

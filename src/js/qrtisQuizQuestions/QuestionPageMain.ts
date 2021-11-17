@@ -171,15 +171,15 @@ export class QuestionsPageMain {
 
   public showWrongAnswer() {
     player.incorrectAnswerSound();
-    this.bulletsContainer.showWrongAnswer();
     this.bulletsContainer.showNextActive();
+    this.bulletsContainer.showWrongAnswer();
     this.answerDescription.showResult(AnswerDescriptionState.Wrong);
   }
 
   public showRightAnswer() {
     player.playCorrect();
-    this.bulletsContainer.showRightAnswer();
     this.bulletsContainer.showNextActive();
+    this.bulletsContainer.showRightAnswer();
     this.answerDescription.showResult(AnswerDescriptionState.Right);
     this.increaseScore();
   }
@@ -228,8 +228,8 @@ export class QuestionsPageMain {
   private nextQuestion() {
     this.answerDescription.nextQuestion(() => {
       this.hide();
+      ++this.min;
       setTimeout(async () => {
-        ++this.min;
         await this.getImage(this.min);
         this.removeQuestionImage();
         this.answerDescription.removeImage();
@@ -248,7 +248,7 @@ export class QuestionsPageMain {
     }
   }
 
-  public getScor() {
+  public getScore() {
     return [this.score];
   }
 

@@ -14,7 +14,7 @@ export class ContainerBullets extends Container {
   constructor(className: string, children?: ChildElement[]) {
     super(className, children);
 
-    this.counter = 0;
+    this.counter = -1;
 
     this.bullets = this.createBullets();
 
@@ -24,7 +24,6 @@ export class ContainerBullets extends Container {
     );
 
     this.element = this.bulletsContainer.element;
-    this.showNextActive();
   }
 
   private createBullets() {
@@ -38,12 +37,11 @@ export class ContainerBullets extends Container {
   }
 
   public showNextActive() {
-    if (this.counter < 10) {
+    if (this.counter <= 9) {
       this.bullets[this.counter].changeBulletState(BulletStates.Active);
       this.counter++;
-    }
-    if (this.counter > 10) {
-      this.counter = 0;
+    } else {
+      this.counter++;
     }
   }
 
@@ -67,7 +65,6 @@ export class ContainerBullets extends Container {
         BulletStates.Active
       )
     );
-    this.showNextActive();
   }
 
   getCounter() {

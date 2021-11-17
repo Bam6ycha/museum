@@ -16,7 +16,6 @@ export class ArtisQuizFooter {
     this.author.setText("Bambycha");
 
     this.rsLogo = new Anchor("https://rs.school/");
-    this.rsLogo.setImg("../../assets/rs.svg");
     this.rsLogo.addClassName("footer__rsLogo");
 
     this.wrapper = new Container("artisquiz-footer", [
