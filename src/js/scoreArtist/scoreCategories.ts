@@ -6,12 +6,19 @@ export class ScoreCategories extends Container {
 
   private homeButton: ButtonWithText;
 
+  private categoriesButton: ButtonWithText;
+
   private description: Container;
 
   private wrapper: Container;
 
   constructor(className: string) {
     super(className);
+
+    this.categoriesButton = new ButtonWithText(
+      "artistQuizQuestions-header__categoriseButton",
+      "Categories"
+    );
 
     this.homeButton = new ButtonWithText(
       "categorie-artistQuiz__homeButton",
@@ -24,7 +31,8 @@ export class ScoreCategories extends Container {
 
     this.wrapper = new Container("categorie-artistQuiz__wrapper", [
       this.homeButton.element,
-      this.description.element
+      this.description.element,
+      this.categoriesButton.element
     ]);
 
     this.element = this.wrapper.element;

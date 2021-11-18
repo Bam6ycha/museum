@@ -2,7 +2,7 @@ import { Card } from "../components/Card";
 import { Container } from "../Container/Container";
 import { utilites } from "../Utilities";
 
-export class ScoreMain extends Container {
+export class ScorePicturesMain extends Container {
   cards: Card[];
 
   cardsContainer: Container;
@@ -20,6 +20,7 @@ export class ScoreMain extends Container {
       ...this.cards.map((card) => card.element)
     ]);
     this.element = this.cardsContainer.element;
+    this.changeCardsState();
     this.addImagesToCards();
   }
 
@@ -34,7 +35,7 @@ export class ScoreMain extends Container {
   }
 
   private async getImages() {
-    const [min, max] = utilites.randomNumberGapArtistQuiz();
+    const [min, max] = utilites.randomNumberGapPictureQuiz();
     const responses: Array<Promise<HTMLImageElement>> = [];
 
     for (let i = min; i <= max; i++) {
@@ -42,19 +43,33 @@ export class ScoreMain extends Container {
       responses.push(image);
     }
     const results = await Promise.all(responses);
+
     return results;
-    const answersJSON = localStorage.getItem("answers");
-  
-    if(answersJSON){
-      const answers = JSON.parse(answersJSON);
-      for
-    }
   }
 
   private async addImagesToCards() {
     const images = await this.getImages();
     this.cards.forEach((card, index) => card.append(images[index]));
   }
-    
 
+  public changeCardsState() {
+    const answersJSON = localStorage.getItem("answers");
+    let answers: Array<string[]> = [];
+
+    if (answersJSON) {
+      answers = JSON.parse(answersJSON);
+    }
+    const artisQuizCategoriesAmount = 11;
+
+    for (let i = 0; i < artisQuizCategoriesAmount; i++) {
+      if (answers[i]) {
+        const item = answers[i];
+        item.forEach((answer, index) => {
+          if (answer === "correct") {
+            this.cards[index].addClassName("played");
+          }
+        });
+      }
+    }
+  }
 }

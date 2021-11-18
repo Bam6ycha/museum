@@ -1,16 +1,19 @@
 import { ArtisQuizFooter } from "../artistQuiz/ArtistQuizFooter";
 import { ArtisQuizHeader } from "../artistQuiz/ArtistQuizHeader";
 import { Container } from "../Container/Container";
-import { ScoreMain } from "./scoreMain";
+import { ScoreCategories } from "../scoreArtist/scoreCategories";
+import { ScorePicturesMain } from "./scorePicturesMain";
 
-export class ScorePage extends Container {
+export class ScorePicturePage extends Container {
   container: Container;
 
   wrapper: Container;
 
   header: ArtisQuizHeader;
 
-  main: ScoreMain;
+  categories: ScoreCategories;
+
+  main: ScorePicturesMain;
 
   footer: ArtisQuizFooter;
 
@@ -19,12 +22,14 @@ export class ScorePage extends Container {
 
     this.footer = new ArtisQuizFooter();
 
-    this.main = new ScoreMain("score-main__cardsContainer");
+    this.main = new ScorePicturesMain("score-main__cardsContainer");
 
     this.header = new ArtisQuizHeader();
 
+    this.categories = new ScoreCategories("categorie-artistQuiz__wrapper");
     this.wrapper = new Container("score-wrapper", [
       this.header.element,
+      this.categories.element,
       this.main.element,
       this.footer.element
     ]);

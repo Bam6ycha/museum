@@ -5,7 +5,8 @@ import { ArtisQuizPage } from "./artistQuiz/ArtistQuizPage";
 import { PictureQuiz } from "./pictureQuiz/PictureQuizPage";
 import { PictureQuizPage } from "./pictureQuizeQuestions/pictireQuestionPage";
 import { QusetionPage } from "./qrtisQuizQuestions/QestionPage";
-import { ScorePage } from "./score/scorePage";
+import { ScorePage } from "./scoreArtist/scorePage";
+import { ScorePicturePage } from "./scorePictures/scorePicturePage";
 
 import { SettingsPage } from "./settingsPage/Page";
 import { utilites } from "./Utilities";
@@ -20,7 +21,9 @@ const pictureQuizPage = new PictureQuiz();
 
 const pictureQusetionPage = new PictureQuizPage();
 
-const scorePage = new ScorePage("score-page");
+const scorePageArtist = new ScorePage("score-page");
+
+const scorePagePictures = new ScorePicturePage("score-page");
 
 document.body.append(artisQuizPage.element);
 
@@ -32,7 +35,9 @@ document.body.append(pictureQuizPage.element);
 
 document.body.append(pictureQusetionPage.element);
 
-document.body.append(scorePage.element);
+document.body.append(scorePageArtist.element);
+
+document.body.append(scorePagePictures.element);
 
 const settingsButton = document.querySelector(
   ".footer-settings"

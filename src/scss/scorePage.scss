@@ -13,3 +13,68 @@
   overflow-y: auto;
   height: 100vh;
 }
+
+.score-wrapper {
+  max-width: 1200px;
+  width: 1200px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.score-page.hidden {
+  transform: translate(-100%);
+}
+.score-page.show {
+  transform: translate(0%);
+}
+
+.score-main__cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  animation: 0.5s ease-in-out 0.1s;
+  position: absolute;
+}
+
+.score-page.to-left {
+  animation-name: left;
+  animation-direction: reverse;
+}
+.score-page.from-left {
+  animation-name: left;
+}
+
+@keyframes left {
+  from {
+    transform: translate(-100%);
+  }
+  to {
+    transform: translate(0%);
+  }
+}
+.score-main__cardsContainer.hiddenBottom {
+  transform: translate(0, 113%);
+}
+
+.score-main__cardsContainer.showFromBottom {
+  transform: translate(0, 0);
+}
+
+.from-bottom {
+  animation-name: bottom;
+}
+
+.to-bottom {
+  animation-name: bottom;
+  animation-direction: reverse;
+}
+
+@keyframes bottom {
+  from {
+    transform: translate(0, 113%);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
