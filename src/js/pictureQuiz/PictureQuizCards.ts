@@ -108,4 +108,12 @@ export class PictureQuizCards extends Container {
   public showQuestionPage(listener: EventListener) {
     this.cards.forEach((card) => card.addListener("click", listener));
   }
+
+  public cardFooter() {
+    return this.cards.map((footer) => footer.getFooter());
+  }
+
+  public onScoreClick(listener: EventListener) {
+    this.cards.forEach((footer) => footer.onScoreClick(listener));
+  }
 }

@@ -101,7 +101,13 @@ pictureQusetionPage.showHomePage(() => {
   pictureQusetionPage.hideQuestionPage();
 });
 
-pictureQuizPage.showQuestionPage(async () => {
+pictureQuizPage.showQuestionPage(async ({ target }) => {
+  const footer = pictureQuizPage.cardsFooter();
+  for (let i = 0; i < footer.length; i++) {
+    if (target === footer[i]) {
+      return;
+    }
+  }
   await pictureQusetionPage.startQuiz();
   await pictureQusetionPage.showQuestionPage();
   pictureQuizPage.hidePage();
@@ -130,4 +136,16 @@ scorePageArtist.hideShowCategories(() => {
   setTimeout(() => scorePageArtist.resetCardsState(), 600);
   scorePageArtist.hidePage();
   artisQuizPage.showPage();
+});
+
+pictureQuizPage.onScoreClick(async () => {
+  await scorePagePictures.showScore();
+  pictureQuizPage.hidePage();
+  scorePagePictures.showPage();
+});
+
+scorePagePictures.hideShowCategories(() => {
+  setTimeout(() => scorePagePictures.resetCardsState(), 600);
+  scorePagePictures.hidePage();
+  pictureQuizPage.showPage();
 });

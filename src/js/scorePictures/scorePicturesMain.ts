@@ -9,12 +9,8 @@ export class ScorePicturesMain extends Container {
 
   cardsContainer: Container;
 
-  images: Promise<HTMLImageElement[]>;
-
   constructor(className: string) {
     super(className);
-
-    this.images = this.getImages();
 
     this.cards = this.createCards();
 
@@ -24,16 +20,12 @@ export class ScorePicturesMain extends Container {
 
     this.main = new Container("score-main", [this.cardsContainer.element]);
     this.element = this.main.element;
-
-    this.addImagesToCards();
-    this.changeCardsState();
   }
 
-  private async getDescription() {
+  private async getDescription(min: number, max: number) {
     const respones: Array<
       Promise<{ author: string; name: string; year: string }>
     > = [];
-    const [min, max] = utilites.randomNumberGapPictureQuiz();
 
     for (let i = min; i <= max; i++) {
       const response = utilites.getAuthor(i);
@@ -57,8 +49,7 @@ export class ScorePicturesMain extends Container {
     return cards;
   }
 
-  private async getImages() {
-    const [min, max] = utilites.randomNumberGapPictureQuiz();
+  private async getImages(min: number, max: number) {
     const responses: Array<Promise<HTMLImageElement>> = [];
 
     for (let i = min; i <= max; i++) {
@@ -70,15 +61,15 @@ export class ScorePicturesMain extends Container {
     return results;
   }
 
-  private async addImagesToCards() {
-    const images = await this.getImages();
+  private async addImagesToCards(min: number, max: number) {
+    const images = await this.getImages(min, max);
     this.cards.forEach((card, index) => card.append(images[index]));
   }
 
-  public async changeCardsState() {
+  public async changeCardsState(min: number, max: number) {
     const answersJSON = localStorage.getItem("answers");
     let answers: Array<string[]> = [];
-    const description = await this.getDescription();
+    const description = await this.getDescription(min, max);
 
     const authors = description[0];
     const names = description[1];
@@ -87,10 +78,12 @@ export class ScorePicturesMain extends Container {
     if (answersJSON) {
       answers = JSON.parse(answersJSON);
     }
-    const artisQuizCategoriesAmount = 11;
 
-    for (let i = 0; i < artisQuizCategoriesAmount; i++) {
-      if (answers[i]) {
+    const pictureQuizCategoryAmount = 11;
+    const requiredСard = +(localStorage.getItem("PictureQuizCategory") ?? 0);
+
+    for (let i = 0; i < pictureQuizCategoryAmount; i++) {
+      if (i === requiredСard && answers[i]) {
         const item = answers[i];
         item.forEach((answer, index) => {
           if (answer === "correct") {
@@ -102,5 +95,44 @@ export class ScorePicturesMain extends Container {
         });
       }
     }
+  }
+
+  public hideCards() {
+    this.cardsContainer.addClassName("to-bottom");
+    this.cardsContainer.addListener("animationend", () => {
+      this.cardsContainer
+        .addClassName("hiddenBottom")
+        .removeClassName("to-bottom")
+        .removeClassName("showFromBottom");
+    });
+  }
+
+  private showCards() {
+    this.cardsContainer.addClassName("from-bottom");
+    this.cardsContainer.addListener("animationend", () => {
+      this.cardsContainer
+        .addClassName("showFromBottom")
+        .removeClassName("from-bottom")
+        .removeClassName("hiddenBottom");
+    });
+  }
+
+  async showScore() {
+    setTimeout(async () => {
+      this.resetCardsState();
+      const [min, max] = utilites.randomNumberGapPictureQuiz();
+      await this.addImagesToCards(min, max);
+      await this.changeCardsState(min, max);
+    }, 0);
+    this.showCards();
+  }
+
+  public removeImages() {
+    this.cards.forEach((card) => card.getimg().remove());
+  }
+
+  public resetCardsState() {
+    this.cards.forEach((card) => card.removeClassName("played"));
+    this.cards.forEach((card) => card.addFooterText());
   }
 }

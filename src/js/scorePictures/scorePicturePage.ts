@@ -38,5 +38,53 @@ export class ScorePicturePage extends Container {
     this.container.addClassName("hidden");
 
     this.element = this.container.element;
+
+    this.hideShowHome();
+  }
+
+  hidePage() {
+    this.container.addClassName("to-left");
+
+    setTimeout(() => {
+      this.container
+        .addClassName("hidden")
+        .removeClassName("show")
+        .removeClassName("to-left");
+    }, 500);
+  }
+
+  showPage() {
+    if (this.container.hasClass("hidden")) {
+      this.container.addClassName("from-left");
+      this.container.addListener("animationend", () => {
+        this.container
+          .addClassName("show")
+          .removeClassName("from-left")
+          .removeClassName("hidden");
+      });
+    }
+  }
+
+  async showScore() {
+    await this.main.showScore();
+  }
+
+  private hideShowHome() {
+    this.categories.hideShowHome(() => {
+      this.hidePage();
+      setTimeout(() => {
+        this.main.removeImages();
+        this.main.resetCardsState();
+      }, 600);
+    });
+  }
+
+  public hideShowCategories(listener: EventListener) {
+    this.categories.hideShowCategories(listener);
+  }
+
+  public resetCardsState() {
+    this.main.resetCardsState();
+    this.main.removeImages();
   }
 }

@@ -79,4 +79,12 @@ export class PictureQuiz {
   public showQuestionPage(listener: EventListener) {
     this.main.showQuestionPage(listener);
   }
+
+  public cardsFooter() {
+    return this.main.footerCards();
+  }
+
+  public onScoreClick(listener: EventListener) {
+    this.main.onScoreClick(listener);
+  }
 }

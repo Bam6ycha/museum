@@ -79,9 +79,8 @@ export class ScoreMain extends Container {
     }
     const artisQuizCategoriesAmount = 12;
 
+    const requiredСard = +(localStorage.getItem("ArtisQuizCategory") ?? 0);
     for (let i = artisQuizCategoriesAmount; i < 23; i++) {
-      const requiredСard = +(localStorage.getItem("ArtisQuizCategory") ?? 0);
-
       const currentCard = i - artisQuizCategoriesAmount;
 
       if (requiredСard === currentCard && answers[i]) {
