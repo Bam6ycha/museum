@@ -91,6 +91,14 @@ export class ContainerCards extends Container {
     this.cards.forEach((card) => card.addListener("click", listener));
   }
 
+  public cardFooter() {
+    return this.cards.map((footer) => footer.getFooter());
+  }
+
+  public onScoreClick(listener: EventListener) {
+    this.cards.forEach((footer) => footer.onScoreClick(listener));
+  }
+
   private domLoaded() {
     document.addEventListener("DOMContentLoaded", () => {
       const answersJSON = localStorage.getItem("answers");

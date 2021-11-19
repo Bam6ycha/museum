@@ -78,7 +78,13 @@ artisqQuizQuestionsPage.showCategoriesPage(() => {
   artisQuizPage.showPage();
 });
 
-artisQuizPage.showQuestionPage(async () => {
+artisQuizPage.showQuestionPage(async ({ target }) => {
+  const footer = artisQuizPage.cardsFooter();
+  for (let i = 0; i < footer.length; i++) {
+    if (target === footer[i]) {
+      return;
+    }
+  }
   await artisqQuizQuestionsPage.startQuiz(
     utilites.randomNumberGapArtistQuiz()[0]
   );
@@ -112,4 +118,16 @@ pictureQusetionPage.hideQuestionPageShowHome(() => {
   const [score] = pictureQusetionPage.getScore();
   pictureQuizPage.addScore(score);
   pictureQusetionPage.hideQuestionPage();
+});
+
+artisQuizPage.onScoreClick(async () => {
+  await scorePageArtist.showScore();
+  artisQuizPage.hidePage();
+  scorePageArtist.showPage();
+});
+
+scorePageArtist.hideShowCategories(() => {
+  setTimeout(() => scorePageArtist.resetCardsState(), 600);
+  scorePageArtist.hidePage();
+  artisQuizPage.showPage();
 });

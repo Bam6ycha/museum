@@ -51,4 +51,12 @@ export class ArtisQuizMain {
   public showQuestionPage(listener: EventListener) {
     this.cards.showQuestionPage(listener);
   }
+
+  public footerCards() {
+    return this.cards.cardFooter();
+  }
+
+  public onScoreClick(listener: EventListener) {
+    this.cards.onScoreClick(listener);
+  }
 }

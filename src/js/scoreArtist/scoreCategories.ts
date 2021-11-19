@@ -38,7 +38,11 @@ export class ScoreCategories extends Container {
     this.element = this.wrapper.element;
   }
 
-  hideCardsAndArtisQuiz(listener: EventListener) {
+  hideShowCategories(listener: EventListener) {
+    this.categoriesButton.OnClick(listener);
+  }
+
+  hideShowHome(listener: EventListener) {
     this.homeButton.OnClick(listener);
   }
 }

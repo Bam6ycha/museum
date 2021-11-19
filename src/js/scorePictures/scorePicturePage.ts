@@ -35,6 +35,7 @@ export class ScorePicturePage extends Container {
     ]);
 
     this.container = new Container("score-page", [this.wrapper.element]);
+    this.container.addClassName("hidden");
 
     this.element = this.container.element;
   }

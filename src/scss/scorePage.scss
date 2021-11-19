@@ -15,9 +15,9 @@
 }
 
 .score-wrapper {
-  max-width: 1200px;
-  width: 1200px;
+  max-width: 1220px;
   margin: 0 auto;
+  width: 100%;
   height: 100vh;
 }
 
@@ -28,6 +28,13 @@
   transform: translate(0%);
 }
 
+.score-main {
+  padding: 10px;
+  max-height: 1800px;
+  position: relative;
+  height: 1700px;
+}
+
 .score-main__cardsContainer {
   display: flex;
   flex-wrap: wrap;
@@ -35,6 +42,7 @@
   gap: 20px;
   animation: 0.5s ease-in-out 0.1s;
   position: absolute;
+  overflow: hidden;
 }
 
 .score-page.to-left {

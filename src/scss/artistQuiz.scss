@@ -225,13 +225,13 @@ a > img {
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 2;
   width: 90%;
   background-color: $cherry;
   border-radius: 0 0 38% 0;
-  transform: translate(0, 100%);
+  transform: translate(0, 102%);
   transition: all 0.5s ease;
   cursor: pointer;
+  z-index: 10;
 }
 
 .artistQuiz-main__card:hover .artistQuiz-main__score {

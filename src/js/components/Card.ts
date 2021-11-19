@@ -2,15 +2,15 @@ import { Container } from "../Container/Container";
 import { utilites } from "../Utilities";
 
 export class Card extends Container {
-  container: Container;
+  private container: Container;
 
-  header: Container;
+  private header: Container;
 
-  headlink: HTMLHeadingElement;
+  private headlink: HTMLHeadingElement;
 
-  totalScoreContainer: Container;
+  private totalScoreContainer: Container;
 
-  footer: Container;
+  private footer: Container;
 
   constructor(className: string) {
     super(className);
@@ -40,6 +40,10 @@ export class Card extends Container {
     this.headlink.textContent = text;
   }
 
+  public getimg() {
+    return this.container.element.children[2];
+  }
+
   public addScore(score: string) {
     this.totalScoreContainer.setText(score);
     return this;
@@ -51,8 +55,16 @@ export class Card extends Container {
     return this;
   }
 
-  private addFooterText() {
-    this.footer.setText("SCORE");
+  public addFooterText(string = "SCORE") {
+    this.footer.setText(string);
     return this;
+  }
+
+  onScoreClick(listener: EventListener) {
+    this.footer.addListener("click", listener);
+  }
+
+  getFooter() {
+    return this.footer.element;
   }
 }
