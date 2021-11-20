@@ -1,6 +1,11 @@
 import "../index.html";
 
 import "../scss/main.scss";
+
+import "../assets/correct.mp3";
+import "../assets/incorrect.mp3";
+import "../assets/roundEnd.mp3";
+
 import { ArtisQuizPage } from "./artistQuiz/ArtistQuizPage";
 import { PictureQuiz } from "./pictureQuiz/PictureQuizPage";
 import { PictureQuizPage } from "./pictureQuizeQuestions/pictireQuestionPage";

@@ -3,7 +3,7 @@
 @import "./varibles";
 @import "./mixins";
 html {
-  height: 100%;
+  height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   width: 100%;
@@ -46,6 +46,10 @@ body {
   object-fit: cover;
   object-position: center;
 }
+
+.header-wrapper__logo > img {
+  max-width: 360px;
+}
 .main {
   width: 100%;
   max-width: 100%;
@@ -53,7 +57,7 @@ body {
   margin: 0 auto;
 }
 .main-content {
-  max-height: 422px;
+  height: 100%;
 }
 
 .artist-quiz__imgContainer {
@@ -100,10 +104,36 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  gap: 20px;
 }
 
-.artist-quiz__img > img {
+.main-content-wrapper {
+  padding: 15px;
+}
+.artist-quiz__imgContainer > img {
   border-radius: 20% 0 20% 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 675px) {
+  .artist-quiz {
+    flex-direction: column;
+  }
+  .artist-quiz__imgContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .artist-quiz__imgContainer > img {
+    width: 60%;
+  }
 }
 @import "./footer";
 @import "./settings";

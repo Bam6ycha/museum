@@ -36,6 +36,10 @@ export class ScoreCategories extends Container {
     ]);
 
     this.element = this.wrapper.element;
+    if (document.documentElement.clientWidth <= 376) {
+      this.homeButton.addTextToButton("");
+      this.categoriesButton.addTextToButton("");
+    }
   }
 
   hideShowCategories(listener: EventListener) {

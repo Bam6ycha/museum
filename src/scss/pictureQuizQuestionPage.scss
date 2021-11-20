@@ -113,3 +113,38 @@
     transform: translate(0);
   }
 }
+
+@media (max-width: 1024px) {
+  .pictureQuizQuestions-wrapper {
+    justify-content: flex-start;
+    row-gap: 20px;
+  }
+  .pictureQuize-main__imageContainer {
+    flex: 1 0 33%;
+  }
+  .pictureQuize-main__imageMainContainer {
+    width: 66%;
+  }
+  .artistQuizQuestions-mainContainer__bullets {
+    width: 66%;
+  }
+}
+
+@media (max-width: 768px) {
+  .pictureQuize-main__imageMainContainer {
+    width: 84%;
+  }
+  .artistQuizQuestions-mainContainer__bullets {
+    width: 84%;
+  }
+}
+
+@media (max-width: 376px) {
+  .pictureQuize-main__imageMainContainer {
+    height: 600px;
+    width: 98%;
+  }
+  .artistQuizQuestions-mainContainer__bullets {
+    width: 98%;
+  }
+}

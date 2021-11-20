@@ -107,3 +107,19 @@
 .pictureDescriptionPage-main__descriptionContainer > img {
   border-radius: 20% 0 20% 0;
 }
+
+@media (max-width: 1025px) {
+  .pictureDescriptionPage {
+    top: 1%;
+  }
+}
+
+@media (max-width: 376px) {
+  .pictureDescriptionPage-main__descriptionContainer,
+  .pictureDescriptionPage-main__descriptionContainer > img {
+    width: 100%;
+  }
+  .pictureDescriptionPage {
+    top: 12%;
+  }
+}

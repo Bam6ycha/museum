@@ -26,6 +26,9 @@ export class Categories {
     ]);
 
     this.element = this.wrapper.element;
+    if (document.documentElement.clientWidth <= 376) {
+      this.homeButton.addTextToButton("");
+    }
   }
 
   hideCardsAndArtisQuiz(listener: EventListener) {

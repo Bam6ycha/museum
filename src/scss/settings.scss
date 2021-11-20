@@ -194,3 +194,12 @@
     opacity: 0;
   }
 }
+
+@media (max-width: 1024px) {
+  .settings {
+    justify-content: flex-start;
+  }
+  .settings-header {
+    margin-top: 200px;
+  }
+}

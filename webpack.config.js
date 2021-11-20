@@ -27,14 +27,14 @@ const plugins = () => {
     new MiniCssExtractPlugin({
       filename: `./css/${filename("css")}`
     }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, "src/assets"),
-          to: (__dirname, "assets")
-        }
-      ]
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: path.resolve(__dirname, "src/assets"),
+    //       to: (__dirname, "assets")
+    //     }
+    //   ]
+    // }),
     new ImageminPlugin({
       disable: process.env.NODE_ENV !== "production", // Disable during development
       pngquant: {
@@ -53,7 +53,7 @@ const plugins = () => {
             ["jpegtran", { progressive: true }],
             ["optipng", { optimizationLevel: 5 }],
             [
-              "svgo",
+              "svg",
               {
                 plugins: [
                   {
@@ -107,7 +107,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(?:ico||svg|gif|png|jpg|jpeg)$/i,
+        test: /\.(?:ico|svg|gif|png|jpg|jpeg|mp3)$/i,
         type: "asset/resource"
       },
       {
@@ -125,6 +125,9 @@ module.exports = {
     ]
   },
   resolve: {
+    fallback: {
+      path: require.resolve("path-browserify")
+    },
     extensions: [".ts", ".js"]
   }
 };

@@ -38,9 +38,9 @@ class AudioPlayer {
 
   constructor() {
     this.playlist = {
-      correct: ["../assets/correct.mp3", "audio/mpeg"],
-      incorrect: ["../assets/incorrect.mp3", "audio/mpeg"],
-      roundEnd: ["../assets/roundEnd.mp3", "audio/mpeg"]
+      correct: ["./img/correct.ab6b7b7ffdaa59928ae3.mp3", "audio/mpeg"],
+      incorrect: ["./img/incorrect.638656cc44617dffb1a3.mp3", "audio/mpeg"],
+      roundEnd: ["./img/roundEnd.6e5fae08c94a8d6f784b.mp3", "audio/mpeg"]
     };
     this.audio = this.createAudioElement();
     this.soundBigButton = new Button("volume");
@@ -61,8 +61,10 @@ class AudioPlayer {
       this.soundBarContainer.element
     ]);
     this.element = this.container.element;
+    this.audio.crossOrigin = "anonymous";
     this.audio.volume = 0.3;
     this.volume.setValue("0.3");
+
     this.soundOffOnClick();
     this.setVolumeOnChange();
     this.checkVolume();
@@ -90,8 +92,8 @@ class AudioPlayer {
   }
 
   checkVolume() {
-    this.volume.onChange(() => {
-      this.playCorrect();
+    this.volume.onChange(async () => {
+      await this.playCorrect();
     });
   }
 
@@ -123,32 +125,33 @@ class AudioPlayer {
     return this.audio.getAttribute("src");
   }
 
-  public playCorrect() {
+  public async playCorrect() {
     const [source, type] = this.playlist.correct;
     this.audio.setAttribute("src", source);
     this.audio.setAttribute("type", type);
-    this.togglePlay();
+    this.audio.load();
+    await this.togglePlay();
     return this;
   }
 
-  public incorrectAnswerSound() {
+  public async incorrectAnswerSound() {
     const [source, type] = this.playlist.incorrect;
     this.audio.setAttribute("src", source);
     this.audio.setAttribute("type", type);
-    this.togglePlay();
+    await this.togglePlay();
     return this;
   }
 
-  public playEndRound() {
+  public async playEndRound() {
     const [source, type] = this.playlist.roundEnd;
     this.audio.setAttribute("src", source);
     this.audio.setAttribute("type", type);
-    this.togglePlay();
+    await this.togglePlay();
     return this;
   }
 
   private setVolumeOnChange() {
-    this.volume.onChange(() => {
+    this.volume.onChange(async () => {
       this.audio.volume = +this.volume.value;
       localStorage.setItem("volume", `${this.getVolume()}`);
       localStorage.setItem("isMuted", `${this.isMute()}`);
@@ -157,7 +160,7 @@ class AudioPlayer {
         this.getVolume() === 0 &&
         this.soundBigButton.isContainsClass("volume")
       ) {
-        this.toggleSound();
+        await this.toggleSound();
         localStorage.setItem("isMuted", `${this.isMute()}`);
         this.showMuteButton();
         return this;
@@ -192,26 +195,31 @@ class AudioPlayer {
   }
 
   private soundOffOnClick() {
-    this.soundBigButton.OnClick(() => {
+    this.soundBigButton.OnClick(async () => {
       if (this.soundBigButton.isContainsClass("volume")) {
         this.showMuteButton();
         this.volume.element.value = "0";
-        this.toggleSound();
+        await this.toggleSound();
         localStorage.setItem("isMuted", `${this.isMute()}`);
       } else {
         this.showUnmuteButton();
         this.volume.element.value = `${this.getVolume()}`;
-        this.toggleSound();
+        await this.toggleSound();
         localStorage.setItem("isMuted", `${this.isMute()}`);
       }
     });
   }
 
-  public togglePlay() {
-    if (this.isPaused()) {
-      this.audio.play();
-    } else {
-      this.audio.pause();
+  public async togglePlay() {
+    try {
+      if (this.isPaused()) {
+        this.audio.pause();
+        await this.audio.play();
+      } else {
+        this.audio.pause();
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
 

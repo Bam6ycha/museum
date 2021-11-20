@@ -86,3 +86,9 @@
   justify-content: space-evenly;
   width: 100%;
 }
+
+@media (max-width: 376px) {
+  .final-resultsPage {
+    top: 11%;
+  }
+}

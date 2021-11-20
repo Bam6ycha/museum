@@ -68,6 +68,7 @@
   padding-right: 15px;
   justify-content: center;
   animation: 0.5s ease-in-out 0.1s;
+  height: 100%;
 }
 .artistQuiz-main__card {
   flex: 0 0 31%;
@@ -241,4 +242,40 @@ a > img {
 .artistQuiz-main__totalScore {
   font-size: 1.2rem;
   color: $cherry;
+}
+
+@media (max-width: 1054px) {
+  .artistQuiz-main__cardsContainer {
+    gap: 13px;
+  }
+}
+
+@media (max-width: 1025px) {
+  .artistQuiz-page {
+    height: 161vh;
+  }
+  .artistQuiz-main {
+    height: 1455px;
+  }
+}
+
+@media (max-width: 769px) {
+  .artistQuiz-main {
+    height: 1150px;
+  }
+  .artistQuiz-page {
+    height: 152vh;
+  }
+}
+
+@media (max-width: 376px) {
+  .artistQuiz-main__card {
+    flex: 0 0 47%;
+  }
+  .artistQuiz-main {
+    height: 1330px;
+  }
+  .artistQuiz-page {
+    height: 200vh;
+  }
 }

@@ -21,7 +21,6 @@ export class QueistionPicturePageHeader {
       "categorie-artistQuiz__homeButton",
       "Home"
     );
-
     this.question = new Container("artistQuizQuestions-header__question");
 
     this.timerContainer = new Container("artistQuizQuestions-header__timer");
@@ -35,6 +34,10 @@ export class QueistionPicturePageHeader {
       "Categories"
     );
 
+    if (document.documentElement.clientWidth <= 376) {
+      this.homeButton.addTextToButton("");
+      this.categoriesButton.addTextToButton("");
+    }
     this.wrapper = new Container("artistQuizQuestions-header__wrapper", [
       this.homeButton.element,
       this.question.element,
