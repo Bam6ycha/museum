@@ -104,15 +104,15 @@ dist
 .tern-port
 
 # Other files and folders
-.settings/
-src/
+# .settings/
+# src/
 node_modules/
 
 
 # Executables
-*.swf
-*.air
-*.ipa
-*.apk
-*.json
-*.config.js
+# *.swf
+# *.air
+# *.ipa
+# *.apk
+# *.json
+# *.config.js
