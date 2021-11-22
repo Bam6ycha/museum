@@ -48,7 +48,6 @@ export class QuestionsPageHeader {
       this.homeButton.addTextToButton("");
       this.categoriesButton.addTextToButton("");
     }
-    this.getSeconds();
   }
 
   getSeconds() {
@@ -87,7 +86,7 @@ export class QuestionsPageHeader {
       const timer = setInterval(() => {
         this.decreasingTimer();
         if (this.getSeconds() === 0 && action) {
-          clearTimeout(timer);
+          clearInterval(timer);
           action();
         }
       }, 1000);

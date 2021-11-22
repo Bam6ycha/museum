@@ -186,10 +186,12 @@ class AudioPlayer {
       if (mute === "true") {
         this.showMuteButton();
         this.volume.setValue("0");
+        this.audio.muted = true;
       } else {
         this.audio.volume = +volume;
         this.volume.element.value = volume;
         this.showUnmuteButton();
+        this.audio.muted = false;
       }
     });
   }
@@ -219,7 +221,7 @@ class AudioPlayer {
         this.audio.pause();
       }
     } catch (err) {
-      console.log(err);
+      throw new Error("OKAY(");
     }
   }
 

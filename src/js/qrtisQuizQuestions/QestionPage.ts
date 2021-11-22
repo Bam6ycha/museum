@@ -61,6 +61,10 @@ export class QusetionPage {
     }
   }
 
+  private startNewTimer(action: CallableFunction) {
+    this.main.showResult(action);
+  }
+
   public async showQuestionPage() {
     if (this.container.hasClass("hidden")) {
       this.container.addClassName("from-right");

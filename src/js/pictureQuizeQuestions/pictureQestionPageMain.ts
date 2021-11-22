@@ -238,4 +238,8 @@ export class PictureQustionPageMain {
   public hideQuestionPageShowCategories(listener: EventListener) {
     this.finalResult.hideQuestionPageShowCategories(listener);
   }
+
+  public resetTimer(listener: EventListener) {
+    this.answerDescription.nextQuestion(listener);
+  }
 }

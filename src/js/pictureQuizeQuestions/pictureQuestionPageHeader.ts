@@ -46,7 +46,6 @@ export class QueistionPicturePageHeader {
     ]);
 
     this.element = this.wrapper.element;
-    this.getSeconds();
     this.getAuthor(utilites.randomNumberGapPictureQuiz()[0]);
   }
 
@@ -68,14 +67,15 @@ export class QueistionPicturePageHeader {
 
     seconds -= 1;
     this.timerContainer.element.textContent = `${"00:"}${seconds}`;
+
     if (seconds < 10) {
       this.timerContainer.element.textContent = `${"00:"}${"0"}${seconds}`;
     }
-    return seconds;
   }
 
   public isTimerGame() {
     const timerState = +(localStorage.getItem("timerStempsOpacity") ?? "0");
+
     if (timerState) {
       return true;
     }
@@ -91,7 +91,7 @@ export class QueistionPicturePageHeader {
       const timer = setInterval(() => {
         this.decreasingTimer();
         if (this.getSeconds() === 0 && action) {
-          clearTimeout(timer);
+          clearInterval(timer);
           action();
         }
       }, 1000);

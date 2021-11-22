@@ -121,7 +121,7 @@ export class QuestionsPageMain {
     const responses = [];
     const maxAuthorAmount = 200;
     for (let i = 0; i < 3; i++) {
-      const random = utilites.getRandomNumber(this.max + 2, maxAuthorAmount);
+      const random = utilites.getRandomNumber(0, maxAuthorAmount);
       const response = utilites.getAuthor(random);
       responses.push(response);
     }
@@ -198,8 +198,8 @@ export class QuestionsPageMain {
   public showResult(action?: CallableFunction) {
     this.answerContainers.forEach((answer) => {
       answer.addEventListener("click", ({ target }) => {
-        if (!target && action) {
-          action();
+        if (!target) {
+          return;
         }
 
         if (
@@ -209,9 +209,23 @@ export class QuestionsPageMain {
           const questionNumber = this.bulletsContainer.getCounter();
           this.showRightAnswer();
           this.currentSessionAnswers[questionNumber] = "correct";
+          answer.classList.add("correctAnswer");
+
+          if (action) {
+            action();
+          }
+
+          setTimeout(() => answer.classList.remove("correctAnswer"), 1000);
         } else {
           const questionNumber = this.bulletsContainer.getCounter();
           this.showWrongAnswer();
+          answer.classList.add("wrongAnswer");
+
+          if (action) {
+            action();
+          }
+
+          setTimeout(() => answer.classList.remove("wrongAnswer"), 1000);
           this.currentSessionAnswers[questionNumber] = "incorrect";
         }
       });

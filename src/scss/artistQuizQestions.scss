@@ -5,7 +5,7 @@
   max-width: 100%;
   width: 100%;
   background: linear-gradient(to bottom, white, grey);
-  animation: 0.5s ease-in-out;
+  animation: 0.5s ease-in-out 0.1s;
   box-sizing: content-box;
   overflow: hidden;
 }
@@ -116,7 +116,7 @@
   gap: 10px;
   justify-content: space-between;
   margin-top: 20px;
-  animation: 0.5s ease;
+  animation: 0.5s ease 0.1s;
 }
 
 .artistQuizQuestions-mainContainer__answer {
@@ -125,7 +125,7 @@
   color: $cherry;
   font-size: 1.3rem;
   cursor: pointer;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease 0.1s;
   border-radius: 20%;
 }
 
@@ -234,4 +234,12 @@
   .artistQuizQuestions-header__categoriseButton::after {
     left: 20%;
   }
+}
+
+.correctAnswer {
+  background-color: $activeGreen;
+}
+
+.wrongAnswer {
+  background-color: red;
 }

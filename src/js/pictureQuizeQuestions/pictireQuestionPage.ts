@@ -36,6 +36,11 @@ export class PictureQuizPage {
     this.element = this.container.element;
 
     this.changeAuthor(() => this.addAuthor());
+    this.resetTimer(() => {
+      this.header.timerGame(() => {
+        this.main.showWrongAnswer();
+      });
+    });
   }
 
   public showHomePage(listener: EventListener) {
@@ -69,6 +74,15 @@ export class PictureQuizPage {
   public async startQuiz() {
     await this.main.strartQuiz();
     await this.addAuthor();
+    const animationendTime = 1000;
+    setTimeout(
+      () => this.header.timerGame(() => this.main.showWrongAnswer()),
+      animationendTime
+    );
+  }
+
+  private resetTimer(listener: EventListener) {
+    this.main.resetTimer(listener);
   }
 
   public showCategoriesPage(listener: EventListener) {
