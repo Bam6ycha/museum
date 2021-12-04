@@ -1,12 +1,12 @@
 {
   "overrides": [
     {
-      "env": { "browser": true, "es2021": true },
-      "extends": ["airbnb-base", "plugin:@typescript-eslint/recommended"],
+      "env": { "browser": true, "es2015": true },
+      "extends": ["plugin:@typescript-eslint/recommended"],
       "files": ["*.ts"],
       "parser": "@typescript-eslint/parser",
       "plugins": ["import"],
-      "parserOptions": { "ecmaVersion": 2021, "sourceType": "module" },
+      "parserOptions": { "ecmaVersion": 2015, "sourceType": "module" },
       "rules": {
         "eqeqeq": "off",
         "curly": "error",
