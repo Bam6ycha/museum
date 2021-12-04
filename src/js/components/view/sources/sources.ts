@@ -24,7 +24,6 @@ class Sources {
       ) as HTMLDivElement;
 
       sourceContainer.setAttribute("data-source-id", item.id);
-
       fragment.append(sourceClone);
     });
 

@@ -111,3 +111,34 @@
     font-size: 20px;
   }
 }
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.author_name {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: white;
+  transition: all 0.5s ease;
+}
+
+.author_name:hover {
+  color: #70d6ff;
+}
+
+.author_name:visited {
+  color: #69db7e;
+}
+
+.rs__logo {
+  width: 85px;
+  height: 50px;
+}
+.rs__logo img {
+  transition: all 0.5s ease;
+}
+
+.rs__logo:hover img {
+  transform: scale(1.1);
+}
