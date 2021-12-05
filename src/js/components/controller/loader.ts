@@ -58,7 +58,7 @@ class Loader implements LoaderInterface {
     fetch(this.makeUrl(options, endpoint), {
       method,
       headers: {
-        Upgrade: "HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11"
+        "Access-Control-Allow-Origin": "*"
       }
     })
       .then(this.errorHandler)
