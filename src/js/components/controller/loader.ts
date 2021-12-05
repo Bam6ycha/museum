@@ -55,7 +55,12 @@ class Loader implements LoaderInterface {
     callback: (data: NewsResponse) => void,
     options: CustomOptions
   ) {
-    fetch(this.makeUrl(options, endpoint), { method })
+    fetch(this.makeUrl(options, endpoint), {
+      method,
+      headers: {
+        Upgrade: "HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11"
+      }
+    })
       .then(this.errorHandler)
       .then((res) => res.json())
       .then((data: NewsResponse) => callback(data))

@@ -13,7 +13,6 @@ class App implements AppInterface {
 
   public start() {
     const source = document.querySelector(".menu__body") as HTMLDivElement;
-    console.log(source);
     source.addEventListener("click", (e) =>
       this.controller.getNews(e, (data) => this.view.drawNews(data))
     );
