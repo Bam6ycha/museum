@@ -3,23 +3,25 @@ import { BaseOptions, CustomOptions } from "../interfaces/options";
 import { NewsResponse } from "../interfaces/response";
 
 class Loader {
-  baseLink: string;
-  options: BaseOptions;
+  private baseLink: string;
+
+  private options: BaseOptions;
+
   constructor(baseLink: string, options: BaseOptions) {
     this.baseLink = baseLink;
     this.options = options;
   }
 
-  getResp(
+  public getResp(
     { endpoint, options = {} }: getResponse,
-    callback = (data: NewsResponse) => {
+    callback: (data: NewsResponse) => void = () => {
       console.error("No callback for GET response");
     }
   ) {
     this.load("GET", endpoint, callback, options);
   }
 
-  errorHandler(res: Response) {
+  private errorHandler(res: Response) {
     if (!res.ok) {
       if (res.status === 401 || res.status === 404) {
         console.log(
@@ -31,7 +33,7 @@ class Loader {
     return res;
   }
 
-  makeUrl(options: CustomOptions, endpoint: string) {
+  private makeUrl(options: CustomOptions, endpoint: string) {
     const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
@@ -42,7 +44,7 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  load(
+  private load(
     method: string,
     endpoint: string,
     callback: (data: NewsResponse) => void,

@@ -1,6 +1,8 @@
 .news {
   box-sizing: content-box;
   padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .news__item {

@@ -1,9 +1,7 @@
-// import "./sources.scss";
-
 import { Source } from "../../interfaces/source";
 
 class Sources {
-  draw(data: Source[]) {
+  public draw(data: Source[]) {
     const fragment = document.createDocumentFragment();
     const sourceItemTemp = document.querySelector(
       "#sourceItemTemp"
@@ -27,7 +25,7 @@ class Sources {
       fragment.append(sourceClone);
     });
 
-    const sources = document.querySelector(".sources") as HTMLDivElement;
+    const sources = document.querySelector(".menu__body") as HTMLDivElement;
     sources.append(fragment);
   }
 }

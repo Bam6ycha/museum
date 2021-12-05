@@ -12,7 +12,7 @@ class AppController extends AppLoader {
     );
   }
 
-  getNews(e: MouseEvent, callback: (data: NewsResponse) => void) {
+  public getNews(e: MouseEvent, callback: (data: NewsResponse) => void) {
     if (e.target) {
       let target = e.target as HTMLDivElement | HTMLSpanElement;
       const newsContainer = e.currentTarget as HTMLDivElement;

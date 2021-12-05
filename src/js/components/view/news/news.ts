@@ -3,7 +3,7 @@
 import { Article } from "../../interfaces/article";
 
 class News {
-  draw(data: Article[]) {
+  public draw(data: Article[]) {
     const news =
       data.length >= 10 ? data.filter((_item, idx: number) => idx < 10) : data;
 
