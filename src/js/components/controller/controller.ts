@@ -3,7 +3,7 @@ import { NewsResponse } from "../interfaces/response";
 import AppLoader from "./appLoader";
 
 class AppController extends AppLoader {
-  getSources(callback: (data: NewsResponse) => void) {
+  public getSources(callback: (data: NewsResponse) => void) {
     super.getResp(
       {
         endpoint: EndPoints.Sources
@@ -16,10 +16,12 @@ class AppController extends AppLoader {
     if (e.target) {
       let target = e.target as HTMLDivElement | HTMLSpanElement;
       const newsContainer = e.currentTarget as HTMLDivElement;
+
       if (newsContainer) {
         while (target !== newsContainer) {
           if (target.classList.contains("source__item")) {
             const sourceId = target.getAttribute("data-source-id");
+
             if (
               newsContainer.getAttribute("data-source") !== sourceId &&
               sourceId

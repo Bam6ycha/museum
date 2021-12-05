@@ -1,8 +1,10 @@
+import { ResponseStatus } from "../enums/responseStatus";
 import { getResponse } from "../interfaces/getRespons";
+import { LoaderInterface } from "../interfaces/loaderInterface";
 import { BaseOptions, CustomOptions } from "../interfaces/options";
 import { NewsResponse } from "../interfaces/response";
 
-class Loader {
+class Loader implements LoaderInterface {
   private baseLink: string;
 
   private options: BaseOptions;
@@ -23,7 +25,10 @@ class Loader {
 
   private errorHandler(res: Response) {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404) {
+      if (
+        res.status === ResponseStatus.Unauthorized ||
+        res.status === ResponseStatus.NotFound
+      ) {
         console.log(
           `Sorry, but there is ${res.status} error: ${res.statusText}`
         );

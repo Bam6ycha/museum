@@ -1,7 +1,8 @@
 import AppController from "../controller/controller";
+import { AppInterface } from "../interfaces/appInterface";
 import { AppView } from "../view/appView";
 
-class App {
+class App implements AppInterface {
   private controller: AppController;
   private view: AppView;
 
@@ -10,7 +11,7 @@ class App {
     this.view = new AppView();
   }
 
-  start() {
+  public start() {
     const source = document.querySelector(".menu__body") as HTMLDivElement;
     console.log(source);
     source.addEventListener("click", (e) =>

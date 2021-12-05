@@ -15,6 +15,7 @@
   width: 30px;
   height: 18px;
   cursor: pointer;
+  align-self: flex-start;
 }
 body._lock {
   overflow: hidden;
@@ -66,7 +67,7 @@ body._lock {
   height: 95%;
   background-color: black;
 
-  padding: 45px 8px 0 0;
+  padding: 45px 0 0 0;
   transition: left 0.3s ease 0s;
   display: flex;
   flex-wrap: wrap;
@@ -78,10 +79,10 @@ body._lock {
   top: 0;
   left: 100%;
   width: 100%;
-  height: 95%;
+  height: 96%;
   background-color: black;
-
-  padding: 45px 8px 0 0;
+  z-index: 2;
+  padding: 45px 0 0 0;
   transition: left 0.3s ease 0s;
   display: flex;
   flex-direction: row;

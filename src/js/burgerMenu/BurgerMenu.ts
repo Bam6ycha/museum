@@ -1,6 +1,4 @@
 class BurgerMenu {
-  public element: HTMLDivElement;
-
   private menuBody: HTMLDivElement;
 
   private icon: HTMLDivElement;
@@ -10,7 +8,6 @@ class BurgerMenu {
 
     this.menuBody = document.querySelector(".menu__body") as HTMLDivElement;
 
-    this.element = this.icon;
     this.show();
     this.hide();
   }
@@ -33,11 +30,11 @@ class BurgerMenu {
       this.menuBody.classList.remove("_active");
     }
   }
-  public hideMenuOnLinksClick() {
+
+  private hideMenuOnLinksClick() {
     const links = document.getElementsByClassName(
       "source__item"
     ) as HTMLCollectionOf<HTMLDivElement>;
-    console.log(links);
 
     [...links].forEach((link) =>
       link.addEventListener("click", () => this.hide())
