@@ -55,12 +55,7 @@ class Loader implements LoaderInterface {
     callback: (data: NewsResponse) => void,
     options: CustomOptions
   ) {
-    fetch(this.makeUrl(options, endpoint), {
-      method,
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
-    })
+    fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
       .then((data: NewsResponse) => callback(data))
